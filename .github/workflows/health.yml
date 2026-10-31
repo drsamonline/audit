@@ -40,6 +40,18 @@ jobs:
       # exactly that. AUDIT_TOKEN is used when present because it also covers
       # private repos (forge, registry, knowledge) - those are skipped otherwise.
 
+      - name: Is the token there?
+        env:
+          T: ${{ secrets.AUDIT_TOKEN }}
+        run: |
+          # Never print the value - only whether it exists and how long it is, which
+          # is enough to tell "secret missing" apart from "secret present but too narrow".
+          if [ -z "$T" ]; then
+            echo "::warning::AUDIT_TOKEN is NOT set in this repository - falling back to the built-in token, which cannot read private repos"
+          else
+            echo "AUDIT_TOKEN is set (${#T} characters)"
+          fi
+
       - name: Ask the fleet
         env:
           GH_TOKEN: ${{ secrets.AUDIT_TOKEN || github.token }}
