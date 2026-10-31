@@ -39,14 +39,29 @@ GENERATED = [
 ]
 
 
+LAST_ERR = ""
+
+
 def gh(path):
-    """One authenticated GET. Returns parsed JSON, or None on any failure."""
+    """One authenticated GET. Returns parsed JSON, or None, recording WHY it failed.
+
+    "unknown" on its own is useless: it cannot tell a missing permission from a
+    missing repository, and those need different fixes.
+    """
+    global LAST_ERR
+    LAST_ERR = ""
     try:
         out = subprocess.run(["gh", "api", path], capture_output=True, text=True, timeout=45)
-        if out.returncode != 0 or not out.stdout.strip():
+        if out.returncode != 0:
+            err = (out.stderr or "").strip().splitlines()
+            LAST_ERR = err[0][:160] if err else "gh exited %d" % out.returncode
+            return None
+        if not out.stdout.strip():
+            LAST_ERR = "empty response"
             return None
         return json.loads(out.stdout)
-    except Exception:
+    except Exception as exc:
+        LAST_ERR = "%s: %s" % (type(exc).__name__, exc)
         return None
 
 
@@ -92,7 +107,7 @@ def check_schedules(pairs):
         runs = gh(f"/repos/{OWNER}/{repo}/actions/workflows/{fname}/runs?per_page=1")
         if not runs or not runs.get("workflow_runs"):
             rows.append({"repo": repo, "workflow": fname, "state": "unknown",
-                         "detail": "no runs visible"})
+                         "detail": LAST_ERR or "no runs visible"})
             continue
         r = runs["workflow_runs"][0]
         conclusion = r.get("conclusion") or r.get("status") or "unknown"
@@ -166,8 +181,10 @@ def render(schedules, generated, notes):
                "running": "#2563eb"}.get(state, "#64748b")
         age = ("%.1f h ago" % r["age_hours"]) if r.get("age_hours") is not None else "-"
         link = ('<a href="%s">%s</a>' % (r["run_url"], r["workflow"])) if r.get("run_url") else r["workflow"]
-        return ("<tr><td><span style='color:%s'>●</span> %s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
-                % (dot, r["repo"], link, state, age))
+        detail = (" <span style='color:#9aa3b2;font-size:11.5px'>%s</span>"
+                  % r["detail"][:70]) if r.get("detail") else ""
+        return ("<tr><td><span style='color:%s'>●</span> %s</td><td>%s</td><td>%s%s</td><td>%s</td></tr>"
+                % (dot, r["repo"], link, state, detail, age))
 
     def row_gen(r):
         state = r["state"]
