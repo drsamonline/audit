@@ -1,0 +1,3928 @@
+{
+ "count": 93,
+ "repos": {
+  "All4ONE": {
+   "default_branch": "main",
+   "description": "403 working tools. One portable binary. No plugins, no packs, no filler. Every tool gets its own page with its own options \u2014 search it, open it, set what you need, run it.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/All4ONE/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T01:56:10Z",
+   "releases": [
+    {
+     "assets": [
+      "All4one-4.0.0-windows.zip"
+     ],
+     "tag": "latest-build"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "AUTHORS.md",
+    "BUILDING.md",
+    "CHANGELOG.md",
+    "DEVELOPER_GUIDE.md",
+    "INSTALLATION.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "TOOL_CATALOG.md",
+    "USER_GUIDE.md",
+    "VERSION",
+    "assets",
+    "build.py",
+    "core",
+    "docs",
+    "main.py",
+    "pyproject.toml",
+    "requirements-build.txt",
+    "requirements-optional.txt",
+    "scripts",
+    "smoke_ui.py",
+    "tests",
+    "tools",
+    "ui"
+   ],
+   "topics": [
+    "cli-tool",
+    "offline-tools",
+    "portable-app",
+    "productivity",
+    "utilities",
+    "windows"
+   ],
+   "workflow_files": [
+    "build-windows.yml",
+    "ci.yml",
+    "pages.yml",
+    "regenerate-docs.yml"
+   ]
+  },
+  "BLINKTRANSFER": {
+   "default_branch": "main",
+   "description": "DATA TRANSFER IN BLINK OF EYE",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/BLINKTRANSFER/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:55Z",
+   "releases": [
+    {
+     "assets": [
+      "BLINKTRANSFER-linux",
+      "BLINKTRANSFER-portable.exe",
+      "BLINKTRANSFER.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "COMMERCIAL.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "changes",
+    "docs",
+    "eslint.config.js",
+    "frame-kit.js",
+    "package-lock.json",
+    "package.json",
+    "public",
+    "src",
+    "tests",
+    "tools"
+   ],
+   "topics": [
+    "file-transfer",
+    "offline-first",
+    "single-file",
+    "transfer"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "CLDR": {
+   "default_branch": "main",
+   "description": "Command Run Utility - Performance over Bloat",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/CLDR/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pushed_at": "2026-10-31T05:26:55Z",
+   "releases": [
+    {
+     "assets": [
+      "cldr-1.3.0-setup.exe",
+      "cldr-linux-aarch64.tar.gz",
+      "cldr-linux-x86_64.tar.gz",
+      "cldr-windows-x86_64.zip",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v1.3.0"
+    },
+    {
+     "assets": [
+      "cldr-1.2.0-windows-x86_64-portable.zip",
+      "cldr-linux-aarch64.tar.gz",
+      "cldr-linux-x86_64.tar.gz",
+      "cldr-windows-x86_64-msvc.zip",
+      "cldr.exe"
+     ],
+     "tag": "v1.2.0"
+    }
+   ],
+   "root_files": [
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "Cargo.lock",
+    "Cargo.toml",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "VERSION",
+    "assets",
+    "changes",
+    "docs",
+    "packaging",
+    "rust-toolchain.toml",
+    "scripts",
+    "src"
+   ],
+   "topics": [
+    "cli",
+    "launcher",
+    "productivity",
+    "rust",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "build-release.yml",
+    "deploy-demo.yml"
+   ]
+  },
+  "HCS": {
+   "default_branch": "main",
+   "description": "Holistic Compression Sources",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "",
+   "licence_spdx": null,
+   "pushed_at": "2026-10-30T17:16:46Z",
+   "releases": [],
+   "root_files": [
+    ".gitattributes",
+    "PROJECT_OVERVIEW.md",
+    "README.md",
+    "SOURCES",
+    "old"
+   ],
+   "topics": [],
+   "workflow_files": []
+  },
+  "HMS": {
+   "default_branch": "main",
+   "description": "HHMS \u2014 Homeopathic Hospital Management System A LAN-based hospital management system purpose-built for homeopathic hospitals and clinics.  Runs entirely on the local network with a server-owned database \u2014 no internet dependency, no cloud lock-in.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/HMS/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:16:02Z",
+   "releases": [
+    {
+     "assets": [
+      "HHMS-Server",
+      "HHMS-Server.exe",
+      "HHMS-Setup-0.0.2.exe",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "nightly"
+    },
+    {
+     "assets": [
+      "HHMS-Server",
+      "HHMS-Server.exe",
+      "HHMS-Setup-0.0.1.exe",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "build-87ba3e3f160eb967ad42fbc6ca30a348716fe84d"
+    },
+    {
+     "assets": [
+      "HHMS-Server",
+      "HHMS-Server.exe",
+      "HHMS-Setup-0.0.1.exe",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "latest"
+    },
+    {
+     "assets": [
+      "HHMS-Server",
+      "HHMS-Server.exe",
+      "HHMS-Setup-0.0.1.exe",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "build-996907ac4568fcd6ee7da9ca252b8911448f2ba0"
+    },
+    {
+     "assets": [
+      "HHMS-Server",
+      "HHMS-Server.exe",
+      "HHMS-Setup-0.0.1.exe",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "build-6729552adb274a068249223d20a1cb30a16edc36"
+    }
+   ],
+   "root_files": [
+    ".ai",
+    ".editorconfig",
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "RELEASE-0.0.2.md",
+    "ROADMAP.md",
+    "SECURITY.md",
+    "VERSION",
+    "backend",
+    "client",
+    "conftest.py",
+    "data",
+    "docs",
+    "frontend",
+    "scripts"
+   ],
+   "topics": [
+    "clinical",
+    "homeopathy",
+    "hospital",
+    "lan",
+    "offline-first"
+   ],
+   "workflow_files": [
+    "release.yml"
+   ]
+  },
+  "MATERIA-MEDICA-BUILDER": {
+   "default_branch": "main",
+   "description": "Materia Medica Builder",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/MATERIA-MEDICA-BUILDER/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T03:58:03Z",
+   "releases": [
+    {
+     "assets": [
+      "MATERIA-MEDICA-BUILDER-linux",
+      "MATERIA-MEDICA-BUILDER-portable.exe",
+      "MATERIA-MEDICA-BUILDER.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "css",
+    "docs",
+    "icons",
+    "index.html",
+    "js",
+    "manifest.json",
+    "sw.js"
+   ],
+   "topics": [
+    "homeopathy",
+    "materia-medica",
+    "offline-first",
+    "tooling"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "Matneo": {
+   "default_branch": "main",
+   "description": "AI-powered digital products and automation platform.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/Matneo/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:16:17Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "build_posts.py",
+    "docs",
+    "images",
+    "kickbacks.vsix",
+    "tools"
+   ],
+   "topics": [
+    "digital-products",
+    "github-pages",
+    "static-site",
+    "storefront"
+   ],
+   "workflow_files": [
+    "blog.yml",
+    "products.yml",
+    "store-images.yml",
+    "store.yml"
+   ]
+  },
+  "NEO": {
+   "default_branch": "master",
+   "description": "NOVA \u2014 a statically-typed, compiled systems programming language: C, JavaScript, Rust and WebAssembly backends, with a runtime, package manager, language server and debugger.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/NEO/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pushed_at": "2026-10-30T18:16:18Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "AGENTS.md",
+    "ARCHITECTURE.md",
+    "BACKEND_API.md",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "COMPATIBILITY.md",
+    "CONTRIBUTING.md",
+    "Cargo.lock",
+    "Cargo.toml",
+    "DEV_PLAN.md",
+    "EDITOR_INTEGRATION.md",
+    "FAQ.md",
+    "FILES_CREATED.md",
+    "GOVERNANCE.md",
+    "IMPLEMENTATION_PLAN.md",
+    "LICENSE",
+    "LSP_ARCHITECTURE.md",
+    "MILESTONES.md",
+    "PACKAGE_ARCHITECTURE.md",
+    "PHASE2_SUMMARY.md",
+    "README.md",
+    "ROADMAP.md",
+    "SECURITY.md",
+    "SESSION_HANDOFF.md",
+    "SESSION_INSTRUCTIONS.md",
+    "VISION.md",
+    "backends",
+    "bootstrap",
+    "compiler",
+    "configs",
+    "crates",
+    "dbg",
+    "docs",
+    "examples",
+    "grammar",
+    "integration_tests",
+    "lsp",
+    "pkg",
+    "runtime",
+    "scripts",
+    "stdlib",
+    "tests",
+    "vscode-extension",
+    "website"
+   ],
+   "topics": [
+    "compiler",
+    "programming-language",
+    "rust",
+    "systems-programming"
+   ],
+   "workflow_files": [
+    "ci.yml"
+   ]
+  },
+  "Scrap-and-Gun": {
+   "default_branch": "main",
+   "description": "SCRAP & GUN \u2014 a retro pixel-art arena defense shooter with tactical construction, escalating enemy waves, persistent upgrades, roguelite drafts, bosses and local co-op. Playable in the browser, zero dependencies.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/Scrap-and-Gun/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:55:41Z",
+   "releases": [
+    {
+     "assets": [
+      "scrap_gun_v0.1.2.zip"
+     ],
+     "tag": "v0.1.2"
+    },
+    {
+     "assets": [
+      "scrap_gun_v0.1.1.zip"
+     ],
+     "tag": "v0.1.1"
+    },
+    {
+     "assets": [
+      "scrap_gun_v0.1.0.zip"
+     ],
+     "tag": "v0.1.0"
+    }
+   ],
+   "root_files": [
+    "LICENSE",
+    "README.md",
+    "RELEASE_AUDIT.md",
+    "docs",
+    "index.html",
+    "play",
+    "sw.js"
+   ],
+   "topics": [
+    "arcade",
+    "browser-game",
+    "canvas",
+    "game",
+    "html5-game",
+    "javascript",
+    "pixel-art",
+    "pwa",
+    "roguelite",
+    "tower-defense"
+   ],
+   "workflow_files": []
+  },
+  "SmartNotes": {
+   "default_branch": "main",
+   "description": "Turn raw thoughts into organized action.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/SmartNotes/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T09:12:21Z",
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "client",
+    "components.json",
+    "docs",
+    "drizzle.config.ts",
+    "drizzle",
+    "eslint.config.js",
+    "package-lock.json",
+    "package.json",
+    "patches",
+    "pnpm-lock.yaml",
+    "scripts",
+    "server",
+    "shared",
+    "todo.md",
+    "tsconfig.json",
+    "vite.config.ts",
+    "vitest.config.ts"
+   ],
+   "topics": [
+    "notes",
+    "offline-first",
+    "productivity",
+    "pwa",
+    "task-management"
+   ],
+   "workflow_files": []
+  },
+  "TTB": {
+   "default_branch": "main",
+   "description": "TinyToolBox with 590 functionalities in one small extension for chrome",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/TTB/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:55Z",
+   "releases": [
+    {
+     "assets": [
+      "TTB_v0.8.0_CATEGORY_BROWSING_FINAL_RELEASE.zip"
+     ],
+     "tag": "tinytoolbox_Chrome_Extension"
+    }
+   ],
+   "root_files": [
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "ALL_TOOLS.md",
+    "AUDIT.md",
+    "BROWSER_SUPPORT.md",
+    "CATEGORY_DISCOVERY_FINAL_AUDIT.json",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "INSTALL.md",
+    "LICENSE",
+    "PRIVACY.md",
+    "PROJECT_METADATA.json",
+    "README.md",
+    "SECURITY.md",
+    "USAGE.md",
+    "WARNINGS.md",
+    "background.js",
+    "browsers",
+    "build.mjs",
+    "data",
+    "docs",
+    "icons",
+    "lazy",
+    "manifest.json",
+    "package.json",
+    "popup.html",
+    "screenshots.mjs",
+    "sidebar.html",
+    "test.mjs",
+    "tools",
+    "ui"
+   ],
+   "topics": [
+    "browser-extension",
+    "offline-first",
+    "productivity",
+    "toolbox",
+    "utilities"
+   ],
+   "workflow_files": [
+    "validate.yml"
+   ]
+  },
+  "The_Browser": {
+   "default_branch": "main",
+   "description": "Aetheris Browser \u2014 an experimental C++ browser engine with a dependency-free rendering foundation (Ladybird/SerenityOS-derived). Not production-ready.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/The_Browser/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pushed_at": "2026-10-30T18:13:59Z",
+   "releases": [],
+   "root_files": [
+    ".clang-format",
+    ".clang-tidy",
+    ".clangd",
+    ".devcontainer",
+    ".editorconfig",
+    ".gdbinit",
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    ".lldbinit",
+    ".mailmap",
+    ".pre-commit-config.yaml",
+    ".prettierignore",
+    ".prettierrc",
+    ".ycm_extra_conf.py",
+    "AK",
+    "AUTHORS",
+    "BUILD_GUIDE.md",
+    "Base",
+    "CHANGELOG.md",
+    "CMakeLists.txt",
+    "CMakePresets.json",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "CREDITS.md",
+    "Cargo.lock",
+    "Cargo.toml",
+    "DEVELOPMENT_WORKFLOW.md",
+    "Documentation",
+    "ISSUES.md",
+    "LICENSE",
+    "Libraries",
+    "Meta",
+    "README.md",
+    "SECURITY.md",
+    "Services",
+    "Tests",
+    "UI",
+    "Utilities",
+    "cmake",
+    "docs",
+    "include",
+    "pyproject.toml",
+    "rust-toolchain.toml",
+    "rustfmt.toml",
+    "src",
+    "vcpkg-configuration.json",
+    "vcpkg.json"
+   ],
+   "topics": [
+    "browser",
+    "cpp",
+    "rendering-engine",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "build-aetheris.yml",
+    "deploy-demo.yml"
+   ]
+  },
+  "ULTIMATE-WINDOWS-OPTIMIZER": {
+   "default_branch": "main",
+   "description": "OPTIMIZE DEBLOAT TWEAK TO THE LEVEL PHYSICALLY POSSIBLE ANY WINDOWS 10/11 INSTALLATION",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/ULTIMATE-WINDOWS-OPTIMIZER/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pushed_at": "2026-10-30T18:14:14Z",
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v6.2.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "Dependencies",
+    "LICENSE",
+    "PSScriptAnalyzerSettings.psd1",
+    "QUICK_START.txt",
+    "README.md",
+    "VERSION",
+    "docs",
+    "scripts",
+    "tests"
+   ],
+   "topics": [
+    "debloat",
+    "optimization",
+    "powershell",
+    "productivity",
+    "windows"
+   ],
+   "workflow_files": [
+    "ci.yml"
+   ]
+  },
+  "aethelgard-games": {
+   "default_branch": "main",
+   "description": "Two free browser games by Dr. Sohil Momin \u2014 Aethelgard: The Books (visual novel) and Aethelgard: Chronicles of Fate (RPG). Playable on GitHub Pages.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/aethelgard-games/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T09:12:26Z",
+   "releases": [
+    {
+     "assets": [
+      "aethelgard-games-chronicles-linux",
+      "aethelgard-games-chronicles-portable.exe",
+      "aethelgard-games-chronicles.apk"
+     ],
+     "tag": "app-latest-aethelgard-games-chronicles"
+    },
+    {
+     "assets": [
+      "aethelgard-games-books-linux",
+      "aethelgard-games-books-portable.exe",
+      "aethelgard-games-books.apk"
+     ],
+     "tag": "app-latest-aethelgard-games-books"
+    },
+    {
+     "assets": [
+      "aethelgard-games-books-portable.exe",
+      "aethelgard-games-books.apk",
+      "aethelgard-games-chronicles-portable.exe",
+      "aethelgard-games-chronicles.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "LICENSE",
+    "LICENSE.md",
+    "README.md",
+    "VERSION",
+    "books",
+    "chronicles",
+    "docs",
+    "index.html"
+   ],
+   "topics": [
+    "browser-game",
+    "games",
+    "github-pages",
+    "offline-first"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "aethelgard-rpg-engine": {
+   "default_branch": "main",
+   "description": "A dependency-free, vanilla-JavaScript engine for deep, single-player browser RPGs. Engine only \u2014 ships a small generic sample world; the games it powers live in drsamonline/aethelgard-games.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/aethelgard-rpg-engine/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:16:15Z",
+   "releases": [
+    {
+     "assets": [
+      "Aethelgard-Engine-portable.exe",
+      "Aethelgard-Engine.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "AUDIT_REPORT.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "icons",
+    "index.html",
+    "js",
+    "manifest.json",
+    "style.css",
+    "sw.js",
+    "test8.js",
+    "tools"
+   ],
+   "topics": [
+    "game-engine",
+    "games",
+    "javascript",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "ci.yml"
+   ]
+  },
+  "ai-bridge": {
+   "default_branch": "main",
+   "description": "VScode Extension to use webchat ais in vscoding environment",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/ai-bridge/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:48:21Z",
+   "releases": [
+    {
+     "assets": [
+      "ai-bridge-0.20.4.vsix"
+     ],
+     "tag": "v0.20.4"
+    },
+    {
+     "assets": [
+      "ai-bridge-0.20.2.vsix"
+     ],
+     "tag": "v0.20.2"
+    },
+    {
+     "assets": [
+      "ai-bridge-0.20.2.vsix",
+      "ai-bridge-0.20.4.vsix"
+     ],
+     "tag": "latest-build"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".vscode",
+    "LICENSE",
+    "PUSH-THIS.md",
+    "README.md",
+    "bridge",
+    "docs",
+    "extension",
+    "package-lock.json",
+    "package.json",
+    "scripts",
+    "shared",
+    "test",
+    "tsconfig.base.json"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "ci.yml",
+    "pages.yml",
+    "release.yml"
+   ]
+  },
+  "ambient-sound-studio": {
+   "default_branch": "main",
+   "description": "A private, offline ambient sound mixer that lives in a single HTML file. 25 synthesised layers, 36 presets, English/Hindi/Gujarati, WAV & Opus export, installable PWA. Free for personal use.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/ambient-sound-studio/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:19Z",
+   "releases": [
+    {
+     "assets": [
+      "ambient-sound-studio-linux",
+      "ambient-sound-studio-portable.exe",
+      "ambient-sound-studio.apk"
+     ],
+     "tag": "app-latest"
+    },
+    {
+     "assets": [],
+     "tag": "v1.6.1"
+    },
+    {
+     "assets": [],
+     "tag": "v1.6.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.5.0"
+    }
+   ],
+   "root_files": [
+    ".editorconfig",
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "assets",
+    "docs",
+    "index.html",
+    "package.json",
+    "src",
+    "sw.js",
+    "tools"
+   ],
+   "topics": [
+    "ambient",
+    "music",
+    "no-tracking",
+    "offline-first",
+    "pwa",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "app-builder": {
+   "default_branch": "main",
+   "description": "Shared build kit: compiles a static web app into a single-file portable Windows EXE (PyInstaller) and an Android WebView APK (Gradle). Consumed by drsamonline app repos via a reusable GitHub Actions workflow.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/app-builder/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:15:47Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "apk",
+    "changes",
+    "docs",
+    "drsoam.py",
+    "examples",
+    "exe",
+    "keystore",
+    "tests",
+    "tools"
+   ],
+   "topics": [
+    "build-tool",
+    "kit",
+    "single-file",
+    "tooling"
+   ],
+   "workflow_files": [
+    "build.yml",
+    "kit-tests.yml",
+    "pages.yml",
+    "tests.yml"
+   ]
+  },
+  "app-clip-loom": {
+   "default_branch": "main",
+   "description": "Clip Loom \u2014 clipboard programs you can read: strip tracking, tidy text, keep what matters. Weft-8 on the Loom.",
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T03:08:53Z",
+   "releases": [
+    {
+     "assets": [
+      "clip-loom-linux",
+      "clip-loom-portable.exe",
+      "clip-loom.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "package-lock.json",
+    "package.json",
+    "test-node.js",
+    "tests"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "app-companion-forge": {
+   "default_branch": "main",
+   "description": "Forge tooling (not a product app): an offline pocket console for the Forge system.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/app-companion-forge/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:55Z",
+   "releases": [
+    {
+     "assets": [
+      "companion-forge-linux",
+      "companion-forge-portable.exe",
+      "companion-forge.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "scripts",
+    "test-node.js"
+   ],
+   "topics": [
+    "offline-first",
+    "productivity",
+    "single-file",
+    "tooling"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "app-encrypted-case-log": {
+   "default_branch": "main",
+   "description": "Per-patient clinical notes, encrypted on the device with AES-256-GCM. Offline, no account, no server. Built with Forge on crypto-kit, case-kit, search-kit, export-kit and web-kit. MIT.",
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:35Z",
+   "releases": [
+    {
+     "assets": [
+      "app-encrypted-case-log-linux",
+      "app-encrypted-case-log-portable.exe",
+      "app-encrypted-case-log.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "case-kit.js",
+    "crypto-kit.js",
+    "docs",
+    "export-kit.js",
+    "icon.svg",
+    "index.html",
+    "manifest.webmanifest",
+    "package.json",
+    "search-kit.js",
+    "sw.js",
+    "tests",
+    "web-kit.js"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "app-image-toolkit": {
+   "default_branch": "main",
+   "description": "Compress, resize, convert and strip the GPS from photos on your device \u2014 nothing uploaded, no account, works offline. Built with web-kit + export-kit.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/app-image-toolkit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:22Z",
+   "releases": [
+    {
+     "assets": [
+      "app-image-toolkit-linux",
+      "app-image-toolkit-portable.exe",
+      "app-image-toolkit.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md",
+    "docs",
+    "test-node.js"
+   ],
+   "topics": [
+    "app",
+    "github-pages",
+    "image-processing",
+    "no-tracking",
+    "offline-first",
+    "privacy-first",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "app-jacquard": {
+   "default_branch": "main",
+   "description": "Jacquard \u2014 the loom you program: a Weft-8 8-bit assembler and VM with the device's sensors as memory-mapped peripherals. Offline, single page, no accounts.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/app-jacquard/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T03:07:29Z",
+   "releases": [
+    {
+     "assets": [
+      "app-jacquard-linux",
+      "app-jacquard-portable.exe",
+      "app-jacquard.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "package-lock.json",
+    "package.json",
+    "test-node.js",
+    "tests"
+   ],
+   "topics": [
+    "8-bit",
+    "assembler",
+    "jacquard",
+    "learning",
+    "no-dependencies",
+    "offline-first",
+    "single-page",
+    "virtual-machine",
+    "web-app",
+    "weft-8"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "app-panchang": {
+   "default_branch": "main",
+   "description": "A daily Indian almanac \u2014 tithi, nakshatra, yoga, karana, rahu-kaal and muhurat, computed offline. Built with Forge.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/app-panchang/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:33Z",
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v0.1.0"
+    },
+    {
+     "assets": [
+      "panchang-linux",
+      "panchang-portable.exe",
+      "panchang.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "test-node.js"
+   ],
+   "topics": [
+    "india",
+    "offline-first",
+    "panchang",
+    "pwa",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "app-poets-studio": {
+   "default_branch": "main",
+   "description": "Rhyme, metre and fixed forms, fully offline \u2014 a poetry workshop that measures what you wrote. 124,085 words bundled.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/app-poets-studio/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:55Z",
+   "releases": [
+    {
+     "assets": [
+      "app-poets-studio-linux",
+      "app-poets-studio-portable.exe",
+      "app-poets-studio.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md",
+    "docs",
+    "test-node.js",
+    "test-ui.mjs"
+   ],
+   "topics": [
+    "creative-writing",
+    "javascript",
+    "metre",
+    "no-tracking",
+    "offline-first",
+    "poetry",
+    "pwa",
+    "rhyme",
+    "single-file",
+    "writing"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "app-weft-puzzles": {
+   "default_branch": "main",
+   "description": "Weft Puzzles \u2014 small programming puzzles you solve in Weft-8 assembly, on the machine from Jacquard (the Loom).",
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T03:08:43Z",
+   "releases": [
+    {
+     "assets": [
+      "weft-puzzles-linux",
+      "weft-puzzles-portable.exe",
+      "weft-puzzles.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "package-lock.json",
+    "package.json",
+    "test-node.js",
+    "tests"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "art-kit": {
+   "default_branch": "main",
+   "description": "The art primitives Forge was missing: an indexed palette, a pixel canvas with nearest-neighbour scaling, draw ops, a delta undo stack, dithering (Bayer + Floyd-Steinberg), median-cut quantisation, sprite sheets, the isometric mapping and a sketch loop. Zero dependencies, single file, no assets. MIT.",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:25Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "art-kit.js",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "canvas",
+    "dithering",
+    "generative",
+    "isometric",
+    "javascript",
+    "offline-first",
+    "palette",
+    "pixel-art",
+    "quantisation",
+    "single-file",
+    "sprite-sheet",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "astro-kit": {
+   "default_branch": "main",
+   "description": "The shared astronomy core for drsamonline apps: sun and moon longitude (Meeus), ayanamsa, sunrise/sunset, and tithi/nakshatra/yoga/karana. Zero dependencies. MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/astro-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:37Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "astro-kit.js",
+    "demo",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "astronomy",
+    "india",
+    "kit",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "audio-kit": {
+   "default_branch": "main",
+   "description": "Synthesis, theory, patterns and notation for offline apps: a pure ADSR envelope, oscillator voices, filters, noise and a mixer; notes, scales and chords; a pattern sequencer; a staff layout; byte sonification; and honest mastering helpers. Zero dependencies, single file, no audio assets \u2014 game music is patterns, not files. MIT.",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:32Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "audio-kit.js",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "adsr",
+    "audio",
+    "javascript",
+    "music-theory",
+    "notation",
+    "offline-first",
+    "sequencer",
+    "single-file",
+    "sonification",
+    "synthesis",
+    "webaudio",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "audit": {
+   "default_branch": "main",
+   "description": "The change log for the drsamonline fleet: what was measured, what was fixed, and the evidence.",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:44:37Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "log",
+    "state",
+    "tools"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "licence-check.yml"
+   ]
+  },
+  "backup": {
+   "default_branch": "main",
+   "description": "Snapshot a repository BEFORE a merge replaces it: a reusable GitHub workflow + a zero-dependency script. Compressed, timestamped, rotated to keep the newest 100, and it rolls over to a new dumps repo when one fills up. MIT.",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:37Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "TOKEN.md",
+    "backup.py",
+    "tests"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "backup.yml"
+   ]
+  },
+  "base-bench": {
+   "default_branch": "main",
+   "description": "Every number base, unit and timezone on one page, with the working shown. Offline, no accounts.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/base-bench/play/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:55Z",
+   "releases": [
+    {
+     "assets": [
+      "base-bench-linux",
+      "base-bench-portable.exe",
+      "base-bench.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md",
+    "docs",
+    "test-node.js"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "blinkcode-ai": {
+   "default_branch": "main",
+   "description": "BlinkCode AI \u2014 single-shot optical file transfer PWA (compression -> SpectraCode -> camera -> restore)",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/blinkcode-ai/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:57Z",
+   "releases": [
+    {
+     "assets": [
+      "blinkcode-ai-linux",
+      "blinkcode-ai-portable.exe",
+      "blinkcode-ai.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "COMMERCIAL.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "docs",
+    "eslint.config.js",
+    "frame-kit.js",
+    "package-lock.json",
+    "package.json",
+    "src",
+    "tests",
+    "tools"
+   ],
+   "topics": [
+    "compression",
+    "offline-first",
+    "pwa",
+    "single-file",
+    "transfer"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "bmi-bmr-tdee-macros-fluid-calculator": {
+   "default_branch": "main",
+   "description": "Single-file clinical health calculator: BMI, BMR (Mifflin-St Jeor), TDEE, macros, fluid requirement and body composition, with Indian/WHO BMI cut-offs, saved entries, CSV export/import and EN/HI/GU UI. Offline-capable. By Dr. Sohil Momin.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/bmi-bmr-tdee-macros-fluid-calculator/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:40Z",
+   "releases": [
+    {
+     "assets": [
+      "bmi-bmr-tdee-macros-fluid-calculator-linux",
+      "bmi-bmr-tdee-macros-fluid-calculator-portable.exe",
+      "bmi-bmr-tdee-macros-fluid-calculator.apk"
+     ],
+     "tag": "app-latest"
+    },
+    {
+     "assets": [],
+     "tag": "v2.1.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "docs",
+    "export-kit.js",
+    "index.html",
+    "package.json",
+    "src",
+    "test"
+   ],
+   "topics": [
+    "calculator",
+    "clinical",
+    "health",
+    "nutrition",
+    "offline-first",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "boericke-repertory": {
+   "default_branch": "main",
+   "description": "Boericke's Repertory \u2014 a free, offline digital edition (single-file web app). Content by Oscar E. Boericke, M.D.; design & app by Dr. Sohil Momin. Free to use with compulsory attribution.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/boericke-repertory/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:31Z",
+   "releases": [
+    {
+     "assets": [
+      "boericke-repertory-linux",
+      "boericke-repertory-portable.exe",
+      "boericke-repertory.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "index.html",
+    "screenshots"
+   ],
+   "topics": [
+    "homeopathy",
+    "materia-medica",
+    "offline-first",
+    "repertory",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "book-kit": {
+   "default_branch": "main",
+   "description": "The companion-app-from-a-book pattern: chapters, key points, practices, flashcards, search and reading progress. Zero dependencies, MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/book-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:16:14Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "book-kit.js",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "education",
+    "kit",
+    "reading",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "canteen-lan": {
+   "default_branch": "main",
+   "description": "Order from your table over the room's own Wi-Fi - a LAN canteen board for Forge",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/canteen-lan/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:57Z",
+   "releases": [
+    {
+     "assets": [
+      "canteen-lan-linux",
+      "canteen-lan-portable.exe",
+      "canteen-lan.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "host",
+    "test-node.js"
+   ],
+   "topics": [
+    "lan",
+    "offline-first",
+    "restaurant",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "case-kit": {
+   "default_branch": "main",
+   "description": "Clinical case tracking: sections, dated symptoms, follow-ups, a timeline and a summary. Zero dependencies, MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/case-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:15:45Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "case-kit.js",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "case-management",
+    "clinical",
+    "kit",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "chalk-lan": {
+   "default_branch": "main",
+   "description": "A shared whiteboard for the room: everyone on the same Wi-Fi draws on the same board, live. Offline, no accounts. Built with Forge on web-kit + lan-kit.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/chalk-lan/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:57Z",
+   "releases": [
+    {
+     "assets": [
+      "chalk-lan-linux",
+      "chalk-lan-portable.exe",
+      "chalk-lan.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "host",
+    "test-node.js"
+   ],
+   "topics": [
+    "collaboration",
+    "lan",
+    "offline-first",
+    "whiteboard"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "compfactory": {
+   "default_branch": "main",
+   "description": "Development workspace for CHCE multi-repo project",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "",
+   "licence_spdx": null,
+   "pushed_at": "2026-10-30T17:16:35Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "AGENT_PROMPT.md",
+    "PROJECT_OVERVIEW.md",
+    "README.md",
+    "scripts"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "dispatch-sync.yml"
+   ]
+  },
+  "compress-kit": {
+   "default_branch": "main",
+   "description": "The shared compression core for drsamonline apps: gzip, deflate and deflate-raw via the platform's Compression Streams. One file, no dependencies. MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/compress-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:45Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "compress-kit.js",
+    "demo",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "compression",
+    "kit",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "conqueror-os": {
+   "default_branch": "main",
+   "description": "A private, offline resilience workspace in a single HTML file \u2014 read, reflect, journal, track and review. No server, no account, no dependencies.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/conqueror-os/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T04:39:58Z",
+   "releases": [
+    {
+     "assets": [
+      "conqueror-os-linux",
+      "conqueror-os-portable.exe",
+      "conqueror-os.apk"
+     ],
+     "tag": "app-latest"
+    },
+    {
+     "assets": [
+      "conqueror-os.html"
+     ],
+     "tag": "v3.1.0"
+    },
+    {
+     "assets": [
+      "conqueror-os.html"
+     ],
+     "tag": "v3.0.1"
+    },
+    {
+     "assets": [
+      "conqueror-os.html"
+     ],
+     "tag": "v3.0.0"
+    }
+   ],
+   "root_files": [
+    ".editorconfig",
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTENT-LICENSE.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "dist",
+    "docs",
+    "export-kit.js",
+    "index.html",
+    "package-lock.json",
+    "package.json",
+    "scripts",
+    "src",
+    "tests"
+   ],
+   "topics": [
+    "habits",
+    "journal",
+    "offline-first",
+    "privacy-first",
+    "productivity",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml",
+    "repair-src.yml"
+   ]
+  },
+  "control-panel": {
+   "default_branch": "main",
+   "description": "Every workflow in every repo: what runs, when, what calls what, and what is connected to nothing. The four stages from scratch to repair, the routes that need one input, and a Run button for each workflow. MIT.",
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:35:37Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "docs",
+    "tools"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "scan.yml"
+   ]
+  },
+  "crypto-kit": {
+   "default_branch": "main",
+   "description": "The shared crypto core for drsamonline apps: AES-256-GCM, PBKDF2 passphrase keys, sealed envelopes, one-time view. One file, Web Crypto. MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/crypto-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T09:12:42Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "crypto-kit.js",
+    "demo",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "cryptography",
+    "encryption",
+    "kit",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "dance-fight": {
+   "default_branch": "main",
+   "description": "A browser dance-fighting game where every fight move is a dance move. Load your own track and the character dances to its actual beat grid. Single HTML file, no dependencies, no build step.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/dance-fight/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T09:26:06Z",
+   "releases": [
+    {
+     "assets": [
+      "dance-fight-linux",
+      "dance-fight-portable.exe",
+      "dance-fight.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "index.html",
+    "screenshot.jpg"
+   ],
+   "topics": [
+    "browser-game",
+    "games",
+    "offline-first",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "dashboard": {
+   "default_branch": "main",
+   "description": "Live status of the drsamonline system: the repo fleet, build health, downloads and the store. Public so it can use free GitHub Pages.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/dashboard/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:55:22Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "DATA_CONTRACTS.md",
+    "LICENSE",
+    "README.md",
+    "SPEC-GAP.json",
+    "changes.json",
+    "community.json",
+    "data.json",
+    "docs",
+    "feed.xml",
+    "forks.html",
+    "forks.json",
+    "generate.py",
+    "history.json",
+    "icon.svg",
+    "index.html",
+    "manifest.webmanifest",
+    "network.html",
+    "package.json",
+    "paused.json",
+    "people.html",
+    "plan.json",
+    "refresh.py",
+    "repo.html",
+    "runs.json",
+    "sw.js",
+    "tests",
+    "tools",
+    "traffic.json"
+   ],
+   "topics": [
+    "dashboard",
+    "github-pages",
+    "static-site",
+    "tooling"
+   ],
+   "workflow_files": [
+    "refresh.yml",
+    "test.yml"
+   ]
+  },
+  "drsamonline": {
+   "default_branch": "main",
+   "description": "Dr. Sohil Momin \u2014 homeopathic physician & builder of offline-first open-source software",
+   "has_pages": false,
+   "homepage": "https://drsamonline.github.io/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:48Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "AUDIT-LOG.md",
+    "LICENSE",
+    "README.md",
+    "assets",
+    "profile-data.json",
+    "tools"
+   ],
+   "topics": [
+    "github-pages",
+    "homeopathy",
+    "offline-first",
+    "static-site"
+   ],
+   "workflow_files": [
+    "add-download-blocks.yml",
+    "apply-all.yml",
+    "apply-licence-badges.yml",
+    "apply-store-fixes.yml",
+    "licence-fix.yml",
+    "metrics.yml",
+    "update-profile.yml"
+   ]
+  },
+  "drsamonline.github.io": {
+   "default_branch": "main",
+   "description": "Personal project index \u2014 a self-updating page that reads the GitHub API so new repositories appear automatically. Served at drsamonline.github.io",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/drsamonline.github.io/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:49Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "404.html",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "assets",
+    "blog",
+    "index.html",
+    "kits",
+    "repos.json",
+    "robots.txt",
+    "sitemap.xml",
+    "tools"
+   ],
+   "topics": [
+    "github-pages",
+    "portfolio",
+    "project-index",
+    "static-site"
+   ],
+   "workflow_files": [
+    "refresh-hub.yml"
+   ]
+  },
+  "export-kit": {
+   "default_branch": "main",
+   "description": "Save text, JSON, CSV and binary to the user's device, and bundle files into a store-only ZIP. One file, no dependencies. Built with Forge.",
+   "has_pages": false,
+   "homepage": "https://drsamonline.github.io/export-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:51Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "demo",
+    "export-kit.js",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "export",
+    "kit",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "frame-kit": {
+   "default_branch": "main",
+   "description": "The shared transfer-frame core for drsamonline apps: a self-describing frame, a rateless collector and byte/checksum utilities. One file, no dependencies. MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/frame-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T08:38:01Z",
+   "releases": [],
+   "root_files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "demo",
+    "frame-kit.js",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "kit",
+    "protocol",
+    "transfer",
+    "zero-dependency"
+   ],
+   "workflow_files": []
+  },
+  "game-kit": {
+   "default_branch": "main",
+   "description": "The shared game core for drsamonline apps: a fixed-timestep loop, input, scenes, save/load and maths. Zero dependencies. MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/game-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:48Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "demo",
+    "game-kit.js",
+    "games.json",
+    "games",
+    "index.html",
+    "test-node.js"
+   ],
+   "topics": [
+    "games",
+    "kit",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "gentle-pediatrics-companion": {
+   "default_branch": "main",
+   "description": "A triage-first home companion app for a sick child, built from the book Gentle Pediatrics by Dr. Sohil Momin. Free to use; copyright retained.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/gentle-pediatrics-companion/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T09:26:10Z",
+   "releases": [
+    {
+     "assets": [
+      "gentle-pediatrics-companion-linux",
+      "gentle-pediatrics-companion-portable.exe",
+      "gentle-pediatrics-companion.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "banner.svg",
+    "docs",
+    "icon.svg",
+    "index.html",
+    "manifest.webmanifest",
+    "sw.js"
+   ],
+   "topics": [
+    "clinical",
+    "homeopathy",
+    "offline-first",
+    "pediatrics",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "heavenzip": {
+   "default_branch": "main",
+   "description": "CHCE orchestrator - chains prebuilt binaries",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pushed_at": "2026-10-30T18:13:38Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "AGENT_PROMPT.md",
+    "LICENSE",
+    "PROJECT_OVERVIEW.md",
+    "README.md",
+    "bin",
+    "config",
+    "docs",
+    "src",
+    "tests"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "sync-binaries.yml"
+   ]
+  },
+  "helioprism": {
+   "default_branch": "main",
+   "description": "One app, two optical transports \u2014 send a file with light over QR or a colour matrix. Offline, no network.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/helioprism/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:57Z",
+   "releases": [
+    {
+     "assets": [
+      "helioprism-linux",
+      "helioprism-portable.exe",
+      "helioprism.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "COMMERCIAL.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "docs",
+    "eslint.config.js",
+    "frame-kit.js",
+    "package-lock.json",
+    "package.json",
+    "public",
+    "src",
+    "tests",
+    "tools"
+   ],
+   "topics": [
+    "offline-first",
+    "optical",
+    "single-file",
+    "transfer"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "homoeopathic-materia-medica-repertory-json": {
+   "default_branch": "main",
+   "description": "Open-domain homoeopathic Materia Medica and Repertory texts as app-ready JSON (13 books, ~108k rubrics). Free to use; credit the book authors and the JSON compiler.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/homoeopathic-materia-medica-repertory-json/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T09:38:14Z",
+   "releases": [],
+   "root_files": [
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "CREDITS.md",
+    "LICENSE",
+    "LICENSE-GPL-3.0.txt",
+    "README.md",
+    "SCHEMA.md",
+    "VERSION",
+    "docs",
+    "materia_medica",
+    "pipeline",
+    "repertory",
+    "skill"
+   ],
+   "topics": [
+    "dataset",
+    "homeopathy",
+    "json",
+    "materia-medica",
+    "open-data",
+    "repertory"
+   ],
+   "workflow_files": []
+  },
+  "idle-city-ages-of-growth": {
+   "default_branch": "main",
+   "description": "A single-file idle city-builder that grows from a Stone Age village into a Fusion Age world-city. Zero dependencies, fully offline, mobile-ready. By Dr. Sohil Momin. Source-available: free for non-commercial use with attribution; commercial use requires a licence.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/idle-city-ages-of-growth/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:15:45Z",
+   "releases": [
+    {
+     "assets": [
+      "idle-city-ages-of-growth-linux",
+      "idle-city-ages-of-growth-portable.exe",
+      "idle-city-ages-of-growth.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".editorconfig",
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "ATTRIBUTION.md",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "assets",
+    "build",
+    "docs",
+    "idle-city.min.html",
+    "index.html",
+    "package-lock.json",
+    "package.json",
+    "src",
+    "test"
+   ],
+   "topics": [
+    "city-builder",
+    "games",
+    "idle-game",
+    "offline-first",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "build.yml",
+    "test.yml"
+   ]
+  },
+  "kent-repertory-explorer": {
+   "default_branch": "main",
+   "description": "Offline, single-file explorer for Kent's Repertory (1897) \u2014 74,667 rubrics, 735,500 graded remedy links, case builder and grade-weighted repertorisation. No server, no backend.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/kent-repertory-explorer/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:29:58Z",
+   "releases": [
+    {
+     "assets": [
+      "kent-repertory-explorer-linux",
+      "kent-repertory-explorer-portable.exe",
+      "kent-repertory-explorer.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "LICENSE",
+    "LICENSE-GPL-3.0.txt",
+    "README.md",
+    "VERSION",
+    "app.html",
+    "assets",
+    "docs",
+    "index.html",
+    "manifest.webmanifest",
+    "pipeline",
+    "sw.js",
+    "tests",
+    "web-kit.js"
+   ],
+   "topics": [
+    "homeopathy",
+    "offline-first",
+    "repertory",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "lan-kit": {
+   "default_branch": "main",
+   "description": "The shared LAN core for drsamonline apps: a local room with a real-time channel over Server-Sent Events + POST. Zero dependencies. MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/lan-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T08:38:06Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "demo",
+    "index.html",
+    "lan-host.js",
+    "lan-kit.js",
+    "test-node.js"
+   ],
+   "topics": [
+    "kit",
+    "lan",
+    "offline-first",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "lexora": {
+   "default_branch": "main",
+   "description": "LEXORA \u2014 Layered Exact-text Repository & Adaptive Compression Architecture",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/lexora/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:23:41Z",
+   "releases": [],
+   "root_files": [
+    ".editorconfig",
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LEXORA_Full_Blueprint_Design_Master_Prompt.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "benchmarks",
+    "docs",
+    "packaging",
+    "pyproject.toml",
+    "scripts",
+    "src",
+    "tests"
+   ],
+   "topics": [
+    "codec",
+    "compression",
+    "offline-first",
+    "python"
+   ],
+   "workflow_files": [
+    "ci.yml"
+   ]
+  },
+  "lockhtml": {
+   "default_branch": "main",
+   "description": "PIN-protect and one-time-view any HTML file with AES-256-GCM. Cross-platform CLI plus a browser-based GUI that runs on any OS.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/lockhtml/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:52Z",
+   "releases": [
+    {
+     "assets": [
+      "lockhtml-linux",
+      "lockhtml-portable.exe",
+      "lockhtml.apk"
+     ],
+     "tag": "app-latest"
+    },
+    {
+     "assets": [
+      "lockhtml-2.1.0-py3-none-any.whl",
+      "lockhtml-2.1.0.tar.gz",
+      "lockhtml-2.1.0.zip"
+     ],
+     "tag": "v2.1.0"
+    },
+    {
+     "assets": [
+      "lockhtml-2.0.1-py3-none-any.whl",
+      "lockhtml-2.0.1.tar.gz",
+      "lockhtml-2.0.1.zip"
+     ],
+     "tag": "v2.0.1"
+    },
+    {
+     "assets": [
+      "lockhtml-2.0.0-py3-none-any.whl",
+      "lockhtml-2.0.0.tar.gz",
+      "lockhtml-2.0.0.zip"
+     ],
+     "tag": "v2.0.0"
+    },
+    {
+     "assets": [
+      "lockhtml-1.4.0-py3-none-any.whl",
+      "lockhtml-1.4.0.tar.gz",
+      "lockhtml-1.4.0.zip"
+     ],
+     "tag": "v1.4.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "Makefile",
+    "README.md",
+    "ROADMAP.md",
+    "SECURITY.md",
+    "assets",
+    "docs",
+    "examples",
+    "gui.bat",
+    "gui.sh",
+    "lockhtml.bat",
+    "lockhtml.sh",
+    "lockhtml",
+    "package-lock.json",
+    "package.json",
+    "pyproject.toml",
+    "requirements.txt",
+    "tests",
+    "tools"
+   ],
+   "topics": [
+    "cli",
+    "encryption",
+    "offline-first",
+    "privacy-first",
+    "security"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml",
+    "publish.yml"
+   ]
+  },
+  "ml-kit": {
+   "default_branch": "main",
+   "description": "The classic algorithms, from scratch, for offline features: tf-idf + cosine, Naive Bayes, k-NN, k-means, PCA, ID3, linear regression, Markov chains and a grammar expander. Zero dependencies, single file, no model, no API key, no network. MIT.",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:32Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "index.html",
+    "ml-kit.js",
+    "test-node.js"
+   ],
+   "topics": [
+    "algorithms",
+    "clustering",
+    "grammar",
+    "javascript",
+    "k-means",
+    "machine-learning",
+    "markov-chain",
+    "naive-bayes",
+    "offline-first",
+    "single-file",
+    "tf-idf",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "mnemosyne-companion": {
+   "default_branch": "main",
+   "description": "Companion study app for Mnemosyne Materia Medica \u2014 100 polycrest homoeopathic remedies as poetic pearls, keynotes and spaced-repetition drills. Single offline HTML file. Proprietary, all rights reserved.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/mnemosyne-companion/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:25:11Z",
+   "releases": [
+    {
+     "assets": [
+      "mnemosyne-companion-linux",
+      "mnemosyne-companion-portable.exe",
+      "mnemosyne-companion.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md",
+    "VERSION",
+    "assets",
+    "dist",
+    "docs",
+    "index.html",
+    "tests",
+    "web-kit.js"
+   ],
+   "topics": [
+    "education",
+    "flashcards",
+    "homeopathy",
+    "offline-first",
+    "spaced-repetition"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "musicgen": {
+   "default_branch": "main",
+   "description": "A pocket generative composer \u2014 offline-first PWA that writes, synthesises, masters and exports music in the browser. No server, no samples.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/musicgen/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pushed_at": "2026-10-31T05:33:02Z",
+   "releases": [
+    {
+     "assets": [
+      "musicgen-v1.1.0.zip"
+     ],
+     "tag": "v1.1.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "app",
+    "docs",
+    "index.html",
+    "landing.css",
+    "landing.js",
+    "package.json",
+    "scripts",
+    "tests"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "neon-engine": {
+   "default_branch": "main",
+   "description": "A code-only open-world game engine for the browser. No assets, no build step, no dependencies \u2014 every texture, mesh and sound is generated at runtime. MIT licensed.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/neon-engine/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:55Z",
+   "releases": [],
+   "root_files": [
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "BufferGeometryUtils.js",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "ROADMAP.md",
+    "ai.js",
+    "ally.js",
+    "ambience.js",
+    "audio.js",
+    "base.js",
+    "biomes.js",
+    "campaign.js",
+    "compound.js",
+    "core.js",
+    "docs",
+    "enemybody.js",
+    "eslint.config.js",
+    "example",
+    "gamebase.js",
+    "hud.css",
+    "hud.js",
+    "input.js",
+    "leveling.js",
+    "loot.js",
+    "menus.js",
+    "meta.js",
+    "minify.py",
+    "modes.js",
+    "mods.js",
+    "music.js",
+    "package.json",
+    "particles.js",
+    "player.js",
+    "postfx.js",
+    "props.js",
+    "safehouse.js",
+    "settings.js",
+    "sky.js",
+    "store.js",
+    "tests",
+    "three.module.js",
+    "throwables.js",
+    "vehicle.js",
+    "weapons.js",
+    "world.js",
+    "worldkit.js"
+   ],
+   "topics": [
+    "game-engine",
+    "games",
+    "offline-first",
+    "pwa",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "neon-games": {
+   "default_branch": "main",
+   "description": "Two free open-world browser games on the Neon Engine \u2014 Dead Zone (zombie survival) and Neon Police. Playable in the browser, no install. CC BY-NC-SA 4.0.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/neon-games/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:47Z",
+   "releases": [
+    {
+     "assets": [
+      "neon-games-neon-police-linux",
+      "neon-games-neon-police-portable.exe",
+      "neon-games-neon-police.apk"
+     ],
+     "tag": "app-latest-neon-games-neon-police"
+    },
+    {
+     "assets": [
+      "neon-games-dead-zone-linux",
+      "neon-games-dead-zone-portable.exe",
+      "neon-games-dead-zone.apk"
+     ],
+     "tag": "app-latest-neon-games-dead-zone"
+    },
+    {
+     "assets": [
+      "neon-games-dead-zone-portable.exe",
+      "neon-games-dead-zone.apk",
+      "neon-games-neon-police-portable.exe",
+      "neon-games-neon-police.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "dead-zone",
+    "docs",
+    "neon-police"
+   ],
+   "topics": [
+    "browser-game",
+    "games",
+    "github-pages",
+    "offline-first",
+    "pwa"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "neon-runner": {
+   "default_branch": "main",
+   "description": "Retro auto-fire side-scrolling shooter. Move, jump, duck \u2014 your gun fires itself. One self-contained HTML file, zero dependencies, fully offline.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/neon-runner/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:14:00Z",
+   "releases": [
+    {
+     "assets": [
+      "neon-runner-linux",
+      "neon-runner-portable.exe",
+      "neon-runner.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "docs",
+    "index.html",
+    "package-lock.json",
+    "package.json",
+    "src",
+    "tests",
+    "tools"
+   ],
+   "topics": [
+    "games",
+    "offline-first",
+    "pixel-art",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "neon-velocity": {
+   "default_branch": "main",
+   "description": "Procedural retro side-scrolling shooter for Godot 4.3 \u2014 zero binary assets, all sprites and audio generated at runtime.",
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:58Z",
+   "releases": [
+    {
+     "assets": [
+      "neon-velocity-linux.zip",
+      "neon-velocity-macos.zip",
+      "neon-velocity-web.zip",
+      "neon-velocity-windows.zip"
+     ],
+     "tag": "v1.2.0"
+    },
+    {
+     "assets": [
+      "neon-velocity-linux.zip",
+      "neon-velocity-macos.zip",
+      "neon-velocity-web.zip",
+      "neon-velocity-windows.zip"
+     ],
+     "tag": "v1.1.0"
+    },
+    {
+     "assets": [
+      "neon-velocity-linux.zip",
+      "neon-velocity-macos.zip",
+      "neon-velocity-web.zip",
+      "neon-velocity-windows.zip"
+     ],
+     "tag": "v1.0.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "AUDIT.md",
+    "LICENSE",
+    "README.md",
+    "docs",
+    "export_presets.cfg",
+    "icon.svg",
+    "icon.svg.import",
+    "project.godot",
+    "scenes",
+    "scripts",
+    "shaders",
+    "site",
+    "tools",
+    "web"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "build.yml"
+   ]
+  },
+  "offline-pdf-toolkit": {
+   "default_branch": "main",
+   "description": "Merge, split, rotate, reorder, watermark, number and compress PDFs entirely in your browser. No upload, no account, no server \u2014 works offline. Single self-contained HTML file.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/offline-pdf-toolkit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:58Z",
+   "releases": [
+    {
+     "assets": [
+      "offline-pdf-toolkit-linux",
+      "offline-pdf-toolkit-portable.exe",
+      "offline-pdf-toolkit.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "THIRD-PARTY-NOTICES.md",
+    "VERSION",
+    "app.html",
+    "assets",
+    "docs",
+    "index.html",
+    "manifest.webmanifest",
+    "pipeline",
+    "sw.js"
+   ],
+   "topics": [
+    "offline-first",
+    "pdf",
+    "privacy-first",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "open-materia-medica": {
+   "default_branch": "main",
+   "description": "Open Materia Medica \u2014 the classical homeopathic materia medica in plain language: 344 remedy portraits. Free web edition and offline Android companion app to the book by Dr. Sohil Momin, BHMS. (c) 2026, all rights reserved.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/open-materia-medica/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:45Z",
+   "releases": [
+    {
+     "assets": [
+      "open-materia-medica-linux",
+      "open-materia-medica-portable.exe",
+      "open-materia-medica.apk"
+     ],
+     "tag": "app-latest"
+    },
+    {
+     "assets": [
+      "OpenMateriaMedica-1.0.apk"
+     ],
+     "tag": "v1.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "about.html",
+    "agro.html",
+    "android",
+    "assets",
+    "basics.html",
+    "compare.html",
+    "compiled-by.html",
+    "dedication.html",
+    "diseases.html",
+    "docs",
+    "evidence.html",
+    "families.html",
+    "glossary.html",
+    "index.html",
+    "kingdoms.html",
+    "license.html",
+    "manifest.json",
+    "quick-reference.html",
+    "references.html",
+    "remedies",
+    "repertory.html",
+    "search.html",
+    "study.html",
+    "sw.js",
+    "tools.html",
+    "tools",
+    "veterinary.html"
+   ],
+   "topics": [
+    "education",
+    "homeopathy",
+    "materia-medica",
+    "offline-first",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "optical-kit": {
+   "default_branch": "main",
+   "description": "The shared optical-transfer core: a systematic LT fountain code, self-describing frames, and a pluggable codec. One file, no dependencies. MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/optical-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:41Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "demo",
+    "index.html",
+    "optical-kit.js",
+    "test-node.js"
+   ],
+   "topics": [
+    "kit",
+    "optical",
+    "transfer",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "profile-kit": {
+   "default_branch": "main",
+   "description": "A small, reusable kit for a theme-aware, self-updating GitHub profile \u2014 hero banner, metrics card and README generator.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/profile-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T08:38:12Z",
+   "releases": [],
+   "root_files": [
+    "LICENSE",
+    "README.md",
+    "assets",
+    "docs",
+    "metrics.yml",
+    "profile-generator"
+   ],
+   "topics": [
+    "github-profile",
+    "kit",
+    "zero-dependency"
+   ],
+   "workflow_files": []
+  },
+  "read-live-transform-app": {
+   "default_branch": "main",
+   "description": "The companion app to the book \"Read. Live. Transform.: A Practical Reading of the Qur'an\" by Dr Sohil Momin. Read the verse, live the practice, keep the change. Offline PWA, no dependencies. \u00a9 Dr Sohil Momin \u2014 all rights reserved; permission required to reuse.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/read-live-transform-app/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T07:27:14Z",
+   "releases": [
+    {
+     "assets": [
+      "read-live-transform-app-linux",
+      "read-live-transform-app-portable.exe",
+      "read-live-transform-app.apk"
+     ],
+     "tag": "app-latest"
+    },
+    {
+     "assets": [],
+     "tag": "v1.0.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md",
+    "docs",
+    "icon-192.png",
+    "icon-512.png",
+    "index.html",
+    "manifest.webmanifest",
+    "package.json",
+    "screenshots",
+    "sw.js",
+    "tests",
+    "web-kit.js"
+   ],
+   "topics": [
+    "education",
+    "offline-first",
+    "pwa",
+    "reading",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "remedy-relationship-explorer": {
+   "default_branch": "main",
+   "description": "Offline, single-file explorer for homeopathic remedy relationships \u2014 built from public-domain materia medicas (Boericke 1927, Clarke 1900, Hering 1879). No server, no backend.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/remedy-relationship-explorer/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:41Z",
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v1.0.1"
+    },
+    {
+     "assets": [
+      "remedy-relationship-explorer-linux",
+      "remedy-relationship-explorer-portable.exe",
+      "remedy-relationship-explorer.apk"
+     ],
+     "tag": "app-latest"
+    },
+    {
+     "assets": [
+      "remedy-explorer.apk",
+      "Remedy.Relationship.Explorer_1.4.0_aarch64.dmg",
+      "Remedy.Relationship.Explorer_1.4.0_amd64.AppImage",
+      "Remedy.Relationship.Explorer_1.4.0_amd64.deb",
+      "Remedy.Relationship.Explorer_1.4.0_x64-setup.exe",
+      "Remedy.Relationship.Explorer_1.4.0_x64_en-US.msi"
+     ],
+     "tag": "v1.4.1"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "CITATION.cff",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "VERSION",
+    "app.html",
+    "assets",
+    "desktop",
+    "docs",
+    "index.html",
+    "manifest.webmanifest",
+    "mobile",
+    "sw.js",
+    "tests"
+   ],
+   "topics": [
+    "data-visualisation",
+    "homeopathy",
+    "materia-medica",
+    "offline-first",
+    "repertory",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-android.yml",
+    "build-apps.yml",
+    "build-desktop.yml",
+    "test.yml"
+   ]
+  },
+  "repertory-kit": {
+   "default_branch": "main",
+   "description": "The homeopathic repertorisation core: rubric grading and grade-weighted remedy scoring. Zero dependencies, MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/repertory-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:32Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "index.html",
+    "repertory-kit.js",
+    "test-node.js"
+   ],
+   "topics": [
+    "homeopathy",
+    "kit",
+    "repertory",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "retro-strike": {
+   "default_branch": "main",
+   "description": "\ud83c\udfae A complete retro 3rd-person shooter in a single HTML file \u2014 custom software 3D renderer, chiptune audio, zero dependencies.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/retro-strike/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:15:24Z",
+   "releases": [
+    {
+     "assets": [
+      "retro-strike-linux",
+      "retro-strike-portable.exe",
+      "retro-strike.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".editorconfig",
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "assets",
+    "dist",
+    "docs",
+    "package.json",
+    "src",
+    "tools"
+   ],
+   "topics": [
+    "games",
+    "offline-first",
+    "pixel-art",
+    "retro",
+    "shooter",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "saga-vn-engine": {
+   "default_branch": "main",
+   "description": "Saga \u2014 a small, dependency-free visual-novel engine for the browser. Plain JavaScript, one stylesheet, no build step. Engine only; the games it powers live in drsamonline/aethelgard-games.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/saga-vn-engine/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-28T09:13:06Z",
+   "releases": [
+    {
+     "assets": [
+      "AethelgardVN-portable.exe",
+      "AethelgardVN.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "assets",
+    "css",
+    "docs",
+    "index.html",
+    "js",
+    "mods",
+    "scenes",
+    "tools"
+   ],
+   "topics": [
+    "game-engine",
+    "games",
+    "visual-novel",
+    "zero-dependency"
+   ],
+   "workflow_files": []
+  },
+  "seance": {
+   "default_branch": "main",
+   "description": "Strongbox (master-list app) - sealed notes, opened once: seal a note with a passphrase, it opens once. Offline, no accounts. Built with crypto-kit + web-kit. (Fold-in of the working name 'seance'.)",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/seance/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:27:00Z",
+   "releases": [
+    {
+     "assets": [
+      "seance-linux",
+      "seance-portable.exe",
+      "seance.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "docs"
+   ],
+   "topics": [
+    "encryption",
+    "notes",
+    "offline-first",
+    "productivity",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "search-kit": {
+   "default_branch": "main",
+   "description": "Ranked search over big corpora: an inverted index with prefix and fuzzy matching. Zero dependencies, MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/search-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:25Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "index.html",
+    "search-kit.js",
+    "test-node.js"
+   ],
+   "topics": [
+    "kit",
+    "search",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "skills": {
+   "default_branch": "main",
+   "description": "Reusable, machine-consumable skills extracted from every drsamonline project \u2014 a categorised, self-updating catalogue with its own landing page.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/skills/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:14:05Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "FORMAT.md",
+    "LICENSE",
+    "README.md",
+    "catalog.json",
+    "docs",
+    "llms.txt",
+    "scripts",
+    "skills",
+    "tools",
+    "validate.py"
+   ],
+   "topics": [
+    "agent-skills",
+    "skills",
+    "tooling"
+   ],
+   "workflow_files": [
+    "normalize.yml",
+    "refresh.yml"
+   ]
+  },
+  "skin-case-tracker": {
+   "default_branch": "main",
+   "description": "Companion app to the book \"The Skin Is a Liar\" by Dr. Sohil Momin \u2014 a private, offline HHMS skin-case tracker (History, Habits, Mapping, Symptoms) with a 90-day pattern engine. Free to use; all rights reserved.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/skin-case-tracker/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:13:55Z",
+   "releases": [
+    {
+     "assets": [
+      "skin-case-tracker-linux",
+      "skin-case-tracker-portable.exe",
+      "skin-case-tracker.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "export-kit.js",
+    "icon.svg",
+    "index.html",
+    "manifest.json",
+    "sw.js",
+    "tests",
+    "web-kit.js"
+   ],
+   "topics": [
+    "case-management",
+    "clinical",
+    "homeopathy",
+    "offline-first",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "smartbill-app": {
+   "default_branch": "main",
+   "description": "A fast, serverless, single-page billing and invoicing application built with Vue.js, tailored for Indian businesses. Features local IndexedDB storage and GST support.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/smartbill-app/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:25:44Z",
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v1.0.1"
+    },
+    {
+     "assets": [
+      "smartbill-app-linux",
+      "smartbill-app-portable.exe",
+      "smartbill-app.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "index.html",
+    "tests"
+   ],
+   "topics": [
+    "billing",
+    "india",
+    "invoicing",
+    "offline-first",
+    "productivity",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "srs-kit": {
+   "default_branch": "main",
+   "description": "Spaced repetition (SM-2) for flashcards: scheduling, lapses, due cards and stats. Zero dependencies, MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/srs-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:25Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "index.html",
+    "srs-kit.js",
+    "test-node.js"
+   ],
+   "topics": [
+    "education",
+    "kit",
+    "spaced-repetition",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "the-symphony-companion": {
+   "default_branch": "main",
+   "description": "A pocket companion web app to The Symphony of the Present by Dr. Sohil Momin. Installable PWA, works offline. Copyrighted; free for personal, non-commercial use.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/the-symphony-companion/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:25:17Z",
+   "releases": [
+    {
+     "assets": [
+      "the-symphony-companion-linux",
+      "the-symphony-companion-portable.exe",
+      "the-symphony-companion.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "DOCUMENTATION.md",
+    "LICENSE",
+    "README.md",
+    "docs",
+    "icon.svg",
+    "index.html",
+    "manifest.webmanifest",
+    "package.json",
+    "sw.js",
+    "tests",
+    "web-kit.js"
+   ],
+   "topics": [
+    "github-pages",
+    "mindfulness",
+    "offline-first",
+    "philosophy",
+    "pwa",
+    "wellbeing"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "today-card": {
+   "default_branch": "main",
+   "description": "Today Card - one card for the day: your date, one intention, one task, and a streak. Offline, no accounts. Built with web-kit and Forge.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/today-card/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T05:26:35Z",
+   "releases": [
+    {
+     "assets": [
+      "today-card-linux",
+      "today-card-portable.exe",
+      "today-card.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "docs"
+   ],
+   "topics": [
+    "offline-first",
+    "productivity",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "ui-kit": {
+   "default_branch": "main",
+   "description": "A reactive UI layer small enough for a single file: signals, computed, reactive effects, hyperscript, a keyed list, events, a hash router and form binding. Zero runtime dependencies, no build step. TodoMVC included as the acceptance test. MIT.",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:32Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    "LICENSE",
+    "README.md",
+    "examples",
+    "index.html",
+    "package-lock.json",
+    "package.json",
+    "test-node.js",
+    "test-todomvc.js",
+    "ui-kit.js"
+   ],
+   "topics": [
+    "frontend",
+    "hyperscript",
+    "javascript",
+    "no-build",
+    "reactive",
+    "signals",
+    "single-file",
+    "todomvc",
+    "ui",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "unstoppable-mind-companion": {
+   "default_branch": "main",
+   "description": "Offline companion app to the book The Unstoppable Mind by Dr. Sohil Momin - key points, exercises, a 7-day challenge and flashcards. Free to use.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/unstoppable-mind-companion/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:14:04Z",
+   "releases": [
+    {
+     "assets": [
+      "unstoppable-mind-companion-linux",
+      "unstoppable-mind-companion-portable.exe",
+      "unstoppable-mind-companion.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "badges",
+    "docs",
+    "index.html",
+    "preview.png",
+    "tests",
+    "web-kit.js"
+   ],
+   "topics": [
+    "education",
+    "github-pages",
+    "offline-first",
+    "psychology",
+    "self-help"
+   ],
+   "workflow_files": [
+    "build-apps.yml"
+   ]
+  },
+  "web-kit": {
+   "default_branch": "main",
+   "description": "The shared offline-first runtime for drsamonline apps: storage, i18n (EN/HI/GU), CSV, PWA, theme, SEO, a11y. One file, no build step. MIT.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/web-kit/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T02:12:25Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "DESIGN.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "demo",
+    "design.css",
+    "icons.js",
+    "index.html",
+    "naughty-inputs.js",
+    "naughty",
+    "test-naughty.js",
+    "test-node.js",
+    "test",
+    "web-kit.js"
+   ],
+   "topics": [
+    "kit",
+    "offline-first",
+    "pwa",
+    "zero-dependency"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "weft8-classroom": {
+   "default_branch": "main",
+   "description": "Weft-8 Classroom \u2014 a teacher's pack and exercises for teaching how a computer works, offline, one file.",
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T03:10:30Z",
+   "releases": [
+    {
+     "assets": [
+      "weft8-classroom-linux",
+      "weft8-classroom-portable.exe",
+      "weft8-classroom.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "TEACHER.md",
+    "VERSION",
+    "docs",
+    "package-lock.json",
+    "package.json",
+    "test-node.js",
+    "tests"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "weft8-compare": {
+   "default_branch": "main",
+   "description": "Weft-8 beside x86 and ARM \u2014 the same algorithm in three machines, so you can see which part is the computer.",
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T03:11:36Z",
+   "releases": [
+    {
+     "assets": [
+      "weft8-compare-linux",
+      "weft8-compare-portable.exe",
+      "weft8-compare.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "package-lock.json",
+    "package.json",
+    "test-node.js",
+    "tests"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "weft8-hardware": {
+   "default_branch": "main",
+   "description": "Weft-8 on real silicon \u2014 a C port of the Loom's 8-bit machine, an Arduino/ESP32 sketch, and a parity harness.",
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T03:06:58Z",
+   "releases": [
+    {
+     "assets": [
+      "weft8-hardware-linux",
+      "weft8-hardware-portable.exe",
+      "weft8-hardware.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "c",
+    "corpus.json",
+    "docs",
+    "test-node.js",
+    "tools"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "weft8-kit": {
+   "default_branch": "main",
+   "description": "The Loom's Weft-8 as a reusable kit: an auditable, step-limited rule engine for other apps.",
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T03:12:02Z",
+   "releases": [
+    {
+     "assets": [
+      "weft8-kit-linux",
+      "weft8-kit-portable.exe",
+      "weft8-kit.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "docs",
+    "package-lock.json",
+    "package.json",
+    "test-node.js",
+    "tests"
+   ],
+   "topics": [],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "whispering-body-first-aid": {
+   "default_branch": "main",
+   "description": "Companion app for the book 'The Whispering Body' by Dr. Sohil Momin \u2014 a home homeopathic first-aid box (30 remedies). Free to use; source code and book content are copyrighted.",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/whispering-body-first-aid/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-30T18:15:24Z",
+   "releases": [
+    {
+     "assets": [
+      "whispering-body-first-aid-linux",
+      "whispering-body-first-aid-portable.exe",
+      "whispering-body-first-aid.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "LICENSE",
+    "README.md",
+    "docs",
+    "icon-192.png",
+    "icon-512.png",
+    "icon-maskable-512.png",
+    "index.html",
+    "manifest.webmanifest",
+    "package.json",
+    "sw.js",
+    "tests",
+    "web-kit.js"
+   ],
+   "topics": [
+    "clinical",
+    "first-aid",
+    "homeopathy",
+    "offline-first",
+    "single-file"
+   ],
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ]
+  },
+  "ziptastic": {
+   "default_branch": "main",
+   "description": "CHCE native engine \u2014 single binary, embedded codecs",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pushed_at": "2026-10-31T05:08:08Z",
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    "CMakeLists.txt",
+    "LICENSE",
+    "PROJECT_OVERVIEW.md",
+    "README.md",
+    "docs",
+    "include",
+    "prompt",
+    "src",
+    "tests",
+    "vendor"
+   ],
+   "topics": [],
+   "workflow_files": []
+  }
+ }
+}

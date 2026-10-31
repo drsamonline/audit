@@ -1,0 +1,13 @@
+{
+ "Matneo/blog.yml": "12 4 * * 2\"   # weekly, Tuesday 04:12 UTC",
+ "Matneo/store-images.yml": "0 3 1,16 * *\"   # every 15 days (1st and 16th), 03:00 UTC",
+ "Matneo/store.yml": "22 4 * * 2\"   # weekly, Tuesday 04:22 UTC",
+ "app-builder/kit-tests.yml": "0 5 * * 3\"   # weekly, Wednesday 05:00 UTC",
+ "audit/licence-check.yml": "31 3 * * 1\"   # Mondays, 03:31 UTC - clear of every other cron",
+ "control-panel/scan.yml": "0 6 * * 2\"   # weekly, Tuesday 06:00 UTC",
+ "dashboard/refresh.yml": "47 3 * * 2\"   # weekly, Tuesday 03:47 UTC",
+ "drsamonline.github.io/refresh-hub.yml": "37 3 1,16 * *\"   # every 15 days (1st and 16th), 03:37 UTC - clear of update-profile at 03:17",
+ "drsamonline/metrics.yml": "0 4 * * 2\"   # weekly, Tuesday 04:00 UTC",
+ "drsamonline/update-profile.yml": "17 3 * * 1\"   # weekly, Monday 03:17 UTC",
+ "skills/refresh.yml": "23 3 * * 1\"   # weekly, Monday 03:23 UTC"
+}
