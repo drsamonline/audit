@@ -70,15 +70,22 @@ jobs:
             exit 0
           fi
           git commit -m "chore(health): refresh the fleet health page [skip ci]"
-          # Another commit can land while this job runs - the first attempt at this
-          # workflow failed exactly that way. Rebase and retry rather than losing
-          # the page to a race.
+
+          # Two triggers can fire at once (push + dispatch), and both write the same
+          # two files, so a plain rebase conflicts on every attempt. Rebase first;
+          # if it conflicts, throw our copy away, take main, regenerate and retry.
           for i in 1 2 3 4; do
             if git pull --rebase --autostash origin main && git push; then
               echo "pushed on attempt $i"
               exit 0
             fi
-            echo "push attempt $i rejected, retrying"
+            echo "attempt $i rejected - resetting onto main and regenerating"
+            git rebase --abort 2>/dev/null || true
+            git reset --hard origin/main
+            python3 tools/fleet_health.py || echo "checker reported problems; page still regenerated"
+            git add docs/
+            git diff --staged --quiet && { echo "nothing to commit after reset"; exit 0; }
+            git commit -m "chore(health): refresh the fleet health page [skip ci]"
             sleep $((i * 3))
           done
           echo "::error::could not push the health page after 4 attempts"
