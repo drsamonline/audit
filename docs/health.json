@@ -1,0 +1,246 @@
+{
+ "checked_at": "2026-10-31T08:17:21.544746+00:00",
+ "verdict": "healthy",
+ "schedules": [
+  {
+   "repo": "Matneo",
+   "workflow": "blog.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 88.2,
+   "run_url": "https://github.com/drsamonline/Matneo/actions/runs/40537381145"
+  },
+  {
+   "repo": "Matneo",
+   "workflow": "store-images.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 94.9,
+   "run_url": "https://github.com/drsamonline/Matneo/actions/runs/40480065913"
+  },
+  {
+   "repo": "Matneo",
+   "workflow": "store.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 48.2,
+   "run_url": "https://github.com/drsamonline/Matneo/actions/runs/40839722635"
+  },
+  {
+   "repo": "app-builder",
+   "workflow": "kit-tests.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 48.2,
+   "run_url": "https://github.com/drsamonline/app-builder/actions/runs/40839797741"
+  },
+  {
+   "repo": "audit",
+   "workflow": "licence-check.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 0.7,
+   "run_url": "https://github.com/drsamonline/audit/actions/runs/41181338613"
+  },
+  {
+   "repo": "control-panel",
+   "workflow": "scan.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 2.5,
+   "run_url": "https://github.com/drsamonline/control-panel/actions/runs/41174114977"
+  },
+  {
+   "repo": "dashboard",
+   "workflow": "refresh.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 48.2,
+   "run_url": "https://github.com/drsamonline/dashboard/actions/runs/40839988212"
+  },
+  {
+   "repo": "drsamonline",
+   "workflow": "metrics.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 48.2,
+   "run_url": "https://github.com/drsamonline/drsamonline/actions/runs/40839684207"
+  },
+  {
+   "repo": "drsamonline",
+   "workflow": "update-profile.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 0.1,
+   "run_url": "https://github.com/drsamonline/drsamonline/actions/runs/41183720903"
+  },
+  {
+   "repo": "drsamonline.github.io",
+   "workflow": "refresh-hub.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 0.3,
+   "run_url": "https://github.com/drsamonline/drsamonline.github.io/actions/runs/41182767126"
+  },
+  {
+   "repo": "dumps",
+   "workflow": "backup-all.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "adopt.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "app-deliver.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "audit.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "backlog-status.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "code-compression.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "dumps-dedupe.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "health.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "heartbeat.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "kit-audit.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "licence.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "lint.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "new-app.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "repo-learning.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "self-diagnose.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "self-heal.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "forge",
+   "workflow": "self-update.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "knowledge",
+   "workflow": "refresh.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "registry",
+   "workflow": "refresh.yml",
+   "state": "unknown",
+   "detail": "no runs visible"
+  },
+  {
+   "repo": "skills",
+   "workflow": "refresh.yml",
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 20.8,
+   "run_url": "https://github.com/drsamonline/skills/actions/runs/41048775864"
+  }
+ ],
+ "generated": [
+  {
+   "repo": "dashboard",
+   "path": "data.json",
+   "state": "ok",
+   "age_hours": 48.1,
+   "max_age_hours": 192
+  },
+  {
+   "repo": "control-panel",
+   "path": "docs/inventory.json",
+   "state": "ok",
+   "age_hours": 2.4,
+   "max_age_hours": 192
+  },
+  {
+   "repo": "drsamonline.github.io",
+   "path": "repos.json",
+   "state": "ok",
+   "age_hours": 0.3,
+   "max_age_hours": 408
+  },
+  {
+   "repo": "Matneo",
+   "path": "docs/data/posts.json",
+   "state": "ok",
+   "age_hours": 100.7,
+   "max_age_hours": 192
+  },
+  {
+   "repo": "drsamonline.github.io",
+   "path": "kits/index.html",
+   "state": "ok",
+   "age_hours": 66.8,
+   "max_age_hours": 1440
+  }
+ ],
+ "notes": []
+}
