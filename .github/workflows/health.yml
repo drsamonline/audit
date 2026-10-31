@@ -35,18 +35,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check the token is present
-        env:
-          AUDIT_TOKEN: ${{ secrets.AUDIT_TOKEN }}
-        run: |
-          if [ -z "$AUDIT_TOKEN" ]; then
-            echo "::error::AUDIT_TOKEN is missing - the check reads other repos."
-            exit 1
-          fi
+      # No hard requirement on a cross-repo secret: a token that can read public
+      # repositories is enough for every check here, and the built-in token is
+      # exactly that. AUDIT_TOKEN is used when present because it also covers
+      # private repos (forge, registry, knowledge) - those are skipped otherwise.
 
       - name: Ask the fleet
         env:
-          GH_TOKEN: ${{ secrets.AUDIT_TOKEN }}
+          GH_TOKEN: ${{ secrets.AUDIT_TOKEN || github.token }}
         run: |
           # A red verdict is still a result worth publishing, so the step does not
           # fail here - the job fails at the end, after the page is live.
