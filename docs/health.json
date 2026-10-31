@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-31T10:25:15.432783+00:00",
+ "checked_at": "2026-10-31T10:31:21.913950+00:00",
  "verdict": "attention",
  "schedules": [
   {
@@ -7,7 +7,7 @@
    "workflow": "blog.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 90.3,
+   "age_hours": 90.4,
    "run_url": "https://github.com/drsamonline/Matneo/actions/runs/40537381145"
   },
   {
@@ -15,7 +15,7 @@
    "workflow": "store-images.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 97.1,
+   "age_hours": 97.2,
    "run_url": "https://github.com/drsamonline/Matneo/actions/runs/40480065913"
   },
   {
@@ -23,7 +23,7 @@
    "workflow": "store.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 50.3,
+   "age_hours": 50.4,
    "run_url": "https://github.com/drsamonline/Matneo/actions/runs/40839722635"
   },
   {
@@ -31,7 +31,7 @@
    "workflow": "kit-tests.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 50.3,
+   "age_hours": 50.4,
    "run_url": "https://github.com/drsamonline/app-builder/actions/runs/40839797741"
   },
   {
@@ -39,7 +39,7 @@
    "workflow": "licence-check.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 2.8,
+   "age_hours": 2.9,
    "run_url": "https://github.com/drsamonline/audit/actions/runs/41181338613"
   },
   {
@@ -47,7 +47,7 @@
    "workflow": "scan.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 4.6,
+   "age_hours": 4.7,
    "run_url": "https://github.com/drsamonline/control-panel/actions/runs/41174114977"
   },
   {
@@ -55,7 +55,7 @@
    "workflow": "refresh.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 50.3,
+   "age_hours": 50.4,
    "run_url": "https://github.com/drsamonline/dashboard/actions/runs/40839988212"
   },
   {
@@ -63,7 +63,7 @@
    "workflow": "metrics.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 50.3,
+   "age_hours": 50.4,
    "run_url": "https://github.com/drsamonline/drsamonline/actions/runs/40839684207"
   },
   {
@@ -71,7 +71,7 @@
    "workflow": "update-profile.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 1.7,
+   "age_hours": 1.8,
    "run_url": "https://github.com/drsamonline/drsamonline/actions/runs/41185618025"
   },
   {
@@ -79,129 +79,167 @@
    "workflow": "refresh-hub.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 2.4,
+   "age_hours": 2.5,
    "run_url": "https://github.com/drsamonline/drsamonline.github.io/actions/runs/41182767126"
   },
   {
    "repo": "dumps",
    "workflow": "backup-all.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "failing",
+   "conclusion": "failure",
+   "age_hours": 6.1,
+   "run_url": "https://github.com/drsamonline/dumps/actions/runs/41168495954"
   },
   {
    "repo": "forge",
    "workflow": "adopt.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 97.1,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40480592247"
   },
   {
    "repo": "forge",
    "workflow": "app-deliver.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 6.1,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/41168635445"
   },
   {
    "repo": "forge",
    "workflow": "audit.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 120.9,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40301116009"
   },
   {
    "repo": "forge",
    "workflow": "backlog-status.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 93.7,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40506876817"
   },
   {
    "repo": "forge",
    "workflow": "code-compression.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 93.7,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40507188954"
   },
   {
    "repo": "forge",
    "workflow": "dumps-dedupe.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 120.6,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40303243834"
   },
   {
    "repo": "forge",
    "workflow": "health.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 89.9,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40542436975"
   },
   {
    "repo": "forge",
    "workflow": "heartbeat.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 22.8,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/41050463903"
   },
   {
    "repo": "forge",
    "workflow": "kit-audit.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 5.3,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/41171815691"
   },
   {
    "repo": "forge",
    "workflow": "licence.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 97.0,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40481571005"
   },
   {
    "repo": "forge",
    "workflow": "lint.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 5.3,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/41171783121"
   },
   {
    "repo": "forge",
    "workflow": "new-app.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "failing",
+   "conclusion": "failure",
+   "age_hours": 93.5,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40508253596"
   },
   {
    "repo": "forge",
    "workflow": "repo-learning.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "failing",
+   "conclusion": "failure",
+   "age_hours": 7.6,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/41161941606"
   },
   {
    "repo": "forge",
    "workflow": "self-diagnose.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 67.9,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40707881822"
   },
   {
    "repo": "forge",
    "workflow": "self-heal.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 58.2,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40792983512"
   },
   {
    "repo": "forge",
    "workflow": "self-update.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 110.4,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/40393224579"
   },
   {
    "repo": "knowledge",
    "workflow": "refresh.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 50.4,
+   "run_url": "https://github.com/drsamonline/knowledge/actions/runs/40839748086"
   },
   {
    "repo": "registry",
    "workflow": "refresh.yml",
-   "state": "unknown",
-   "detail": "gh: Not Found (HTTP 404)"
+   "state": "ok",
+   "conclusion": "success",
+   "age_hours": 50.4,
+   "run_url": "https://github.com/drsamonline/registry/actions/runs/40839769569"
   },
   {
    "repo": "skills",
    "workflow": "refresh.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 22.9,
+   "age_hours": 23.0,
    "run_url": "https://github.com/drsamonline/skills/actions/runs/41048775864"
   }
  ],
@@ -210,39 +248,37 @@
    "repo": "dashboard",
    "path": "data.json",
    "state": "ok",
-   "age_hours": 50.3,
+   "age_hours": 50.4,
    "max_age_hours": 192
   },
   {
    "repo": "control-panel",
    "path": "docs/inventory.json",
    "state": "ok",
-   "age_hours": 4.6,
+   "age_hours": 4.7,
    "max_age_hours": 192
   },
   {
    "repo": "drsamonline.github.io",
    "path": "repos.json",
    "state": "ok",
-   "age_hours": 2.4,
+   "age_hours": 2.5,
    "max_age_hours": 408
   },
   {
    "repo": "Matneo",
    "path": "docs/data/posts.json",
    "state": "ok",
-   "age_hours": 102.9,
+   "age_hours": 103.0,
    "max_age_hours": 192
   },
   {
    "repo": "drsamonline.github.io",
    "path": "kits/index.html",
    "state": "ok",
-   "age_hours": 68.9,
+   "age_hours": 69.0,
    "max_age_hours": 1440
   }
  ],
- "notes": [
-  "19 scheduled job(s) could not be checked: the token cannot read their Actions runs (they live in private repositories). Add AUDIT_TOKEN to this repository's secrets for full coverage."
- ]
+ "notes": []
 }
