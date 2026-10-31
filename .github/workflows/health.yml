@@ -80,17 +80,25 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Fail if the fleet is not healthy
+      - name: Fail if the fleet has a real problem
         run: |
           python3 - <<'PY'
           import json, sys
           d = json.load(open("docs/health.json"))
           print("verdict:", d["verdict"])
+          problems = []
           for s in d["schedules"]:
               if s["state"] in ("failing", "stale"):
-                  print("  schedule", s["repo"], s["workflow"], s["state"])
+                  problems.append("schedule %s/%s is %s" % (s["repo"], s["workflow"], s["state"]))
           for g in d["generated"]:
               if g["state"] in ("stale", "missing"):
-                  print("  file", g["repo"], g["path"], g["state"])
-          sys.exit(0 if d["verdict"] == "healthy" else 1)
+                  problems.append("file %s/%s is %s" % (g["repo"], g["path"], g["state"]))
+          for p in problems:
+              print("  PROBLEM", p)
+          for n in d.get("notes") or []:
+              print("  note:", n)
+          # Blindness is reported on the page and in the notes, but it is not a
+          # fault: failing here would mean a permanently red job for a missing
+          # optional secret, and a red X that always shows is a red X nobody reads.
+          sys.exit(1 if problems else 0)
           PY
