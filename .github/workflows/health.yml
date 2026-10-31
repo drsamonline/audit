@@ -1,0 +1,88 @@
+name: health
+
+# Asks the fleet whether it still works, every day, and publishes the answer as a
+# page so nobody has to read a log to find out.
+#
+# WHY THIS EXISTS: refresh.yml died on exit 126 and the dashboard showed day-old
+# data under a green light. Every scheduled job in this fleet can fail quietly the
+# same way. This is the job that notices.
+#
+# The page is docs/index.html; the machine-readable copy is docs/health.json.
+
+on:
+  schedule:
+    - cron: "43 3 * * *"   # daily 03:43 UTC - clear of every other cron
+  workflow_dispatch: {}
+  push:
+    branches: [ main ]
+    paths:
+      - "tools/**"
+      - ".github/workflows/health.yml"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: health
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the token is present
+        env:
+          AUDIT_TOKEN: ${{ secrets.AUDIT_TOKEN }}
+        run: |
+          if [ -z "$AUDIT_TOKEN" ]; then
+            echo "::error::AUDIT_TOKEN is missing - the check reads other repos."
+            exit 1
+          fi
+
+      - name: Ask the fleet
+        env:
+          GH_TOKEN: ${{ secrets.AUDIT_TOKEN }}
+        run: |
+          # A red verdict is still a result worth publishing, so the step does not
+          # fail here - the job fails at the end, after the page is live.
+          python3 tools/fleet_health.py || echo "health check reported problems"
+
+      - name: Commit the page
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "no change"
+          else
+            git commit -m "chore(health): refresh the fleet health page [skip ci]"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Fail if the fleet is not healthy
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          d = json.load(open("docs/health.json"))
+          print("verdict:", d["verdict"])
+          for s in d["schedules"]:
+              if s["state"] in ("failing", "stale"):
+                  print("  schedule", s["repo"], s["workflow"], s["state"])
+          for g in d["generated"]:
+              if g["state"] in ("stale", "missing"):
+                  print("  file", g["repo"], g["path"], g["state"])
+          sys.exit(0 if d["verdict"] == "healthy" else 1)
+          PY
