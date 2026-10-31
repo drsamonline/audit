@@ -1,13 +1,13 @@
 {
- "checked_at": "2026-10-31T08:17:21.544746+00:00",
- "verdict": "healthy",
+ "checked_at": "2026-10-31T08:21:38.296452+00:00",
+ "verdict": "attention",
  "schedules": [
   {
    "repo": "Matneo",
    "workflow": "blog.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 88.2,
+   "age_hours": 88.3,
    "run_url": "https://github.com/drsamonline/Matneo/actions/runs/40537381145"
   },
   {
@@ -15,7 +15,7 @@
    "workflow": "store-images.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 94.9,
+   "age_hours": 95.0,
    "run_url": "https://github.com/drsamonline/Matneo/actions/runs/40480065913"
   },
   {
@@ -23,7 +23,7 @@
    "workflow": "store.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 48.2,
+   "age_hours": 48.3,
    "run_url": "https://github.com/drsamonline/Matneo/actions/runs/40839722635"
   },
   {
@@ -31,7 +31,7 @@
    "workflow": "kit-tests.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 48.2,
+   "age_hours": 48.3,
    "run_url": "https://github.com/drsamonline/app-builder/actions/runs/40839797741"
   },
   {
@@ -63,7 +63,7 @@
    "workflow": "metrics.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 48.2,
+   "age_hours": 48.3,
    "run_url": "https://github.com/drsamonline/drsamonline/actions/runs/40839684207"
   },
   {
@@ -79,7 +79,7 @@
    "workflow": "refresh-hub.yml",
    "state": "ok",
    "conclusion": "success",
-   "age_hours": 0.3,
+   "age_hours": 0.4,
    "run_url": "https://github.com/drsamonline/drsamonline.github.io/actions/runs/41182767126"
   },
   {
@@ -210,14 +210,14 @@
    "repo": "dashboard",
    "path": "data.json",
    "state": "ok",
-   "age_hours": 48.1,
+   "age_hours": 48.2,
    "max_age_hours": 192
   },
   {
    "repo": "control-panel",
    "path": "docs/inventory.json",
    "state": "ok",
-   "age_hours": 2.4,
+   "age_hours": 2.5,
    "max_age_hours": 192
   },
   {
@@ -231,14 +231,14 @@
    "repo": "Matneo",
    "path": "docs/data/posts.json",
    "state": "ok",
-   "age_hours": 100.7,
+   "age_hours": 100.8,
    "max_age_hours": 192
   },
   {
    "repo": "drsamonline.github.io",
    "path": "kits/index.html",
    "state": "ok",
-   "age_hours": 66.8,
+   "age_hours": 66.9,
    "max_age_hours": 1440
   }
  ],
