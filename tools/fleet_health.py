@@ -149,7 +149,18 @@ def check_generated():
 def render(schedules, generated, notes):
     bad = [r for r in schedules if r["state"] in ("failing", "stale")] + \
           [r for r in generated if r["state"] in ("stale", "missing")]
-    verdict = "healthy" if not bad else ("attention" if len(bad) < 4 else "degraded")
+    blind = [r for r in schedules if r["state"] == "unknown"]
+    if bad:
+        verdict = "attention" if len(bad) < 4 else "degraded"
+    elif blind:
+        # A check that cannot see a job is not a check that passed it. Saying
+        # "healthy" while blind is the exact failure this page exists to prevent.
+        verdict = "attention"
+        notes = notes + ["%d scheduled job(s) could not be checked: the token cannot read their "
+                         "Actions runs. Add AUDIT_TOKEN to this repository's secrets for full "
+                         "coverage." % len(blind)]
+    else:
+        verdict = "healthy"
     colour = {"healthy": "#16a34a", "attention": "#d97706", "degraded": "#dc2626"}[verdict]
 
     def row_sched(r):
@@ -190,7 +201,7 @@ def render(schedules, generated, notes):
   .note{color:var(--mut);font-size:13px;margin-top:22px}
 </style></head><body><div class="wrap">
 <h1>Fleet health</h1>
-<p class="sub">Checked %s UTC &middot; %d scheduled jobs &middot; %d generated files</p>
+<p class="sub">Checked %s UTC &middot; %d scheduled jobs &middot; %d generated files%s</p>
 <p><span class="pill">%s</span></p>
 %s
 <h2>Scheduled jobs</h2>
@@ -206,6 +217,7 @@ succeeded &mdash; that is how a dead cron stays invisible. Generated files are c
 if the job that rebuilds one fails, the file stays old and every page built from it is quietly wrong.</p>
 </div></body></html>""" % (
         colour, NOW.strftime("%Y-%m-%d %H:%M"), len(schedules), len(generated),
+        (" &middot; <b>%d unchecked</b>" % len(blind)) if blind else "",
         verdict.upper(),
         ("<p class='note'>%s</p>" % "; ".join(notes)) if notes else "",
         "".join(row_sched(r) for r in schedules) or "<tr><td colspan=4>none found</td></tr>",
