@@ -156,9 +156,6 @@ def render(schedules, generated, notes):
         # A check that cannot see a job is not a check that passed it. Saying
         # "healthy" while blind is the exact failure this page exists to prevent.
         verdict = "attention"
-        notes = notes + ["%d scheduled job(s) could not be checked: the token cannot read their "
-                         "Actions runs. Add AUDIT_TOKEN to this repository's secrets for full "
-                         "coverage." % len(blind)]
     else:
         verdict = "healthy"
     colour = {"healthy": "#16a34a", "attention": "#d97706", "degraded": "#dc2626"}[verdict]
@@ -222,7 +219,7 @@ if the job that rebuilds one fails, the file stays old and every page built from
         ("<p class='note'>%s</p>" % "; ".join(notes)) if notes else "",
         "".join(row_sched(r) for r in schedules) or "<tr><td colspan=4>none found</td></tr>",
         "".join(row_gen(r) for r in generated) or "<tr><td colspan=4>none found</td></tr>",
-    ), verdict, bad
+    ), verdict, bad, blind
 
 
 def main():
@@ -233,7 +230,11 @@ def main():
     schedules = check_schedules(pairs)
     generated = check_generated()
 
-    page, verdict, bad = render(schedules, generated, notes)
+    page, verdict, bad, blind = render(schedules, generated, notes)
+    if blind and not bad:
+        notes.append("%d scheduled job(s) could not be checked: the token cannot read their "
+                     "Actions runs (they live in private repositories). Add AUDIT_TOKEN to this "
+                     "repository's secrets for full coverage." % len(blind))
     os.makedirs("docs", exist_ok=True)
     with open("docs/index.html", "w") as fh:
         fh.write(page)
@@ -246,7 +247,7 @@ def main():
           % (verdict, len(schedules), len(generated), len(bad)))
     for r in bad:
         print("  PROBLEM", r)
-    if verdict != "healthy":
+    if bad:
         sys.exit(1)
 
 
