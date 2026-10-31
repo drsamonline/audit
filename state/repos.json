@@ -1,5 +1,5 @@
 {
- "count": 93,
+ "count": 94,
  "repos": {
   "All4ONE": {
    "default_branch": "main",
@@ -67,7 +67,7 @@
    "homepage": "https://drsamonline.github.io/BLINKTRANSFER/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:55Z",
+   "pushed_at": "2026-10-31T07:26:06Z",
    "releases": [
     {
      "assets": [
@@ -179,17 +179,22 @@
    "homepage": "",
    "licence_file": "",
    "licence_spdx": null,
-   "pushed_at": "2026-10-30T17:16:46Z",
+   "pushed_at": "2026-10-31T07:37:07Z",
    "releases": [],
    "root_files": [
     ".gitattributes",
+    ".github",
+    ".gitmodules",
     "PROJECT_OVERVIEW.md",
     "README.md",
     "SOURCES",
-    "old"
+    "old",
+    "scripts"
    ],
    "topics": [],
-   "workflow_files": []
+   "workflow_files": [
+    "vendor-check.yml"
+   ]
   },
   "HMS": {
    "default_branch": "main",
@@ -285,7 +290,7 @@
    "homepage": "https://drsamonline.github.io/MATERIA-MEDICA-BUILDER/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-28T03:58:03Z",
+   "pushed_at": "2026-10-31T07:26:09Z",
    "releases": [
     {
      "assets": [
@@ -430,8 +435,14 @@
    "homepage": "https://drsamonline.github.io/Scrap-and-Gun/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T02:55:41Z",
+   "pushed_at": "2026-10-31T06:24:35Z",
    "releases": [
+    {
+     "assets": [
+      "scrap_gun_v0.1.3.zip"
+     ],
+     "tag": "v0.1.3"
+    },
     {
      "assets": [
       "scrap_gun_v0.1.2.zip"
@@ -693,7 +704,7 @@
    "homepage": "https://drsamonline.github.io/aethelgard-games/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-28T09:12:26Z",
+   "pushed_at": "2026-10-31T07:26:11Z",
    "releases": [
     {
      "assets": [
@@ -796,7 +807,7 @@
    "homepage": "https://drsamonline.github.io/ai-bridge/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:48:21Z",
+   "pushed_at": "2026-10-31T07:37:06Z",
    "releases": [
     {
      "assets": [
@@ -849,7 +860,7 @@
    "homepage": "https://drsamonline.github.io/ambient-sound-studio/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:19Z",
+   "pushed_at": "2026-10-31T07:26:13Z",
    "releases": [
     {
      "assets": [
@@ -910,7 +921,7 @@
    "homepage": "https://drsamonline.github.io/app-builder/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:15:47Z",
+   "pushed_at": "2026-10-31T07:22:28Z",
    "releases": [],
    "root_files": [
     ".github",
@@ -985,7 +996,7 @@
    "homepage": "https://drsamonline.github.io/app-companion-forge/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:55Z",
+   "pushed_at": "2026-10-31T07:26:16Z",
    "releases": [
     {
      "assets": [
@@ -1023,7 +1034,7 @@
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:35Z",
+   "pushed_at": "2026-10-31T07:26:18Z",
    "releases": [
     {
      "assets": [
@@ -1144,6 +1155,40 @@
     "test.yml"
    ]
   },
+  "app-lantern": {
+   "default_branch": "main",
+   "description": "A whole library served over your own Wi-Fi \u2014 browse and search offline content on the LAN, no internet at any point. Zero dependencies.",
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-10-31T06:45:54Z",
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "examples",
+    "package.json",
+    "public",
+    "server.js",
+    "test-node.js"
+   ],
+   "topics": [
+    "content-server",
+    "full-text-search",
+    "internet-in-a-box",
+    "lan",
+    "local-first",
+    "nodejs",
+    "offline-first",
+    "zero-dependencies"
+   ],
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
   "app-panchang": {
    "default_branch": "main",
    "description": "A daily Indian almanac \u2014 tithi, nakshatra, yoga, karana, rahu-kaal and muhurat, computed offline. Built with Forge.",
@@ -1151,7 +1196,7 @@
    "homepage": "https://drsamonline.github.io/app-panchang/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:33Z",
+   "pushed_at": "2026-10-31T07:30:40Z",
    "releases": [
     {
      "assets": [],
@@ -1194,7 +1239,7 @@
    "homepage": "https://drsamonline.github.io/app-poets-studio/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:55Z",
+   "pushed_at": "2026-10-31T07:30:42Z",
    "releases": [
     {
      "assets": [
@@ -1377,7 +1422,7 @@
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:44:37Z",
+   "pushed_at": "2026-10-31T07:37:21Z",
    "releases": [],
    "root_files": [
     ".github",
@@ -1422,7 +1467,7 @@
    "homepage": "https://drsamonline.github.io/base-bench/play/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:55Z",
+   "pushed_at": "2026-10-31T07:30:46Z",
    "releases": [
     {
      "assets": [
@@ -1454,7 +1499,7 @@
    "homepage": "https://drsamonline.github.io/blinkcode-ai/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:57Z",
+   "pushed_at": "2026-10-31T07:30:48Z",
    "releases": [
     {
      "assets": [
@@ -1503,7 +1548,7 @@
    "homepage": "https://drsamonline.github.io/bmi-bmr-tdee-macros-fluid-calculator/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:40Z",
+   "pushed_at": "2026-10-31T07:30:52Z",
    "releases": [
     {
      "assets": [
@@ -1551,7 +1596,7 @@
    "homepage": "https://drsamonline.github.io/boericke-repertory/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:31Z",
+   "pushed_at": "2026-10-31T07:30:54Z",
    "releases": [
     {
      "assets": [
@@ -1620,7 +1665,7 @@
    "homepage": "https://drsamonline.github.io/canteen-lan/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:57Z",
+   "pushed_at": "2026-10-31T07:35:14Z",
    "releases": [
     {
      "assets": [
@@ -1687,7 +1732,7 @@
    "homepage": "https://drsamonline.github.io/chalk-lan/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:57Z",
+   "pushed_at": "2026-10-31T07:35:16Z",
    "releases": [
     {
      "assets": [
@@ -1776,7 +1821,7 @@
    "homepage": "https://drsamonline.github.io/conqueror-os/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T04:39:58Z",
+   "pushed_at": "2026-10-31T07:35:20Z",
    "releases": [
     {
      "assets": [
@@ -1848,7 +1893,7 @@
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:35:37Z",
+   "pushed_at": "2026-10-31T05:51:01Z",
    "releases": [],
    "root_files": [
     ".github",
@@ -1899,7 +1944,7 @@
    "homepage": "https://drsamonline.github.io/dance-fight/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-28T09:26:06Z",
+   "pushed_at": "2026-10-31T07:35:22Z",
    "releases": [
     {
      "assets": [
@@ -1990,7 +2035,7 @@
    "homepage": "https://drsamonline.github.io/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:48Z",
+   "pushed_at": "2026-10-31T07:23:53Z",
    "releases": [],
    "root_files": [
     ".github",
@@ -2146,7 +2191,7 @@
    "homepage": "https://drsamonline.github.io/gentle-pediatrics-companion/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-28T09:26:10Z",
+   "pushed_at": "2026-10-31T07:35:25Z",
    "releases": [
     {
      "assets": [
@@ -2188,7 +2233,7 @@
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
-   "pushed_at": "2026-10-30T18:13:38Z",
+   "pushed_at": "2026-10-31T07:37:14Z",
    "releases": [],
    "root_files": [
     ".github",
@@ -2215,7 +2260,7 @@
    "homepage": "https://drsamonline.github.io/helioprism/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:57Z",
+   "pushed_at": "2026-10-31T07:35:27Z",
    "releases": [
     {
      "assets": [
@@ -2298,7 +2343,7 @@
    "homepage": "https://drsamonline.github.io/idle-city-ages-of-growth/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:15:45Z",
+   "pushed_at": "2026-10-31T07:16:18Z",
    "releases": [
     {
      "assets": [
@@ -2351,7 +2396,7 @@
    "homepage": "https://drsamonline.github.io/kent-repertory-explorer/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:29:58Z",
+   "pushed_at": "2026-10-31T07:09:56Z",
    "releases": [
     {
      "assets": [
@@ -2467,7 +2512,7 @@
    "homepage": "https://drsamonline.github.io/lockhtml/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:52Z",
+   "pushed_at": "2026-10-31T07:09:59Z",
    "releases": [
     {
      "assets": [
@@ -2592,7 +2637,7 @@
    "homepage": "https://drsamonline.github.io/mnemosyne-companion/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:25:11Z",
+   "pushed_at": "2026-10-31T07:10:02Z",
    "releases": [
     {
      "assets": [
@@ -2743,7 +2788,7 @@
    "homepage": "https://drsamonline.github.io/neon-games/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:47Z",
+   "pushed_at": "2026-10-31T07:10:07Z",
    "releases": [
     {
      "assets": [
@@ -2797,7 +2842,7 @@
    "homepage": "https://drsamonline.github.io/neon-runner/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:14:00Z",
+   "pushed_at": "2026-10-31T07:10:11Z",
    "releases": [
     {
      "assets": [
@@ -2901,7 +2946,7 @@
    "homepage": "https://drsamonline.github.io/offline-pdf-toolkit/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:58Z",
+   "pushed_at": "2026-10-31T07:10:20Z",
    "releases": [
     {
      "assets": [
@@ -2945,7 +2990,7 @@
    "homepage": "https://drsamonline.github.io/open-materia-medica/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:45Z",
+   "pushed_at": "2026-10-31T07:10:23Z",
    "releases": [
     {
      "assets": [
@@ -3067,7 +3112,7 @@
    "homepage": "https://drsamonline.github.io/read-live-transform-app/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-28T07:27:14Z",
+   "pushed_at": "2026-10-31T07:10:26Z",
    "releases": [
     {
      "assets": [
@@ -3119,7 +3164,7 @@
    "homepage": "https://drsamonline.github.io/remedy-relationship-explorer/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T02:12:41Z",
+   "pushed_at": "2026-10-31T07:10:30Z",
    "releases": [
     {
      "assets": [],
@@ -3217,7 +3262,7 @@
    "homepage": "https://drsamonline.github.io/retro-strike/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:15:24Z",
+   "pushed_at": "2026-10-31T07:17:30Z",
    "releases": [
     {
      "assets": [
@@ -3306,7 +3351,7 @@
    "homepage": "https://drsamonline.github.io/seance/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:27:00Z",
+   "pushed_at": "2026-10-31T07:10:37Z",
    "releases": [
     {
      "assets": [
@@ -3401,7 +3446,7 @@
    "homepage": "https://drsamonline.github.io/skin-case-tracker/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:13:55Z",
+   "pushed_at": "2026-10-31T07:10:41Z",
    "releases": [
     {
      "assets": [
@@ -3445,7 +3490,7 @@
    "homepage": "https://drsamonline.github.io/smartbill-app/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:25:44Z",
+   "pushed_at": "2026-10-31T07:10:45Z",
    "releases": [
     {
      "assets": [],
@@ -3518,7 +3563,7 @@
    "homepage": "https://drsamonline.github.io/the-symphony-companion/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:25:17Z",
+   "pushed_at": "2026-10-31T07:10:48Z",
    "releases": [
     {
      "assets": [
@@ -3565,7 +3610,7 @@
    "homepage": "https://drsamonline.github.io/today-card/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T05:26:35Z",
+   "pushed_at": "2026-10-31T07:10:52Z",
    "releases": [
     {
      "assets": [
@@ -3635,7 +3680,7 @@
    "homepage": "https://drsamonline.github.io/unstoppable-mind-companion/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:14:04Z",
+   "pushed_at": "2026-10-31T07:10:55Z",
    "releases": [
     {
      "assets": [
@@ -3787,7 +3832,7 @@
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-31T03:06:58Z",
+   "pushed_at": "2026-10-31T07:36:04Z",
    "releases": [
     {
      "assets": [
@@ -3859,7 +3904,7 @@
    "homepage": "https://drsamonline.github.io/whispering-body-first-aid/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-10-30T18:15:24Z",
+   "pushed_at": "2026-10-31T07:10:58Z",
    "releases": [
     {
      "assets": [
@@ -3906,10 +3951,12 @@
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
-   "pushed_at": "2026-10-31T05:08:08Z",
+   "pushed_at": "2026-10-31T07:37:17Z",
    "releases": [],
    "root_files": [
+    ".github",
     ".gitignore",
+    ".gitmodules",
     "CMakeLists.txt",
     "LICENSE",
     "PROJECT_OVERVIEW.md",
@@ -3917,12 +3964,15 @@
     "docs",
     "include",
     "prompt",
+    "scripts",
     "src",
     "tests",
     "vendor"
    ],
    "topics": [],
-   "workflow_files": []
+   "workflow_files": [
+    "vendor-check.yml"
+   ]
   }
  }
 }
