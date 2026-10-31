@@ -1,0 +1,55 @@
+name: Licence badge check
+
+# Re-checks every README's licence badge against the LICENSE file it links to,
+# and fails if any badge is truncated, missing, or claims a licence the repo
+# does not grant.
+#
+# The check is only as good as the snapshot, so this workflow collects fresh
+# state first, then runs the check, then commits the snapshot so the next run
+# has a baseline to diff against.
+
+on:
+  schedule:
+    - cron: "31 3 * * 1"   # Mondays, 03:31 UTC - clear of every other cron
+  workflow_dispatch:
+  push:
+    paths:
+      - "tools/licence_check.py"
+      - ".github/workflows/licence-check.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: licence-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Collect state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/collect.py
+
+      - name: Check licence badges
+        run: python3 tools/licence_check.py
+
+      - name: Commit the snapshot
+        if: always()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/
+          if git diff --cached --quiet; then
+            echo "no change in state/"
+          else
+            git commit -m "chore: refresh state snapshot [skip ci]"
+            git push
+          fi
