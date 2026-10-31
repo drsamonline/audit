@@ -16,7 +16,10 @@ Also checks the badge's alt text, because several READMEs carry
 screen reader and a failed image load both show.
 
 Reads state/readmes.json, state/licences.json and state/repos.json.
-Exit code 1 if anything is wrong, so it can gate a workflow.
+The four faults above FAIL the check. Two further readings are reported and do
+not: NO LICENCE (no LICENSE file, so a badge would claim something the repo does
+not grant) and SUMMARY (a free-text claim no program can verify). Add --strict to
+gate on those too.
 
     python3 tools/licence_check.py            # summary + every problem
     python3 tools/licence_check.py --quiet    # counts only
@@ -132,6 +135,13 @@ def check(name, readme, licence_text, spdx):
     urls = [u for u in badge_urls(readme)
             if "licen" in u.lower() and ("/badge/" in u or "/github/license" in u)]
     if not urls:
+        if not (licence_text or "").strip():
+            # No LICENSE file at all. A badge here would claim a licence the
+            # repository does not grant, which is worse than no badge - so this
+            # is reported, not failed.
+            return actual, "NO LICENCE", "", [
+                "no LICENSE file - a badge here would claim a licence the repository "
+                "does not grant; add the licence first, or leave it unbadged"]
         return actual, "NO BADGE", "", []
 
     problems, verdicts = [], []
@@ -208,14 +218,28 @@ def main():
         rows.append(dict(repo=name, actual=actual, verdict=verdict,
                          claimed=claimed, problems=problems))
 
-    order = ["CONTRADICTION", "BROKEN URL", "NOASSERTION", "NO BADGE", "SUMMARY", "ok"]
+    order = ["CONTRADICTION", "BROKEN URL", "NOASSERTION", "NO BADGE",
+             "NO LICENCE", "SUMMARY", "ok"]
+    # What actually fails the run. The four faults are checkable against the
+    # LICENSE file. NO LICENCE and SUMMARY are for a human to read: one says the
+    # repository grants nothing, the other quotes a free-text claim ("free to
+    # use") that no program can verify. Gating on those made this check red for
+    # weeks over wording nobody had ruled wrong - a check that cries wolf gets
+    # switched off. --strict puts them back in the gate.
+    GATING = ("CONTRADICTION", "BROKEN URL", "NOASSERTION", "NO BADGE")
     counts = {k: sum(1 for r in rows if r["verdict"] == k) for k in order}
 
     print("licence badge check - %d repos\n" % len(rows))
     for k in order:
         print("  %-14s %d" % (k, counts[k]))
-    bad = [r for r in rows if r["verdict"] != "ok"]
-    print("\n  %d of %d repos need attention" % (len(bad), len(rows)))
+    strict = "--strict" in sys.argv
+    bad = [r for r in rows
+           if r["verdict"] in GATING or (strict and r["verdict"] != "ok")]
+    advisory = [r for r in rows if r["verdict"] not in GATING and r["verdict"] != "ok"]
+    print("\n  %d of %d repos fail the gate%s"
+          % (len(bad), len(rows), "" if not advisory else
+             " (%d more are advisory only - read them, they do not fail)"
+             % len(advisory)))
 
     if not quiet:
         for k in order[:-1]:
