@@ -1,0 +1,3329 @@
+{
+ "generated": "2026-11-03",
+ "repos_count": 100,
+ "capabilities": [
+  [
+   "OF",
+   "Offline / no network at runtime"
+  ],
+  [
+   "PWA",
+   "Installable PWA (service worker)"
+  ],
+  [
+   "SF",
+   "Single-file deliverable"
+  ],
+  [
+   "ZD",
+   "Zero runtime dependencies"
+  ],
+  [
+   "I18N",
+   "Multilingual UI (en / hi / gu)"
+  ],
+  [
+   "LAN",
+   "LAN / room / multi-device"
+  ],
+  [
+   "CR",
+   "Encryption & key handling"
+  ],
+  [
+   "EX",
+   "Data export (zip / csv / json)"
+  ],
+  [
+   "SE",
+   "Indexed / ranked search"
+  ],
+  [
+   "CL",
+   "Clinical decision support"
+  ],
+  [
+   "CA",
+   "Longitudinal case records"
+  ],
+  [
+   "ME",
+   "Media / PDF / audio processing"
+  ],
+  [
+   "GA",
+   "Game / interactive sim"
+  ],
+  [
+   "EN",
+   "Reusable engine or kit"
+  ],
+  [
+   "TO",
+   "Build / CI / meta tooling"
+  ],
+  [
+   "CO",
+   "Bundled reference corpus"
+  ],
+  [
+   "OP",
+   "Optical (QR / colour) transfer"
+  ],
+  [
+   "UT",
+   "General utility / toolbox"
+  ],
+  [
+   "ED",
+   "Teaching / curriculum"
+  ]
+ ],
+ "kits": {
+  "frame-kit": {
+   "adopters": [
+    "BLINKTRANSFER",
+    "blinkcode-ai",
+    "helioprism"
+   ]
+  },
+  "optical-kit": {
+   "adopters": [
+    "BLINKTRANSFER",
+    "blinkcode-ai",
+    "helioprism"
+   ]
+  },
+  "web-kit": {
+   "adopters": [
+    "app-clip-loom",
+    "app-companion-forge",
+    "app-encrypted-case-log",
+    "app-image-toolkit",
+    "app-jacquard",
+    "app-panchang",
+    "app-poets-studio",
+    "app-thermals",
+    "app-weft-puzzles",
+    "base-bench",
+    "canteen-lan",
+    "chalk-lan",
+    "kent-repertory-explorer",
+    "mnemosyne-companion",
+    "read-live-transform-app",
+    "seance",
+    "skin-case-tracker",
+    "the-symphony-companion",
+    "today-card",
+    "unstoppable-mind-companion",
+    "weft8-classroom",
+    "weft8-compare",
+    "weft8-hardware",
+    "weft8-kit",
+    "whispering-body-first-aid"
+   ]
+  },
+  "case-kit": {
+   "adopters": [
+    "app-encrypted-case-log",
+    "app-thermals"
+   ]
+  },
+  "crypto-kit": {
+   "adopters": [
+    "app-encrypted-case-log"
+   ]
+  },
+  "export-kit": {
+   "adopters": [
+    "app-encrypted-case-log",
+    "app-image-toolkit",
+    "app-poets-studio",
+    "app-thermals",
+    "base-bench",
+    "bmi-bmr-tdee-macros-fluid-calculator",
+    "conqueror-os",
+    "skin-case-tracker"
+   ]
+  },
+  "search-kit": {
+   "adopters": [
+    "app-encrypted-case-log",
+    "app-thermals"
+   ]
+  },
+  "lan-kit": {
+   "adopters": [
+    "app-lantern",
+    "canteen-lan",
+    "chalk-lan"
+   ]
+  }
+ },
+ "repos": [
+  {
+   "name": "All4ONE",
+   "category": "Engine / platform / tool",
+   "lang": "Python",
+   "loc": 17250,
+   "files": 58,
+   "units": 150,
+   "caps": [
+    "OF",
+    "UT"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-09-10",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Every tool gets its own page with its own options \u2014 search it, open it, set what you need, run it."
+  },
+  {
+   "name": "BLINKTRANSFER",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 3015,
+   "files": 42,
+   "units": 157,
+   "caps": [
+    "OF",
+    "PWA",
+    "OP"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-08-12",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "frame-kit",
+    "optical-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Send a file with light. No internet, no Bluetooth, no cables."
+  },
+  {
+   "name": "CLDR",
+   "category": "Engine / platform / tool",
+   "lang": "Rust",
+   "loc": 3903,
+   "files": 33,
+   "units": 58,
+   "caps": [
+    "OF",
+    "UT"
+   ],
+   "licence": "MIT",
+   "release": "v1.3.0",
+   "created": "2026-09-24",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A single tiny Rust binary that sits in your tray, pops up on a keystroke, and runs whatever you type \u2014 a sum, a path, an app, a search."
+  },
+  {
+   "name": "HCS",
+   "category": "Engine / platform / tool",
+   "lang": "C",
+   "loc": 1391026,
+   "files": 6060,
+   "units": 166,
+   "caps": [
+    "EN",
+    "CO"
+   ],
+   "licence": "NO FILE",
+   "release": null,
+   "created": "2026-10-30",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": false,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Canonical, offline, vendored source vault for the CHCE engine (Chimera Hybrid Compression Engine) and all CHIMERA-family projects (heavenzip, ziptastic, compfactory)."
+  },
+  {
+   "name": "HMS",
+   "category": "Engine / platform / tool",
+   "lang": "Python",
+   "loc": 53193,
+   "files": 676,
+   "units": 196,
+   "caps": [
+    "OF",
+    "LAN",
+    "CA",
+    "CL",
+    "EX"
+   ],
+   "licence": "Proprietary EULA",
+   "release": null,
+   "created": "2026-08-01",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A LAN-based hospital management system purpose-built for homeopathic hospitals and clinics. Runs entirely on the local network with a server-owned database \u2014 no internet dependency, no cloud lock-in."
+  },
+  {
+   "name": "MATERIA-MEDICA-BUILDER",
+   "category": "Homoeopathy / clinical",
+   "lang": "JavaScript",
+   "loc": 6764,
+   "files": 34,
+   "units": 146,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "CL",
+    "CO",
+    "EX",
+    "ZD"
+   ],
+   "licence": "Free-to-use (custom)",
+   "release": "app-latest",
+   "created": "2026-09-17",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Build your own materia medica and repertory \u2014 offline, private, and yours to export."
+  },
+  {
+   "name": "Matneo",
+   "category": "Meta / system",
+   "lang": "Python",
+   "loc": 2425,
+   "files": 29,
+   "units": 22,
+   "caps": [
+    "TO"
+   ],
+   "licence": "Other / custom",
+   "release": null,
+   "created": "2026-07-07",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "AI-powered digital products and automation platform."
+  },
+  {
+   "name": "NEO",
+   "category": "Engine / platform / tool",
+   "lang": "Rust",
+   "loc": 13949,
+   "files": 158,
+   "units": 160,
+   "caps": [
+    "EN",
+    "TO"
+   ],
+   "licence": "MIT",
+   "release": null,
+   "created": "2026-07-24",
+   "pushed": "2026-11-01",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A statically-typed, compiled systems programming language. Its compiler lowers NOVA source through a semantic pipeline \u2014 lexer, parser, semantic analyser, SIR, lowerer \u2014 to four backends: C, JavaScript, Rust and WebAssem"
+  },
+  {
+   "name": "Scrap-and-Gun",
+   "category": "Game",
+   "lang": "JavaScript",
+   "loc": 4271,
+   "files": 25,
+   "units": 166,
+   "caps": [
+    "OF",
+    "PWA",
+    "GA"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-25",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": false,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "A retro pixel-art arena defense shooter with tactical construction, escalating enemy waves, persistent upgrades, roguelite drafts, bosses and local co-op."
+  },
+  {
+   "name": "SmartNotes",
+   "category": "Engine / platform / tool",
+   "lang": "TypeScript",
+   "loc": 19288,
+   "files": 170,
+   "units": 141,
+   "caps": [
+    "GA",
+    "TO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-07",
+   "pushed": "2026-10-28",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": false,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "AI-powered notes \u00b7 reminders \u00b7 scheduling \u2014 write in plain English and it files itself."
+  },
+  {
+   "name": "TTB",
+   "category": "Engine / platform / tool",
+   "lang": "JavaScript",
+   "loc": 4023,
+   "files": 60,
+   "units": 141,
+   "caps": [
+    "OF",
+    "UT"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "tinytoolbox_Chrome_Extension",
+   "created": "2026-09-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "591 tools. One extension. A Manifest V3 browser extension that bundles 591 tiny utilities across 18 categories into one fast, offline-first popup \u2014 Chrome, Edge, Firefox and Safari. No framework, no telemetry, no remote "
+  },
+  {
+   "name": "The_Browser",
+   "category": "Engine / platform / tool",
+   "lang": "C++",
+   "loc": 1971108,
+   "files": 27411,
+   "units": 280,
+   "caps": [
+    "EN"
+   ],
+   "licence": "MIT",
+   "release": null,
+   "created": "2026-08-19",
+   "pushed": "2026-10-30",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "> Status: Experimental. Aetheris is not currently a production-ready, standards-complete replacement for established browsers."
+  },
+  {
+   "name": "ULTIMATE-WINDOWS-OPTIMIZER",
+   "category": "Engine / platform / tool",
+   "lang": "PowerShell",
+   "loc": 2427,
+   "files": 38,
+   "units": 2,
+   "caps": [
+    "UT"
+   ],
+   "licence": "MIT",
+   "release": "v6.2.0",
+   "created": "2025-11-13",
+   "pushed": "2026-10-30",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Debloat Windows to the metal. \u2014 a PowerShell + batch toolkit for documented, reversible Windows 10/11 debloat & performance tweaks."
+  },
+  {
+   "name": "aethelgard-games",
+   "category": "Game",
+   "lang": "JavaScript",
+   "loc": 22293,
+   "files": 274,
+   "units": 144,
+   "caps": [
+    "OF",
+    "PWA",
+    "GA"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest-aethelgard-games-books",
+   "created": "2026-10-20",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Two free browser games in one world \u2014 a visual novel and a fantasy RPG. No install, no account, no build step. Just open and play."
+  },
+  {
+   "name": "aethelgard-rpg-engine",
+   "category": "Engine / platform / tool",
+   "lang": "JavaScript",
+   "loc": 10211,
+   "files": 74,
+   "units": 143,
+   "caps": [
+    "OF",
+    "PWA",
+    "EN",
+    "GA",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-17",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A dependency-free, vanilla-JavaScript engine for deep, single-player browser RPGs. No build step, no dependencies, works offline \u2014 small modules loaded in script order behind one global (window.Game)."
+  },
+  {
+   "name": "ai-bridge",
+   "category": "Engine / platform / tool",
+   "lang": "TypeScript",
+   "loc": 34729,
+   "files": 203,
+   "units": 154,
+   "caps": [
+    "TO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v0.35.0",
+   "created": "2026-10-30",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Your browser's AI, inside VS Code. No API key, no second subscription."
+  },
+  {
+   "name": "ambient-sound-studio",
+   "category": "Offline app",
+   "lang": "HTML",
+   "loc": 4393,
+   "files": 25,
+   "units": 166,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "ME",
+    "GA",
+    "ZD"
+   ],
+   "licence": "Personal-use (custom)",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Ambient Sound Studio \u2014 a private, offline ambient sound mixer that lives in a single HTML file."
+  },
+  {
+   "name": "app-builder",
+   "category": "Kit / shared library",
+   "lang": "Python",
+   "loc": 4005,
+   "files": 39,
+   "units": 136,
+   "caps": [
+    "TO",
+    "EN"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-11-01",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A shared build kit that turns a static web app into two offline deliverables: a portable Windows EXE and an Android APK."
+  },
+  {
+   "name": "app-clip-loom",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 1471,
+   "files": 14,
+   "units": 30,
+   "caps": [
+    "OF",
+    "SF",
+    "UT",
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-31",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Clean it before you paste it \u2014 with programs you can read."
+  },
+  {
+   "name": "app-companion-forge",
+   "category": "Meta / system",
+   "lang": "JavaScript",
+   "loc": 1605,
+   "files": 12,
+   "units": 19,
+   "caps": [
+    "OF",
+    "SF",
+    "TO",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-22",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "The drsamonline Forge system in your pocket. The build queue, the state, the kit dependency graph and the repo fleet \u2014 in one offline page. No accounts, no network, no telemetry."
+  },
+  {
+   "name": "app-encrypted-case-log",
+   "category": "Homoeopathy / clinical",
+   "lang": "HTML",
+   "loc": 6891,
+   "files": 28,
+   "units": 146,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "CR",
+    "CA",
+    "EX",
+    "SE",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-24",
+   "pushed": "2026-11-01",
+   "kits_vendored": [
+    "case-kit",
+    "crypto-kit",
+    "export-kit",
+    "search-kit",
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Per-patient clinical notes, encrypted on the device. Offline. No account, no server."
+  },
+  {
+   "name": "app-image-toolkit",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 5423,
+   "files": 26,
+   "units": 145,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "ME",
+    "EX",
+    "I18N",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-28",
+   "pushed": "2026-11-01",
+   "kits_vendored": [
+    "export-kit",
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Resize, compress, convert, crop and strip the GPS out of a photo \u2014 on your device, with nothing uploaded."
+  },
+  {
+   "name": "app-jacquard",
+   "category": "Teaching / Weft-8",
+   "lang": "JavaScript",
+   "loc": 2217,
+   "files": 13,
+   "units": 40,
+   "caps": [
+    "OF",
+    "SF",
+    "ED",
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-30",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "The loom you program \u2014 an 8-bit machine you can hold in your head."
+  },
+  {
+   "name": "app-lantern",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 2772,
+   "files": 16,
+   "units": 101,
+   "caps": [
+    "OF",
+    "LAN",
+    "SE"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v1.1.0",
+   "created": "2026-10-31",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "lan-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "A whole library, served over your own Wi-Fi, with no internet at any point."
+  },
+  {
+   "name": "app-organon-reader",
+   "category": "Homoeopathy / clinical",
+   "lang": "Python",
+   "loc": 1251,
+   "files": 14,
+   "units": 51,
+   "caps": [
+    "OF",
+    "SF",
+    "SE",
+    "CO",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v1.3.1",
+   "created": "2026-11-02",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The Organon of Medicine, sixth edition, in the 1922 Boericke translation \u2014 searchable, bookmarkable and readable with the network off. No account, no server, no telemetry. Open the page and read."
+  },
+  {
+   "name": "app-panchang",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 3884,
+   "files": 23,
+   "units": 141,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "I18N",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v0.2.2",
+   "created": "2026-10-22",
+   "pushed": "2026-11-01",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A daily Indian almanac that computes the day on your device \u2014 and tells you the minute each limb changes. Tithi, nakshatra, yoga, karana with their end times; sunrise, sunset, moonrise and moonset; Rahu Kaal, Gulika, Yam"
+  },
+  {
+   "name": "app-poets-studio",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 4086,
+   "files": 27,
+   "units": 106,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "I18N",
+    "EX",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v1.2.0",
+   "created": "2026-10-25",
+   "pushed": "2026-11-01",
+   "kits_vendored": [
+    "export-kit",
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "!live !tests !licence !offline !deps !dictionary"
+  },
+  {
+   "name": "app-thermals",
+   "category": "Homoeopathy / clinical",
+   "lang": "Python",
+   "loc": 3461,
+   "files": 34,
+   "units": 75,
+   "caps": [
+    "OF",
+    "PWA",
+    "SE",
+    "CL",
+    "CO",
+    "EX"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-11-01",
+   "pushed": "2026-11-01",
+   "kits_vendored": [
+    "case-kit",
+    "export-kit",
+    "search-kit",
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "What each classical source actually says about a remedy's thermal reaction \u2014 in its own words, with the source named \u2014 and where those sources do not say the same thing."
+  },
+  {
+   "name": "app-weft-puzzles",
+   "category": "Teaching / Weft-8",
+   "lang": "JavaScript",
+   "loc": 1663,
+   "files": 14,
+   "units": 32,
+   "caps": [
+    "OF",
+    "SF",
+    "ED",
+    "EN",
+    "GA",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-31",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Six small programming puzzles, solved on a real 8-bit machine."
+  },
+  {
+   "name": "art-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 579,
+   "files": 6,
+   "units": 14,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-24",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "art-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The art primitives Forge was missing. Zero dependencies, one file, no assets."
+  },
+  {
+   "name": "astro-kit",
+   "category": "Kit / shared library",
+   "lang": "HTML",
+   "loc": 643,
+   "files": 8,
+   "units": 17,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-11-02",
+   "kits_vendored": [
+    "astro-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The shared astronomy core for drsamonline apps. Zero dependencies. The primitives a panchang (Indian almanac) needs \u2014 and nothing app-specific:"
+  },
+  {
+   "name": "audio-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 784,
+   "files": 6,
+   "units": 11,
+   "caps": [
+    "EN",
+    "ME",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-24",
+   "pushed": "2026-11-02",
+   "kits_vendored": [
+    "audio-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Synthesis, theory, patterns and notation. Zero dependencies, one file, no audio assets."
+  },
+  {
+   "name": "audit",
+   "category": "Meta / system",
+   "lang": "Python",
+   "loc": 1101,
+   "files": 40,
+   "units": 39,
+   "caps": [
+    "TO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-31",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The change log for the drsamonline fleet \u2014 78 repositories, 105 workflow files, 10 scheduled jobs."
+  },
+  {
+   "name": "backup",
+   "category": "Meta / system",
+   "lang": "Python",
+   "loc": 1752,
+   "files": 6,
+   "units": 51,
+   "caps": [
+    "OF",
+    "TO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-24",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": false,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Snapshot a repository before it changes \u2014 so a merge can never lose the code that was there."
+  },
+  {
+   "name": "base-bench",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 2432,
+   "files": 13,
+   "units": 74,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "I18N",
+    "EX",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-25",
+   "pushed": "2026-11-01",
+   "kits_vendored": [
+    "export-kit",
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Every number base, unit and timezone on one page \u2014 with the working shown."
+  },
+  {
+   "name": "blinkcode-ai",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 9445,
+   "files": 80,
+   "units": 142,
+   "caps": [
+    "OF",
+    "PWA",
+    "OP"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-08-22",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "frame-kit",
+    "optical-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A file is compressed into a compact File DNA container, painted as SpectraCode colour matrices, and recovered by pointing a camera at the sender's screen \u2014 no server, no network after the first launch."
+  },
+  {
+   "name": "bmi-bmr-tdee-macros-fluid-calculator",
+   "category": "Offline app",
+   "lang": "HTML",
+   "loc": 8176,
+   "files": 28,
+   "units": 210,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "I18N",
+    "EX",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "BMI \u00b7 BMR \u00b7 TDEE \u00b7 macros \u00b7 fluids \u00b7 body composition \u00b7 renal \u00b7 dosing \u00b7 stroke risk"
+  },
+  {
+   "name": "boericke-repertory",
+   "category": "Homoeopathy / clinical",
+   "lang": "HTML",
+   "loc": 6736,
+   "files": 25,
+   "units": 14,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "SE",
+    "CL",
+    "CA",
+    "CO"
+   ],
+   "licence": "Free-to-use (custom)",
+   "release": "v1.6.0",
+   "created": "2026-10-20",
+   "pushed": "2026-11-01",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Compiled and designed by Dr. Sohil Momin \u00b7 after Oscar E. Boericke, M.D. (1927)"
+  },
+  {
+   "name": "book-kit",
+   "category": "Kit / shared library",
+   "lang": "HTML",
+   "loc": 399,
+   "files": 7,
+   "units": 10,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-30",
+   "kits_vendored": [
+    "book-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The companion-app-from-a-book pattern. Zero dependencies. One file. Chapters, key points, practices, flashcards and reading progress \u2014 the shared logic extracted from the drsamonline apps that repeat it."
+  },
+  {
+   "name": "canteen-lan",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 5107,
+   "files": 23,
+   "units": 145,
+   "caps": [
+    "OF",
+    "PWA",
+    "LAN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-23",
+   "pushed": "2026-11-01",
+   "kits_vendored": [
+    "lan-kit",
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Order from your table over the room's own Wi-Fi. One laptop hosts the canteen and serves the board itself; every phone on the network joins it, orders from its seat, and the kitchen watches each table move from placed to"
+  },
+  {
+   "name": "case-kit",
+   "category": "Kit / shared library",
+   "lang": "HTML",
+   "loc": 491,
+   "files": 7,
+   "units": 10,
+   "caps": [
+    "EN",
+    "CA",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-30",
+   "kits_vendored": [
+    "case-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Clinical case tracking. Zero dependencies. One file. Sections, dated symptoms, follow-ups, a timeline and a summary \u2014 the shared logic extracted from the drsamonline apps that repeat it."
+  },
+  {
+   "name": "chalk-lan",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 6666,
+   "files": 22,
+   "units": 170,
+   "caps": [
+    "OF",
+    "PWA",
+    "LAN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-22",
+   "pushed": "2026-11-01",
+   "kits_vendored": [
+    "lan-kit",
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A shared whiteboard for the room. Everyone on the same Wi-Fi draws on the same board, live. No accounts, no internet, no telemetry \u2014 the strokes travel across your own network and nowhere else."
+  },
+  {
+   "name": "compfactory",
+   "category": "Meta / system",
+   "lang": "PowerShell",
+   "loc": 83,
+   "files": 8,
+   "units": 0,
+   "caps": [
+    "TO"
+   ],
+   "licence": "NO FILE",
+   "release": null,
+   "created": "2026-10-30",
+   "pushed": "2026-10-30",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": true,
+    "landing": false,
+    "play": false,
+    "licence": false,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": ""
+  },
+  {
+   "name": "compress-kit",
+   "category": "Kit / shared library",
+   "lang": "HTML",
+   "loc": 459,
+   "files": 8,
+   "units": 16,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-30",
+   "kits_vendored": [
+    "compress-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The shared compression core for drsamonline apps. One file, no dependencies, built on the platform's Compression Streams."
+  },
+  {
+   "name": "conqueror-os",
+   "category": "Offline app",
+   "lang": "HTML",
+   "loc": 6229,
+   "files": 31,
+   "units": 226,
+   "caps": [
+    "OF",
+    "SF",
+    "CO",
+    "ZD",
+    "EX"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-11-01",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Conqueror OS is a self-contained personal application for building mental resilience. It ships a short book (The Resilience Protocol), a Markdown journal, daily trackers, fillable worksheets, structured challenges, a spa"
+  },
+  {
+   "name": "control-panel",
+   "category": "Meta / system",
+   "lang": "Python",
+   "loc": 2742,
+   "files": 18,
+   "units": 64,
+   "caps": [
+    "TO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-24",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Every workflow in every repository \u2014 what runs, when, what calls what, and what is connected to nothing."
+  },
+  {
+   "name": "corefit-md",
+   "category": "Offline app",
+   "lang": "Python",
+   "loc": 5315,
+   "files": 31,
+   "units": 75,
+   "caps": [
+    "OF",
+    "PWA",
+    "I18N",
+    "ZD"
+   ],
+   "licence": "MIT",
+   "release": null,
+   "created": "2026-11-02",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": false,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A five-minute morning core routine where every set opens on the demonstration, not the intro."
+  },
+  {
+   "name": "crypto-kit",
+   "category": "Kit / shared library",
+   "lang": "HTML",
+   "loc": 535,
+   "files": 8,
+   "units": 13,
+   "caps": [
+    "EN",
+    "CR",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-28",
+   "kits_vendored": [
+    "crypto-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The shared crypto core for drsamonline apps. One file, no dependencies, built on the Web Crypto API."
+  },
+  {
+   "name": "dance-fight",
+   "category": "Game",
+   "lang": "HTML",
+   "loc": 5047,
+   "files": 11,
+   "units": 162,
+   "caps": [
+    "OF",
+    "SF",
+    "GA",
+    "ME",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Every fight move is a dance move. A single-file browser rhythm game \u2014 load your own track, the beat is analysed up front, and every attack you throw is a dance move. Land it in time with the music and it becomes a PERFEC"
+  },
+  {
+   "name": "dashboard",
+   "category": "Meta / system",
+   "lang": "HTML",
+   "loc": 2099,
+   "files": 34,
+   "units": 37,
+   "caps": [
+    "TO",
+    "PWA"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A public status page for the whole fleet, served from GitHub Pages (public repo = free Pages, no paid plan). It shows every repo, its build health, its download links, and the store."
+  },
+  {
+   "name": "drsamonline",
+   "category": "Meta / system",
+   "lang": "Python",
+   "loc": 908,
+   "files": 8,
+   "units": 34,
+   "caps": [
+    "TO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-21",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": true,
+    "landing": false,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Five commitments, and they are not aspirations \u2014 they are the reason each project exists in the shape it does."
+  },
+  {
+   "name": "drsamonline.github.io",
+   "category": "Meta / system",
+   "lang": "HTML",
+   "loc": 2488,
+   "files": 19,
+   "units": 73,
+   "caps": [
+    "TO",
+    "PWA"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-20",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "The personal project index for Dr Sohil Momin, served by GitHub Pages at https://drsamonline.github.io/."
+  },
+  {
+   "name": "eon-commando",
+   "category": "Game",
+   "lang": "HTML",
+   "loc": 21832,
+   "files": 38,
+   "units": 152,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "GA",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v4.6.2",
+   "created": "2026-10-31",
+   "pushed": "2026-11-01",
+   "kits_vendored": [
+    "lan-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A retro run-and-gun platformer \u2014 one self-contained HTML file. No install, works offline, PolyForm Noncommercial licensed."
+  },
+  {
+   "name": "export-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 820,
+   "files": 8,
+   "units": 40,
+   "caps": [
+    "EN",
+    "EX",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-23",
+   "pushed": "2026-11-02",
+   "kits_vendored": [
+    "export-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Get bytes and files off the device, in the browser. One file, no build step, no dependencies. Works from file:// and from GitHub Pages."
+  },
+  {
+   "name": "frame-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 649,
+   "files": 8,
+   "units": 17,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-23",
+   "pushed": "2026-10-28",
+   "kits_vendored": [
+    "frame-kit",
+    "optical-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": false,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The shared transfer-frame core for drsamonline apps. One file, no build step, no dependencies."
+  },
+  {
+   "name": "game-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 1062,
+   "files": 11,
+   "units": 24,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-11-02",
+   "kits_vendored": [
+    "game-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The shared game core for drsamonline apps. Zero dependencies. The common engine every small browser game was re-implementing, extracted once from neon-engine and Aethelgard-Engine."
+  },
+  {
+   "name": "gentle-pediatrics-companion",
+   "category": "Homoeopathy / clinical",
+   "lang": "HTML",
+   "loc": 1878,
+   "files": 16,
+   "units": 34,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "CL",
+    "CO",
+    "ZD"
+   ],
+   "licence": "All rights reserved",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A small, offline phone app for a parent at the cot side \u2014 nine common childhood situations, a red-flag check that is always visible, and gentle remedy orientation from the book Gentle Pediatrics: A Practical Homeopathic "
+  },
+  {
+   "name": "heavenzip",
+   "category": "Engine / platform / tool",
+   "lang": "none",
+   "loc": 0,
+   "files": 17,
+   "units": 0,
+   "caps": [
+    "EN",
+    "TO"
+   ],
+   "licence": "MIT",
+   "release": null,
+   "created": "2026-10-30",
+   "pushed": "2026-11-01",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": false,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": ""
+  },
+  {
+   "name": "helioprism",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 4623,
+   "files": 57,
+   "units": 141,
+   "caps": [
+    "OF",
+    "PWA",
+    "OP",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-22",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "frame-kit",
+    "optical-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Move a file between two devices using only a screen and a camera \u2014 no network, no cables, no pairing. Helioprism carries the same rateless frame stream over two physical transports and picks the right one for the job."
+  },
+  {
+   "name": "homoeopathic-materia-medica-repertory-json",
+   "category": "Engine / platform / tool",
+   "lang": "Python",
+   "loc": 5428,
+   "files": 204,
+   "units": 178,
+   "caps": [
+    "CO",
+    "TO"
+   ],
+   "licence": "Mixed CC0 + GPL-3.0",
+   "release": null,
+   "created": "2026-10-20",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": false,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "repertory/repertorium-publicum-2008/ holds a complete, fully graded open repertory: 74,480 rubrics, 735,460 remedy links, 669 remedies, 41 chapters."
+  },
+  {
+   "name": "idle-city-ages-of-growth",
+   "category": "Game",
+   "lang": "JavaScript",
+   "loc": 17794,
+   "files": 29,
+   "units": 228,
+   "caps": [
+    "OF",
+    "SF",
+    "GA",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A single-file idle city-builder that grows from a Stone Age village into a Fusion Age world-city. Lay roads, zone land, generate power and keep your citizens happy \u2014 the city runs itself while you watch, plan and expand."
+  },
+  {
+   "name": "kent-repertory-explorer",
+   "category": "Homoeopathy / clinical",
+   "lang": "HTML",
+   "loc": 6001,
+   "files": 27,
+   "units": 137,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "SE",
+    "CL",
+    "CA",
+    "CO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-22",
+   "pushed": "2026-11-01",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "!offline: no network !deps: 0 runtime !tests: 14 passing !rubrics: 74,480 !payload: 1.9 MB, one file !licence: PolyForm Noncommercial 1.0.0"
+  },
+  {
+   "name": "lan-kit",
+   "category": "Kit / shared library",
+   "lang": "HTML",
+   "loc": 643,
+   "files": 9,
+   "units": 20,
+   "caps": [
+    "EN",
+    "LAN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-11-02",
+   "kits_vendored": [
+    "lan-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The shared LAN core for drsamonline apps. Zero dependencies. A local room with a real-time channel, for apps that run on a Wi-Fi network with no internet."
+  },
+  {
+   "name": "lexora",
+   "category": "Engine / platform / tool",
+   "lang": "Python",
+   "loc": 11041,
+   "files": 162,
+   "units": 170,
+   "caps": [
+    "OF",
+    "EN"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-15",
+   "pushed": "2026-11-01",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "> Project status: Phase 1 prototype in development. Documentation (Batches A\u2013E) complete/drafted; > early implementation code exists (canonicalization, Zstd core baseline, .lxz v0 container, benchmark harness, > CLI app,"
+  },
+  {
+   "name": "lockhtml",
+   "category": "Offline app",
+   "lang": "HTML",
+   "loc": 6402,
+   "files": 52,
+   "units": 176,
+   "caps": [
+    "OF",
+    "PWA",
+    "CR",
+    "EX"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-11-01",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Turn any file into a PIN-protected document \u2014 optionally viewable only once."
+  },
+  {
+   "name": "lumen",
+   "category": "Engine / platform / tool",
+   "lang": "Dart",
+   "loc": 17062,
+   "files": 125,
+   "units": 142,
+   "caps": [
+    "OF",
+    "ME",
+    "EX",
+    "SE"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v1.6.5",
+   "created": "2026-11-02",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "An offline library in the spirit of Picasa. Point it at the folders you already keep your photos in; it reads them, indexes them, and computes everything else \u2014 thumbnails, edits, faces, albums, duplicates \u2014 on your mach"
+  },
+  {
+   "name": "ml-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 519,
+   "files": 6,
+   "units": 19,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-24",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "ml-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The classic algorithms, from scratch \u2014 for offline features."
+  },
+  {
+   "name": "mnemosyne-companion",
+   "category": "Homoeopathy / clinical",
+   "lang": "HTML",
+   "loc": 4418,
+   "files": 24,
+   "units": 32,
+   "caps": [
+    "OF",
+    "SF",
+    "CO",
+    "SE",
+    "ZD"
+   ],
+   "licence": "Proprietary EULA",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A study companion for Mnemosyne Materia Medica \u2014 the 100 polycrest homoeopathic remedies as poetic pearls, keynotes and spaced-repetition drills, in a single offline app."
+  },
+  {
+   "name": "musicgen",
+   "category": "Offline app",
+   "lang": "JavaScript",
+   "loc": 12168,
+   "files": 75,
+   "units": 154,
+   "caps": [
+    "OF",
+    "PWA",
+    "GA",
+    "ME",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v4.3.0",
+   "created": "2026-10-31",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "A pocket generative composer. One tap makes a finished-sounding track \u2014 harmony, melody, drums, mix and master \u2014 from six presets and a 12-character seed. No accounts, no server, no samples. It runs entirely in your brow"
+  },
+  {
+   "name": "neon-engine",
+   "category": "Engine / platform / tool",
+   "lang": "JavaScript",
+   "loc": 66233,
+   "files": 61,
+   "units": 146,
+   "caps": [
+    "EN",
+    "GA",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-20",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A code-only open-world game engine for the browser. No assets, no build step, no dependencies &mdash; every texture, mesh and sound is generated at runtime, so a complete open-world shooter ships in about 915&nbsp;KB and"
+  },
+  {
+   "name": "neon-games",
+   "category": "Game",
+   "lang": "CSS",
+   "loc": 19368,
+   "files": 55,
+   "units": 208,
+   "caps": [
+    "OF",
+    "PWA",
+    "GA"
+   ],
+   "licence": "Other / custom",
+   "release": "app-latest-neon-games-dead-zone",
+   "created": "2026-10-20",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Two free, open-world browser games that run straight from your browser \u2014 no install, no account, no backend."
+  },
+  {
+   "name": "neon-runner",
+   "category": "Game",
+   "lang": "JavaScript",
+   "loc": 9978,
+   "files": 41,
+   "units": 149,
+   "caps": [
+    "OF",
+    "SF",
+    "GA",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-21",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A retro auto-fire side-scrolling shooter \u2014 one self-contained HTML file. No install, works offline, PolyForm Noncommercial licensed."
+  },
+  {
+   "name": "neon-velocity",
+   "category": "Game",
+   "lang": "GDScript",
+   "loc": 5503,
+   "files": 64,
+   "units": 4,
+   "caps": [
+    "OF",
+    "GA"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v1.2.0",
+   "created": "2026-10-25",
+   "pushed": "2026-10-30",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": false,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Play in the browser: <https://drsamonline.github.io/neon-velocity/play/> \u2014 it installs as an app (PWA) and works offline after the first load. Landing page: <https://drsamonline.github.io/neon-velocity/>"
+  },
+  {
+   "name": "offline-pdf-toolkit",
+   "category": "Offline app",
+   "lang": "HTML",
+   "loc": 13622,
+   "files": 56,
+   "units": 148,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "ZD",
+    "ME",
+    "EX"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-22",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Merge, split, rotate, watermark, number, protect and compress PDFs \u2014 in one small page, with no server to send them to. The page itself is about 36 KB gzipped; the PDF engines load only when you open a document, and the "
+  },
+  {
+   "name": "open-materia-medica",
+   "category": "Homoeopathy / clinical",
+   "lang": "HTML",
+   "loc": 102401,
+   "files": 759,
+   "units": 34,
+   "caps": [
+    "OF",
+    "PWA",
+    "SE",
+    "CO"
+   ],
+   "licence": "All rights reserved",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "> Where things live. The project landing page is served at > <https://drsamonline.github.io/open-materia-medica/>. The web edition > itself \u2014 the full 344-portrait library \u2014 is served at > <https://drsamonline.github.io/"
+  },
+  {
+   "name": "optical-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 478,
+   "files": 7,
+   "units": 16,
+   "caps": [
+    "EN",
+    "OP",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "optical-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The shared optical-transfer core for drsamonline apps. One file, no build step, no dependencies."
+  },
+  {
+   "name": "profile-kit",
+   "category": "Meta / system",
+   "lang": "Python",
+   "loc": 678,
+   "files": 12,
+   "units": 11,
+   "caps": [
+    "EN",
+    "TO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-28",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": false,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A small, reusable kit for a theme-aware, self-updating GitHub profile."
+  },
+  {
+   "name": "read-live-transform-app",
+   "category": "Offline app",
+   "lang": "HTML",
+   "loc": 2843,
+   "files": 28,
+   "units": 117,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "CO",
+    "ZD"
+   ],
+   "licence": "All rights reserved",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A practical reading of the Qur'an \u2014 as an app."
+  },
+  {
+   "name": "remedy-relationship-explorer",
+   "category": "Homoeopathy / clinical",
+   "lang": "HTML",
+   "loc": 6873,
+   "files": 41,
+   "units": 34,
+   "caps": [
+    "OF",
+    "PWA",
+    "SE",
+    "CL",
+    "CO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "v1.0.1",
+   "created": "2026-10-22",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "An offline, single-file explorer for homeopathic remedy relationships \u2014 built from public-domain literature."
+  },
+  {
+   "name": "repertory-kit",
+   "category": "Kit / shared library",
+   "lang": "HTML",
+   "loc": 263,
+   "files": 6,
+   "units": 8,
+   "caps": [
+    "EN",
+    "CL",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "repertory-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The homeopathic repertorisation core. Zero dependencies. One file. Rubric grading (1/2/3) and grade-weighted remedy scoring \u2014 the shared logic extracted from the drsamonline apps that repeat it."
+  },
+  {
+   "name": "repertory-reader",
+   "category": "Homoeopathy / clinical",
+   "lang": "none",
+   "loc": 1856,
+   "files": 11,
+   "units": 52,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "SE",
+    "CL",
+    "CO",
+    "EX"
+   ],
+   "licence": "CC0-1.0",
+   "release": null,
+   "created": "2026-11-02",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": true,
+    "tests": false,
+    "ci": false,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A quiet reading room for seventeen classical homoeopathic repertories \u2014 271,421 rubrics and 744,394 graded remedy links, read straight from the open JSON library on GitHub. No account, no server, no tracking, no build st"
+  },
+  {
+   "name": "retro-strike",
+   "category": "Game",
+   "lang": "HTML",
+   "loc": 4522,
+   "files": 24,
+   "units": 267,
+   "caps": [
+    "OF",
+    "SF",
+    "GA",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A complete retro-styled third-person shooter that lives inside a single HTML file \u2014 no engine, no build step, no dependencies."
+  },
+  {
+   "name": "saga-vn-engine",
+   "category": "Engine / platform / tool",
+   "lang": "JavaScript",
+   "loc": 3086,
+   "files": 37,
+   "units": 17,
+   "caps": [
+    "OF",
+    "EN",
+    "GA",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-17",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": false,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Saga is a visual-novel engine that runs from a static file server with nothing installed. It was built to make Aethelgard \u2014 The Books, and it is released on its own so you can make something else with it."
+  },
+  {
+   "name": "seance",
+   "category": "Offline app",
+   "lang": "none",
+   "loc": 656,
+   "files": 5,
+   "units": 13,
+   "caps": [
+    "OF",
+    "SF",
+    "CR",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-22",
+   "pushed": "2026-11-02",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Sealed notes, opened once. Write a note, seal it with a passphrase, and share the sealed text. It opens on the reader's device \u2014 offline, no account \u2014 and the device remembers that it was opened."
+  },
+  {
+   "name": "search-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 584,
+   "files": 6,
+   "units": 24,
+   "caps": [
+    "EN",
+    "SE",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "search-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Ranked search over big corpora. Zero dependencies. One file. An inverted index with prefix and fuzzy matching \u2014 the shared logic extracted from the drsamonline apps that repeat it."
+  },
+  {
+   "name": "skills",
+   "category": "Meta / system",
+   "lang": "Python",
+   "loc": 293669,
+   "files": 8672,
+   "units": 379,
+   "caps": [
+    "TO",
+    "CO"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A machine-consumable knowledge base of the working methods behind the drsamonline projects."
+  },
+  {
+   "name": "skin-case-tracker",
+   "category": "Homoeopathy / clinical",
+   "lang": "HTML",
+   "loc": 4271,
+   "files": 20,
+   "units": 148,
+   "caps": [
+    "OF",
+    "PWA",
+    "CA",
+    "CL",
+    "EX"
+   ],
+   "licence": "All rights reserved",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "export-kit",
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A working implementation of the HHMS dashboard described in The Skin Is a Liar (chapters 11 and 14). HHMS stands for the four fields it records \u2014 History, Habits, Mapping, Symptoms. The book's claim is that the skin is t"
+  },
+  {
+   "name": "smartbill-app",
+   "category": "Engine / platform / tool",
+   "lang": "HTML",
+   "loc": 2785,
+   "files": 13,
+   "units": 98,
+   "caps": [
+    "OF",
+    "SF",
+    "EX",
+    "ZD"
+   ],
+   "licence": "Personal-use (custom)",
+   "release": "v1.0.1",
+   "created": "2026-07-03",
+   "pushed": "2026-10-31",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A fast, serverless, single-page billing and invoicing app for Indian businesses \u2014 GST-ready, offline-first, and private by design."
+  },
+  {
+   "name": "srs-kit",
+   "category": "Kit / shared library",
+   "lang": "HTML",
+   "loc": 256,
+   "files": 6,
+   "units": 6,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "srs-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "Spaced repetition (SM-2). Zero dependencies. One file. SM-2 scheduling for flashcards \u2014 the shared logic extracted from the drsamonline apps that repeat it."
+  },
+  {
+   "name": "the-symphony-companion",
+   "category": "Offline app",
+   "lang": "HTML",
+   "loc": 2353,
+   "files": 21,
+   "units": 26,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "CO",
+    "ZD"
+   ],
+   "licence": "Personal-use (custom)",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A pocket companion to The Symphony of the Present: Waking Up from the Illusion of Tomorrow by Dr. Sohil Momin."
+  },
+  {
+   "name": "today-card",
+   "category": "Offline app",
+   "lang": "none",
+   "loc": 648,
+   "files": 5,
+   "units": 14,
+   "caps": [
+    "OF",
+    "SF",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-22",
+   "pushed": "2026-11-02",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": false,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "One card for the day. Your date, one intention, one task, and a streak. Offline, no accounts, no telemetry."
+  },
+  {
+   "name": "ui-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 676,
+   "files": 9,
+   "units": 37,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-24",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "ui-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "A reactive UI layer small enough for a single file. Zero runtime dependencies, no build step."
+  },
+  {
+   "name": "unstoppable-mind-companion",
+   "category": "Offline app",
+   "lang": "HTML",
+   "loc": 2043,
+   "files": 14,
+   "units": 26,
+   "caps": [
+    "OF",
+    "SF",
+    "CO",
+    "ZD"
+   ],
+   "licence": "Free-to-use (custom)",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "The book's key points and its exercises, in a form you can carry on your phone."
+  },
+  {
+   "name": "web-kit",
+   "category": "Kit / shared library",
+   "lang": "JavaScript",
+   "loc": 1343,
+   "files": 20,
+   "units": 26,
+   "caps": [
+    "EN",
+    "ZD"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": null,
+   "created": "2026-10-22",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": false,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "The shared offline-first runtime for drsamonline apps. One file, no build step, no CDN. Works from file:// and from GitHub Pages."
+  },
+  {
+   "name": "weft8-classroom",
+   "category": "Teaching / Weft-8",
+   "lang": "JavaScript",
+   "loc": 1536,
+   "files": 15,
+   "units": 30,
+   "caps": [
+    "EN",
+    "ED"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-31",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Nine exercises that teach how a computer actually works \u2014 on a real one."
+  },
+  {
+   "name": "weft8-compare",
+   "category": "Teaching / Weft-8",
+   "lang": "JavaScript",
+   "loc": 1390,
+   "files": 14,
+   "units": 28,
+   "caps": [
+    "EN",
+    "ED"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-31",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "Which part is the computer, and which part is the language?"
+  },
+  {
+   "name": "weft8-hardware",
+   "category": "Teaching / Weft-8",
+   "lang": "JavaScript",
+   "loc": 1773,
+   "files": 20,
+   "units": 35,
+   "caps": [
+    "EN",
+    "ED"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-31",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "The Loom's 8-bit machine, in C \u2014 and a bench that proves it is the same machine."
+  },
+  {
+   "name": "weft8-kit",
+   "category": "Teaching / Weft-8",
+   "lang": "JavaScript",
+   "loc": 1522,
+   "files": 14,
+   "units": 30,
+   "caps": [
+    "EN",
+    "ED"
+   ],
+   "licence": "PolyForm Noncommercial 1.0.0",
+   "release": "app-latest",
+   "created": "2026-10-31",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A rule is a Weft-8 program with a contract: the caller puts inputs in the ports, the rule writes one byte to the verdict port, and everything else is the machine's business."
+  },
+  {
+   "name": "whispering-body-first-aid",
+   "category": "Homoeopathy / clinical",
+   "lang": "HTML",
+   "loc": 1635,
+   "files": 19,
+   "units": 68,
+   "caps": [
+    "OF",
+    "PWA",
+    "SF",
+    "I18N",
+    "CL",
+    "CO",
+    "ZD"
+   ],
+   "licence": "Free-to-use (custom)",
+   "release": "app-latest",
+   "created": "2026-10-20",
+   "pushed": "2026-10-31",
+   "kits_vendored": [
+    "web-kit"
+   ],
+   "flags": {
+    "sw": true,
+    "tests": true,
+    "ci": true,
+    "landing": true,
+    "play": true,
+    "licence": true,
+    "changelog": false,
+    "readme": true,
+    "pages_deploy": true
+   },
+   "purpose": "A small, offline home first-aid companion built from Chapter Seven of the book. It holds 30 commonly used homeopathic first-aid remedies and helps you match one remedy to the whole picture of a symptom \u2014 the same \"listen"
+  },
+  {
+   "name": "ziptastic",
+   "category": "Engine / platform / tool",
+   "lang": "C++",
+   "loc": 16466,
+   "files": 156,
+   "units": 142,
+   "caps": [
+    "OF",
+    "EN"
+   ],
+   "licence": "MIT",
+   "release": null,
+   "created": "2026-10-30",
+   "pushed": "2026-11-02",
+   "kits_vendored": [],
+   "flags": {
+    "sw": false,
+    "tests": true,
+    "ci": true,
+    "landing": false,
+    "play": false,
+    "licence": true,
+    "changelog": true,
+    "readme": true,
+    "pages_deploy": false
+   },
+   "purpose": "The native engine of CHCE (Chimera Hybrid Compression Engine): one self-contained binary that composes preprocessors, a dual-resolution match finder, a joint optimal parser and per-block entropy backends into a single st"
+  }
+ ]
+}
