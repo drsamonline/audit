@@ -24,10 +24,14 @@ what moved.
     tools/diff.py                      compare two snapshots, print only what changed
     tools/licence_check.py             licence badge vs LICENSE file, all repos
     tools/fix_licence_badges.py        make a badge say what its LICENSE grants
+    tools/presentation_audit.py        landing page, app, badges, shots, support block, per repo
+    tools/verify.py                    the repo-presentation skill's gate, copied verbatim
 
-Two report sets live here so far: `reports/2026-11-fleet-audit/` (the whole estate read end to end)
-and `reports/2026-11-forge-release/` (the plan to ship the control plane as one release). A report is
-a measurement or a plan; the log entry is the decision. Neither is a substitute for the other.
+Three report sets live here so far: `reports/2026-11-fleet-audit/` (the whole estate read end to
+end), `reports/2026-11-forge-release/` (the plan to ship the control plane as one release) and
+`reports/2026-11-presentation-audit/` (all 100 repos against the presentation skill, with the delta
+each one still needs). A report is a measurement or a plan; the log entry is the decision. Neither
+is a substitute for the other.
 
 ## The rule
 
