@@ -1,0 +1,256 @@
+# 01 — The system map
+
+**Measured 3 November 2026.** Every number here was read from the API at that date: 100 public
+repositories and 9 private ones under `drsamonline`, 109 in total. The 9 private are `forge`,
+`registry`, `knowledge`, `dumps` and `dumps-2` … `dumps-6`.
+
+This document answers three questions: **what each repository is for**, **what actually controls
+what**, and **where the truth lives when two things disagree**.
+
+---
+
+## 1. The shape
+
+    ┌─ LAYER 1 · CONTROL PLANE ───────────────────────────────────────────────┐
+    │  forge        the brain: queue, rules, prompts, templates, workflows    │
+    │  registry     the database: what exists, its role, its score, its plan  │
+    │  knowledge    the black box: run logs, resolved issues, system documents │
+    │  dumps(×6)    the safety net: compressed snapshots, restore-proven       │
+    └───────────────────────────────┬─────────────────────────────────────────┘
+                                    │  writes, scaffolds, adopts, sweeps
+    ┌─ LAYER 2 · FACTORY ───────────▼─────────────────────────────────────────┐
+    │  app-builder  the reusable build: EXE + APK + Linux + release + Pages   │
+    │               also drsoam.py — the one shared GitHub client and generator │
+    │  backup       the reusable pre-merge snapshot into dumps                 │
+    └───────────────────────────────┬─────────────────────────────────────────┘
+                                    │  called by every app in twelve lines
+    ┌─ LAYER 3 · SHARED PARTS ──────▼─────────────────────────────────────────┐
+    │  19 kits: web, export, crypto, compress, optical, frame, lan, game,     │
+    │  audio, art, ui, ml, search, srs, book, case, repertory, astro, profile │
+    └───────────────────────────────┬─────────────────────────────────────────┘
+                                    │  vendored as one file, never retrofitted
+    ┌─ LAYER 4 · PRODUCTS ──────────▼─────────────────────────────────────────┐
+    │  ~70 single-file offline apps: clinical, LAN, games, study, tools       │
+    └───────────────────────────────┬─────────────────────────────────────────┘
+                                    │  published, not read
+    ┌─ LAYER 5 · SURFACES ──────────▼─────────────────────────────────────────┐
+    │  dashboard    the vitals — products, build health, downloads, store     │
+    │  control-panel the map — every workflow, its triggers, its Run button   │
+    │  drsamonline.github.io  the index — new repos appear automatically      │
+    │  Matneo        the storefront   ·  skills   the machine-readable catalogue │
+    └─────────────────────────────────────────────────────────────────────────┘
+
+The arrows only go down. Nothing in layer 4 is allowed to be a dependency of layer 3, and no app
+imports another app. That is principle 1 of the system plan and it has held.
+
+---
+
+## 2. Every repository, and the one thing it is for
+
+### 2.1 The control plane
+
+**`forge` — private, 373 files, 26 workflows.** The brain, and the only repository that writes to
+other repositories on its own initiative. It holds six kinds of thing:
+
+| What | Where | Who reads it |
+|---|---|---|
+| The work queue | `BACKLOG.md`, `WORKLIST.md`, `QUEUE/` (154 app specs, 19 kit specs, 8 rule specs, 20 system specs) | the next session, `new-app.yml` |
+| The state | `STATE.json` (budget, current, done, blocked, decisions), `PROGRESS.log`, `RUNS.jsonl`, `LOCK` | every batch run |
+| The rules | `PROMPTS/` (20 files), `LEARNINGS.md`, `LESSONS.md`, `HANDOFF.md`, `GOVERNANCE.md`, `SPEC-SHAPE.md` | the agent, and the guards |
+| The machine state | `registry/*.json` (13 files: audit, backlog-done, delivery, deps, diagnose, drift, learnings, lessons, licence-policy, parity, size, spec-mismatch, startup-failures, updates) | `tools/*.py` |
+| The templates | `templates/app/`, `templates/master-list/` | `new-app.yml` |
+| The tools | `tools/` (34 Python + `commit-and-verify.sh`), `scripts/` (intake, batch, new-app, new-kit, attempts) | the workflows |
+
+**`registry` — private, 17 files, 1 workflow.** The machine-readable truth, refreshed by
+`refresh.yml`. `repos.json` (81 KB — every repository with role, score, releases, workflows),
+`catalog.json` (the estate as nodes and edges), `plan.json` (153 planned apps plus `reconciled`),
+`deps.json` (the kit graph), `build-status.json` (what "built" means, and who meets it),
+`audit-history.json`, `quota.json`, `queue.json`, `proposals.json`. Its README states the honest
+part: `builds.json` has **no producer**, and the score in `repos.json` is metadata completeness, not
+build quality.
+
+**`knowledge` — private, 23 files, 1 workflow.** The black box. `docs/drsamonline_system_plan.md`
+(54 KB — the specification), `APP_MASTER_LIST.md`, `BUILD_ORDER.md`, `app_ideas_categorized.md`,
+`app_ideas_prompts.md`, `forge_commercial_plan.md`, `loom_build_plan.md`, plus `issues/` (numbered,
+with a template) and `logs/`. It only ever grows. `index.json` is generated by `scripts/build_index.py`.
+
+**`dumps` … `dumps-6` — private.** Compressed snapshots written by `backup/backup.py`, `keep: 100` per
+repository, rolling to a new `dumps-N` when a part fills. The cap was raised from 800 MB to **2 GB on
+2026-11-02**, and the six parts were then consolidated: `dumps` and `dumps-2` are full, `dumps-4` and
+`dumps-5` are empty because every snapshot in them had a copy elsewhere. Dedupe is byte-identical, by
+`(repository, tree sha)`. The rollover is real but it is no longer the normal path.
+
+### 2.2 The factory
+
+**`app-builder` — public, 54 files, 4 workflows.** Two jobs, and it is the single most load-bearing
+repository in the estate.
+
+*The build.* `.github/workflows/build.yml` is a reusable workflow called by every app. It runs seven
+parallel or chained jobs: `exe` (Windows, PyInstaller, icon generated and verified), `apk` (Ubuntu,
+Gradle, signed, launcher icons generated and verified), `linux` (a binary that must actually serve
+the app in a smoke test), `version` (consume change files, commit version + changelog, publish),
+`kit-guard` (refuse a kit added to a page that already existed), `parity` (compare the app against its
+base), `demo` (the demo must equal the app plus an SEO block), then `release` (collect the three
+artifacts into the rolling `app-latest` tag), `pages` (enable Pages if off, upload, deploy), and
+`shot` (headless Chromium screenshot, written back into the README).
+
+*The shared client.* `drsoam.py` (52 KB) is imported by `registry/refresh.py`,
+`dashboard/refresh.yml`, `knowledge/refresh.yml` and the store. It owns `repos()`, `products()`,
+`score()`, `dashboard()`, `plan_block()`, `KITS` and — nominally — "the ONE exclusion list". Every
+generator in the estate reads the same module, which is why the numbers can be compared at all. It
+also contains the estate's three patterns of honest degradation: refuse to publish on a failed fetch,
+keep the previous feed byte-for-byte, exit 3.
+
+**`backup` — public, the reusable snapshot.** `backup.yml` takes `ref` (default: the PR's base
+commit), `dumps_repo`, `keep`, `max_mb`, `restore_test`. `--restore-test` unpacks the newest dump and
+compares it file for file with the commit it names. It is the only mechanism in the estate that has
+proved a backup restores.
+
+### 2.3 The shared parts
+
+**19 kits**, each a single dependency-free file plus a test: `web-kit` (storage, i18n EN/HI/GU, CSV,
+PWA, theme, a11y — 25 adopters), `export-kit` (8), `lan-kit` (3), `frame-kit` (3), `optical-kit` (3),
+`search-kit` (2), `case-kit` (2), then `game-kit`, `art-kit`, `audio-kit`, `ml-kit`, `ui-kit`,
+`book-kit`, `srs-kit`, `repertory-kit`, `astro-kit`, `compress-kit`, `crypto-kit`, `profile-kit` with
+one adopter or none.
+
+**Kits are one-way.** A kit learns from repositories and is used to build new apps; it is never
+retrofitted into a repository that already exists. `app-builder/tools/kit-guard.py` fails the build
+when a kit load is added to a page that already existed. This rule replaced an earlier parity rule and
+it is the reason 11 kits sit unused without anyone deleting them.
+
+### 2.4 The products
+
+Around 70 single-file offline apps. The families worth naming, because they are the assets:
+
+- **Clinical** (13 repositories): `repertory-reader` (17 repertories, 271,421 rubrics, 744,394 graded
+  remedy links), `kent-repertory-explorer`, `boericke-repertory`, `open-materia-medica`,
+  `remedy-relationship-explorer`, `MATERIA-MEDICA-BUILDER`, `app-thermals`, `mnemosyne-companion`,
+  `app-organon-reader`, `app-encrypted-case-log`, `skin-case-tracker`, `gentle-pediatrics-companion`,
+  `whispering-body-first-aid`.
+- **Institutional**: `HMS` (a LAN hospital management system, proprietary EULA), `smartbill-app`
+  (GST billing), and the Room apps `chalk-lan`, `canteen-lan`, `app-lantern`.
+- **Engines and machines**: `neon-engine`, `aethelgard-rpg-engine`, `saga-vn-engine`, `weft8-kit` +
+  its four satellites, `NEO` (a language with four backends), `The_Browser` (a C++ engine, not
+  finished, builds fail by design).
+- **Tools**: `All4ONE` (403 tools in one binary), `TTB` (591 utilities as a browser extension),
+  `app-image-toolkit`, `offline-pdf-toolkit`, `base-bench`, `CLDR`.
+
+### 2.5 The surfaces
+
+**`dashboard` — public.** Reads `data.json` produced by `drsoam.py dashboard`. Products, build
+health, downloads, the store, forks, community, traffic, quota, attention, changes, `feed.xml`.
+
+**`control-panel` — public, 21 files, 1 workflow.** The map: `docs/inventory.json` (every workflow,
+parsed), `docs/plan.json` (four stages, the routes), `docs/index.html` (the panel with a Run button
+per workflow), plus `gaps.json`, `routes.json`, `interactions.json`. `scan.yml` re-fetches and
+rebuilds weekly so the page cannot drift from the workflows.
+
+**`drsamonline.github.io`** the index, **`Matneo`** the storefront, **`skills`** the catalogue,
+**`drsamonline`** the profile. All four are regenerated by their own schedules.
+
+### 2.6 The meta and tooling repositories
+
+`audit` (this repo — the change log), `app-companion-forge` (the offline console for the Forge
+system, built with Forge on `web-kit`), `app-builder`'s `app-companion-forge` sibling,
+`compfactory` and `HCS` (the compression workspace and its sources), `ziptastic` and `heavenzip` (the
+CHCE engines), `weft8-*` (four), `ai-bridge`, `lockhtml`, `helioprism`, `BLINKTRANSFER`,
+`blinkcode-ai`, `lexora`, `ULTIMATE-WINDOWS-OPTIMIZER`, `profile-kit`, `dance-fight`, `neon-games`,
+`aethelgard-games`, `neon-velocity`, `retro-strike`, `Scrap-and-Gun`, `eon-commando`, `neon-runner`,
+`idle-city-ages-of-growth`, `conqueror-os`, `seance`, `today-card`, `ambient-sound-studio`,
+`corefit-md`, `app-panchang`, `app-poets-studio`, `base-bench`, `read-live-transform-app`,
+`the-symphony-companion`, `unstoppable-mind-companion`, `bmi-bmr-tdee-macros-fluid-calculator`,
+`SmartNotes`, `saga-vn-engine`, `offline-pdf-toolkit`, `app-image-toolkit`,
+`homoeopathic-materia-medica-repertory-json`, `bmi-bmr-tdee-macros-fluid-calculator`, `canteen-lan`,
+`chalk-lan`, `app-lantern`, `helioprism`, `base-bench`.
+
+---
+
+## 3. What actually controls what
+
+Four mechanisms govern the estate. Everything else is content.
+
+### 3.1 The queue and the state — `forge/BACKLOG.md` + `STATE.json` + `QUEUE/`
+
+Nothing is built that is not a queue item, and every queue item is resumable. `new-app.yml`'s `auto`
+job reads `QUEUE/app-*.md` and scaffolds **the first spec whose repository does not exist**, skipping
+any spec that is under 400 bytes (a tagline is not a spec), marked DRAFT, or marked PAUSED. This is
+Rule 0 in executable form and it is the single most important guard against building the wrong thing.
+
+### 3.2 The canonical caller — twelve lines in every app
+
+```yaml
+jobs:
+  app:
+    uses: drsamonline/app-builder/.github/workflows/build.yml@<sha>
+    with: { app_name: <name>, app_src: docs/play, deploy_path: docs }
+    permissions: { contents: write, pages: write, id-token: write }
+```
+
+Every app repository carries this file as `.github/workflows/build-apps.yml`. It is written by
+`new-app.yml` at scaffold time and by `app-deliver.yml` for any app missing it. **One file, one
+contract, ~70 callers** — and the audit verified all callers declare no undeclared input, no
+undeclared secret and no unsupported key. This is the strongest part of the estate.
+
+### 3.3 The reusable build — `app-builder/build.yml`
+
+Because it is called, not copied, one edit reaches every app. The cost is that there is no staging:
+`@main` or a SHA, no environment, no tag promotion. The audit recorded this as a structural fact, not
+a defect, and this release changes the pin from `@main` to a SHA (fix 8, `03-one-release.md`).
+
+### 3.4 The guards — six rules with a mechanism that fails when broken
+
+| Rule | Guard | Runs in CI? |
+|---|---|---|
+| Kits are one-way, never retrofitted | `app-builder/tools/kit-guard.py` | yes, inside `build.yml` |
+| The demo is the app | `forge/tools/demo-drift.py` | self-test only |
+| One licence everywhere | `forge/tools/policy-guard.py` | yes, `forge/lint.yml` |
+| A spec before a scaffold | `forge/tools/spec-guard.py` | yes, `forge/lint.yml` |
+| The register is internally consistent | `forge/tools/register-check.py` | yes, `forge/lint.yml` |
+| A commit step's verdict is "did it land" | `forge/tools/commit-and-verify.sh` | yes, in 11 workflows |
+
+The seventh rule — *nothing is distributed as text to paste* — has no guard, because the practice was
+removed instead: the shared block is off all 30 app repositories.
+
+---
+
+## 4. Where the truth lives, and where it disagrees
+
+The audit's `SOURCE_OF_TRUTH_MATRIX.md` recorded 15 questions, 5 conflicts and 6 ownership rules.
+Four of the five conflicts were repaired in Phase 9. What a fresh install must still know:
+
+| Question | Answer today | The trap |
+|---|---|---|
+| How many repositories exist? | `registry/repos.json`, from `drsoam.repos()` | four discovery paths historically gave 74 / 69 / 78 / 30; the repair is one path that emits `{seen, skipped}` |
+| What is each repository's role? | `registry/repos.json.role`, carried forward from itself | nothing derives it — a new repo is `product` until a human says otherwise |
+| Is this product good? | `build-status.json` (working app, working release, landing page, live demo) | `repos.json.score` is **metadata completeness**, not quality; it reads 5/5 on a repo whose build failed |
+| Is the estate healthy? | `forge/health.yml` counts states and opens one issue | it was a boolean over 11 hand-listed workflows, three of them private and therefore unobservable |
+| Built vs planned? | `registry/plan.json.reconciled` | the dashboard used to compute its own, against a different denominator; both are now labelled |
+| Which licence applies? | `forge/registry/licence-policy.json`, read by `tools/licence.py` before it touches anything | the policy is the truth; a badge is a claim. 47 repositories and 84 surfaces were corrected against it |
+| Is a merge backed up? | `dumps/backup-all` (6-hourly) **and** `forge/backup.yml` (pre-merge) | the pre-merge path failed 40 runs at startup; documentation claimed it was the safety net |
+
+**The rule the estate earned, and the reason this release has a phase 2:** a failed read is not an
+empty result, and a stale snapshot is not a live fact. Every discovery call must say what it could
+not see.
+
+---
+
+## 5. The token model — why this matters for a re-install
+
+Three credentials do all the work, and they are not interchangeable:
+
+| Credential | Scope | Used by | What breaks without it |
+|---|---|---|---|
+| `github.token` | the repository the workflow runs in | builds, Pages, most commits | nothing runs at all |
+| `FANOUT_TOKEN` | a fine-grained PAT: Contents RW + Pull requests RW on the consumer repos | `new-app`, `adopt`, `app-deliver`, `sweep`, `self-heal`, `self-diagnose`, `licence`, `health`, `dumps-dedupe` | cross-repo work silently degrades to "report what I would do" |
+| `BACKUP_TOKEN` | Contents RW on `dumps*` | `backup/backup.yml` | the pre-merge snapshot cannot write |
+
+**The trap that cost 40 failed runs:** a reusable workflow declares a secret `required: true`, and the
+caller does not hold it. GitHub rejects the call **before creating any job** — 0 jobs, 0 check runs, 0
+annotations, a 22-byte log. Nothing can report it, because nothing ran. The workflow's own "is the
+token set?" guard is unreachable. The bootstrap makes every cross-repo secret **optional** and checks
+for it in the first step of the job instead (fix 9).
+
+**And the second trap:** a token must never go in a git remote URL, because `git remote -v` and any
+uncaught error prints it. The estate's pattern is `gh auth setup-git`, which points git's credential
+helper at `gh`, which is already authenticated. Every bootstrap step uses it.
