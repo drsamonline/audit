@@ -18,11 +18,16 @@ what moved.
 ## Layout
 
     log/YYYY-MM/YYYY-MM-DD-<slug>.md   one file per session
+    reports/<YYYY-MM>-<slug>/          a measurement or a plan, with its evidence beside it
     state/                             machine-readable snapshots, refreshed by tools/collect.py
     tools/collect.py                   read every repo into state/
     tools/diff.py                      compare two snapshots, print only what changed
     tools/licence_check.py             licence badge vs LICENSE file, all repos
     tools/fix_licence_badges.py        make a badge say what its LICENSE grants
+
+Two report sets live here so far: `reports/2026-11-fleet-audit/` (the whole estate read end to end)
+and `reports/2026-11-forge-release/` (the plan to ship the control plane as one release). A report is
+a measurement or a plan; the log entry is the decision. Neither is a substitute for the other.
 
 ## The rule
 
