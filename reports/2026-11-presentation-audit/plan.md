@@ -123,6 +123,48 @@ the phone can host.
 Two measures that raise the bar for real: an optional **PIN per library**, and an optional
 **device allowlist** on the server, so only the machines in the room can fetch anything at all.
 
+
+### Access: two modes, both selectable, per library
+
+| mode | what it means | right for |
+|---|---|---|
+| **Anyone on this Wi-Fi** | the library answers every device on the network, no setup | a classroom, a waiting room, a village — the point is nobody has to be set up first |
+| **Only people I let in** | a six-digit code and a QR; a new device waits in a list until approved once, then is remembered | a clinic, a home, anything where the Wi-Fi is not the boundary |
+
+Both live in the same server; the choice is per library and can be changed while it is running. The
+approval list is the allowlist: a device that has not been let in gets nothing, not even a listing.
+
+### Parked, deliberately
+
+- **A tiny FTP/HTTP file server** that lists everything shared and lets people pull it down. This is
+  not a new app: it is Lantern's *allow download* mode with the shelf turned into a file list. Build
+  it here when the mode exists, rather than as a second program.
+- **Three more apps on the same pattern** — a photo gallery server, a music streamer, and a video or
+  classroom-cast server. Also: a photo *drop* (people send photos to the host, for a wedding or an
+  event), an app-and-installer shelf for a computer lab (the fleet already builds APKs), and a
+  handout/exam distribution with read receipts.
+
+  The reason they are cheap later and expensive now: they are **one server core plus a viewer per
+  media type**. `lan-kit` already is that core — `chalk-lan` and `canteen-lan` run on it. Lantern is
+  the first of the family to grow a proper shell (two doors, folder sharing, discovery, access modes);
+  once that shell exists, a gallery or a player is a new shelf and a new viewer, not a new server.
+  Build the shell once, here.
+
+## Lantern v1 — frozen scope
+
+Nothing outside this list goes in v1. Anything else is a v2 conversation.
+
+1. one app at `docs/play/`, the landing page stays separate at `docs/index.html`, same lamp logo;
+2. first screen: **Share my books** / **Read books**, with the libraries already found shown;
+3. share: folder picker, per-folder counts (readable / name-only), pause and remove;
+4. discovery: mDNS by default, six-digit code and QR as the fallback;
+5. shelf: derived titles, format on the spine, reading position per book per device, search;
+6. reader: HTML/MD/TXT native, PDF and EPUB through vendored viewers, images zoomable, one set of
+   controls for all of them;
+7. access: both modes above; download: read-only or allow-download, per library;
+8. builds: HTML, Windows and Linux (Electron), Android reader (TWA);
+9. the format table on the page, and the honest read-only paragraph beside it.
+
 ### Batch 4 — Lantern: content in the box, and a demo that shows the product
 
 *The install block for this page is already done — it is the worked example in `install-block.md`.
