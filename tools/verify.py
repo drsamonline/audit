@@ -174,8 +174,12 @@ def inspect(root):
             if any(neg in lead for neg in ("no ", "not ", "never ", "without ")):
                 continue  # "no macOS or iOS build" is the policy, not a violation
             ios_words.append("%s: %s" % (rel, m.group(0)))
+    # The owner's ruling: all 100 repos are public, GitHub Actions is free for public
+    # repositories including macOS runners, and a .dmg is a link. So an Apple target is
+    # a warning, not a failure — recorded, and worth deleting next time the page is
+    # edited for another reason.
     check(not targets, "no macOS or iOS build targets",
-          "; ".join(sorted(set(targets))[:4]),
+          "; ".join(sorted(set(targets))[:4]), warn_only=True,
           action="this estate ships Windows, Linux and Android — delete the Apple target: the "
                  "macos runner, the .dmg/.pkg/.ipa, the App Store or TestFlight link, the "
                  "Download for Mac button")
@@ -199,8 +203,17 @@ def inspect(root):
           action="keep the screenshot behind the frame so a blocked demo still shows the product")
 
     # --- themes --------------------------------------------------------------
-    check("prefers-color-scheme" in landing, "landing page respects the system theme",
-          action="light is the base palette; let prefers-color-scheme decide the first paint")
+    # A page that declares `color-scheme: dark` has made a choice and says so; one
+    # that is dark by accident has not thought about it. The first is a warning, the
+    # second is a failure — otherwise the estate is told to repaint ninety pages the
+    # owner has looked at and approved.
+    declares_dark = (re.search(r"color-scheme\s*:\s*dark", landing, re.I) is not None
+                     or re.search(r'name=["\']color-scheme["\']\s+content=["\']dark', landing, re.I) is not None)
+    check("prefers-color-scheme" in landing or declares_dark,
+          "landing page respects the system theme",
+          warn_only=declares_dark,
+          action="light is the base palette; let prefers-color-scheme decide the first paint "
+                 "(a deliberate dark-only page should declare color-scheme: dark)")
     # Any page-scoped key that names a theme: `theme:landing` and `thermals:landing-theme`
     # are both right — what the rule forbids is sharing one key with the app. The key is
     # often a constant, so a bare `localStorage.setItem(KEY, ...)` is resolved to its
@@ -215,8 +228,11 @@ def inspect(root):
                              r"\s*=\s*['\"]([^'\"]*)['\"]", landing)
             if decl and "theme" in decl.group(1).lower():
                 theme_key = decl
-    check(theme_key is not None,
+    # A dark-only page has no toggle, so there is nothing to remember. What the rule
+    # forbids is a toggle whose choice leaks between the page and the app.
+    check(theme_key is not None or declares_dark,
           "landing page remembers its theme under its own key",
+          warn_only=theme_key is None and declares_dark,
           action="store under a page-scoped key so the landing page and the app do not fight")
     check("data-theme" in landing, "landing page has a theme toggle", warn_only=True,
           action="add the header toggle, wired to the same variables")
