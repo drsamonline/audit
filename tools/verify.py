@@ -207,8 +207,11 @@ def inspect(root):
     # that is dark by accident has not thought about it. The first is a warning, the
     # second is a failure — otherwise the estate is told to repaint ninety pages the
     # owner has looked at and approved.
-    declares_dark = (re.search(r"color-scheme\s*:\s*dark", landing, re.I) is not None
-                     or re.search(r'name=["\']color-scheme["\']\s+content=["\']dark', landing, re.I) is not None)
+    # A page that states its scheme — light or dark, in CSS or a meta tag — has made a
+    # choice; one that says nothing has not thought about it.
+    declares_dark = (re.search(r"color-scheme\s*:\s*(dark|light)", landing, re.I) is not None
+                     or re.search(r'name=["\']color-scheme["\']\s+content=["\'](dark|light)',
+                                  landing, re.I) is not None)
     check("prefers-color-scheme" in landing or declares_dark,
           "landing page respects the system theme",
           warn_only=declares_dark,
@@ -327,8 +330,13 @@ def inspect(root):
           action="add the Support table from assets/readme-template.md")
     # shields.io is allowed by the owner's ruling: a committed SVG goes stale the day
     # after it is generated, and a live badge carries status a static file cannot.
+    # Live status badges are allowed by the same ruling that allows shields.io: a
+    # committed SVG cannot carry a CI result. GitHub's own workflow badge is the
+    # same kind of thing.
+    def _live_badge(u):
+        return "img.shields.io" in u or re.search(r"/actions/workflows/[^)]*/badge\.svg", u) is not None
     remote_readme = [m.group(0) for m in re.finditer(r"!\[[^\]]*\]\(\s*https?://[^)]+\)", readme)
-                     if "img.shields.io" not in m.group(0)]
+                     if not _live_badge(m.group(0))]
     check(not remote_readme,
           "README images are local files, not an image service",
           action="commit the image and reference it by relative path")
