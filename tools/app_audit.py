@@ -29,8 +29,12 @@ PROBE = """
   var errs = [], missing = [], unhandled = [];
   window.addEventListener('error', function (e) {
     if (e && e.target && e.target !== window && e.target.tagName) {
-      var src = e.target.src || e.target.href || '';
-      if (src) missing.push(e.target.tagName.toLowerCase() + ':' + src.split('/').slice(-1)[0]);
+      var t = e.target;
+      /* A module script never loads over file:// — the browser refuses it for CORS
+         reasons — so its failure here says nothing about the deployed site. */
+      if (t.tagName === 'SCRIPT' && t.type === 'module') return;
+      var src = t.src || t.href || '';
+      if (src) missing.push(t.tagName.toLowerCase() + ':' + src.split('/').slice(-1)[0]);
       return;
     }
     errs.push(String((e && e.message) || 'error'));
@@ -64,9 +68,13 @@ def audit(repo, wait=2000):
     if not os.path.isdir(play):
         return {"repo": os.path.basename(repo), "skipped": "no docs/play"}
 
+    # copy the whole docs/ tree, not just play/: an app that references ../screenshots/
+    # or ../landing.css resolves those paths relative to the site root, and a copy of
+    # play/ alone makes them look missing when they are not.
     tmp = tempfile.mkdtemp(prefix="appaudit-")
     work = os.path.join(tmp, "play")
-    shutil.copytree(play, work)
+    shutil.copytree(os.path.dirname(play), os.path.join(tmp, "docs"))
+    work = os.path.join(tmp, "docs", "play")
     index = os.path.join(work, "index.html")
     body = open(index, encoding="utf-8", errors="replace").read()
     body = body.replace("</body>", PROBE % {"wait": wait} + "</body>", 1)
