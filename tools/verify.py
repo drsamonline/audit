@@ -147,13 +147,19 @@ def inspect(root):
     check(bool(landing), "docs/index.html exists",
           action="step 1-2: move the app to docs/play/ and build the landing page "
                   "from assets/landing-skeleton.html")
-    check(bool(app), "docs/play/index.html exists",
+    # A kit, an engine or a dataset has no product UI, so the app-shaped checks do
+    # not apply: there is nothing to put at docs/play/ and nothing to photograph.
+    # They are warnings here; the estate walker decides from the tier map whether
+    # that is acceptable for this repo.
+    has_app = bool(app)
+    no_app = "no app at docs/play/ — this repo has no product UI (kit, engine or dataset)"
+    check(has_app, "docs/play/index.html exists", no_app, warn_only=not has_app,
           action="step 1: the app belongs at docs/play/index.html, with everything it loads")
-    check("play/" in landing, "landing page points at the app at play/",
-          "no href/src referencing play/",
+    check("play/" in landing or not has_app, "landing page points at the app at play/",
+          "no href/src referencing play/", warn_only=not has_app,
           action="point the hero CTA and the demo frame at play/")
-    check(bool(landing) and bool(app) and landing.strip() != app.strip(),
-          "landing page is not a copy of the app",
+    check(bool(landing) and (not has_app or landing.strip() != app.strip()),
+          "landing page is not a copy of the app", warn_only=not has_app,
           action="the landing page is its own design; keep the app in docs/play/ untouched")
 
     # --- platforms: Windows, Linux, Android. Nothing Apple. ------------------
@@ -195,8 +201,8 @@ def inspect(root):
     keyboard_app = re.search(r"addEventListener\(\s*['\"]key(?:down|up)['\"]", app or "") is not None
     linked_full = re.search(r'href="play/?"[^>]*target="_blank"', landing) is not None or \
                   re.search(r'href="\./play/?"[^>]*target="_blank"', landing) is not None
-    check("<iframe" in landing or (keyboard_app and linked_full),
-          "landing page embeds the app in a frame",
+    check("<iframe" in landing or (keyboard_app and linked_full) or not app,
+          "landing page embeds the app in a frame", warn_only=not app,
           action="step 3: <iframe src=\"play/\"> behind a poster, revealed on load — "
                  "unless the app is keyboard-driven, in which case link it full screen")
     check("poster" in landing, "the frame has a poster behind it", warn_only=True,
@@ -290,7 +296,7 @@ def inspect(root):
         p = os.path.join(assets, name)
         size = os.path.getsize(p) if os.path.exists(p) else 0
         check(size >= floor, "docs/assets/%s looks like a real screenshot" % name,
-              "%d bytes" % size if size else "missing",
+              "%d bytes" % size if size else "missing", warn_only=not has_app,
               action="step 5: scripts/shot.sh <repo> app app \"#/<populated route>\"")
 
     # --- an image the page points at must be an image that exists ------------
@@ -322,8 +328,8 @@ def inspect(root):
                          "look at the image before committing it")
 
     # --- README --------------------------------------------------------------
-    check("<!-- shot:start -->" in readme and "<!-- shot:end -->" in readme,
-          "README keeps the pipeline's shot markers",
+    check("<!-- shot:start -->" in readme and "<!-- shot:end -->" in readme or not app,
+          "README keeps the pipeline's shot markers", warn_only=not app,
           action="step 7: restore the shot:start/shot:end block — the pipeline writes into it")
     check(re.search(r"^##\s+Support\s*$", readme, re.M) is not None,
           "README has a Support section",
