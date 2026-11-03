@@ -300,7 +300,11 @@ def inspect(root):
     check(re.search(r"^##\s+Support\s*$", readme, re.M) is not None,
           "README has a Support section",
           action="add the Support table from assets/readme-template.md")
-    check(not re.search(r"!\[[^\]]*\]\(\s*https?://", readme),
+    # shields.io is allowed by the owner's ruling: a committed SVG goes stale the day
+    # after it is generated, and a live badge carries status a static file cannot.
+    remote_readme = [m.group(0) for m in re.finditer(r"!\[[^\]]*\]\(\s*https?://[^)]+\)", readme)
+                     if "img.shields.io" not in m.group(0)]
+    check(not remote_readme,
           "README images are local files, not an image service",
           action="commit the image and reference it by relative path")
 
@@ -419,6 +423,10 @@ def inspect(root):
             if "noopener" in frag or "mailto:" in frag or "upi://" in frag:
                 continue  # an outbound *link* is fine; a subresource is not
             if 'href="https' in frag or "href='https" in frag:
+                continue
+            # shields.io is allowed by the owner's ruling: a committed SVG goes stale the
+            # day after it is generated, and a live badge carries status a static cannot.
+            if "img.shields.io" in frag:
                 continue
             offenders.append("%s: %s" % (name, frag.strip()[:80]))
         for m in CSS_REMOTE.finditer(body):
