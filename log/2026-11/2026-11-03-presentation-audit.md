@@ -78,6 +78,15 @@ than guessed at.
   `assets/support-block.html`. A second copy here would be a second source of truth for six handles
   that are meant to be identical everywhere.
 - **Did not rebuild `lumen`.** It passes. It is the reference, and the report says so.
+- **Did not touch the six Apple targets, after checking what they cost.** The owner asked whether a
+  macOS build target bills him anything, and it does not: all 100 repos are public, and GitHub
+  Actions is free for public repositories, macOS runners included. A `.dmg` button is a link; a
+  TestFlight mention enrols nobody in the US$99/yr Developer Program. What is left is honesty, not
+  money — `remedy-relationship-explorer`'s `build-desktop.yml` only runs on `v*` tags, but
+  `lockhtml`'s `ci.yml` puts `macos-latest` in a matrix on every push, so four macOS jobs per push
+  are spent on a platform this estate does not ship. Recorded, not fixed. **This reverses the moment
+  a repo goes private** — the macOS multiplier applies to a private repo's included minutes, and
+  four jobs × four Python versions at ten times the Linux rate is a real bill.
 - **Did not add a CI gate for this.** The check needs 100 clones; that belongs in a scheduled job
   with a cache, not in a per-push workflow. It is in `Next`.
 
@@ -86,11 +95,13 @@ than guessed at.
 Work by class, not by repo — the paste that has to be identical 98 times is worth doing while it is
 still one habit:
 
-1. the six Apple targets (correctness, not cosmetics)
-2. the 36 network badges — one mechanical fix per repo
-3. the 98 support blocks, with `verify.py . --fix` for the QR and the portrait
-4. the 98 READMEs
-5. the 51 splits and the 26 landings — the design work, which does not batch
+1. the 36 network badges — one mechanical fix per repo
+2. the 98 support blocks, with `verify.py . --fix` for the QR and the portrait
+3. the 98 READMEs
+4. the 51 splits and the 26 landings — the design work, which does not batch
+
+Not in that list: the six Apple targets, left alone because they bill nothing while the repos are
+public. Delete `lockhtml`'s macOS runner if that repo is ever made private.
 
 Then re-run `tools/presentation_audit.py` and record the new surface table here. The rollout is
 finished when the support column reads 100, not when the last commit lands.

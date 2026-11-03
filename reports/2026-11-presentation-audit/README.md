@@ -61,17 +61,36 @@ a time across the fleet, not one repo at a time through all six.
 | **LANDING** | 26 | no landing page at all | build one from `assets/landing-skeleton.html` |
 | **APPLE** | 6 | a `.dmg`, a macos runner, a Download-for-Mac button | delete the target |
 
-Two of these are **defects, not omissions**, and they are the ones worth doing first:
+One of these is a **defect, not an omission**, and it is the one worth doing first:
 
 - **`NETWORK-BADGE` (36 repos).** The landing page of a repo whose whole promise is "offline, no
   server, no tracking" loads its own description from `img.shields.io`. Every one of those pages
   contradicts its product in the first 200 pixels. `CLDR`, `HMS`, `NEO`, `TTB`, `The_Browser`,
   `Matneo`, `SmartNotes`, `lexora`, `neon-engine` and 27 others.
-- **`APPLE` (6 repos).** `dance-fight`, `eon-commando`, `neon-runner`, `retro-strike` and
-  `remedy-relationship-explorer` offer a `.dmg`; `remedy-relationship-explorer` also runs a whole
-  `build-desktop.yml` on `macos-latest`; `lockhtml`'s `ci.yml` uses a macOS runner. This estate
-  ships Windows, Linux and Android — a download button for a build that does not exist is a broken
-  promise with a link on it.
+
+### Left alone: the six Apple targets
+
+`dance-fight`, `eon-commando`, `neon-runner`, `retro-strike` and `remedy-relationship-explorer`
+offer a `.dmg`; `remedy-relationship-explorer` also runs a whole `build-desktop.yml` on
+`macos-latest` (tags only — `push: tags: ['v*']`); `lockhtml`'s `ci.yml` puts `macos-latest` in a
+matrix that runs on every push. The estate ships Windows, Linux and Android, so these are wrong on
+their face — but the owner asked whether they cost him money, and they do not:
+
+- **All 100 repos are public, and GitHub Actions is free for public repositories** — standard
+  runners, macOS included. A `macos-latest` job on a public repo bills nothing. The 10× macOS
+  multiplier applies to the *included minutes of a private repo*; there is no such quota here.
+- **A `.dmg` button is a link.** A link to a release asset costs nothing, whether or not the asset
+  exists.
+- **App Store and TestFlight cost nothing to mention.** The only Apple charge is the Developer
+  Program membership (US$99/yr), and no repo can enrol anyone in that.
+
+So they stay. What is left is not billing but honesty: a Download-for-Mac button that 404s, and
+`lockhtml` spending four macOS jobs per push on a platform it does not ship. Worth cleaning up when
+the page is being edited for another reason — not worth a session of its own.
+
+**One condition changes this.** If any of these repos is ever made private, `lockhtml`'s matrix
+becomes four macOS jobs × four Python versions per push, billed at ten times the Linux rate. That
+is the moment to delete the runner, not the moment to discover it on an invoice.
 
 ### What is not a defect
 
@@ -92,8 +111,6 @@ that call is made.
 Not by repo — by class, smallest blast radius first, so that the paste that has to be identical 98
 times is done while it is still one habit.
 
-0. **The six Apple targets.** Correctness, not cosmetics. `remedy-relationship-explorer` first —
-   it has a workflow, a README line and a page button, so it shows every shape the defect takes.
 1. **The 36 network badges.** One mechanical fix per repo: generate the six local SVGs, then
    replace every `img.shields.io` `src` with `assets/badge-<name>.svg`. The offline check should go
    from 64 to 100.
@@ -107,6 +124,9 @@ times is done while it is still one habit.
    app is today and where it should go.
 5. **Re-run the audit and write the log entry.** The number that matters is the surface table at the
    top of this file; when the `SUPPORT` column reads 100, the rollout is done.
+
+The six Apple targets are deliberately not in this list — see **Left alone: the six Apple targets**
+above. They cost nothing while the repos are public.
 
 ## Files
 
