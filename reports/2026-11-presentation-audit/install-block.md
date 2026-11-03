@@ -63,15 +63,40 @@ there was no launcher, so the only true instruction was the command.
 `server.js`, say plainly what to do when Node is missing, and open the browser. The page promises
 exactly what the repo delivers.
 
+## The download rule
+
+**A download button must have a file behind it.** Check the URL returns 200 before the page ships
+it. `app-lantern`'s v1.1.0 release existed with **zero assets**, so the Download link went to a
+release page with nothing on it — the commonest way a download button lies.
+
+Two habits that stop it:
+
+- build the bundle to a **stable filename** (`dist/lantern.zip`) beside the versioned one, and point
+  the page at the stable one — then a version bump never breaks the link;
+- a `release.yml` that runs on every `v*` tag, builds the bundle and attaches it, failing the run if
+  the zip is missing, too small to be real, or has lost the files the instructions promise.
+
 ## Per kind of app
 
 | app | STEP 1 | STEP 2 | STEP 3 |
 |---|---|---|---|
 | **PWA / web app** | nothing — it is a web page | open the link | *Add to Home Screen* (Share → Add to Home Screen on a phone) |
-| **Node app with a launcher** | install Node.js — nodejs.org, the green **LTS** button | double-click **start-…**; the window stays open | type the address it prints on the other device |
+| **Node app with a launcher** | download the zip, install Node.js — nodejs.org, the green **LTS** button | unzip, double-click **start-…**; the window stays open | type the address it prints on the other device |
 | **desktop download** | download the file for Windows or Linux | double-click it — Windows may ask "keep anyway", click **More info → Run anyway** | it opens; nothing else to install |
 | **browser extension** | download and unzip the folder | open `chrome://extensions`, turn on **Developer mode**, **Load unpacked**, pick the folder | click the puzzle piece and pin it |
 | **a kit (a library)** | copy one file into your project | *(no step — it is one file)* | open the demo page to see what it does |
+
+## The four questions every install block must answer
+
+Learned by writing Lantern's three steps and being asked, immediately:
+
+1. **Where do I get it?** A download button with a file behind it, and what is inside the zip.
+2. **How do I add my own content?** The format, a sample to copy, and where the import happens.
+3. **How do I configure it?** The two or three settings that exist, named — not "see the docs".
+4. **What if it goes wrong?** The three failures a first-timer hits, each with its answer.
+
+A block that stops at "install, run, open" has answered the easiest question and left the reader to
+guess the rest.
 
 ## Where it applies
 
