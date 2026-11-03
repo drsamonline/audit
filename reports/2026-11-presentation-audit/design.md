@@ -1,41 +1,63 @@
-# The design audit: 74 landing pages, how many are actually different
+# The design audit: 74 landing pages, and how many are actually different
 
-The owner's rule: **a landing page must be its own design, and a landing page is mandatory even where there is no live app.** This measures how far the fleet is from that.
+The rule from the owner: **a landing page is mandatory for every repo, and each one must be its own design.** Two pages built from the same template are not two designs.
 
 ## What I measured
 
-For each of the 74 pages: the CSS class tokens it uses, every hex colour declared in its `<style>` block, its font stacks, and its `<h2>` sequence. Similarity is the Jaccard overlap of those token sets, weighted with the heading sequence and the page size. Two pages built from the same template score above 0.6; two pages with the same subject and different designs score around 0.25.
+For each of the 74 pages: the CSS class tokens it uses, every hex colour declared in its `<style>` block, its font stacks, and its `<h2>` sequence. Similarity is the Jaccard overlap of those token sets, weighted with the heading sequence and the page size. Pages built from one template score above 0.55; two pages with the same subject and different designs sit around 0.25.
 
-## The finding
+## Decided: three pages get their own design
 
-**Six pages are two designs, repeated three times each.**
+`BLINKTRANSFER`, `blinkcode-ai` and `helioprism` measure as one design (0.56–0.66, the same heading sequence). They are the same product family, and the owner's ruling is that all three still get their own:
 
-| cluster | score | repos |
-|---|---|---|
-| Scrap-and-Gun / dashboard / musicgen | 0.76–0.78 | `Scrap-and-Gun`, `dashboard`, `musicgen` |
-| BLINKTRANSFER / blinkcode-ai / helioprism | 0.56–0.66 | `BLINKTRANSFER`, `blinkcode-ai`, `helioprism` |
+| page | similarity |
+|---|---|
+| `blinkcode-ai` / `helioprism` | 0.658 |
+| `BLINKTRANSFER` / `blinkcode-ai` | 0.586 |
+| `BLINKTRANSFER` / `helioprism` | 0.555 |
 
-The first three share the heading sequence *What it does / Three ways to run it / Privacy*, three sections and no declared colours at all. The second three share *Why it is different / How it works / Free for people, licensed for business*. These are not three projects that happen to look alike — they are one page, edited three times. The second group is the same product family (optical file transfer), so one shared look there is defensible; the first group is a game, a dashboard and a music app, and it is not.
+Two more sets measured as clones and are **not** work:
 
-**15 more pages are plain** — few sections, few colours, no display face of their own:
+- `Scrap-and-Gun` / `dashboard` / `musicgen` (0.76–0.78) — `musicgen` and `Scrap-and-Gun` are finished pages, and `dashboard` is Forge tooling that needs no public face at all.
 
-`Matneo`, `Scrap-and-Gun`, `app-clip-loom`, `app-organon-reader`, `app-weft-puzzles`, `audit`, `control-panel`, `dashboard`, `musicgen`, `seance`, `today-card`, `weft8-classroom`, `weft8-compare`, `weft8-hardware`, `weft8-kit`
+## The plain pages
 
-**5 still carry the skeleton's own heading** (*What it refuses to do*), which means the section order is the template's rather than the project's:
+15 pages measure as plain — few sections, few colours, no display face of their own. Five of them are exempt for the same reasons (`musicgen`, `Scrap-and-Gun` are finished; `dashboard`, `control-panel` and `audit` are Forge tooling). That leaves **10 to judge**:
 
-`app-jacquard`, `canteen-lan`, `chalk-lan`, `corefit-md`, `kent-repertory-explorer`
+| page | sections | colours | type of its own |
+|---|---|---|---|
+| [app-clip-loom](https://drsamonline.github.io/app-clip-loom/) | 3 | 10 | **no** |
+| [app-organon-reader](https://drsamonline.github.io/app-organon-reader/) | 1 | 24 | **no** |
+| [app-weft-puzzles](https://drsamonline.github.io/app-weft-puzzles/) | 1 | 8 | **no** |
+| [Matneo](https://drsamonline.github.io/Matneo/) | 8 | 0 | **no** |
+| [seance](https://drsamonline.github.io/seance/) | 0 | 16 | **no** |
+| [today-card](https://drsamonline.github.io/today-card/) | 0 | 15 | **no** |
+| [weft8-classroom](https://drsamonline.github.io/weft8-classroom/) | 3 | 7 | **no** |
+| [weft8-compare](https://drsamonline.github.io/weft8-compare/) | 3 | 11 | **no** |
+| [weft8-hardware](https://drsamonline.github.io/weft8-hardware/) | 3 | 10 | **no** |
+| [weft8-kit](https://drsamonline.github.io/weft8-kit/) | 3 | 11 | **no** |
 
-`lumen`, `app-thermals`, `repertory-reader` and `app-image-toolkit` carry that heading too, and are the standard rather than the problem — the heading is fine, the same nine sections in the same order with the same colours is not.
+## Still carrying the skeleton's own heading
+
+These five kept the template's section order — *What it refuses to do* is the skeleton's heading, not theirs:
+
+| page |
+|---|
+| [app-jacquard](https://drsamonline.github.io/app-jacquard/) |
+| [canteen-lan](https://drsamonline.github.io/canteen-lan/) |
+| [chalk-lan](https://drsamonline.github.io/chalk-lan/) |
+| [corefit-md](https://drsamonline.github.io/corefit-md/) |
+| [kent-repertory-explorer](https://drsamonline.github.io/kent-repertory-explorer/) |
+
+`lumen`, `app-thermals`, `repertory-reader`, `app-image-toolkit`, `musicgen` and `Scrap-and-Gun` carry that heading too and are the standard, not the problem — the heading is fine; nine sections in the same order with the same colours is not.
 
 ## The 26 pages that do not exist yet
 
-These have no `docs/index.html`. Every one of them is a new design, not a port of an existing one — and for the 18 kits among them, the page has to explain an API rather than sell an app.
+Every one is a new design, not a port:
 
-`HCS`, `art-kit`, `astro-kit`, `audio-kit`, `backup`, `book-kit`, `case-kit`, `compfactory`, `compress-kit`, `crypto-kit`, `drsamonline`, `drsamonline.github.io`, `export-kit`, `frame-kit`, `game-kit`, `heavenzip`, `lan-kit`, `ml-kit`, `neon-velocity`, `optical-kit`, `repertory-kit`, `search-kit`, `srs-kit`, `ui-kit`, `web-kit`, `ziptastic`
+`art-kit`, `astro-kit`, `audio-kit`, `backup`, `book-kit`, `case-kit`, `compfactory`, `compress-kit`, `crypto-kit`, `drsamonline`, `drsamonline.github.io`, `export-kit`, `frame-kit`, `game-kit`, `HCS`, `heavenzip`, `lan-kit`, `ml-kit`, `neon-velocity`, `optical-kit`, `repertory-kit`, `search-kit`, `srs-kit`, `ui-kit`, `web-kit`, `ziptastic`
 
 ## What "its own design" means here
-
-Not a different colour on the same layout. The test, from the skill:
 
 | | the app (`docs/play/`) | the landing page |
 |---|---|---|
@@ -44,12 +66,10 @@ Not a different colour on the same layout. The test, from the skill:
 | rhythm | one centred column | full-bleed bands, a light interlude, a closing CTA |
 | the product | is the interface | is shown inside a frame, with callouts |
 
-And one idea taken from the subject, used in the band, the hero and one accent: a thermal gradient for `app-thermals`, a punched card for `app-jacquard`, a lamp for `app-lantern`. A page that cannot name its idea is a page with a default palette.
+And one idea taken from the subject, used in the band, the hero and one accent: a thermal gradient for `app-thermals`, a punched card for `app-jacquard`, a lamp for `app-lantern`.
 
 ## How to check one
 
 ```
 python3 tools/presentation_audit.py <parent-dir> --design
 ```
-
-It prints the two clone clusters, the plain pages and the skeleton descendants, so the answer is a measurement rather than a memory.

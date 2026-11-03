@@ -49,6 +49,16 @@ REQUIRED = {
     "kit":         ["landing", "badges", "readme", "support", "portrait", "offline", "platforms"],
     "data":        ["landing", "badges", "readme", "support", "portrait", "offline", "platforms"],
     "infra":       ["landing", "readme", "support", "offline", "platforms"],
+    # A hub launches several apps that each have their own repo: neon-games runs two games on
+    # neon-engine, aethelgard-games two games on two engines. It needs a page that links to each
+    # and a screenshot of each — not a docs/play/index.html of its own.
+    "hub":         ["landing", "badges", "shots", "readme", "support", "portrait",
+                    "offline", "platforms"],
+    # An engine is a library with a face: it gets a landing page, never a demo. Its demo is the
+    # game or app built on it, which lives in another repo.
+    "engine":      ["landing", "badges", "readme", "support", "portrait", "offline", "platforms"],
+    # Forge tooling the owner runs himself. No public face is required.
+    "tool":        ["readme", "offline", "platforms"],
 }
 
 CODE = {"landing": "LANDING", "app": "SPLIT", "badges": "BADGES", "shots": "SHOTS",
@@ -74,9 +84,8 @@ TIER_OVERRIDE = {
     "case-kit": "kit", "compress-kit": "kit", "crypto-kit": "kit", "export-kit": "kit",
     "frame-kit": "kit", "game-kit": "kit", "lan-kit": "kit", "ml-kit": "kit",
     "optical-kit": "kit", "repertory-kit": "kit", "search-kit": "kit", "srs-kit": "kit",
-    "ui-kit": "kit", "web-kit": "kit", "weft8-kit": "kit", "profile-kit": "kit",
-    "app-companion-forge": "kit", "neon-engine": "kit", "saga-vn-engine": "kit",
-    "aethelgard-rpg-engine": "kit", "weft8-compare": "kit", "weft8-classroom": "kit",
+    "ui-kit": "kit", "web-kit": "kit", "profile-kit": "kit",
+    "weft8-compare": "kit", "weft8-classroom": "kit",
     "weft8-hardware": "kit", "app-builder": "kit",
     "app-organon-reader": "app", "control-panel": "app", "neon-games": "app",
     "seance": "app", "today-card": "app", "MATERIA-MEDICA-BUILDER": "app",
@@ -86,12 +95,23 @@ TIER_OVERRIDE = {
     "ai-bridge": "app-no-demo", "lexora": "app-no-demo", "neon-velocity": "app-no-demo",
     "ziptastic": "app-no-demo",
     "homoeopathic-materia-medica-repertory-json": "data", "skills": "data",
-    "audit": "data", "drsamonline": "data", "drsamonline.github.io": "data", "Matneo": "data",
+    "drsamonline": "data", "drsamonline.github.io": "data", "Matneo": "data",
     "backup": "infra", "compfactory": "infra", "heavenzip": "infra", "HCS": "infra",
+    # hubs: one page, several apps, each in its own repo
+    "neon-games": "hub", "aethelgard-games": "hub",
+    # engines: a face, no demo — the game built on them is the demo
+    "neon-engine": "engine", "aethelgard-rpg-engine": "engine", "saga-vn-engine": "engine",
+    "weft8-kit": "engine",
+    # Forge tooling, run by the owner, part of the same family as the kits.
+    # The owner's ruling: dashboard, control-panel, app-companion-forge and audit — but not skills,
+    # which is a public catalogue and keeps its page.
+    "dashboard": "tool", "control-panel": "tool", "app-companion-forge": "tool",
+    "audit": "tool",
 }
 
 SKIP = {"lumen"}
-REFERENCE_DESIGN = {"lumen", "repertory-reader", "app-thermals", "app-image-toolkit"}
+REFERENCE_DESIGN = {"lumen", "repertory-reader", "app-thermals", "app-image-toolkit",
+                    "musicgen", "Scrap-and-Gun"}
 # One shared design across a product family is defensible; across a game, a dashboard and a music
 # app it is not.
 FAMILY = {"BLINKTRANSFER / blinkcode-ai / helioprism"}
@@ -119,6 +139,12 @@ HEAD = {
            "not an app screenshot. No docs/play/, no app shot.",
     "data": "A dataset or report has no demo; the landing page is the front door to the data.",
     "infra": "Infrastructure: decide first whether it wants a public face at all.",
+    "hub": "A hub launches apps that live in their own repos: the page needs a card and a "
+           "screenshot for each one, linking out. No docs/play/index.html of its own.",
+    "engine": "An engine gets a landing page and never a demo — the game or app built on it is the "
+              "demo, and it lives in its own repo. Link to it; do not embed it.",
+    "tool": "Forge tooling run by the owner: no public face required. Leave the page alone unless "
+            "it is being opened anyway.",
 }
 
 SURFACE_LABELS = {"docs/index.html exists", "docs/play/index.html exists",

@@ -1,46 +1,56 @@
 # Per-repo build list
 
-One block per repository. Each says what the repo is, what it already has, what it is missing, and the smallest set of changes that closes the gap. Nothing here is a rebuild: a surface marked *already right* is left exactly as it is.
+One block per repo: its tier, what it already carries, what its tier does not require, and the smallest set of changes that closes the gap. Nothing here is a rebuild.
 
-**Tier decides the requirement.** `app` — landing page, a live demo at `docs/play/`, screenshots, badges, support. `app-no-demo` — the same minus the live demo; the demo band shows screenshots. `kit` — landing page, badges, support; no demo and no app screenshot, because a library has no product UI. `data` — landing page, badges, support. `infra` — decide first.
+| tier | required |
+|---|---|
+| `app` | landing, live demo at `docs/play/`, screenshots, badges, support |
+| `app-no-demo` | the same minus the live demo — desktop, extension, server, compiler |
+| `hub` | landing, badges, a screenshot per linked app, support — no `docs/play/` of its own |
+| `engine` | landing, badges, support — **no demo**: the game built on it is the demo |
+| `kit` | landing, badges, support — no demo, no app shot, no release build |
+| `data` | landing, badges, support |
+| `tool` | Forge tooling — no public face required |
+| `infra` | decide first |
 
 ## aethelgard-games
 
-*app · apply · effort M*
-
-**Already right:** landing, app, platforms.
-
-**Not required at this tier:** nothing.
-
-**To build:**
-
-1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
-3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
-4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
-5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
-6. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
-7. Failing check — landing page respects the system theme: light is the base palette; let prefers-color-scheme decide the first paint
-8. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
-9. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
-10. Failing check — README keeps the pipeline's shot markers: step 7: restore the shot:start/shot:end block — the pipeline writes into it
-11. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
-12. Failing check — all six support handles are present: re-paste the block; never retype a handle
-13. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
-14. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
-15. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
-
-## aethelgard-rpg-engine
-
-*kit · apply · effort S*
+*hub · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A kit has no product UI — the landing page explains the API and shows a code sample, not an app screenshot. No docs/play/, no app shot.
+1. A hub launches apps that live in their own repos: the page needs a card and a screenshot for each one, linking out. No docs/play/index.html of its own.
+2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
+4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
+5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
+6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
+7. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
+8. Failing check — landing page respects the system theme: light is the base palette; let prefers-color-scheme decide the first paint
+9. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
+10. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
+11. Failing check — README keeps the pipeline's shot markers: step 7: restore the shot:start/shot:end block — the pipeline writes into it
+12. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
+13. Failing check — all six support handles are present: re-paste the block; never retype a handle
+14. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
+15. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
+16. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
+
+## aethelgard-rpg-engine
+
+*engine · apply*
+
+**Already right:** landing, platforms.
+
+**Not required at this tier:** app, shots, theme.
+
+**To build:**
+
+1. An engine gets a landing page and never a demo — the game or app built on it is the demo, and it lives in its own repo. Link to it; do not embed it.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
@@ -59,17 +69,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## ai-bridge
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -88,17 +98,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## All4ONE
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -117,16 +127,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## ambient-sound-studio
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -142,11 +152,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-builder
 
-*kit · apply · effort S*
+*kit · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -170,17 +180,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-clip-loom
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. **Redesign it.** The page is plain: 3 sections, 10 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -196,36 +206,33 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-companion-forge
 
-*kit · apply · effort S*
+*tool · apply*
 
-**Already right:** landing, offline, platforms.
+**Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** landing, app, badges, shots, support, portrait, theme.
 
 **To build:**
 
-1. A kit has no product UI — the landing page explains the API and shows a code sample, not an app screenshot. No docs/play/, no app shot.
-2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
-4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
-5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
-6. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
-7. Failing check — landing page respects the system theme: light is the base palette; let prefers-color-scheme decide the first paint
-8. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
-9. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
-10. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
-11. Failing check — all six support handles are present: re-paste the block; never retype a handle
-12. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
-13. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
-14. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
+1. Forge tooling run by the owner: no public face required. Leave the page alone unless it is being opened anyway.
+2. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
+3. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
+4. Failing check — landing page respects the system theme: light is the base palette; let prefers-color-scheme decide the first paint
+5. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
+6. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
+7. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
+8. Failing check — all six support handles are present: re-paste the block; never retype a handle
+9. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
+10. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
+11. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
 
 ## app-encrypted-case-log
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -241,11 +248,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-image-toolkit
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, badges, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -260,17 +267,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-jacquard
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. **Redesign it.** It still carries the skeleton's *What it refuses to do* heading, so the section order is the template's, not this project's. One idea from the subject, used in the band, the hero and one accent.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -286,17 +293,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-lantern
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. The app entry is docs/demo/index.html — move it to docs/play/index.html and point the hero CTA and the demo frame at play/.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -315,18 +322,18 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-organon-reader
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. The app entry is docs/index.html (the app itself) — move it to docs/play/index.html and point the hero CTA and the demo frame at play/.
 2. **Redesign it.** The page is plain: 1 sections, 24 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
 3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-4. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+4. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 5. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 6. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 7. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -344,11 +351,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-panchang
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, badges, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -363,11 +370,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-poets-studio
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -383,11 +390,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-thermals
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, badges, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -402,17 +409,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## app-weft-puzzles
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. **Redesign it.** The page is plain: 1 sections, 8 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -428,11 +435,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## art-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -457,11 +464,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## astro-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -486,11 +493,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## audio-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -515,39 +522,36 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## audit
 
-*data · apply · effort S*
-
-**Already right:** landing, offline, platforms.
-
-**Not required at this tier:** app, shots.
-
-**To build:**
-
-1. A dataset or report has no demo; the landing page is the front door to the data, and the screenshots are of the data, not of an app.
-2. **Redesign it.** The page is plain: 0 sections, 13 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
-3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
-5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
-6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
-7. Failing check — landing page points at the app at play/: point the hero CTA and the demo frame at play/
-8. Failing check — landing page is not a copy of the app: the landing page is its own design; keep the app in docs/play/ untouched
-9. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
-10. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
-11. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
-12. Failing check — README keeps the pipeline's shot markers: step 7: restore the shot:start/shot:end block — the pipeline writes into it
-13. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
-14. Failing check — all six support handles are present: re-paste the block; never retype a handle
-15. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
-16. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
-17. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
-
-## backup
-
-*infra · decide · effort S*
+*tool · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, badges, shots, portrait.
+**Not required at this tier:** landing, app, badges, shots, support, portrait, theme.
+
+**To build:**
+
+1. Forge tooling run by the owner: no public face required. Leave the page alone unless it is being opened anyway.
+2. **Redesign it.** The page is plain: 0 sections, 13 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
+3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
+4. Failing check — landing page points at the app at play/: point the hero CTA and the demo frame at play/
+5. Failing check — landing page is not a copy of the app: the landing page is its own design; keep the app in docs/play/ untouched
+6. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
+7. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
+8. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
+9. Failing check — README keeps the pipeline's shot markers: step 7: restore the shot:start/shot:end block — the pipeline writes into it
+10. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
+11. Failing check — all six support handles are present: re-paste the block; never retype a handle
+12. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
+13. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
+14. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
+
+## backup
+
+*infra · decide*
+
+**Already right:** offline, platforms.
+
+**Not required at this tier:** app, badges, shots, portrait, theme.
 
 **To build:**
 
@@ -571,11 +575,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## base-bench
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, badges, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -590,17 +594,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## blinkcode-ai
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. **Redesign it.** It shares one design with BLINKTRANSFER / blinkcode-ai / helioprism — the same product family, so keep one of the three as the family look and give the other two their own idea, palette and display face. One idea from the subject, used in the band, the hero and one accent.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -619,17 +623,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## BLINKTRANSFER
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. **Redesign it.** It shares one design with BLINKTRANSFER / blinkcode-ai / helioprism — the same product family, so keep one of the three as the family look and give the other two their own idea, palette and display face. One idea from the subject, used in the band, the hero and one accent.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -646,11 +650,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## bmi-bmr-tdee-macros-fluid-calculator
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -666,11 +670,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## boericke-repertory
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -686,11 +690,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## book-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -715,11 +719,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## canteen-lan
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -736,11 +740,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## case-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -765,11 +769,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## chalk-lan
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, badges, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -785,17 +789,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## CLDR
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -814,11 +818,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## compfactory
 
-*infra · decide · effort S*
+*infra · decide*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, badges, shots, portrait.
+**Not required at this tier:** app, badges, shots, portrait, theme.
 
 **To build:**
 
@@ -840,11 +844,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## compress-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -869,16 +873,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## conqueror-os
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -893,41 +897,37 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## control-panel
 
-*app · apply · effort M*
+*tool · apply*
 
-**Already right:** landing, offline, platforms.
+**Already right:** offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** landing, app, badges, shots, support, portrait, theme.
 
 **To build:**
 
-1. The app entry is docs/index.html (the app itself) — move it to docs/play/index.html and point the hero CTA and the demo frame at play/.
+1. Forge tooling run by the owner: no public face required. Leave the page alone unless it is being opened anyway.
 2. **Redesign it.** The page is plain: 0 sections, 12 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
-3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-4. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
-5. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
-6. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
-7. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
-8. Failing check — landing page points at the app at play/: point the hero CTA and the demo frame at play/
-9. Failing check — landing page is not a copy of the app: the landing page is its own design; keep the app in docs/play/ untouched
-10. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
-11. Failing check — landing page respects the system theme: light is the base palette; let prefers-color-scheme decide the first paint
-12. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
-13. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
-14. Failing check — README keeps the pipeline's shot markers: step 7: restore the shot:start/shot:end block — the pipeline writes into it
-15. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
-16. Failing check — all six support handles are present: re-paste the block; never retype a handle
-17. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
-18. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
-19. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
+3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
+4. Failing check — landing page points at the app at play/: point the hero CTA and the demo frame at play/
+5. Failing check — landing page is not a copy of the app: the landing page is its own design; keep the app in docs/play/ untouched
+6. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
+7. Failing check — landing page respects the system theme: light is the base palette; let prefers-color-scheme decide the first paint
+8. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
+9. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
+10. Failing check — README keeps the pipeline's shot markers: step 7: restore the shot:start/shot:end block — the pipeline writes into it
+11. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
+12. Failing check — all six support handles are present: re-paste the block; never retype a handle
+13. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
+14. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
+15. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
 
 ## corefit-md
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -945,11 +945,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## crypto-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -974,16 +974,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## dance-fight
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -998,44 +998,41 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## dashboard
 
-*app · apply · effort M*
-
-**Already right:** landing, app, offline, platforms.
-
-**Not required at this tier:** nothing.
-
-**To build:**
-
-1. **Redesign it.** It shares one design with Scrap-and-Gun / dashboard / musicgen — a game, a dashboard and a music app are not one family, so all three need their own idea, palette and display face; the page is plain: 3 sections, 0 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
-2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
-4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
-5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
-6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
-7. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
-8. Failing check — landing page respects the system theme: light is the base palette; let prefers-color-scheme decide the first paint
-9. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
-10. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
-11. Failing check — README keeps the pipeline's shot markers: step 7: restore the shot:start/shot:end block — the pipeline writes into it
-12. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
-13. Failing check — all six support handles are present: re-paste the block; never retype a handle
-14. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
-15. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
-16. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
-17. Failing check — sw.js declares a CACHE name: name the cache and bump it on every release
-18. Failing check — sw.js serves HTML network-first (looks for 'navigate'): serve the HTML network-first; keep assets cache-first
-
-## drsamonline
-
-*data · apply · effort M*
+*tool · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** landing, app, badges, shots, support, portrait, theme.
 
 **To build:**
 
-1. A dataset or report has no demo; the landing page is the front door to the data, and the screenshots are of the data, not of an app.
+1. Forge tooling run by the owner: no public face required. Leave the page alone unless it is being opened anyway.
+2. **Redesign it.** It shares one design with Scrap-and-Gun / dashboard / musicgen — a game, a dashboard and a music app are not one family, so all three need their own idea, palette and display face; the page is plain: 3 sections, 0 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
+3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
+4. Failing check — landing page embeds the app in a frame: step 3: <iframe src="play/"> behind a poster, revealed on load
+5. Failing check — landing page respects the system theme: light is the base palette; let prefers-color-scheme decide the first paint
+6. Failing check — landing page remembers its theme under its own key: store under a page-scoped key so the landing page and the app do not fight
+7. Failing check — docs/assets/app-mobile.png looks like a real screenshot: step 5: scripts/shot.sh <repo> app app "#/<populated route>"
+8. Failing check — README keeps the pipeline's shot markers: step 7: restore the shot:start/shot:end block — the pipeline writes into it
+9. Failing check — README images are local files, not an image service: commit the image and reference it by relative path
+10. Failing check — all six support handles are present: re-paste the block; never retype a handle
+11. Failing check — docs/assets/upi-qr.svg exists and is an SVG: step 4: run scripts/support_qr.py (pip install segno)
+12. Failing check — the UPI intent link is on the page: the VPA needs a upi://pay link as well as the printed text
+13. Failing check — the portrait is in the support block: re-paste the block's region 1 — it carries the portrait markup
+14. Failing check — sw.js declares a CACHE name: name the cache and bump it on every release
+15. Failing check — sw.js serves HTML network-first (looks for 'navigate'): serve the HTML network-first; keep assets cache-first
+
+## drsamonline
+
+*data · apply*
+
+**Already right:** offline, platforms.
+
+**Not required at this tier:** app, shots, theme.
+
+**To build:**
+
+1. A dataset or report has no demo; the landing page is the front door to the data.
 2. Build the landing page at docs/index.html from assets/landing-skeleton.html — one idea from the subject, its own palette and display face.
 3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
@@ -1055,15 +1052,15 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## drsamonline.github.io
 
-*data · apply · effort M*
+*data · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
-1. A dataset or report has no demo; the landing page is the front door to the data, and the screenshots are of the data, not of an app.
+1. A dataset or report has no demo; the landing page is the front door to the data.
 2. Build the landing page at docs/index.html from assets/landing-skeleton.html — one idea from the subject, its own palette and display face.
 3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
@@ -1084,16 +1081,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## eon-commando
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, offline.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1112,11 +1109,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## export-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -1141,11 +1138,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## frame-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -1170,11 +1167,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## game-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -1199,16 +1196,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## gentle-pediatrics-companion
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1225,11 +1222,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## HCS
 
-*infra · decide · effort S*
+*infra · decide*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, badges, shots, portrait.
+**Not required at this tier:** app, badges, shots, portrait, theme.
 
 **To build:**
 
@@ -1251,11 +1248,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## heavenzip
 
-*infra · decide · effort S*
+*infra · decide*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, badges, shots, portrait.
+**Not required at this tier:** app, badges, shots, portrait, theme.
 
 **To build:**
 
@@ -1278,17 +1275,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## helioprism
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. **Redesign it.** It shares one design with BLINKTRANSFER / blinkcode-ai / helioprism — the same product family, so keep one of the three as the family look and give the other two their own idea, palette and display face. One idea from the subject, used in the band, the hero and one accent.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1305,17 +1302,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## HMS
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1334,15 +1331,15 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## homoeopathic-materia-medica-repertory-json
 
-*data · apply · effort S*
+*data · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
-1. A dataset or report has no demo; the landing page is the front door to the data, and the screenshots are of the data, not of an app.
+1. A dataset or report has no demo; the landing page is the front door to the data.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
@@ -1362,16 +1359,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## idle-city-ages-of-growth
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1387,11 +1384,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## kent-repertory-explorer
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -1409,11 +1406,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## lan-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -1438,17 +1435,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## lexora
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1466,16 +1463,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## lockhtml
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1493,26 +1490,26 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## lumen
 
-*app · skip · effort XS*
+*app · skip*
 
 **Already right:** landing, app, badges, shots, readme, support, portrait, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:** nothing. Leave it alone — it is the reference.
 
 ## MATERIA-MEDICA-BUILDER
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1529,15 +1526,15 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## Matneo
 
-*data · apply · effort S*
+*data · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
-1. A dataset or report has no demo; the landing page is the front door to the data, and the screenshots are of the data, not of an app.
+1. A dataset or report has no demo; the landing page is the front door to the data.
 2. **Redesign it.** The page is plain: 8 sections, 0 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
 3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
@@ -1558,11 +1555,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## ml-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -1587,16 +1584,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## mnemosyne-companion
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1612,17 +1609,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## musicgen
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. **Redesign it.** It shares one design with Scrap-and-Gun / dashboard / musicgen — a game, a dashboard and a music app are not one family, so all three need their own idea, palette and display face; the page is plain: 3 sections, 0 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1639,17 +1636,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## NEO
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1668,15 +1665,15 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## neon-engine
 
-*kit · apply · effort S*
+*engine · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
-1. A kit has no product UI — the landing page explains the API and shows a code sample, not an app screenshot. No docs/play/, no app shot.
+1. An engine gets a landing page and never a demo — the game or app built on it is the demo, and it lives in its own repo. Link to it; do not embed it.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
@@ -1695,17 +1692,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## neon-games
 
-*app · apply · effort M*
+*hub · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. The app entry is docs/play/dead-zone/ — move it to docs/play/index.html and point the hero CTA and the demo frame at play/.
+1. A hub launches apps that live in their own repos: the page needs a card and a screenshot for each one, linking out. No docs/play/index.html of its own.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1723,16 +1720,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## neon-runner
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1749,18 +1746,18 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## neon-velocity
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Build the landing page at docs/index.html from assets/landing-skeleton.html — one idea from the subject, its own palette and display face.
 3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-4. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+4. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 5. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 6. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 7. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1779,11 +1776,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## offline-pdf-toolkit
 
-*app · apply · effort S*
+*app · apply*
 
 **Already right:** landing, app, shots, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -1799,16 +1796,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## open-materia-medica
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1825,11 +1822,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## optical-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -1854,11 +1851,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## profile-kit
 
-*kit · apply · effort S*
+*kit · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -1882,16 +1879,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## read-live-transform-app
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1908,16 +1905,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## remedy-relationship-explorer
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -1936,11 +1933,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## repertory-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -1965,11 +1962,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## repertory-reader
 
-*app · apply · effort XS*
+*app · apply*
 
 **Already right:** landing, app, badges, shots, readme, support, portrait, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
@@ -1979,16 +1976,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## retro-strike
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2005,15 +2002,15 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## saga-vn-engine
 
-*kit · apply · effort S*
+*engine · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
-1. A kit has no product UI — the landing page explains the API and shows a code sample, not an app screenshot. No docs/play/, no app shot.
+1. An engine gets a landing page and never a demo — the game or app built on it is the demo, and it lives in its own repo. Link to it; do not embed it.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
@@ -2031,17 +2028,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## Scrap-and-Gun
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. **Redesign it.** It shares one design with Scrap-and-Gun / dashboard / musicgen — a game, a dashboard and a music app are not one family, so all three need their own idea, palette and display face; the page is plain: 3 sections, 0 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2060,18 +2057,18 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## seance
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. The app entry is docs/app.html — move it to docs/play/index.html and point the hero CTA and the demo frame at play/.
 2. **Redesign it.** The page is plain: 0 sections, 16 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
 3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-4. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+4. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 5. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 6. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 7. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2088,11 +2085,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## search-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -2117,15 +2114,15 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## skills
 
-*data · apply · effort S*
+*data · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
-1. A dataset or report has no demo; the landing page is the front door to the data, and the screenshots are of the data, not of an app.
+1. A dataset or report has no demo; the landing page is the front door to the data.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
@@ -2144,16 +2141,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## skin-case-tracker
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2171,16 +2168,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## smartbill-app
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2196,17 +2193,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## SmartNotes
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2225,11 +2222,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## srs-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -2254,16 +2251,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## the-symphony-companion
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2282,17 +2279,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## The_Browser
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2311,18 +2308,18 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## today-card
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. The app entry is docs/app.html — move it to docs/play/index.html and point the hero CTA and the demo frame at play/.
 2. **Redesign it.** The page is plain: 0 sections, 15 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
 3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-4. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+4. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 5. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 6. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 7. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2339,17 +2336,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## TTB
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2368,11 +2365,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## ui-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -2397,17 +2394,17 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## ULTIMATE-WINDOWS-OPTIMIZER
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** landing, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-3. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+3. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 5. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 6. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2426,16 +2423,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## unstoppable-mind-companion
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2451,11 +2448,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## web-kit
 
-*kit · apply · effort M*
+*kit · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -2480,11 +2477,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## weft8-classroom
 
-*kit · apply · effort S*
+*kit · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -2506,11 +2503,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## weft8-compare
 
-*kit · apply · effort S*
+*kit · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -2532,11 +2529,11 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## weft8-hardware
 
-*kit · apply · effort S*
+*kit · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
@@ -2558,15 +2555,15 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## weft8-kit
 
-*kit · apply · effort S*
+*engine · apply*
 
 **Already right:** landing, offline, platforms.
 
-**Not required at this tier:** app, shots.
+**Not required at this tier:** app, shots, theme.
 
 **To build:**
 
-1. A kit has no product UI — the landing page explains the API and shows a code sample, not an app screenshot. No docs/play/, no app shot.
+1. An engine gets a landing page and never a demo — the game or app built on it is the demo, and it lives in its own repo. Link to it; do not embed it.
 2. **Redesign it.** The page is plain: 3 sections, 11 colours, no display face of its own. One idea from the subject, used in the band, the hero and one accent.
 3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
 4. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
@@ -2584,16 +2581,16 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## whispering-body-first-aid
 
-*app · apply · effort M*
+*app · apply*
 
 **Already right:** landing, app, platforms.
 
-**Not required at this tier:** nothing.
+**Not required at this tier:** theme.
 
 **To build:**
 
 1. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-2. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+2. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 3. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 4. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 5. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.
@@ -2610,18 +2607,18 @@ One block per repository. Each says what the repo is, what it already has, what 
 
 ## ziptastic
 
-*app-no-demo · apply · effort M*
+*app-no-demo · apply*
 
 **Already right:** offline, platforms.
 
-**Not required at this tier:** app.
+**Not required at this tier:** app, theme.
 
 **To build:**
 
-1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe. Do not put a play button on a demo that cannot load.
+1. A desktop or extension product with no web UI: the demo band shows the screenshots, not an iframe.
 2. Build the landing page at docs/index.html from assets/landing-skeleton.html — one idea from the subject, its own palette and display face.
 3. Six local badge SVGs into docs/assets/badge-*.svg, claims from this repo's own suite and LICENSE. Keep the shields.io badges that are there — the local set is the offline fallback, not a replacement.
-4. Shoot docs/assets/app-desktop.png (1280×1600) and app-mobile.png (430×860) with scripts/shot.sh on a populated route.
+4. Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh on a populated route.
 5. README: badges first, the one-line promise, the four links, the <!-- shot:start --> block, then a ## Support table.
 6. Paste region 1 of assets/support-block.html into the landing footer and region 2 into the app header.
 7. Run scripts/support_portrait.py for the portrait and scripts/support_qr.py for the UPI QR.

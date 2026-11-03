@@ -39,24 +39,34 @@ So each repo carries one of five tiers, and the tier decides the requirement:
 
 | tier | repos | required |
 |---|---|---|
-| **`app`** | 50 | landing page, a live demo at `docs/play/`, screenshots, badges, support block |
-| **`app-no-demo`** | 12 | the same minus the live demo — desktop, extension, server, compiler. The demo band shows screenshots |
-| **`kit`** | 28 | landing page, badges, support block. **No demo, no app screenshot** — a library has no product UI |
-| **`data`** | 6 | landing page, badges, support block — a dataset, a catalogue, a report, the hub, the shop |
+| **`app`** | 46 | landing page, a live demo at `docs/play/`, screenshots, badges, support block |
+| **`app-no-demo`** | 12 | the same minus the live demo — desktop, extension, server, compiler |
+| **`hub`** | 2 | `neon-games`, `aethelgard-games` — a page that launches the games, each in its own repo, with a card and a screenshot each. **No `docs/play/` of its own** |
+| **`engine`** | 4 | `neon-engine`, `aethelgard-rpg-engine`, `saga-vn-engine`, `weft8-kit` — a landing page, badges and the block. **No demo**: the game built on it is the demo, and it lives elsewhere |
+| **`kit`** | 23 | landing page, badges, support block. **No demo, no app screenshot, no release build** |
+| **`data`** | 5 | landing page, badges, support block — a dataset, a catalogue, the shop |
+| **`tool`** | 4 | `dashboard`, `control-panel`, `app-companion-forge`, `audit` — Forge tooling the owner runs. **No public face required** |
 | **`infra`** | 4 | decide first whether it wants a public face at all |
 
-The scoping changes the work a lot. `docs/play/` went from **51 repos needing a split to 6**, and
-screenshots from 85 to **47** — because a kit was never going to have an app to photograph.
+The scoping changes the work more than the measurement did. `docs/play/` went from **51 repos
+needing a split to 4** — `app-lantern`, `app-organon-reader`, `seance`, `today-card` — and
+screenshots from 85 to **45**, because a kit, an engine or a hub was never going to have an app of
+its own to photograph.
+
+Two things the first pass got wrong, both now in the tier map: `neon-games` is a **hub** running two
+games on `neon-engine`, so its page links to `play/dead-zone/` and `play/neon-police/` and needs no
+`docs/play/index.html`; and `dashboard`, `control-panel`, `app-companion-forge` and `audit` are
+Forge tooling with no public face to build.
 
 | surface | required | present |
 |---|---|---|
-| landing page at `docs/index.html` | 100 | 74 |
-| app at `docs/play/index.html` | 50 | 44 |
-| six local badge SVGs | 96 | **7** |
-| screenshots | 62 | 15 |
+| landing page at `docs/index.html` | 96 | 70 |
+| app at `docs/play/index.html` | 46 | 42 |
+| six local badge SVGs | 92 | **7** |
+| screenshots | 60 | 15 |
 | README support section | 100 | **2** |
-| support block on the landing page | 100 | **2** |
-| support portrait | 96 | **2** |
+| support block on the landing page | 96 | **2** |
+| support portrait | 92 | **2** |
 | nothing loaded from another origin | 100 | 64 (36 accepted shields.io) |
 | no Apple build target | 100 | 94 (6 accepted) |
 
@@ -68,14 +78,14 @@ repos, after the tier scoping and after the two accepted classes are removed.
 
 | class | repos | what it is | the fix |
 |---|---|---|---|
-| **SUPPORT** | 98 | no support block on the landing page, no portrait, no QR | paste region 1 into the footer, run `support_qr.py` and `support_portrait.py` |
 | **README** | 98 | no `## Support` table in the README | the same six handles, as a table, from `assets/readme-template.md` |
-| **PORTRAIT** | 94 | no `docs/assets/support-portrait.jpg` | `scripts/support_portrait.py` — part of the same paste |
-| **BADGES** | 89 | fewer than six local badge SVGs in `docs/assets/` | `scripts/badges.py`, as the offline fallback beside the live ones |
-| **SHOTS** | 47 | no `docs/assets/app-desktop.png`, where an app exists | `scripts/shot.sh`, on a populated route |
+| **SUPPORT** | 94 | no support block on the landing page, no portrait, no QR | paste region 1 into the footer, run `support_qr.py` and `support_portrait.py` |
+| **PORTRAIT** | 90 | no `docs/assets/support-portrait.jpg` | `scripts/support_portrait.py` — part of the same paste |
+| **BADGES** | 85 | fewer than six local badge SVGs in `docs/assets/` | `scripts/badges.py`, as the offline fallback beside the live ones |
+| **SHOTS** | 45 | no `docs/assets/app-desktop.png`, where an app exists | `scripts/shot.sh`, on a populated route |
 | **LANDING** | 26 | no landing page at all | build one from `assets/landing-skeleton.html` — its own design |
-| **DESIGN** | 23 | the page exists but is a clone or is plain | `design.md` |
-| **SPLIT** | 6 | an app with no `docs/play/` | move the entry and point the demo frame at it |
+| **DESIGN** | 18 | three clones (ruled on) + 15 plain or on the skeleton's heading | `design.md` |
+| **SPLIT** | 4 | an app with no `docs/play/` | move the entry and point the demo frame at it |
 | **NETWORK-BADGE** | 36 | the landing page loads **shields.io** images | *accepted* — deliberate, see below |
 | **APPLE** | 6 | a `.dmg`, a macos runner, a Download-for-Mac button | *accepted* — bills nothing, see below |
 
@@ -86,11 +96,14 @@ light `--ink`/`--paper` palette for the contrast gate to read, and its README ha
 
 ### The design problem
 
-**Six landing pages are two designs, repeated three times each**, and 15 more are plain — few
-sections, few colours, no display face of their own. `Scrap-and-Gun`, `dashboard` and `musicgen`
-share one page (similarity 0.76–0.78, the same three headings, no declared colours at all);
-`BLINKTRANSFER`, `blinkcode-ai` and `helioprism` share another (0.56–0.66). The full measurement,
-the method and what "its own design" means are in **`design.md`**.
+The measurement found six pages that are two designs, repeated three times each. Five of the six
+were then ruled on and are **not** work: `musicgen` and `Scrap-and-Gun` are finished pages, and
+`dashboard` is Forge tooling with no public face. What is left is `BLINKTRANSFER`, `blinkcode-ai`
+and `helioprism` — one product family, and the ruling is that all three still get their own design.
+
+A further **15 pages measure as plain** (few sections, few colours, no display face of their own),
+of which five are exempt for the same reasons, leaving **10 to judge**. Five more still carry the
+skeleton's own *What it refuses to do* heading. `design.md` lists every one with its live link.
 
 ### Decided, not defects: shields.io badges and Apple targets
 
@@ -157,10 +170,10 @@ times is done while it is still one habit.
    `CACHE`, refresh the footer stamp. One commit per repo, text first, PNGs one at a time.
 2. **The 98 READMEs.** The same handles as a table under `## Support`, plus the
    `<!-- shot:start -->` block where it has been lost.
-3. **The 23 redesigns and the 26 landings.** This is the design work and it does not batch: each
+3. **The 18 redesigns and the 26 landings.** This is the design work and it does not batch: each
    repo gets its own idea, its own palette, its own display face. `design.md` says which pages are
    clones and which are plain; `per-repo.md` says, per repo, what the page is and what to do.
-4. **The 6 splits and the 47 screenshot sets.** Small now, because a kit is not asked for a picture
+4. **The 4 splits and the 45 screenshot sets.** Small now, because a kit is not asked for a picture
    of an interface it does not have. Do them per repo as the page is touched.
 5. **Re-run the audit and write the log entry.** The number that matters is the surface table at the
    top of this file; when the `SUPPORT` column reads 100, the rollout is done.

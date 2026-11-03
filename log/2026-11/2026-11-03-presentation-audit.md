@@ -55,6 +55,23 @@ that is deliberate. Six repos offer a `.dmg`: `dance-fight`, `eon-commando`, `ne
 `retro-strike`, `remedy-relationship-explorer` (which also runs `build-desktop.yml` on
 `macos-latest`) and `lockhtml` (a macOS runner in `ci.yml`) — and that bills nothing.
 
+### Two real bugs, found while checking two pages the owner called finished
+
+`musicgen` and `Scrap-and-Gun` share a template line for line, and both carry the same two faults:
+
+- the "In the browser" card links to `…/play/play/` — a doubled path, and there is no
+  `docs/play/play/` in either repo, so that link has nothing to serve. The hero CTA and the footer
+  link point at `…/play/`, which is right;
+- `<link rel="icon" href="play/icon.svg">`, but there is no `icon.svg` in `docs/` or in
+  `docs/play/` in either repo, so the favicon 404s.
+
+Not a bug: `musicgen`'s README says *iOS: Share → Add to Home Screen*. That is a PWA install
+instruction, not a build target — the Apple sweep flags it and is wrong to. Left alone.
+
+The sandbox cannot reach `drsamonline.github.io`, so both findings are read from the repo tree, not
+from a live request. That is enough: a URL with no file behind it in the published tree has nothing
+to serve.
+
 ## What I changed
 
 Nothing in any of the 100 repos. This session wrote the measurement only:
@@ -71,6 +88,22 @@ Nothing in any of the 100 repos. This session wrote the measurement only:
 - `tools/presentation_audit.py` — the walker. Rewritten this session: it now carries the tier map,
   the per-tier requirements, the accepted classes and the design clustering, so a re-run reproduces
   this report instead of contradicting it. `tools/verify.py` is the skill's gate, copied verbatim.
+
+Then the owner ruled on the repos the checklist had misread, and the tiers changed again:
+
+| ruling | effect |
+|---|---|
+| `neon-games` is a **hub** — two games on `neon-engine`, no split | new `hub` tier; the page links to `play/dead-zone/` and `play/neon-police/` |
+| `aethelgard-games` is a hub too — two games, two engines | `hub` |
+| **engines get a landing page and never a demo** | new `engine` tier: `neon-engine`, `aethelgard-rpg-engine`, `saga-vn-engine`, `weft8-kit` |
+| `dashboard`, `control-panel`, `app-companion-forge`, `audit` are **Forge tooling** — no public face | new `tool` tier (not `skills`, which stays public) |
+| kits and engines carry **landing page + badges + support block** | confirmed, not changed |
+| `musicgen` and `Scrap-and-Gun` are finished pages | design flags cleared; both are reference now |
+| `BLINKTRANSFER`, `blinkcode-ai`, `helioprism` — same family, **all three still get their own design** | kept as work |
+
+`docs/play/` is now **4 repos** (`app-lantern`, `app-organon-reader`, `seance`, `today-card`),
+screenshots 45, and the redesign set is 3 clones plus 15 plain pages of which 5 are exempt — 10 for
+the owner to judge, listed with live links in `design.md`.
 
 ## Evidence
 
@@ -133,6 +166,13 @@ being told where to look, which is the only reason to trust the finding.
   the checklist asking a library for a picture of an interface it does not have. The owner's rule —
   release builds and live demos are for apps; a landing page is for everyone — is the correct scope,
   and it is now in the tool as the tier map, not as a note in a report.
+- **Did not treat a finished page as broken.** `musicgen` and `Scrap-and-Gun` measured as clones of
+  each other and of `dashboard`; the owner says both are finished, and they are — the similarity is
+  a shared template, not a defect. They stay out of the redesign list. `dashboard` is Forge tooling
+  and needs no public face at all.
+- **Did not fix the two bugs in `musicgen` and `Scrap-and-Gun`.** A doubled `play/play/` demo link
+  and a favicon pointing at an `icon.svg` that does not exist are two-word fixes, but the owner
+  asked to be told, not edited. They are recorded above.
 - **Did not redesign anything this session.** 23 pages are flagged — six clones, 15 plain, five still
   on the skeleton's heading — and each one is a design decision that needs the subject, not a
   template. `design.md` measures the problem and `per-repo.md` says what each page needs; the pages
@@ -147,8 +187,11 @@ still one habit:
 
 1. the 98 support blocks, with `verify.py . --fix` for the QR and the portrait
 2. the 98 READMEs
-3. the 23 redesigns and the 26 landings — the design work, which does not batch
-4. the 6 splits and the 47 screenshot sets — small now, done per repo as the page is touched
+3. the 18 redesigns and the 26 landings — the design work, which does not batch
+4. the 4 splits and the 45 screenshot sets — small now, done per repo as the page is touched
+
+Waiting on the owner: which of the 10 plain pages in `design.md` to redo, and the two-line fixes in
+`musicgen` and `Scrap-and-Gun`.
 
 Not in that list, and not to be raised again without new information: the shields.io badges (a
 deliberate choice, accepted) and the six Apple targets (they bill nothing while the repos are
