@@ -226,3 +226,41 @@ Wi-Fi*.
 
 Lantern is the one long-running piece, so it starts early and finishes when it finishes; the estate
 batches are mechanical and can be interleaved without holding it up.
+
+---
+
+## Added at the owner's instruction
+
+### Batch 8 — remove the floating undo, and the buttons that go with it
+
+Every app that has one carries a **floating undo button** — and where there is
+one, a small family of related controls has grown around it: "undo any", "clear",
+"replay", the last-move chip. They sit over the content, they are the loudest
+thing on a quiet screen, and on a phone they cover the thing you are trying to
+read or draw.
+
+This is the **last** item of the presentation work, deliberately: it touches
+every app, and doing it before the design passes would mean touching the same
+files twice.
+
+Per repo: find the floating control cluster, keep the action if it earns its
+place (a real undo, reachable from the menu or the toolbar), and remove the
+floating button and the satellites that exist only to sit beside it. Nothing
+loses a function; the estate loses a habit.
+
+### Phase 2 — audit every app for errors, and fix them in batches
+
+Once the presentation work is done, the apps themselves get read for faults the
+page checks cannot see:
+
+- console errors and unhandled promise rejections on load and after the first
+  interaction
+- failed requests — a script, a font, an icon, a data file that is not there
+- buttons that do nothing, and controls that claim a state they do not hold
+- flows that stop half-way: an import that never confirms, an export that
+  produces an empty file, a form whose Save saves nothing
+
+Method: a headless pass per app that records what the browser complained about,
+then a human read of the screens the pass cannot judge. Fixed in batches by
+class — the same fault is usually in a dozen repos — with one commit per repo
+and the same evidence rule as everything else here.
