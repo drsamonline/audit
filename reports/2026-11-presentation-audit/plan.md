@@ -76,6 +76,53 @@ and committed it, twice.
 - Done when: a stranger who has never heard of the Organon understands it in one screen, and can be
   reading a paragraph two clicks later.
 
+
+## Lantern v1 — the decisions taken, and the one that cannot be fully honoured
+
+### Vendored viewers
+
+`pdf.js` and `epub.js` are committed into the app, not fetched. The repo stops being zero-*code*; it
+stays zero-*network*, which is the promise that matters. Each gets its licence file beside it and a
+line in the README saying what it is, its size and its licence. No CDN, ever.
+
+### Platforms
+
+| build | what it is | how | in v1 |
+|---|---|---|---|
+| **HTML** | the reader in any browser, served by the host | already the client; a phone just opens the address or scans the QR | yes |
+| **Windows** | host + reader in one window | an Electron shell around the existing `server.js` — the server is Node, so it runs unchanged | yes |
+| **Linux** | the same | the same | yes |
+| **Android (APK)** | **reader only** — joins a library hosted on a computer | a Trusted Web Activity over the host's address, with the discovery code so it works where mDNS is blocked | yes |
+| macOS, iOS | — | this estate does not ship Apple builds; the verifier fails them | never |
+
+An **Android host** is out of scope: serving a library needs a Node runtime on the phone, and the
+point of the app is that one cheap computer serves the room. Say so on the page rather than implying
+the phone can host.
+
+### Read-only mode: what it will do, and what it cannot
+
+**What it will do**
+
+- the server has **no download route at all** in read-only mode — a book is only ever served as the
+  reading payload, never as an attachment;
+- the reader intercepts the context menu, `Ctrl/Cmd+S`, `+P`, `+C`, `+A`, `+U`, drag-to-save, and the
+  print stylesheet;
+- in the packaged desktop app, devtools are off and there is no File menu, no Save page, no Print;
+- each reading session stamps a **faint per-session mark** — the reader's name or the six-digit code
+  — into the page and into any copied text, so a leak is traceable to a session.
+
+**What it cannot do, and the page must say so**
+
+- anyone can photograph the screen with another phone;
+- a reader on a phone is using a browser, and a browser can open devtools and read the response;
+- anyone who knows the address can `curl` the host;
+- so read-only is **a promise to honest readers, not a lock**. If a book must not be copied, it does
+  not belong on a shared library — that is the only real control, and saying it out loud is better
+  than a right-click block that anyone can walk around.
+
+Two measures that raise the bar for real: an optional **PIN per library**, and an optional
+**device allowlist** on the server, so only the machines in the room can fetch anything at all.
+
 ### Batch 4 — Lantern: content in the box, and a demo that shows the product
 
 *The install block for this page is already done — it is the worked example in `install-block.md`.
