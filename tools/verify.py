@@ -192,7 +192,10 @@ def inspect(root):
     # --- themes --------------------------------------------------------------
     check("prefers-color-scheme" in landing, "landing page respects the system theme",
           action="light is the base palette; let prefers-color-scheme decide the first paint")
-    check(re.search(r"localStorage\.(get|set)Item\(\s*['\"]theme:", landing) is not None,
+    # Any page-scoped key that names a theme: `theme:landing` and `thermals:landing-theme`
+    # are both right — what the rule forbids is sharing one key with the app.
+    check(re.search(r"localStorage\.(?:get|set)Item\(\s*['\"][^'\"]*theme[^'\"]*['\"]",
+                    landing, re.I) is not None,
           "landing page remembers its theme under its own key",
           action="store under a page-scoped key so the landing page and the app do not fight")
     check("data-theme" in landing, "landing page has a theme toggle", warn_only=True,
