@@ -19,6 +19,7 @@ designs repeated three times, which a structural checklist cannot see.
 """
 import argparse
 import fnmatch
+import hashlib
 import itertools
 import json
 import os
@@ -348,12 +349,27 @@ def audit_one(root, name, design=None, clone_group=""):
     }
 
 
+def shot_digests(parent, repos):
+    """Every screenshot in the fleet, by content hash. Two repos sharing one is a bug:
+    it means at least one of them is showing a picture of something that is not it."""
+    seen = defaultdict(list)
+    for n in repos:
+        for rel in ("docs/shot.png", "docs/assets/app-desktop.png", "docs/assets/app-mobile.png"):
+            path = os.path.join(parent, n, rel)
+            if os.path.exists(path):
+                with open(path, "rb") as fh:
+                    seen[hashlib.md5(fh.read()).hexdigest()].append("%s/%s" % (n, rel))
+    return seen
+
+
 def main():
     ap = argparse.ArgumentParser(description="Audit every repo in a directory against the skill.")
     ap.add_argument("parent", help="directory holding the repos")
     ap.add_argument("--only", help="shell-style pattern the repo name must match, e.g. 'app-*'")
     ap.add_argument("--json", help="write the full audit to this path")
     ap.add_argument("--design", action="store_true", help="print the design clusters and exit")
+    ap.add_argument("--shots", action="store_true",
+                    help="print screenshots shared between repos, and exit")
     ap.add_argument("--strict", action="store_true",
                     help="also list the accepted classes as work (shields.io badges, Apple targets)")
     args = ap.parse_args()
@@ -378,6 +394,18 @@ def main():
         label = " / ".join(g)
         for n in g:
             clone_of[n] = label
+
+    if args.shots:
+        seen = shot_digests(parent, repos)
+        shared = {h: v for h, v in seen.items() if len(v) > 1}
+        print("screenshots hashed: %d · distinct images: %d · shared: %d\n"
+              % (sum(len(v) for v in seen.values()), len(seen), len(shared)))
+        if not shared:
+            print("No two repos share a screenshot. Good.")
+        for h, where in shared.items():
+            print("  %s\n    %s" % (h[:12], "\n    ".join(sorted(where))))
+            print("    one of these is showing a picture of something that is not it — re-shoot both")
+        return 0
 
     if args.design:
         print("landing pages fingerprinted: %d\n" % len(designs))

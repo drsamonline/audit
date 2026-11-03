@@ -22,11 +22,19 @@ it. `--check` also asks each URL whether it answers right now.
 Exit status 1 if anything FAILs.
 """
 import argparse
+import hashlib
 import json
 import os
 import re
 import sys
 import xml.etree.ElementTree as ET
+
+# Images that are never a screenshot of this product. The first entry is a picture of a
+# GitHub Pages 404 page that shipped as docs/shot.png in two repos at once: the page's own
+# "screenshot" was the error the page was showing.
+KNOWN_BAD_IMAGES = {
+    "b23fa03cf8f186ace2eb600a875cca16": "a screenshot of a GitHub Pages 404 page",
+}
 
 SUPPORT_HANDLES = [
     "drsohilboi@ybl",
@@ -242,6 +250,34 @@ def inspect(root):
         check(size >= floor, "docs/assets/%s looks like a real screenshot" % name,
               "%d bytes" % size if size else "missing",
               action="step 5: scripts/shot.sh <repo> app app \"#/<populated route>\"")
+
+    # --- an image the page points at must be an image that exists ------------
+    broken = []
+    for rel, body in (("docs/index.html", landing), ("docs/play/index.html", app)):
+        base = os.path.dirname(os.path.join(root, rel))
+        for m in re.finditer(r'(?:src|href)="([^"#?:]+?\.(?:png|jpe?g|svg|webp|ico|gif))"',
+                             body, re.I):
+            src = m.group(1)
+            if src.startswith(("http://", "https://", "//", "data:")):
+                continue
+            if not os.path.exists(os.path.normpath(os.path.join(base, src))):
+                broken.append("%s -> %s" % (rel, src))
+    check(not broken, "every image the page references exists", "; ".join(sorted(set(broken))[:4]),
+          action="commit the image or fix the path: a page pointing at a missing file shows a "
+                 "broken icon, and a favicon that 404s is the most common way a finished page "
+                 "still looks unfinished")
+
+    # --- and it must not be a picture of an error page -----------------------
+    for rel in ("docs/shot.png", "docs/assets/app-desktop.png", "docs/assets/app-mobile.png"):
+        path = os.path.join(root, rel)
+        if not os.path.exists(path):
+            continue
+        with open(path, "rb") as fh:
+            digest = hashlib.md5(fh.read()).hexdigest()
+        if digest in KNOWN_BAD_IMAGES:
+            check(False, "%s is a real screenshot" % rel, KNOWN_BAD_IMAGES[digest],
+                  action="re-shoot it: scripts/shot.sh <repo> app app \"#/<populated route>\", and "
+                         "look at the image before committing it")
 
     # --- README --------------------------------------------------------------
     check("<!-- shot:start -->" in readme and "<!-- shot:end -->" in readme,
