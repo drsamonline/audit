@@ -188,7 +188,9 @@ the surface table, because the table records what a page does, not what was agre
 
 ## Files
 
-    README.md                        this measurement and the order to work in
+    README.md                        this measurement
+    plan.md                          the master plan: 100 repos, seven batches, Lantern v1
+    install-block.md                 the plain-language install rule, worked on app-lantern
     design.md                        the 74 landing pages, clustered by design similarity
     fleet-table.md                   all 100 repos, tier and surfaces, one row each
     per-repo.md                      one block per repo: what is right, what is missing, what to build
