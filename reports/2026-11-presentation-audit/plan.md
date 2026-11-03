@@ -18,7 +18,7 @@ and committed it, twice.
 
 ## Batches
 
-### Batch 0 — the rules, and the gate that keeps them
+### Batch 0 — the rules, the gate that keeps them, and the install block
 - Write the demo rule into the skill's method for this estate: a landing page embeds the real app in
   a frame wherever the app can run in one; where it cannot (a Node server, a desktop binary), the
   demo band shows screenshots and says so, and never offers a play button.
@@ -27,7 +27,15 @@ and committed it, twice.
   landing pages, and it is mechanically detectable.
 - Pin the shot pipeline (`shot.sh` + headless Chromium) in each repo's `tools/`, so every later
   batch shoots the same way.
-- Done when: the gate catches both existing 404 shots and passes `lumen`.
+- **The install block**, written in `install-block.md`: three steps in the page's own design, for a
+  person who has never opened a terminal, with the terminal command relegated to one hint line and
+  a "rather not install anything yet" link to the demo. The rule that makes it honest: **if the
+  copy says "double-click", the repo ships the double-clickable file.** Done for `app-lantern` —
+  `start-lantern.bat` and `start-lantern.sh` now exist, so the page promises what the repo delivers.
+- Roll the block out to the other 95 pages that have one, per kind of app (PWA, Node app with a
+  launcher, desktop download, extension, kit) — the per-kind table is in `install-block.md`.
+- Done when: the gate catches both existing 404 shots and passes `lumen`, and every page's install
+  section passes the four-question test in `install-block.md`.
 
 ### Batch 1 — Seance: make the feature work, then make it worth looking at
 - Bundle `crypto-kit` into the app (or vendor the two functions it needs) so `CryptoKit.sealString`
@@ -69,6 +77,9 @@ and committed it, twice.
   reading a paragraph two clicks later.
 
 ### Batch 4 — Lantern: content in the box, and a demo that shows the product
+
+*The install block for this page is already done — it is the worked example in `install-block.md`.
+What is left here is the content and the demo.*
 - Ship a **starter pack in `packs/`**, generated from `examples/starter-pack.json` by the existing
   `tools/build.mjs`, so `npm start` serves a library on first run instead of an empty page.
 - Give the **demo a server**: a small `demo-server.js` shim that answers the same `/p/<pack>` and
