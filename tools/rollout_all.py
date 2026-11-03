@@ -99,16 +99,18 @@ def run(repo):
                    cwd=repo, capture_output=True)
     log.append("badges: six local SVGs")
 
-    # 3. two real screenshots
-    assets = os.path.join(repo, "docs/assets")
-    os.makedirs(assets, exist_ok=True)
-    shot(repo, "desktop", 1280, 900, os.path.join(assets, "app-desktop.png"))
-    shot(repo, "mobile", 430, 860, os.path.join(assets, "app-mobile.png"))
-    log.append("shots: desktop + mobile")
+    # 3. two real screenshots — only where there is an app to photograph
+    has_app = os.path.exists(app_p)
+    if has_app:
+        assets = os.path.join(repo, "docs/assets")
+        os.makedirs(assets, exist_ok=True)
+        shot(repo, "desktop", 1280, 900, os.path.join(assets, "app-desktop.png"))
+        shot(repo, "mobile", 430, 860, os.path.join(assets, "app-mobile.png"))
+        log.append("shots: desktop + mobile")
 
     # 4. the demo: a keyboard app is linked, everything else is framed
     landing = read(landing_p)
-    if 'id="try-it"' not in landing:
+    if has_app and 'id="try-it"' not in landing:
         keyboard = re.search(r"addEventListener\(\s*['\"]key(?:down|up)['\"]", read(app_p)) is not None
         block = LINK if keyboard else FRAME
         landing = landing.replace("<footer", block + "\n<footer", 1) if "<footer" in landing \

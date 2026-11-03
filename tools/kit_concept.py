@@ -80,6 +80,92 @@ MOTIFS = {
         '<path d="M196 90 h50 m-14-14 14 14-14 14" stroke="%s"/>' % (INK, INK, ACC, ACC)),
 }
 
+# The second half of the estate: the remaining ten kits, the three engines, the
+# Forge tools and ziptastic. Kept in one table so a regeneration never has to guess.
+EXTRA = {
+    "frame-kit": ('<rect x="76" y="44" width="168" height="92" rx="4" stroke="%s"/>'
+        '<rect x="88" y="56" width="144" height="68" rx="2" stroke="%s" opacity=".55"/>'
+        '<path d="M96 118 l30-32 22 24 18-16 26 24" stroke="%s"/>'
+        '<circle cx="196" cy="72" r="7" stroke="%s" opacity=".7"/>' % (INK, INK, INK, INK)),
+    "game-kit": ('<rect x="78" y="66" width="164" height="60" rx="26" stroke="%s"/>'
+        '<path d="M108 96 h20 m-10-10 v20" stroke="%s"/>'
+        '<circle cx="176" cy="88" r="5" fill="%s" stroke="none"/>'
+        '<circle cx="196" cy="104" r="5" fill="%s" stroke="none"/>' % (INK, INK, ACC, ACC)),
+    "lan-kit": ('<rect x="62" y="66" width="60" height="44" rx="6" stroke="%s"/>'
+        '<rect x="198" y="66" width="60" height="44" rx="6" stroke="%s"/>'
+        '<path d="M122 88 h76" stroke="%s" stroke-dasharray="6 6"/>'
+        '<circle cx="160" cy="88" r="6" fill="%s" stroke="none"/>' % (INK, INK, ACC, ACC)),
+    "ml-kit": ('<circle cx="78" cy="70" r="9" stroke="%s"/><circle cx="78" cy="112" r="9" stroke="%s"/>'
+        '<circle cx="160" cy="56" r="9" stroke="%s"/><circle cx="160" cy="92" r="9" stroke="%s"/>'
+        '<circle cx="160" cy="128" r="9" stroke="%s"/><circle cx="240" cy="90" r="11" stroke="%s"/>'
+        '<path d="M87 70 l64-12 M87 112 l64-20 M87 112 l64 16 M169 56 l62 32 M169 92 h60 M169 128 l62-36" stroke="%s" opacity=".45"/>'
+        % (INK, INK, INK, INK, INK, ACC, INK)),
+    "optical-kit": ('<rect x="84" y="48" width="72" height="72" rx="4" stroke="%s"/>'
+        '<path d="M96 60h12v12H96z M120 60h12v12h-12z M96 84h12v12H96z M132 84h12v12h-12z" fill="%s" stroke="none"/>'
+        '<path d="M168 84 h44" stroke="%s"/><path d="M212 84 l-10-8 m10 8 l-10 8" stroke="%s"/>'
+        '<circle cx="240" cy="84" r="18" stroke="%s" opacity=".6"/>' % (INK, INK, ACC, ACC, INK)),
+    "repertory-kit": ('<rect x="72" y="44" width="72" height="18" rx="4" stroke="%s"/>'
+        '<rect x="72" y="82" width="72" height="18" rx="4" stroke="%s" opacity=".7"/>'
+        '<rect x="72" y="120" width="72" height="18" rx="4" stroke="%s" opacity=".45"/>'
+        '<path d="M144 53 h28 v38 h-28 M144 91 h28 v38 h-28 M172 91 h36" stroke="%s" opacity=".6"/>'
+        '<circle cx="222" cy="91" r="10" stroke="%s"/>' % (INK, INK, INK, INK, ACC)),
+    "search-kit": ('<rect x="62" y="52" width="128" height="76" rx="6" stroke="%s" opacity=".5"/>'
+        '<path d="M76 70h100 M76 86h100 M76 102h64" stroke="%s" opacity=".45"/>'
+        '<circle cx="212" cy="86" r="26" stroke="%s"/><path d="M231 105 l22 22" stroke="%s"/>'
+        % (INK, INK, ACC, ACC)),
+    "srs-kit": ('<rect x="70" y="62" width="56" height="72" rx="6" stroke="%s"/>'
+        '<rect x="136" y="52" width="56" height="72" rx="6" stroke="%s" opacity=".7"/>'
+        '<rect x="202" y="42" width="56" height="72" rx="6" stroke="%s" opacity=".45"/>'
+        '<path d="M126 98 h14 m-8-6 8 6-8 6 M192 88 h14 m-8-6 8 6-8 6" stroke="%s"/>'
+        % (INK, INK, INK, ACC)),
+    "ui-kit": ('<rect x="66" y="46" width="188" height="96" rx="8" stroke="%s"/>'
+        '<path d="M66 72 h188 M126 72 v70" stroke="%s" opacity=".5"/>'
+        '<rect x="140" y="84" width="98" height="44" rx="5" stroke="%s" opacity=".6"/>'
+        % (INK, INK, INK)),
+    "web-kit": ('<rect x="76" y="44" width="168" height="98" rx="8" stroke="%s"/>'
+        '<path d="M76 64 h168" stroke="%s" opacity=".5"/>'
+        '<circle cx="90" cy="54" r="3" fill="%s" stroke="none"/>'
+        '<rect x="90" y="76" width="70" height="8" rx="3" stroke="%s" opacity=".6"/>'
+        '<rect x="90" y="92" width="140" height="6" rx="3" stroke="%s" opacity=".45"/>'
+        '<rect x="90" y="120" width="48" height="12" rx="4" stroke="%s" opacity=".7"/>'
+        % (INK, INK, INK, INK, INK, ACC)),
+    "neon-engine": ('<rect x="86" y="46" width="148" height="88" rx="6" stroke="%s"/>'
+        '<path d="M86 76h148 M86 106h148" stroke="%s" opacity=".35"/>'
+        '<path d="M112 60h14v14h-14z M140 60h14v14h-14z M112 90h14v14h-14z" fill="%s" stroke="none"/>'
+        '<path d="M140 90h14v14h-14z M168 90h14v14h-14z" fill="%s" stroke="none" opacity=".6"/>'
+        % (INK, INK, ACC, ACC)),
+    "saga-vn-engine": ('<circle cx="76" cy="90" r="10" stroke="%s"/>'
+        '<path d="M86 90 h34 m0 0 v-30 h24 M120 90 v30 h24" stroke="%s"/>'
+        '<rect x="144" y="46" width="46" height="26" rx="5" stroke="%s"/>'
+        '<rect x="144" y="106" width="46" height="26" rx="5" stroke="%s"/>'
+        '<circle cx="238" cy="59" r="8" stroke="%s" opacity=".7"/>'
+        '<circle cx="238" cy="119" r="8" stroke="%s" opacity=".7"/>'
+        % (INK, INK, INK, INK, ACC, ACC)),
+    "aethelgard-rpg-engine": ('<path d="M84 128 V64 l76-18 76 18 v64" stroke="%s"/>'
+        '<path d="M84 128 h152" stroke="%s"/>'
+        '<path d="M122 128 V92 h30 v36 M186 128 V80 h30 v48" stroke="%s" opacity=".55"/>'
+        '<circle cx="160" cy="36" r="7" stroke="%s"/>' % (INK, INK, INK, ACC)),
+    "app-companion-forge": ('<path d="M96 120 h128 l-14-24 H110 Z" stroke="%s"/>'
+        '<path d="M112 96 V72 h96 v24" stroke="%s" opacity=".6"/>'
+        '<path d="M160 44 v22" stroke="%s"/><path d="M132 40 l28 14 28-14" stroke="%s"/>'
+        % (INK, INK, INK, ACC)),
+    "profile-kit": ('<rect x="96" y="40" width="128" height="104" rx="10" stroke="%s"/>'
+        '<circle cx="160" cy="74" r="18" stroke="%s"/>'
+        '<path d="M132 116 a28 20 0 0 1 56 0" stroke="%s" opacity=".7"/>' % (INK, INK, INK)),
+    "app-builder": ('<rect x="70" y="86" width="52" height="52" rx="5" stroke="%s"/>'
+        '<rect x="70" y="46" width="52" height="26" rx="5" stroke="%s" opacity=".5"/>'
+        '<path d="M134 92 h32 m-10-8 10 8-10 8" stroke="%s"/>'
+        '<rect x="180" y="60" width="72" height="78" rx="8" stroke="%s"/>' % (INK, INK, ACC, INK)),
+    "ziptastic": ('<rect x="66" y="72" width="60" height="40" rx="6" stroke="%s"/>'
+        '<path d="M126 92 h30" stroke="%s"/>'
+        '<rect x="156" y="64" width="44" height="56" rx="6" stroke="%s" opacity=".7"/>'
+        '<path d="M200 92 h26" stroke="%s"/>'
+        '<rect x="226" y="76" width="34" height="32" rx="5" stroke="%s"/>'
+        '<path d="M78 84h36 M78 92h28 M78 100h20" stroke="%s" opacity=".4"/>'
+        % (INK, ACC, INK, ACC, ACC, INK)),
+}
+MOTIFS.update(EXTRA)
+
 BLOCK = '''
 <figure style="margin:26px 0 0;text-align:center">
   <img src="assets/concept.svg" alt="A diagram of what this kit does"
