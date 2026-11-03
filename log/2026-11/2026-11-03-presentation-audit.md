@@ -28,11 +28,12 @@ The rest is concentrated in four omissions and two defects:
 | **loads shields.io images** | **36** |
 | **offers a macOS/iOS build** | **6** |
 
-The last two are wrong rather than missing. A repo whose promise is "offline, no server, no
-tracking" that loads its own description from `img.shields.io` contradicts its product above the
-fold — 36 of them do. And six repos still offer a `.dmg`: `dance-fight`, `eon-commando`,
-`neon-runner`, `retro-strike`, `remedy-relationship-explorer` (which also runs
-`build-desktop.yml` on `macos-latest`) and `lockhtml` (a macOS runner in `ci.yml`).
+The last two read as wrong rather than missing, and the owner has since ruled on both — see *What I
+deliberately did not do*. A repo whose promise is "offline, no server, no tracking" that loads its
+own description from `img.shields.io` contradicts its product above the fold — 36 of them do, and
+that is deliberate. Six repos offer a `.dmg`: `dance-fight`, `eon-commando`, `neon-runner`,
+`retro-strike`, `remedy-relationship-explorer` (which also runs `build-desktop.yml` on
+`macos-latest`) and `lockhtml` (a macOS runner in `ci.yml`) — and that bills nothing.
 
 ## What I changed
 
@@ -87,6 +88,16 @@ than guessed at.
   are spent on a platform this estate does not ship. Recorded, not fixed. **This reverses the moment
   a repo goes private** — the macOS multiplier applies to a private repo's included minutes, and
   four jobs × four Python versions at ten times the Linux rate is a real bill.
+- **Did not change the 36 shields.io badge sets, after being told they are deliberate.** They were
+  chosen because the committed SVGs kept going stale and breaking; a shields.io badge carries live
+  status — release version, last commit, CI state — that a static file cannot. So the finding stays
+  in the measurement and comes out of the work list: `tools/presentation_audit.py` now carries an
+  `ACCEPTED` map and reports these under `accepted`, and `--strict` is the flag that puts them back.
+  What is not fixed by deciding it: `verify.py` will keep failing the offline check on those 36
+  repos, so a future CI gate must allowlist `img.shields.io` instead of expecting green; a visitor
+  with no network sees broken images where the badges are; and the page still contradicts its own
+  offline claim. If one repo ever has to be genuinely self-contained, the cheap middle path is
+  `onerror` on the `img` pointing at a committed fallback — not a swap of the whole badge set.
 - **Did not add a CI gate for this.** The check needs 100 clones; that belongs in a scheduled job
   with a cache, not in a per-push workflow. It is in `Next`.
 
@@ -95,13 +106,13 @@ than guessed at.
 Work by class, not by repo — the paste that has to be identical 98 times is worth doing while it is
 still one habit:
 
-1. the 36 network badges — one mechanical fix per repo
-2. the 98 support blocks, with `verify.py . --fix` for the QR and the portrait
-3. the 98 READMEs
-4. the 51 splits and the 26 landings — the design work, which does not batch
+1. the 98 support blocks, with `verify.py . --fix` for the QR and the portrait
+2. the 98 READMEs
+3. the 51 splits and the 26 landings — the design work, which does not batch
 
-Not in that list: the six Apple targets, left alone because they bill nothing while the repos are
-public. Delete `lockhtml`'s macOS runner if that repo is ever made private.
+Not in that list, and not to be raised again without new information: the shields.io badges (a
+deliberate choice, accepted) and the six Apple targets (they bill nothing while the repos are
+public). Delete `lockhtml`'s macOS runner if that repo is ever made private.
 
 Then re-run `tools/presentation_audit.py` and record the new surface table here. The rollout is
 finished when the support column reads 100, not when the last commit lands.

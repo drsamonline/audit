@@ -36,7 +36,7 @@ repo that passed the check, not one that was assumed to.
 | support block on the landing page | **2** | |
 | support portrait | **2** | |
 | support block inherits the page theme | 2 | |
-| nothing loaded from another origin | 64 | |
+| nothing loaded from another origin | 64 | (36 of the 36 are accepted shields.io — see below) |
 | no Apple build target | 94 | |
 
 The two repos that carry the whole treatment are `lumen` and `repertory-reader`. `lumen` passes all
@@ -56,19 +56,30 @@ a time across the fleet, not one repo at a time through all six.
 | **README** | 98 | no `## Support` table in the README | the same six handles, as a table, from `assets/readme-template.md` |
 | **BADGES** | 93 | fewer than six local badge SVGs in `docs/assets/` | `scripts/badges.py` with this repo's real claims |
 | **SHOTS** | 85 | no `docs/assets/app-desktop.png` | `scripts/shot.sh`, on a populated route |
-| **NETWORK-BADGE** | 36 | the landing page loads **shields.io** images | replace with the local SVGs |
+| **NETWORK-BADGE** | 36 | the landing page loads **shields.io** images | *accepted* — deliberate, see below |
 | **SPLIT** | 51 | no app at `docs/play/` | per repo — see below |
 | **LANDING** | 26 | no landing page at all | build one from `assets/landing-skeleton.html` |
-| **APPLE** | 6 | a `.dmg`, a macos runner, a Download-for-Mac button | delete the target |
+| **APPLE** | 6 | a `.dmg`, a macos runner, a Download-for-Mac button | *accepted* — bills nothing, see below |
 
-One of these is a **defect, not an omission**, and it is the one worth doing first:
+### Decided, not defects: shields.io badges and Apple targets
 
-- **`NETWORK-BADGE` (36 repos).** The landing page of a repo whose whole promise is "offline, no
-  server, no tracking" loads its own description from `img.shields.io`. Every one of those pages
-  contradicts its product in the first 200 pixels. `CLDR`, `HMS`, `NEO`, `TTB`, `The_Browser`,
-  `Matneo`, `SmartNotes`, `lexora`, `neon-engine` and 27 others.
+Two classes look like defects and are not, because the owner looked at them and said no. They stay
+measured — the surface column above keeps saying what is true — but they are not work. A re-run of
+the audit lists them under `accepted`, and `--strict` is the flag that puts them back on the list.
 
-### Left alone: the six Apple targets
+**`NETWORK-BADGE` (36 repos).** The landing page of a repo whose whole promise is "offline, no
+server, no tracking" loads its own description from `img.shields.io`. `CLDR`, `HMS`, `NEO`, `TTB`,
+`The_Browser`, `Matneo`, `SmartNotes`, `lexora`, `neon-engine` and 27 others. **These are
+deliberate.** A committed SVG goes stale the day after it is generated; a shields.io badge carries
+live status — release version, last commit, CI state, stars — that a static file cannot. The fleet
+had recurrent broken local badges, and this replaced them. The cost is real and worth stating
+plainly: a visitor with no network sees broken images where the badges are, the page contradicts its
+own offline claim, and `verify.py` will keep failing the offline check on those 36 repos, so any
+future CI gate must allowlist `img.shields.io` rather than expect them to go green. Accepted on that
+basis. If a repo ever needs to be genuinely self-contained, the middle path is one attribute —
+`onerror` on the `img`, pointing at a committed fallback — rather than a swap of the whole badge set.
+
+### The six Apple targets
 
 `dance-fight`, `eon-commando`, `neon-runner`, `retro-strike` and `remedy-relationship-explorer`
 offer a `.dmg`; `remedy-relationship-explorer` also runs a whole `build-desktop.yml` on
@@ -111,22 +122,20 @@ that call is made.
 Not by repo — by class, smallest blast radius first, so that the paste that has to be identical 98
 times is done while it is still one habit.
 
-1. **The 36 network badges.** One mechanical fix per repo: generate the six local SVGs, then
-   replace every `img.shields.io` `src` with `assets/badge-<name>.svg`. The offline check should go
-   from 64 to 100.
-2. **The 98 support blocks.** Copy the four scripts into `tools/`, run
+1. **The 98 support blocks.** Copy the four scripts into `tools/`, run
    `verify.py . --fix` for the QR and the portrait, paste both regions, bump the service worker's
    `CACHE`, refresh the footer stamp. One commit per repo, text first, PNGs one at a time.
-3. **The 98 READMEs.** The same handles as a table under `## Support`, plus the
+2. **The 98 READMEs.** The same handles as a table under `## Support`, plus the
    `<!-- shot:start -->` block where it has been lost.
-4. **The 51 splits and the 26 landings.** This is the design work and it does not batch: each repo
+3. **The 51 splits and the 26 landings.** This is the design work and it does not batch: each repo
    gets its own idea, its own palette, its own display face. `per-repo.md` says, per repo, where the
    app is today and where it should go.
-5. **Re-run the audit and write the log entry.** The number that matters is the surface table at the
+4. **Re-run the audit and write the log entry.** The number that matters is the surface table at the
    top of this file; when the `SUPPORT` column reads 100, the rollout is done.
 
-The six Apple targets are deliberately not in this list — see **Left alone: the six Apple targets**
-above. They cost nothing while the repos are public.
+Two classes are deliberately not in this list: the shields.io badges and the six Apple targets. Both
+are decisions, not omissions — see **Decided, not defects** above. They will keep showing `FAIL` in
+the surface table, because the table records what a page does, not what was agreed about it.
 
 ## Files
 

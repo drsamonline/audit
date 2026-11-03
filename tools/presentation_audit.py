@@ -63,6 +63,15 @@ HEAD = {
     "special": "",
 }
 
+# Classes the owner has looked at and accepted. They stay measured — the surface column keeps
+# saying what is true — but they are not work, and a re-run should not put them back on the list.
+ACCEPTED = {
+    "NETWORK-BADGE": "shields.io badges are deliberate: a committed SVG goes stale, a live badge does "
+                     "not. Accepted 2026-11-03; see reports/2026-11-presentation-audit/README.md.",
+    "APPLE": "bills nothing while every repo is public. Accepted 2026-11-03; reverses if a repo "
+             "goes private.",
+}
+
 STEP = {
     "BADGES": "Generate the six local badge SVGs into docs/assets/badge-*.svg with scripts/badges.py, from this repo's own suite and LICENSE.",
     "SHOTS": "Shoot docs/assets/app-desktop.png (1280x1600) and app-mobile.png (430x860) with scripts/shot.sh, on a populated route.",
@@ -126,7 +135,7 @@ def classes_of(surfaces):
     return [code for surf, code in pairs if surfaces.get(surf) != "pass"]
 
 
-def audit_one(root, name):
+def audit_one(root, name, strict=False):
     report = inspect(root)
     surfaces = dict(surface_rows(report))
     shape, entry = shape_of(root, name)
@@ -145,8 +154,9 @@ def audit_one(root, name):
     if head:
         build.append(head % (entry or "it") if "%s" in head else head)
     for code in classes:
-        if code not in ("LANDING", "SPLIT"):
-            build.append(STEP[code])
+        if code in ("LANDING", "SPLIT") or (code in ACCEPTED and not strict):
+            continue
+        build.append(STEP[code])
     for a in report["results"]:
         if a["status"] != "pass" and a["action"] and a["label"] not in SURFACE_LABELS:
             build.append("Failing check — %s: %s" % (a["label"], a["action"]))
@@ -163,6 +173,7 @@ def audit_one(root, name):
         "app_entry": entry,
         "surfaces": surfaces,
         "classes": classes,
+        "accepted": [c for c in classes if c in ACCEPTED],
         "fails": report["fails"],
         "warns": report["warns"],
         "build": steps,
@@ -175,6 +186,8 @@ def main():
     ap.add_argument("parent", help="directory holding the repos")
     ap.add_argument("--only", help="shell-style pattern the repo name must match, e.g. 'app-*'")
     ap.add_argument("--json", help="write the full audit to this path")
+    ap.add_argument("--strict", action="store_true",
+                    help="also list the accepted classes as work (shields.io badges, Apple targets)")
     args = ap.parse_args()
 
     parent = os.path.abspath(args.parent)
@@ -188,7 +201,7 @@ def main():
             continue
         if args.only and not fnmatch.fnmatch(name, args.only):
             continue
-        rows.append(audit_one(root, name))
+        rows.append(audit_one(root, name, args.strict))
 
     if args.json:
         with open(args.json, "w") as fh:
