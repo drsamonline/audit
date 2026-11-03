@@ -10,23 +10,43 @@ Ten surfaces per repo — landing page, app at `docs/play/`, six local badges, s
 support section, the support block, the portrait, theme inheritance, offline honesty, Apple build
 targets — plus the thing the script cannot see: where the app actually lives today.
 
+Then the owner scoped it, and the scope changed the work more than the measurement did:
+
+- **a release build and a live demo apply to apps, not to kits** — a kit, a forge, an engine has no
+  product UI to screenshot, so asking it for `docs/play/` and `app-desktop.png` is asking for a
+  picture of nothing;
+- **many apps do not need a live demo, but every repo needs a landing page**;
+- **each landing page must be its own design**, not one page with the title changed.
+
+So every repo now carries a **tier** — `app` (50), `app-no-demo` (12), `kit` (28), `data` (6),
+`infra` (4) — and the tier decides which surfaces are required. And all 74 landing pages were
+fingerprinted: CSS class tokens, declared colours, font stacks and heading sequences, clustered by
+similarity.
+
 ## What was wrong
 
 Two of 100 repos carry the whole treatment. `lumen` passes all ten surfaces; `repertory-reader`
 passes all ten surface checks and still fails three others.
 
-The rest is concentrated in four omissions and two defects:
+The rest is concentrated in a few omissions, once the scope is right:
 
-| | repos |
+| | required repos |
 |---|---|
 | no support block on the landing page | 98 |
 | no `## Support` section in the README | 98 |
-| fewer than six local badge SVGs | 93 |
-| no screenshot in `docs/assets/` | 85 |
-| no app at `docs/play/` | 51 |
+| no support portrait | 94 |
+| fewer than six local badge SVGs | 89 |
+| no screenshot in `docs/assets/` | 47 |
 | no landing page at all | 26 |
-| **loads shields.io images** | **36** |
-| **offers a macOS/iOS build** | **6** |
+| **the page is a clone or is plain** | **23** |
+| no app at `docs/play/` | **6** |
+| loads shields.io images | 36 (accepted) |
+| offers a macOS/iOS build | 6 (accepted) |
+
+The scoping is the finding: `docs/play/` went from 51 repos to **6**, screenshots from 85 to **47**.
+Under the full checklist the kits were the heaviest block of work in the fleet; under the right
+scope they are one job — a landing page that explains an API — and there is no release build to
+produce for them at all.
 
 The last two read as wrong rather than missing, and the owner has since ruled on both — see *What I
 deliberately did not do*. A repo whose promise is "offline, no server, no tracking" that loads its
@@ -39,33 +59,43 @@ that is deliberate. Six repos offer a `.dmg`: `dance-fight`, `eon-commando`, `ne
 
 Nothing in any of the 100 repos. This session wrote the measurement only:
 
-- `reports/2026-11-presentation-audit/README.md` — the surface table, the six defect classes, and
-  the order to work in
-- `reports/2026-11-presentation-audit/fleet-table.md` — 100 rows, ten surfaces, and each repo's
-  shape
-- `reports/2026-11-presentation-audit/per-repo.md` — one block per repo: what is already right,
-  what is missing, and the smallest set of changes that closes it
+- `reports/2026-11-presentation-audit/README.md` — the scope and its five tiers, the required-vs-
+  present table, the defect classes, and the order to work in
+- `reports/2026-11-presentation-audit/design.md` — the 74 landing pages clustered by similarity,
+  the two clone sets, the plain list, and what "its own design" means
+- `reports/2026-11-presentation-audit/fleet-table.md` — 100 rows, tier and surfaces, `—` where the
+  tier does not require a surface
+- `reports/2026-11-presentation-audit/per-repo.md` — one block per repo: tier, what is already
+  right, what is not required, and the smallest set of changes that closes the gap
 - `state/presentation-audit.json` — the same, machine-readable
-- `tools/presentation_audit.py` — the walker, and `tools/verify.py`, the skill's gate copied
-  verbatim so the audit is reproducible without the skill installed
+- `tools/presentation_audit.py` — the walker. Rewritten this session: it now carries the tier map,
+  the per-tier requirements, the accepted classes and the design clustering, so a re-run reproduces
+  this report instead of contradicting it. `tools/verify.py` is the skill's gate, copied verbatim.
 
 ## Evidence
 
 The audit is reproducible from this repo:
 
     python3 tools/presentation_audit.py <parent-dir-of-repos>
-    → 100 repos · apply 75, apply-lite 17, decide 7, skip 1
+    → 100 repos · tiers app 50, app-no-demo 12, kit 28, data 6, infra 4
+    → work: BADGES 89, SHOTS 47, README 98, SUPPORT 98, PORTRAIT 94, SPLIT 6, LANDING 26
+
+    python3 tools/presentation_audit.py <parent-dir-of-repos> --design
+    → 3 repos: Scrap-and-Gun, dashboard, musicgen            (0.759–0.778)
+    → 3 repos: BLINKTRANSFER, blinkcode-ai, helioprism       (0.555–0.658)
 
 `verify.py --audit` was run per repo and its action strings are what `per-repo.md` prints, so no step
-in that file is a suggestion invented for the report. Every shape in the `shape` column was checked
-by opening `docs/index.html` and reading what it is: a landing page, the app itself, a generated
-report, or nothing.
+in that file is a suggestion invented for the report.
 
-Two shapes were hand-corrected because no heuristic distinguishes a product page from a page about
-a product: `app-organon-reader` and `control-panel` keep the app at `docs/index.html`, and
-`neon-games` keeps two games at `docs/play/dead-zone/` and `docs/play/neon-police/` with no
-`docs/play/index.html` between them. Those three are named in `tools/presentation_audit.py` rather
-than guessed at.
+Two things are hand-decided rather than measured, and both are named in `tools/presentation_audit.py`
+rather than guessed at: **the tier map** (no file listing tells you whether a repo is a product or a
+library) and **three app locations** (`app-organon-reader` and `control-panel` keep the app at
+`docs/index.html`, and `neon-games` keeps two games at `docs/play/dead-zone/` and
+`docs/play/neon-police/` with no `docs/play/index.html` between them).
+
+The design clustering is a measurement: Jaccard overlap of CSS class tokens and declared hex
+colours, weighted with the heading sequence and the page size. It found the two clone sets without
+being told where to look, which is the only reason to trust the finding.
 
 ## What I deliberately did not do
 
@@ -98,6 +128,15 @@ than guessed at.
   with no network sees broken images where the badges are; and the page still contradicts its own
   offline claim. If one repo ever has to be genuinely self-contained, the cheap middle path is
   `onerror` on the `img` pointing at a committed fallback — not a swap of the whole badge set.
+- **Did not ask a kit for a release build, a live demo or an app screenshot.** The first version of
+  this audit did, and it produced 51 "missing demos" and 85 "missing screenshots" that were mostly
+  the checklist asking a library for a picture of an interface it does not have. The owner's rule —
+  release builds and live demos are for apps; a landing page is for everyone — is the correct scope,
+  and it is now in the tool as the tier map, not as a note in a report.
+- **Did not redesign anything this session.** 23 pages are flagged — six clones, 15 plain, five still
+  on the skeleton's heading — and each one is a design decision that needs the subject, not a
+  template. `design.md` measures the problem and `per-repo.md` says what each page needs; the pages
+  themselves are untouched.
 - **Did not add a CI gate for this.** The check needs 100 clones; that belongs in a scheduled job
   with a cache, not in a per-push workflow. It is in `Next`.
 
@@ -108,7 +147,8 @@ still one habit:
 
 1. the 98 support blocks, with `verify.py . --fix` for the QR and the portrait
 2. the 98 READMEs
-3. the 51 splits and the 26 landings — the design work, which does not batch
+3. the 23 redesigns and the 26 landings — the design work, which does not batch
+4. the 6 splits and the 47 screenshot sets — small now, done per repo as the page is touched
 
 Not in that list, and not to be raised again without new information: the shields.io badges (a
 deliberate choice, accepted) and the six Apple targets (they bill nothing while the repos are

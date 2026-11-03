@@ -1,8 +1,9 @@
 # 2026-11 presentation audit
 
 **100 repositories read against the `repo-presentation` skill, one row each, with the delta every
-repo still needs. Two repos are finished. Ninety-eight are not, and most of the gap is four things
-pasted in the same way 98 times.**
+repo still needs — scoped to what that repo actually is.** A kit is not asked for an app
+screenshot. A desktop product is not asked for a live demo. Every repo is asked for a landing page,
+and every landing page has to be its own design.
 
 This is a measurement, not a plan for later. Every row was produced by the skill's own gate
 (`verify.py`) running over a shallow clone of the repo at HEAD, so a repo that reads *ok* here is a
@@ -15,51 +16,81 @@ repo that passed the check, not one that was assumed to.
 - **Cloned, not read through raw.** `git clone --depth 1` for all 100 (1.5 GB), then the skill's
   `verify.py` against each working tree. `raw.githubusercontent.com` lags a commit by minutes to
   hours and has made finished work look broken twice in this fleet; it is not evidence.
-- **Ten surfaces per repo**, the skill's own list: landing page, app at `docs/play/`, six local
-  badges, screenshots, README support section, the support block, the portrait, theme inheritance,
-  offline honesty, and Apple build targets.
-- **Plus one thing no script sees: where the app actually is.** `docs/play/index.html` missing is
-  only a fact; whether the app lives at `docs/app.html`, at the repo root, in `docs/demo/`, or
-  nowhere at all is the work. That classification is in `fleet-table.md` as the `shape` column.
+- **The skill's own surfaces per repo** — landing page, app at `docs/play/`, six local badges,
+  screenshots, README support section, the support block, the portrait, offline honesty, Apple
+  build targets — plus one thing no script sees: **where the app actually is.**
+  `docs/play/index.html` missing is only a fact; whether the app lives at `docs/app.html`, at the
+  repo root, in `docs/demo/`, or nowhere at all is the work.
+- **And the design of all 74 landing pages** — their CSS class tokens, declared colours, font
+  stacks and heading sequences, clustered by similarity. That is `design.md`.
 
-## What was wrong
+## The scope: what each tier is actually required to carry
 
-### The surfaces, counted
+The first version of this audit applied the full checklist to all 100 repos and produced 51 "splits"
+and 85 missing screenshot sets. Most of those were not gaps — they were the checklist asking a
+library for a picture of its interface. The owner's rule is narrower and better:
 
-| surface | passing | of 100 |
+- **a release build and a live app demo apply to apps, not to kits** — a kit, a forge, an engine is
+  code other projects consume, and it has no product UI to screenshot;
+- **many apps do not need a live demo, but every repo needs a landing page**;
+- **each landing page must be its own design**, not the same page with the title changed.
+
+So each repo carries one of five tiers, and the tier decides the requirement:
+
+| tier | repos | required |
 |---|---|---|
-| landing page at `docs/index.html` | 74 | |
-| app at `docs/play/index.html` | 49 | |
-| six local badge SVGs | **7** | |
-| screenshots | 15 | |
-| README support section | **2** | |
-| support block on the landing page | **2** | |
-| support portrait | **2** | |
-| support block inherits the page theme | 2 | |
-| nothing loaded from another origin | 64 | (36 of the 36 are accepted shields.io — see below) |
-| no Apple build target | 94 | |
+| **`app`** | 50 | landing page, a live demo at `docs/play/`, screenshots, badges, support block |
+| **`app-no-demo`** | 12 | the same minus the live demo — desktop, extension, server, compiler. The demo band shows screenshots |
+| **`kit`** | 28 | landing page, badges, support block. **No demo, no app screenshot** — a library has no product UI |
+| **`data`** | 6 | landing page, badges, support block — a dataset, a catalogue, a report, the hub, the shop |
+| **`infra`** | 4 | decide first whether it wants a public face at all |
 
-The two repos that carry the whole treatment are `lumen` and `repertory-reader`. `lumen` passes all
-ten surfaces and is the reference shape for everything below. `repertory-reader` passes all ten
-surface checks and still fails three others — its landing page is dark-only, it has no light
-`--ink`/`--paper` palette for the contrast gate to read, and its README has lost the
-`shot:start`/`shot:end` markers the pipeline writes into.
+The scoping changes the work a lot. `docs/play/` went from **51 repos needing a split to 6**, and
+screenshots from 85 to **47** — because a kit was never going to have an app to photograph.
 
-### The six defect classes
+| surface | required | present |
+|---|---|---|
+| landing page at `docs/index.html` | 100 | 74 |
+| app at `docs/play/index.html` | 50 | 44 |
+| six local badge SVGs | 96 | **7** |
+| screenshots | 62 | 15 |
+| README support section | 100 | **2** |
+| support block on the landing page | 100 | **2** |
+| support portrait | 96 | **2** |
+| nothing loaded from another origin | 100 | 64 (36 accepted shields.io) |
+| no Apple build target | 100 | 94 (6 accepted) |
+
+### The defect classes
 
 Grouped by the change that closes them, because that is how the work should be done — one class at
-a time across the fleet, not one repo at a time through all six.
+a time across the fleet, not one repo at a time through all of them. The counts are **required**
+repos, after the tier scoping and after the two accepted classes are removed.
 
 | class | repos | what it is | the fix |
 |---|---|---|---|
 | **SUPPORT** | 98 | no support block on the landing page, no portrait, no QR | paste region 1 into the footer, run `support_qr.py` and `support_portrait.py` |
 | **README** | 98 | no `## Support` table in the README | the same six handles, as a table, from `assets/readme-template.md` |
-| **BADGES** | 93 | fewer than six local badge SVGs in `docs/assets/` | `scripts/badges.py` with this repo's real claims |
-| **SHOTS** | 85 | no `docs/assets/app-desktop.png` | `scripts/shot.sh`, on a populated route |
+| **PORTRAIT** | 94 | no `docs/assets/support-portrait.jpg` | `scripts/support_portrait.py` — part of the same paste |
+| **BADGES** | 89 | fewer than six local badge SVGs in `docs/assets/` | `scripts/badges.py`, as the offline fallback beside the live ones |
+| **SHOTS** | 47 | no `docs/assets/app-desktop.png`, where an app exists | `scripts/shot.sh`, on a populated route |
+| **LANDING** | 26 | no landing page at all | build one from `assets/landing-skeleton.html` — its own design |
+| **DESIGN** | 23 | the page exists but is a clone or is plain | `design.md` |
+| **SPLIT** | 6 | an app with no `docs/play/` | move the entry and point the demo frame at it |
 | **NETWORK-BADGE** | 36 | the landing page loads **shields.io** images | *accepted* — deliberate, see below |
-| **SPLIT** | 51 | no app at `docs/play/` | per repo — see below |
-| **LANDING** | 26 | no landing page at all | build one from `assets/landing-skeleton.html` |
 | **APPLE** | 6 | a `.dmg`, a macos runner, a Download-for-Mac button | *accepted* — bills nothing, see below |
+
+Two repos need nothing: `lumen` passes every surface it is required to carry, and `repertory-reader`
+passes all of them but still fails three other checks — its landing page is dark-only, it has no
+light `--ink`/`--paper` palette for the contrast gate to read, and its README has lost the
+`shot:start`/`shot:end` markers the pipeline writes into.
+
+### The design problem
+
+**Six landing pages are two designs, repeated three times each**, and 15 more are plain — few
+sections, few colours, no display face of their own. `Scrap-and-Gun`, `dashboard` and `musicgen`
+share one page (similarity 0.76–0.78, the same three headings, no declared colours at all);
+`BLINKTRANSFER`, `blinkcode-ai` and `helioprism` share another (0.56–0.66). The full measurement,
+the method and what "its own design" means are in **`design.md`**.
 
 ### Decided, not defects: shields.io badges and Apple targets
 
@@ -103,19 +134,18 @@ the page is being edited for another reason — not worth a session of its own.
 becomes four macOS jobs × four Python versions per push, billed at ten times the Linux rate. That
 is the moment to delete the runner, not the moment to discover it on an invoice.
 
-### What is not a defect
+### What the kits do not need
 
-The 19 `*-kit` repos (`art-kit`, `web-kit`, `game-kit`, `lan-kit`, `crypto-kit`, …) keep their demo
-at the repo root, which GitHub Pages does not serve, so they have no landing page and no demo. That
-is a real gap, but it is not the same gap as a missing support block: a kit's public face is a
-documentation page with a live demo of the primitives, not a product page. They are `apply` in the
-table, with `no-docs` as their shape, and they are the largest single block of work in the fleet.
+The 28 `kit` repos — the 19 `*-kit` libraries, `app-companion-forge`, the three engines, the
+`weft8-*` pack, `app-builder`, `profile-kit` — keep their demo at the repo root, which GitHub Pages
+does not serve. Under the first version of this audit that read as "no landing page, no demo, no
+screenshots" and put them in the heaviest work class. Under the owner's scoping it is one job: **a
+landing page that explains the API**, plus badges and the support block. No `docs/play/`, no app
+screenshot, no release build — there is no product UI to photograph.
 
-Seven repos are marked **`decide`** — `backup`, `compfactory`, `HCS`, `heavenzip`, `ziptastic`,
-`audit` and `drsamonline`. These are infrastructure, a report, or the profile README. Whether a
-repository that nobody installs wants a landing page and a tip jar is the owner's call, not
-something a checklist should decide. They are listed with what the check found and left alone until
-that call is made.
+Four repos are marked **`decide`** — `backup`, `compfactory`, `HCS`, `heavenzip`. Infrastructure
+nobody installs. Whether it wants a landing page and a tip jar is the owner's call, not something a
+checklist should decide.
 
 ## The order to work in
 
@@ -127,10 +157,12 @@ times is done while it is still one habit.
    `CACHE`, refresh the footer stamp. One commit per repo, text first, PNGs one at a time.
 2. **The 98 READMEs.** The same handles as a table under `## Support`, plus the
    `<!-- shot:start -->` block where it has been lost.
-3. **The 51 splits and the 26 landings.** This is the design work and it does not batch: each repo
-   gets its own idea, its own palette, its own display face. `per-repo.md` says, per repo, where the
-   app is today and where it should go.
-4. **Re-run the audit and write the log entry.** The number that matters is the surface table at the
+3. **The 23 redesigns and the 26 landings.** This is the design work and it does not batch: each
+   repo gets its own idea, its own palette, its own display face. `design.md` says which pages are
+   clones and which are plain; `per-repo.md` says, per repo, what the page is and what to do.
+4. **The 6 splits and the 47 screenshot sets.** Small now, because a kit is not asked for a picture
+   of an interface it does not have. Do them per repo as the page is touched.
+5. **Re-run the audit and write the log entry.** The number that matters is the surface table at the
    top of this file; when the `SUPPORT` column reads 100, the rollout is done.
 
 Two classes are deliberately not in this list: the shields.io badges and the six Apple targets. Both
@@ -140,7 +172,8 @@ the surface table, because the table records what a page does, not what was agre
 ## Files
 
     README.md                        this measurement and the order to work in
-    fleet-table.md                   all 100 repos, ten surfaces, one row each
+    design.md                        the 74 landing pages, clustered by design similarity
+    fleet-table.md                   all 100 repos, tier and surfaces, one row each
     per-repo.md                      one block per repo: what is right, what is missing, what to build
     ../../state/presentation-audit.json   the same, machine-readable, one object per repo
     ../../tools/presentation_audit.py     the walker that produced it
@@ -151,12 +184,12 @@ The support block, the landing skeleton and the four asset scripts stay in the s
 copied here: six handles × 100 repos is 600 chances to mistype, and a second copy of the block is a
 second source of truth. Paste from the skill, never from a repo's own copy.
 
-`per-repo.md` carries a verdict per repo:
+`per-repo.md` carries a tier and a verdict per repo:
 
-- **`apply`** (75) — the full treatment, including the `docs/play/` split.
-- **`apply-lite`** (17) — landing page, README and support block; there is no web app to embed, so
-  the demo band shows the screenshots instead of an iframe.
-- **`decide`** (7) — infrastructure; whether it wants a public face is the owner's call.
+- **`apply`** (95) — work out the required surfaces for its tier. What that means is decided by the
+  tier, not by the verdict.
+- **`decide`** (4) — `backup`, `compfactory`, `HCS`, `heavenzip`; whether they want a public face is
+  the owner's call.
 - **`skip`** (1) — `lumen`. Leave it alone.
 
 ## How to re-run it
@@ -164,7 +197,13 @@ second source of truth. Paste from the skill, never from a repo's own copy.
     gh auth login
     python3 tools/presentation_audit.py /path/to/parent-dir-of-repos
     python3 tools/presentation_audit.py /path/to/parent-dir-of-repos --json state/presentation-audit.json
+    python3 tools/presentation_audit.py /path/to/parent-dir-of-repos --design   # the design clusters
+    python3 tools/presentation_audit.py /path/to/parent-dir-of-repos --strict   # accepted classes as work
 
 `tools/verify.py` is the skill's `scripts/verify.py`, copied in unchanged so the audit is
 reproducible without the skill installed. A change to it belongs in the skill, not here. The walker
 needs the repos on disk; it clones nothing itself.
+
+The tier map is a small hand-decided table in `tools/presentation_audit.py`, because no file listing
+tells you whether a repo is a product or a library. Everything else — the surfaces, the classes, the
+design fingerprints — is measured.
