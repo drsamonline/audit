@@ -193,9 +193,20 @@ def inspect(root):
     check("prefers-color-scheme" in landing, "landing page respects the system theme",
           action="light is the base palette; let prefers-color-scheme decide the first paint")
     # Any page-scoped key that names a theme: `theme:landing` and `thermals:landing-theme`
-    # are both right — what the rule forbids is sharing one key with the app.
-    check(re.search(r"localStorage\.(?:get|set)Item\(\s*['\"][^'\"]*theme[^'\"]*['\"]",
-                    landing, re.I) is not None,
+    # are both right — what the rule forbids is sharing one key with the app. The key is
+    # often a constant, so a bare `localStorage.setItem(KEY, ...)` is resolved to its
+    # declaration before the check gives up.
+    theme_key = re.search(r"localStorage\.(?:get|set)Item\(\s*['\"][^'\"]*theme[^'\"]*['\"]",
+                          landing, re.I)
+    if theme_key is None:
+        used = re.search(r"localStorage\.(?:get|set)Item\(\s*([A-Za-z_$][\w$]*)\s*[,)]", landing)
+        if used:
+            name = used.group(1)
+            decl = re.search(r"(?:var|let|const)\s+" + re.escape(name) +
+                             r"\s*=\s*['\"]([^'\"]*)['\"]", landing)
+            if decl and "theme" in decl.group(1).lower():
+                theme_key = decl
+    check(theme_key is not None,
           "landing page remembers its theme under its own key",
           action="store under a page-scoped key so the landing page and the app do not fight")
     check("data-theme" in landing, "landing page has a theme toggle", warn_only=True,
