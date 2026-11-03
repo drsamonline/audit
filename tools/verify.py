@@ -184,8 +184,17 @@ def inspect(root):
           action="check the wording: a device mock is fine, an iOS download is not")
 
     # --- the demo ------------------------------------------------------------
-    check("<iframe" in landing, "landing page embeds the app in a frame",
-          action="step 3: <iframe src=\"play/\"> behind a poster, revealed on load")
+    # A keyboard game cannot live in a frame: keys go to whichever document has
+    # focus, so a framed arcade game ignores the arrows until it is clicked, and
+    # an in-game key toggle (auto-fire) never fires at all. For those the page
+    # links to the app full screen instead, and that is the correct answer.
+    keyboard_app = re.search(r"addEventListener\(\s*['\"]key(?:down|up)['\"]", app or "") is not None
+    linked_full = re.search(r'href="play/?"[^>]*target="_blank"', landing) is not None or \
+                  re.search(r'href="\./play/?"[^>]*target="_blank"', landing) is not None
+    check("<iframe" in landing or (keyboard_app and linked_full),
+          "landing page embeds the app in a frame",
+          action="step 3: <iframe src=\"play/\"> behind a poster, revealed on load — "
+                 "unless the app is keyboard-driven, in which case link it full screen")
     check("poster" in landing, "the frame has a poster behind it", warn_only=True,
           action="keep the screenshot behind the frame so a blocked demo still shows the product")
 
@@ -375,7 +384,11 @@ def inspect(root):
     check("upi://pay" in landing or "upi://pay" in app,
           "the UPI intent link is on the page",
           action="the VPA needs a upi://pay link as well as the printed text")
-    check("am=" not in landing and "am=" not in app,
+    # Scope the check to the upi:// URL itself. Searching the whole page matched
+    # game code: `DBG cam=` contains "am=" and failed a page whose link was fine.
+    upi_links = re.findall(r"upi://pay\?[^\"'\s]+", landing) + \
+                re.findall(r"upi://pay\?[^\"'\s]+", app or "")
+    check(bool(upi_links) and all("am=" not in u for u in upi_links),
           "the UPI intent asks for an open amount",
           action="delete any am= parameter — no presets, no suggested tiers")
 
