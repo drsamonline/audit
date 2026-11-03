@@ -190,8 +190,13 @@ still one habit:
 3. the 18 redesigns and the 26 landings — the design work, which does not batch
 4. the 4 splits and the 45 screenshot sets — small now, done per repo as the page is touched
 
-Waiting on the owner: which of the 10 plain pages in `design.md` to redo, and the two-line fixes in
-`musicgen` and `Scrap-and-Gun`.
+`musicgen` and `Scrap-and-Gun` go **last**, by the owner's instruction: both are finished pages, so
+what is left on them is the estate-wide block and badge rollout, not the page.
+
+Waiting on the owner: which of the 10 plain pages in `design.md` to redo, whether the four
+`weft8-*` pages are a deliberate family, and whether the four split candidates — `app-lantern`,
+`app-organon-reader`, `seance`, `today-card` — need a landing page at all or should be left as they
+are.
 
 Not in that list, and not to be raised again without new information: the shields.io badges (a
 deliberate choice, accepted) and the six Apple targets (they bill nothing while the repos are

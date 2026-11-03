@@ -178,6 +178,10 @@ times is done while it is still one habit.
 5. **Re-run the audit and write the log entry.** The number that matters is the surface table at the
    top of this file; when the `SUPPORT` column reads 100, the rollout is done.
 
+`musicgen` and `Scrap-and-Gun` are held to the end, by the owner's instruction. Both are finished
+pages — what is left on them is the estate-wide block and badge rollout, not the page itself, so
+they are the last two repos touched, not the first.
+
 Two classes are deliberately not in this list: the shields.io badges and the six Apple targets. Both
 are decisions, not omissions — see **Decided, not defects** above. They will keep showing `FAIL` in
 the surface table, because the table records what a page does, not what was agreed about it.
