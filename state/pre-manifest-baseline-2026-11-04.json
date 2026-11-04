@@ -1,0 +1,55 @@
+{
+ "taken_at": "2026-11-04T15:42Z",
+ "why": "Pre-change baseline. Every file the manifest rollout touches, pinned to its git blob sha, so any one can be restored byte-exactly with `git cat-file blob <sha>`.",
+ "restore": "git -C <repo> cat-file blob <blob_sha> > <path>   # exact bytes, from any clone",
+ "repos": {
+  "forge": {
+   "head": "bb7cb6a056a97628dd8ef8f7ebb04f4cecfc8cb7",
+   "files": {
+    "tools/manifest.py": null,
+    "manifest-paths.json": null,
+    "tools/manifest-audit.py": null,
+    "canonical-pins.json": null,
+    "scripts/bootstrap-manifest.sh": null,
+    "tools/sweep.py": "cc3caf49985bd43ace8621722c1721485b782e80",
+    "tools/adopt.py": "361d0d962440038457207b83c17e85a0400008a4",
+    "tools/app-deliver.py": "fb06bec269495f335129ed7e6edd53b7d8caf50c",
+    "tools/commit-and-verify.sh": "9d94ce4f1ed0c53c94a0a23508ccfcb0778919aa",
+    "scripts/new-app.py": "f2e40d6995c63388b0f86e0d36da250966f10df8",
+    ".github/workflows/new-app.yml": "89a9b0b2add68fb2bcd8066df5b1c57ee77974de",
+    ".github/workflows/lint.yml": "a47d4295bd1a730227bacdc71f54b58b4c948f38"
+   }
+  },
+  "app-builder": {
+   "head": "3c8459ea12d0c0db93538b2ff856e92698bb7e10",
+   "files": {
+    "drsoam.py": "805f6340705464bfba8fd39074aec46e6b3c5bb0",
+    "tools/manifest.py": null
+   }
+  },
+  "registry": {
+   "head": "7c7c386c7c98122ece7825dc56bd22b4675329c9",
+   "files": {
+    "refresh.py": "3a99e032e3762cd3ffadd869fe9e48a8f69f1cb4",
+    ".github/workflows/refresh.yml": "7d6aa2da8d9b7c64e22e905bcfb74e0c0f16dd20",
+    "tools/manifest.py": null
+   }
+  },
+  "control-panel": {
+   "head": "05383d040afd169a6352f0e575fd8622f325d5e3",
+   "files": {
+    "tools/scan.py": "19ec4723723ceef6eb6b35051218ad8b5d7afc8b",
+    "tools/plan.py": "83a6114b7214c958f5c173e723fb01e60a232e91",
+    "tools/fetch.py": "034a2028b62ab85379bd67f933e11b44623675ba",
+    ".github/workflows/scan.yml": "57825f7f0889eae9b65161825d7fe3b0f02f9df7",
+    "tools/manifest.py": null
+   }
+  },
+  "dashboard": {
+   "head": "8e518eda0e65eb253d36ec1cb07c2b960daaae73",
+   "files": {
+    "tools/manifest.py": null
+   }
+  }
+ }
+}
