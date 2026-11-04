@@ -166,12 +166,38 @@ instead of adopting; E proves untracked refuses.
 
 ---
 
-## Phase 5 — `app-deliver.py` Option A, then the lint step
+## Phase 5 — `app-deliver.py` Option A, then the lint step — **DONE, audit green**
 
 API-level manifest gate before each `PUT`; untracked refuses. **Then**, and only then, the lint step in
 `forge/lint.yml` with the three extra checkouts — it is a completion check, not a starting gate.
 
-**Gate:** `manifest-audit.py` → `OK: 16 tracked path(s)`, exit 0.
+**Gate — passed.** Against the files now live in the four repositories:
+
+```
+$ python3 tools/manifest-audit.py
+OK: 16 tracked path(s), every one declared and recorded by its writer
+exit=0
+```
+
+**Option A, gated on a refinement the review's S1 did not anticipate.** Blanket-refusing an untracked path
+deadlocks `app-deliver`: it legitimately creates `robots.txt`, `sitemap.xml` and the kit files, none of which
+the manifest tracks, so a first PUT would be refused forever. The rule is therefore *create is safe,
+overwrite is not*:
+
+| Case | Decision |
+|---|---|
+| tracked, current sha == manifest sha | **write** |
+| tracked, sha differs | refuse — drift |
+| `class` hand / agent / locked | refuse |
+| no entry, **file exists** | refuse — the bootstrap-miss window |
+| no entry, **no file** | write, then record — a new file cannot destroy an edit |
+
+All six exercised against a fake API: 3 refused with the right warning, 3 allowed.
+
+**The lint step is live** in the `guards` job: three extra checkouts so the audit can open writers that live
+in `app-builder`, `registry` and `control-panel`, the audit itself, and a sha256 identity check on
+`tools/manifest.py` across the four copies — so a stale vendored tool fails lint *before* a generator finds
+it and raises.
 
 ---
 
@@ -210,5 +236,5 @@ Then `bash tools/restore-schedules.sh`, verifying with `--verify`.
 | 2 `sweep.py` | **done and verified** — the mixed case protects the user edit and syncs the bot path |
 | 3 Bootstrap | **meta half done and verified; app fixer verified — 70 PRs pending a write token** |
 | 4 Gates + the five cases | **gates done and proven — 7 files live; the five cases next** |
-| 5 `app-deliver` + lint | |
+| 5 `app-deliver` + lint | **done — the audit is green, 16/16** |
 | 6 Schedules | |
