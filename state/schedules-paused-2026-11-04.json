@@ -1,0 +1,501 @@
+{
+ "what": "Every scheduled workflow in the drsamonline estate, paused on the owner's instruction until the audit is finished.",
+ "paused": "2026-11-04",
+ "paused_by": "agent, on the owner's instruction (\"pause all scheduled tasks untill we finish the audit\")",
+ "method": "PUT /repos/{owner}/{repo}/actions/workflows/{id}/disable \u2014 by numeric workflow id, never by filename",
+ "scope": "32 workflows carrying a `schedule:` trigger. 42 non-scheduled workflows were left alone.",
+ "how_to_restore": "bash tools/restore-schedules.sh            (re-enables all 32)\nbash tools/restore-schedules.sh --verify    (reports which are still disabled)\nbash tools/restore-schedules.sh --only forge/new-app.yml   (one at a time)",
+ "counts": {
+  "paused": 32,
+  "still_active": 42,
+  "paused_that_also_run_on_push": 15,
+  "paused_that_also_run_on_pull_request": 1
+ },
+ "side_effect": "Disabling a workflow stops ALL of its triggers, not only the cron. 15 of the 32 also run on push, and 1 of those also on pull_request, so their CI is paused too. That list is `paused_with_push_ci` below.",
+ "paused_with_push_ci": [
+  "Matneo/blog.yml",
+  "Matneo/store.yml",
+  "audit/health.yml",
+  "audit/licence-check.yml",
+  "control-panel/scan.yml",
+  "dashboard/refresh.yml",
+  "drsamonline/update-profile.yml",
+  "drsamonline.github.io/refresh-hub.yml",
+  "forge/backlog-status.yml",
+  "forge/credential-guard.yml",
+  "forge/health.yml",
+  "forge/lint.yml",
+  "knowledge/refresh.yml",
+  "registry/refresh.yml",
+  "skills/refresh.yml"
+ ],
+ "left_running_note": "Dependabot's own `dependabot-updates` workflow is scheduled on 12 repositories and was deliberately NOT disabled: it is GitHub-managed, it opens dependency PRs rather than mutating estate state, and pausing it is a separate decision. Say the word and it goes too.",
+ "workflows": [
+  {
+   "repo": "Matneo",
+   "file": "blog.yml",
+   "workflow_id": 393289751,
+   "name": "Refresh blog posts",
+   "crons": [
+    "12 4 * * 2"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "Matneo",
+   "file": "store-images.yml",
+   "workflow_id": 394820993,
+   "name": "store-images",
+   "crons": [
+    "0 3 1,16 * *"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "Matneo",
+   "file": "store.yml",
+   "workflow_id": 393566617,
+   "name": "Refresh store catalogue",
+   "crons": [
+    "22 4 * * 2"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "app-builder",
+   "file": "kit-tests.yml",
+   "workflow_id": 393567383,
+   "name": "All kit tests",
+   "crons": [
+    "0 5 * * 3"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "audit",
+   "file": "health.yml",
+   "workflow_id": 402580374,
+   "name": "health",
+   "crons": [
+    "43 3 * * *"
+   ],
+   "other_triggers": [
+    "workflow_dispatch",
+    "push"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "audit",
+   "file": "licence-check.yml",
+   "workflow_id": 402506533,
+   "name": "Licence badge check",
+   "crons": [
+    "31 3 * * 1"
+   ],
+   "other_triggers": [
+    "workflow_dispatch",
+    "push"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "control-panel",
+   "file": "scan.yml",
+   "workflow_id": 395172523,
+   "name": "scan",
+   "crons": [
+    "0 6 * * 2"
+   ],
+   "other_triggers": [
+    "workflow_dispatch",
+    "push"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "dashboard",
+   "file": "refresh.yml",
+   "workflow_id": 393267332,
+   "name": "Refresh dashboard data",
+   "crons": [
+    "47 3 * * 2"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "drsamonline",
+   "file": "metrics.yml",
+   "workflow_id": 392603321,
+   "name": "Metrics",
+   "crons": [
+    "0 4 * * 2"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "drsamonline",
+   "file": "update-profile.yml",
+   "workflow_id": 392586860,
+   "name": "Update profile README",
+   "crons": [
+    "17 3 * * *"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "drsamonline.github.io",
+   "file": "refresh-hub.yml",
+   "workflow_id": 392033984,
+   "name": "Refresh project hub",
+   "crons": [
+    "37 3 * * *"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "dumps",
+   "file": "backup-all.yml",
+   "workflow_id": 395003863,
+   "name": "backup-all",
+   "crons": [
+    "0 */6 * * *"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "adopt.yml",
+   "workflow_id": 395044856,
+   "name": "adopt",
+   "crons": [
+    "0 4 * * 1"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "app-deliver.yml",
+   "workflow_id": 395154905,
+   "name": "app-deliver",
+   "crons": [
+    "0 5 * * 1"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "audit.yml",
+   "workflow_id": 393221920,
+   "name": "audit",
+   "crons": [
+    "0 4 * * 1"
+   ],
+   "other_triggers": [
+    "workflow_call",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "backlog-status.yml",
+   "workflow_id": 395028998,
+   "name": "backlog-status",
+   "crons": [
+    "0 5 * * 1"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "code-compression.yml",
+   "workflow_id": 395037006,
+   "name": "code-compression",
+   "crons": [
+    "0 7 * * 2"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "credential-guard.yml",
+   "workflow_id": 403325149,
+   "name": "credential-guard",
+   "crons": [
+    "20 6 * * 2"
+   ],
+   "other_triggers": [
+    "push",
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "dumps-dedupe.yml",
+   "workflow_id": 396710698,
+   "name": "dumps-dedupe",
+   "crons": [
+    "0 5 */4 * *"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "health.yml",
+   "workflow_id": 394817501,
+   "name": "health",
+   "crons": [
+    "23 4 * * 1"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "heartbeat.yml",
+   "workflow_id": 393596016,
+   "name": "Heartbeat",
+   "crons": [
+    "0 6 * * *"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "kit-audit.yml",
+   "workflow_id": 395015344,
+   "name": "kit-audit",
+   "crons": [
+    "0 6 * * 1"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "licence.yml",
+   "workflow_id": 395837630,
+   "name": "licence",
+   "crons": [
+    "0 4 * * 3"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "lint.yml",
+   "workflow_id": 394818204,
+   "name": "lint",
+   "crons": [
+    "0 6 * * 2"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "new-app.yml",
+   "workflow_id": 393221924,
+   "name": "new-app",
+   "crons": [
+    "0 7 * * 1"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "repo-learning.yml",
+   "workflow_id": 395035834,
+   "name": "repo-learning",
+   "crons": [
+    "0 7 * * 1"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "self-diagnose.yml",
+   "workflow_id": 395048570,
+   "name": "self-diagnose",
+   "crons": [
+    "0 8 * * 3"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "self-heal.yml",
+   "workflow_id": 393221936,
+   "name": "self-heal",
+   "crons": [
+    "30 20 * * 3"
+   ],
+   "other_triggers": [
+    "workflow_call",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "forge",
+   "file": "self-update.yml",
+   "workflow_id": 395049282,
+   "name": "self-update",
+   "crons": [
+    "0 9 * * 1"
+   ],
+   "other_triggers": [
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "knowledge",
+   "file": "refresh.yml",
+   "workflow_id": 393566669,
+   "name": "Refresh plan status",
+   "crons": [
+    "32 4 * * 2"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "registry",
+   "file": "refresh.yml",
+   "workflow_id": 393595987,
+   "name": "Refresh registry",
+   "crons": [
+    "42 4 * * 1"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  },
+  {
+   "repo": "skills",
+   "file": "refresh.yml",
+   "workflow_id": 392521412,
+   "name": "Refresh catalogue (mechanical)",
+   "crons": [
+    "23 3 * * 1"
+   ],
+   "other_triggers": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "state_before": "active",
+   "state_after": "disabled_manually"
+  }
+ ]
+}
