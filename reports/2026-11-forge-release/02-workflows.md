@@ -12,7 +12,7 @@ the difference is four workflows added since (`forge/state-set.yml`, `musicgen/p
 denominators — the estate's oldest conflict, and [`verify-2026-11-04.md`](verify-2026-11-04.md) records
 it as invariant 1 failing.
 
-The 164 divide by job, not by repository:
+The 186 divide by job, not by repository:
 
 | Kind | Count | What they are |
 |---|---|---|
