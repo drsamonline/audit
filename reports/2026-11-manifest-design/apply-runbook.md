@@ -40,7 +40,7 @@ gated.
 
 ---
 
-## Phase 2 — `sweep.py` (`forge`)
+## Phase 2 — `sweep.py` (`forge`) — **DONE**
 
 The three fixers, in one commit, because they share `SCHEMA` and `now_iso`:
 
@@ -56,8 +56,25 @@ The three fixers, in one commit, because they share `SCHEMA` and `now_iso`:
 **Why before the bootstrap:** the rollout's Step 2 runs `sweep --fixer bootstrap`, which does not exist until
 this lands. The design's own step order had this backwards.
 
-**Gate:** `python3 tools/sweep.py --fixer drift --dry-run` exits 0; `--fixer bootstrap --dry-run` lists
-repos without changing anything; the fixer registry in `choices` matches the dispatch chain.
+**Gate — passed.** `py_compile` clean; the published copy is byte-identical to the tested one and
+compiles; `--help` lists `{nojekyll,changelog,kit_bump,drift,bootstrap,manifest_bump}`. The diff against the
+original is **1 removed line and 149 added** — the two in-place anchors (`choices`, the dispatch chain) plus
+three new functions and two constants, nothing else touched.
+
+The mixed case, run through the **real patched code** rather than a mock:
+
+```
+before   data.json                          committed-drift
+         .github/workflows/build-apps.yml   committed-drift
+
+fixer_drift -> "drift resolved: protect 1 as hand; sync 1 bot-owned"
+
+after    data.json                          protected  class=hand
+         .github/workflows/build-apps.yml   clean      class=canonical
+         user edit survived: YES
+```
+
+Both halves of the summary are true, which is the v6 re-read working.
 
 ---
 
@@ -137,8 +154,8 @@ Then `bash tools/restore-schedules.sh`, verifying with `--verify`.
 |---|---|
 | 0 Backup | **done** — estate run dispatched, baseline published |
 | 1 Tool + config | **done and verified** |
-| 2 `sweep.py` | next |
-| 3 Bootstrap | |
+| 2 `sweep.py` | **done and verified** — the mixed case protects the user edit and syncs the bot path |
+| 3 Bootstrap | next |
 | 4 Gates + the five cases | |
 | 5 `app-deliver` + lint | |
 | 6 Schedules | |
