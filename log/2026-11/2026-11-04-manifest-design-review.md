@@ -91,9 +91,12 @@ aspirational.
 
 ## Next
 
-1. **One string, then ship.** `manifest-paths.json` → `repos.apps.*.writer` must be `"tools/app-deliver.py"`,
-   not `"forge/tools/app-deliver.py"`. Four entries. Verified: with that and the writers patched, the
-   auditor reports `OK: 16 tracked path(s)` and exits 0.
+1. ~~One string, then ship.~~ **DONE.** `manifest-paths.json` → `repos.apps.*.writer` is now
+   `"tools/app-deliver.py"` in all four entries, with the layout rule recorded in the file's `why` so the
+   next writer added does not rediscover it from an error that blames the wrong file. Verified in the
+   `lint.yml` layout: every path resolves, and with the writers carrying the marker the auditor reports
+   `OK: 16 tracked path(s), every one declared and recorded by its writer`, exit 0. What is left red is the
+   rollout, not the config.
 2. **Run the rollout in order**, with Step 4's C and E as the ship conditions — C (the fixer must protect,
    not adopt) and E (untracked must refuse).
 3. **Write the rule at the top of Step 4**, because one class recurred four times: *every gate case asserts
