@@ -1,0 +1,1538 @@
+{
+ "what": "Re-audit of the drsamonline estate, measured 2026-11-04. Census and workflow inventory in one diffable file.",
+ "measured": "2026-11-04T10:00Z",
+ "totals": {
+  "repositories": 110,
+  "public": 101,
+  "private": 9,
+  "with_workflows": 97,
+  "without_workflows": 13,
+  "workflows": 186,
+  "jobs": 249,
+  "steps": 990,
+  "cross_repo_edges": 52,
+  "scheduled": 32,
+  "invalid_yaml": 0,
+  "with_release": 59
+ },
+ "previous_snapshot": {
+  "source": "audit/state/repos.json",
+  "repositories": 100,
+  "note": "100 public rows. The account now has 101 public and 9 private; the 9 private became visible to the CLI token, and feather is genuinely new."
+ },
+ "new_since_snapshot": [
+  "feather"
+ ],
+ "build_pins": {
+  "current_main": "3c8459ea12d0c0db93538b2ff856e92698bb7e10",
+  "pins": {
+   "246da5d54862d2571b0b37feb10499e467f20d7d": 34,
+   "0464e3304fcb096c59574188ea6f68abca015786": 8,
+   "aa727deec70003ba44de36295eca9be80e91f8f1": 1,
+   "fbb5468c1140c9da7421e3fc5927c12efb4c01c1": 1,
+   "main": 3
+  },
+  "commits_behind": {
+   "246da5d5": 7,
+   "0464e330": 15,
+   "aa727dee": 1,
+   "fbb5468c": 3
+  },
+  "note": "build.yml changed +16 lines inside the 7 commits the newest pin is behind, so no caller runs the current build."
+ },
+ "failing_schedules": [
+  {
+   "repo": "audit",
+   "workflow": "licence-check.yml",
+   "conclusion": "failure",
+   "age_hours": 38.0,
+   "run_url": "https://github.com/drsamonline/audit/actions/runs/41438236873"
+  },
+  {
+   "repo": "forge",
+   "workflow": "health.yml",
+   "conclusion": "failure",
+   "age_hours": 30.4,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/41508261810"
+  },
+  {
+   "repo": "forge",
+   "workflow": "kit-audit.yml",
+   "conclusion": "failure",
+   "age_hours": 35.0,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/41463858933"
+  },
+  {
+   "repo": "forge",
+   "workflow": "new-app.yml",
+   "conclusion": "failure",
+   "age_hours": 32.8,
+   "run_url": "https://github.com/drsamonline/forge/actions/runs/41485228285"
+  }
+ ],
+ "fleet_verdict": {
+  "verdict": "degraded",
+  "checked_at": "2026-11-04T01:39:32.547894+00:00",
+  "schedules_checked": 32
+ },
+ "secrets_in_use": {
+  "GITHUB_TOKEN": 13,
+  "OVSX_PAT": 1,
+  "AUDIT_TOKEN": 6,
+  "BACKUP_TOKEN": 3,
+  "PAT_TOKEN": 1,
+  "FANOUT_TOKEN": 13,
+  "BILLING_TOKEN": 1,
+  "TRAFFIC_TOKEN": 1
+ },
+ "gaps": {
+  "no_timeout_files": 72,
+  "no_timeout_jobs": 98,
+  "no_concurrency_files": 42,
+  "no_permissions_files": 9,
+  "orphan_reusables": 7,
+  "drift": 8,
+  "un_runnable": 3,
+  "repos_without_workflows": [
+   "Scrap-and-Gun",
+   "SmartNotes",
+   "corefit-md",
+   "dumps-2",
+   "dumps-3",
+   "dumps-4",
+   "dumps-5",
+   "dumps-6",
+   "frame-kit",
+   "homoeopathic-materia-medica-repertory-json",
+   "profile-kit",
+   "repertory-reader",
+   "saga-vn-engine"
+  ]
+ },
+ "repos": {
+  "ziptastic": {
+   "private": false,
+   "created": "2026-10-30",
+   "pushed": "2026-11-04T10:02",
+   "release": "v1.1.0",
+   "workflows": 2,
+   "workflow_files": [
+    "ci.yml",
+    "vendor-check.yml"
+   ],
+   "crons": [],
+   "description": "The CHCE native engine \u2014 a single binary with the codecs embedded."
+  },
+  "feather": {
+   "private": false,
+   "created": "2026-11-03",
+   "pushed": "2026-11-04T10:01",
+   "release": "v0.1.0",
+   "workflows": 2,
+   "workflow_files": [
+    "ci.yml",
+    "release.yml"
+   ],
+   "crons": [],
+   "description": "A read-only document viewer that opens before you blink \u2014 small, portable, cross-platform, summoned by a keystroke."
+  },
+  "ai-bridge": {
+   "private": false,
+   "created": "2026-10-30",
+   "pushed": "2026-11-04T10:01",
+   "release": "v0.45.0",
+   "workflows": 3,
+   "workflow_files": [
+    "ci.yml",
+    "pages.yml",
+    "release.yml"
+   ],
+   "crons": [],
+   "description": "A VS Code extension that brings web-chat AI models into the editor, so you can work without leaving the code."
+  },
+  "musicgen": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-04T09:38",
+   "release": "v4.3.0",
+   "workflows": 2,
+   "workflow_files": [
+    "pages.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "A pocket generative composer \u2014 an offline-first PWA that writes, synthesises, masters and exports music in the browser, with no server and no samples."
+  },
+  "homoeopathic-materia-medica-repertory-json": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-04T09:10",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "Open-domain homoeopathic materia medica and repertory texts as app-ready JSON \u2014 13 books (1840\u20131906), about 108,000 rubrics."
+  },
+  "audit": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-04T08:19",
+   "release": null,
+   "workflows": 2,
+   "workflow_files": [
+    "health.yml",
+    "licence-check.yml"
+   ],
+   "crons": [
+    "31 3 * * 1",
+    "43 3 * * *"
+   ],
+   "description": "The change log for the drsamonline fleet: what was measured, what was fixed, and the evidence."
+  },
+  "dumps-3": {
+   "private": true,
+   "created": "2026-10-31",
+   "pushed": "2026-11-04T08:15",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "Pre-merge backups (part 3). Written by drsamonline/backup."
+  },
+  "dumps-6": {
+   "private": true,
+   "created": "2026-11-02",
+   "pushed": "2026-11-04T08:09",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "Pre-merge backups (part 6). Written by drsamonline/backup."
+  },
+  "backup": {
+   "private": false,
+   "created": "2026-10-24",
+   "pushed": "2026-11-04T08:09",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "backup.yml"
+   ],
+   "crons": [],
+   "description": "Snapshot a repository before a merge replaces it \u2014 a reusable GitHub workflow plus a zero-dependency script, compressed, timestamped and rotated to keep the new"
+  },
+  "canteen-lan": {
+   "private": false,
+   "created": "2026-10-23",
+   "pushed": "2026-11-04T08:08",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "Order from your table over the room's own Wi-Fi \u2014 a LAN canteen board built with Forge."
+  },
+  "repertory-reader": {
+   "private": false,
+   "created": "2026-11-02",
+   "pushed": "2026-11-04T06:28",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "A quiet reading room for seventeen classical homoeopathic repertories \u2014 271,421 rubrics and 744,394 graded remedy links, read straight from the open JSON librar"
+  },
+  "weft8-classroom": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-04T01:59",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Weft-8 Classroom \u2014 a teacher's pack and exercises for teaching how a computer works, offline, in one file."
+  },
+  "weft8-hardware": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-04T01:59",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Weft-8 on real silicon \u2014 a C port of the Loom's 8-bit machine, an Arduino/ESP32 sketch and a parity harness."
+  },
+  "base-bench": {
+   "private": false,
+   "created": "2026-10-25",
+   "pushed": "2026-11-04T01:59",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Every number base, unit and timezone on one page, with the working shown \u2014 offline, no accounts."
+  },
+  "app-image-toolkit": {
+   "private": false,
+   "created": "2026-10-28",
+   "pushed": "2026-11-04T01:59",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Compress, resize, convert and strip the GPS from photos on your own device \u2014 nothing uploaded, no account, works offline."
+  },
+  "app-encrypted-case-log": {
+   "private": false,
+   "created": "2026-10-24",
+   "pushed": "2026-11-04T01:59",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Per-patient clinical notes encrypted on the device with AES-256-GCM \u2014 offline, no account, no server."
+  },
+  "app-poets-studio": {
+   "private": false,
+   "created": "2026-10-25",
+   "pushed": "2026-11-04T01:58",
+   "release": "v1.2.0",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Rhyme, metre and fixed forms, fully offline \u2014 a poetry workshop that measures what you wrote, with 124,085 words bundled."
+  },
+  "app-clip-loom": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-04T01:58",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Clip Loom \u2014 clipboard programs you can read: strip tracking, tidy text, keep what matters. Weft-8 on the Loom."
+  },
+  "app-thermals": {
+   "private": false,
+   "created": "2026-11-01",
+   "pushed": "2026-11-04T01:57",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Homoeopathic remedies by thermal reaction \u2014 what each classical source actually says, quoted in its own words with the source named, and where the sources do no"
+  },
+  "forge": {
+   "private": true,
+   "created": "2026-10-22",
+   "pushed": "2026-11-04T01:47",
+   "release": null,
+   "workflows": 28,
+   "workflow_files": [
+    "adopt.yml",
+    "app-deliver.yml",
+    "audit.yml",
+    "backlog-status.yml",
+    "backup.yml",
+    "build.yml",
+    "code-compression.yml",
+    "credential-guard.yml",
+    "docs.yml",
+    "dumps-dedupe.yml",
+    "fanout.yml",
+    "health.yml",
+    "heartbeat.yml",
+    "intake.yml",
+    "kit-audit.yml",
+    "licence.yml",
+    "lint.yml",
+    "log-append.yml",
+    "new-app.yml",
+    "pages.yml",
+    "release.yml",
+    "repo-learning.yml",
+    "self-diagnose.yml",
+    "self-heal.yml",
+    "self-update.yml",
+    "state-set.yml",
+    "sweep.yml",
+    "test.yml"
+   ],
+   "crons": [
+    "0 4 * * 1",
+    "0 4 * * 3",
+    "0 5 * * 1",
+    "0 5 */4 * *",
+    "0 6 * * *",
+    "0 6 * * 1",
+    "0 6 * * 2",
+    "0 7 * * 1",
+    "0 7 * * 2",
+    "0 8 * * 3",
+    "0 9 * * 1",
+    "20 6 * * 2",
+    "23 4 * * 1",
+    "30 20 * * 3"
+   ],
+   "description": "Forge - the drsamonline system kit: control plane, templates, prompts, workflows, and the live dashboard."
+  },
+  "conqueror-os": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-04T01:44",
+   "release": "app-latest",
+   "workflows": 4,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml",
+    "repair-src.yml",
+    "sw-3.2.0.yml"
+   ],
+   "crons": [],
+   "description": "A private, offline resilience workspace in a single HTML file \u2014 read, reflect, journal, track and review."
+  },
+  "idle-city-ages-of-growth": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T19:16",
+   "release": "app-latest",
+   "workflows": 3,
+   "workflow_files": [
+    "build-apps.yml",
+    "build.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "A single-file idle city-builder that grows from a Stone Age village into a Fusion Age world-city."
+  },
+  "eon-commando": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-03T19:14",
+   "release": "v4.6.2",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "EON COMMANDO \u2014 a retro run-and-gun platformer in one self-contained HTML file: three eras, five weapons, three bosses, chiptune audio. No dependencies, works of"
+  },
+  "NEO": {
+   "private": false,
+   "created": "2026-07-24",
+   "pushed": "2026-11-03T19:14",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "ci.yml"
+   ],
+   "crons": [],
+   "description": "NOVA \u2014 a statically typed, compiled systems programming language whose compiler lowers to C, JavaScript, Rust and WebAssembly."
+  },
+  "whispering-body-first-aid": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T19:13",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "A home homeopathic first-aid companion of 30 remedies with a symptom finder, dosing guidance and emergency signs, in English, Hindi and Gujarati."
+  },
+  "weft8-kit": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-03T19:13",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The Loom's Weft-8 as a reusable kit \u2014 an auditable, step-limited rule engine you can drop into another app."
+  },
+  "weft8-compare": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-03T19:12",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Weft-8 beside x86 and ARM \u2014 the same algorithm in three machines, so you can see which part is the computer."
+  },
+  "skin-case-tracker": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T19:12",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "A private, offline skin-case tracker built on the HHMS dashboard \u2014 history, habits, mapping and symptoms \u2014 with a 90-day pattern engine, from the book The Skin "
+  },
+  "skills": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:12",
+   "release": null,
+   "workflows": 2,
+   "workflow_files": [
+    "normalize.yml",
+    "refresh.yml"
+   ],
+   "crons": [
+    "23 3 * * 1"
+   ],
+   "description": "Reusable, machine-consumable skills extracted from every drsamonline project \u2014 a categorised, self-updating catalogue."
+  },
+  "remedy-relationship-explorer": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:12",
+   "release": "v1.0.1",
+   "workflows": 4,
+   "workflow_files": [
+    "build-android.yml",
+    "build-apps.yml",
+    "build-desktop.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "An offline single-file explorer for homeopathic remedy relationships, built from public-domain materia medicas (Boericke 1927, Clarke 1900, Hering 1879)."
+  },
+  "open-materia-medica": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T19:12",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "The classical homeopathic materia medica in plain language \u2014 344 remedy portraits, with a free web edition and an offline Android companion."
+  },
+  "neon-runner": {
+   "private": false,
+   "created": "2026-10-21",
+   "pushed": "2026-11-03T19:11",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ],
+   "crons": [],
+   "description": "A retro auto-fire side-scrolling shooter in one self-contained HTML file \u2014 move, jump and duck; the gun fires itself."
+  },
+  "neon-games": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T19:11",
+   "release": "app-latest-neon-games-dead-zone",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "Two free open-world browser games on the Neon Engine \u2014 Dead Zone (zombie survival) and Neon Police."
+  },
+  "lexora": {
+   "private": false,
+   "created": "2026-10-15",
+   "pushed": "2026-11-03T19:11",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "ci.yml"
+   ],
+   "crons": [],
+   "description": "LEXORA \u2014 Layered EXact-text Repository and Adaptive compression architecture: canonicalise text, then compress it with guaranteed byte-exact recovery."
+  },
+  "lan-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:11",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The shared LAN core: a local room with a real-time channel over Server-Sent Events and POST."
+  },
+  "helioprism": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:10",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ],
+   "crons": [],
+   "description": "One app, two optical transports \u2014 send a file with light over QR codes or a colour matrix, with no network at all."
+  },
+  "control-panel": {
+   "private": false,
+   "created": "2026-10-24",
+   "pushed": "2026-11-03T19:10",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "scan.yml"
+   ],
+   "crons": [
+    "0 6 * * 2"
+   ],
+   "description": "Every workflow in every repo: what runs, when, what calls what, and what is connected to nothing."
+  },
+  "heavenzip": {
+   "private": false,
+   "created": "2026-10-30",
+   "pushed": "2026-11-03T19:10",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "sync-binaries.yml"
+   ],
+   "crons": [],
+   "description": "The CHCE orchestrator \u2014 chains prebuilt compression binaries into one pipeline."
+  },
+  "gentle-pediatrics-companion": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T19:10",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "A triage-first home companion for a sick child \u2014 nine common childhood situations, a red-flag check and remedy orientation from the book Gentle Pediatrics."
+  },
+  "game-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:09",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The shared game core: a fixed-timestep loop, input, scenes, save/load and maths."
+  },
+  "frame-kit": {
+   "private": false,
+   "created": "2026-10-23",
+   "pushed": "2026-11-03T19:09",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "The shared transfer-frame core: a self-describing frame, a rateless collector and byte/checksum utilities."
+  },
+  "dashboard": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:09",
+   "release": null,
+   "workflows": 2,
+   "workflow_files": [
+    "refresh.yml",
+    "test.yml"
+   ],
+   "crons": [
+    "47 3 * * 2"
+   ],
+   "description": "Live status of the drsamonline system \u2014 the repo fleet, build health, downloads and the store."
+  },
+  "crypto-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:08",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The shared crypto core: AES-256-GCM, PBKDF2 passphrase keys, sealed envelopes and one-time view, on Web Crypto."
+  },
+  "compress-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:08",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The shared compression core: gzip, deflate and deflate-raw via the platform's Compression Streams."
+  },
+  "compfactory": {
+   "private": false,
+   "created": "2026-10-30",
+   "pushed": "2026-11-03T19:08",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "dispatch-sync.yml"
+   ],
+   "crons": [],
+   "description": "The development workspace for the CHCE multi-repository project."
+  },
+  "case-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:07",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Clinical case tracking: sections, dated symptoms, follow-ups, a timeline and a summary."
+  },
+  "book-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:07",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The companion-app-from-a-book pattern: chapters, key points, practices, flashcards, search and reading progress."
+  },
+  "blinkcode-ai": {
+   "private": false,
+   "created": "2026-08-22",
+   "pushed": "2026-11-03T19:07",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ],
+   "crons": [],
+   "description": "An optical file-transfer PWA \u2014 compress a file into a File DNA container, paint it as SpectraCode colour matrices and recover it with a camera."
+  },
+  "astro-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T19:07",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The shared astronomy core: sun and moon longitude (Meeus), ayanamsa, sunrise/sunset, and tithi, nakshatra, yoga and karana."
+  },
+  "app-weft-puzzles": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-03T19:06",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Weft Puzzles \u2014 small programming puzzles you solve in Weft-8 assembly, on the machine from Jacquard."
+  },
+  "app-organon-reader": {
+   "private": false,
+   "created": "2026-11-02",
+   "pushed": "2026-11-03T19:06",
+   "release": "v1.3.1",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "An offline reader for the Organon of Medicine, sixth edition, in the 1922 Boericke translation \u2014 full-text search, bookmarks and notes, no network."
+  },
+  "app-lantern": {
+   "private": false,
+   "created": "2026-10-31",
+   "pushed": "2026-11-03T19:06",
+   "release": "v1.1.0",
+   "workflows": 3,
+   "workflow_files": [
+    "desktop.yml",
+    "release.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "A whole library served over your own Wi-Fi \u2014 browse and search offline content on the LAN, with no internet at any point."
+  },
+  "app-jacquard": {
+   "private": false,
+   "created": "2026-10-30",
+   "pushed": "2026-11-03T19:06",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Jacquard \u2014 the loom you program: a Weft-8 8-bit assembler and VM with the device's sensors as memory-mapped peripherals."
+  },
+  "ambient-sound-studio": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T19:06",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "A private, offline ambient sound mixer in a single HTML file \u2014 25 synthesised layers, 36 presets and WAV/Opus export."
+  },
+  "ULTIMATE-WINDOWS-OPTIMIZER": {
+   "private": false,
+   "created": "2025-11-13",
+   "pushed": "2026-11-03T19:05",
+   "release": "v6.2.0",
+   "workflows": 1,
+   "workflow_files": [
+    "ci.yml"
+   ],
+   "crons": [],
+   "description": "A PowerShell and batch toolkit for documented, reversible Windows 10/11 debloat and performance tweaks."
+  },
+  "HMS": {
+   "private": false,
+   "created": "2026-08-01",
+   "pushed": "2026-11-03T18:53",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "release.yml"
+   ],
+   "crons": [],
+   "description": "HHMS \u2014 a LAN-based hospital management system purpose-built for homeopathic hospitals and clinics, with a server-owned database and no cloud lock-in."
+  },
+  "TTB": {
+   "private": false,
+   "created": "2026-09-20",
+   "pushed": "2026-11-03T18:50",
+   "release": "tinytoolbox_Chrome_Extension",
+   "workflows": 1,
+   "workflow_files": [
+    "validate.yml"
+   ],
+   "crons": [],
+   "description": "TinyToolBox \u2014 591 tiny utilities bundled into one lightweight, offline-first browser extension for Chrome, Edge, Firefox and Safari."
+  },
+  "SmartNotes": {
+   "private": false,
+   "created": "2026-10-07",
+   "pushed": "2026-11-03T18:49",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "SmartNote Scheduler \u2014 AI-powered notes, reminders and scheduling: write in plain English and it files itself."
+  },
+  "Scrap-and-Gun": {
+   "private": false,
+   "created": "2026-10-25",
+   "pushed": "2026-11-03T18:49",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "SCRAP & GUN \u2014 a retro pixel-art arena-defence shooter with tactical construction, escalating waves, persistent upgrades, roguelite drafts, bosses and local co-o"
+  },
+  "BLINKTRANSFER": {
+   "private": false,
+   "created": "2026-08-12",
+   "pushed": "2026-11-03T18:49",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ],
+   "crons": [],
+   "description": "Offline file transfer over animated QR codes \u2014 no internet, no Bluetooth, no cables."
+  },
+  "knowledge": {
+   "private": true,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T18:46",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "refresh.yml"
+   ],
+   "crons": [
+    "32 4 * * 2"
+   ],
+   "description": "Forge knowledge base: run logs, resolved issues, and the system documents (plans, build order, master app list). The black box."
+  },
+  "All4ONE": {
+   "private": false,
+   "created": "2026-09-10",
+   "pushed": "2026-11-03T18:45",
+   "release": null,
+   "workflows": 4,
+   "workflow_files": [
+    "build-windows.yml",
+    "ci.yml",
+    "pages.yml",
+    "regenerate-docs.yml"
+   ],
+   "crons": [],
+   "description": "403 working tools in one portable Windows binary \u2014 file and folder work, encoding and hashing, images, PDFs, media, documents, network diagnostics, system maint"
+  },
+  "smartbill-app": {
+   "private": false,
+   "created": "2026-07-03",
+   "pushed": "2026-11-03T18:15",
+   "release": "v1.0.1",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "A fast, serverless single-page GST billing and invoicing app for Indian businesses, with local IndexedDB storage."
+  },
+  "mnemosyne-companion": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T17:16",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "A study companion for Mnemosyne Materia Medica \u2014 100 polycrest remedies as poetic pearls, keynotes and spaced-repetition drills."
+  },
+  "dance-fight": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T17:12",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "A single-file browser rhythm game where every fight move is a dance move, driven by the beat grid of your own track."
+  },
+  "aethelgard-games": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T17:10",
+   "release": "app-latest-aethelgard-games-books",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "Two free Aethelgard browser games \u2014 a visual novel (The Books) and a role-playing game (Chronicles of Fate)."
+  },
+  "HCS": {
+   "private": false,
+   "created": "2026-10-30",
+   "pushed": "2026-11-03T16:05",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "vendor-check.yml"
+   ],
+   "crons": [],
+   "description": "CHCE \u2014 Holistic Compression Sources: the reference compressor sources the CHCE engines are built from."
+  },
+  "neon-velocity": {
+   "private": false,
+   "created": "2026-10-25",
+   "pushed": "2026-11-03T15:42",
+   "release": "v1.2.0",
+   "workflows": 1,
+   "workflow_files": [
+    "build.yml"
+   ],
+   "crons": [],
+   "description": "A procedural retro side-scrolling shooter for Godot 4.3 \u2014 zero binary assets, every sprite and sound generated at runtime."
+  },
+  "app-builder": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T15:13",
+   "release": null,
+   "workflows": 4,
+   "workflow_files": [
+    "build.yml",
+    "kit-tests.yml",
+    "pages.yml",
+    "tests.yml"
+   ],
+   "crons": [
+    "0 5 * * 3"
+   ],
+   "description": "A shared build kit that compiles a static web app into a single-file portable Windows EXE and an Android WebView APK."
+  },
+  "profile-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T15:13",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "A small reusable kit for a theme-aware, self-updating GitHub profile \u2014 hero banner, metrics card and README generator."
+  },
+  "app-companion-forge": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T15:13",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "Forge tooling, not a product app \u2014 an offline pocket console for the Forge system."
+  },
+  "aethelgard-rpg-engine": {
+   "private": false,
+   "created": "2026-10-17",
+   "pushed": "2026-11-03T15:12",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "ci.yml"
+   ],
+   "crons": [],
+   "description": "A dependency-free vanilla-JavaScript engine for deep single-player browser RPGs. Engine only \u2014 the games it powers live in aethelgard-games."
+  },
+  "saga-vn-engine": {
+   "private": false,
+   "created": "2026-10-17",
+   "pushed": "2026-11-03T15:12",
+   "release": "app-latest",
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "Saga \u2014 a small, dependency-free visual-novel engine for the browser. Plain JavaScript, one stylesheet, no build step."
+  },
+  "neon-engine": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T15:12",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "A code-only open-world game engine for the browser \u2014 no assets, no dependencies; every texture, mesh and sound is generated at runtime."
+  },
+  "web-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T15:08",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The shared offline-first runtime for drsamonline apps: storage, i18n (EN/HI/GU), CSV, PWA, theme, SEO and accessibility."
+  },
+  "ui-kit": {
+   "private": false,
+   "created": "2026-10-24",
+   "pushed": "2026-11-03T15:08",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "A reactive UI layer small enough for a single file: signals, computed, reactive effects, hyperscript, a keyed list, events, a hash router and form binding."
+  },
+  "srs-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T15:08",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Spaced repetition (SM-2) for flashcards \u2014 scheduling, lapses, due cards and stats."
+  },
+  "search-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T15:08",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Ranked search over big corpora \u2014 an inverted index with prefix and fuzzy matching."
+  },
+  "repertory-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T15:07",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The homeopathic repertorisation core: rubric grading and grade-weighted remedy scoring."
+  },
+  "optical-kit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T15:07",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The shared optical-transfer core: a systematic LT fountain code, self-describing frames and a pluggable codec."
+  },
+  "ml-kit": {
+   "private": false,
+   "created": "2026-10-24",
+   "pushed": "2026-11-03T15:07",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The classic algorithms from scratch for offline features: tf-idf, Naive Bayes, k-NN, k-means, PCA, ID3, linear regression and Markov chains \u2014 no model, no API k"
+  },
+  "export-kit": {
+   "private": false,
+   "created": "2026-10-23",
+   "pushed": "2026-11-03T14:43",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Save text, JSON, CSV and binary to the user's device, and bundle files into a store-only ZIP."
+  },
+  "audio-kit": {
+   "private": false,
+   "created": "2026-10-24",
+   "pushed": "2026-11-03T14:42",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Synthesis, theory, patterns and notation for offline apps: ADSR envelopes, oscillator voices, filters, scales, chords, a pattern sequencer and staff layout."
+  },
+  "art-kit": {
+   "private": false,
+   "created": "2026-10-24",
+   "pushed": "2026-11-03T14:42",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "The art primitives Forge was missing: an indexed palette, a pixel canvas, draw ops, a delta undo stack, dithering, median-cut quantisation and sprite sheets."
+  },
+  "dumps-2": {
+   "private": true,
+   "created": "2026-10-31",
+   "pushed": "2026-11-03T13:44",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "Pre-merge backups (part 2). Written by drsamonline/backup."
+  },
+  "kent-repertory-explorer": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T12:20",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Repertorium Publicum (2008), an open Kent-derived repertory, as a searchable ledger \u2014 74,480 rubrics, 735,460 graded remedy links, a case builder and grade-weig"
+  },
+  "drsamonline": {
+   "private": false,
+   "created": "2026-10-21",
+   "pushed": "2026-11-03T11:39",
+   "release": null,
+   "workflows": 7,
+   "workflow_files": [
+    "add-download-blocks.yml",
+    "apply-all.yml",
+    "apply-licence-badges.yml",
+    "apply-store-fixes.yml",
+    "licence-fix.yml",
+    "metrics.yml",
+    "update-profile.yml"
+   ],
+   "crons": [
+    "0 4 * * 2",
+    "17 3 * * *"
+   ],
+   "description": "Dr. Sohil Momin \u2014 homeopathic physician & builder of offline-first open-source software"
+  },
+  "drsamonline.github.io": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T11:18",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "refresh-hub.yml"
+   ],
+   "crons": [
+    "37 3 * * *"
+   ],
+   "description": "Personal project index \u2014 a self-updating page that reads the GitHub API so new repositories appear automatically. Served at drsamonline.github.io"
+  },
+  "corefit-md": {
+   "private": false,
+   "created": "2026-11-02",
+   "pushed": "2026-11-03T10:31",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "CoreFit MD \u2014 a five-minute video-guided morning core routine. Clip-accurate playback (every set opens at 0:30), six-week progression, streaks, trilingual UI. St"
+  },
+  "chalk-lan": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T09:52",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "A shared whiteboard for the room: everyone on the same Wi-Fi draws on the same board, live."
+  },
+  "boericke-repertory": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-03T09:02",
+   "release": "v1.6.0",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "Boericke's Repertory as a free, offline single-file web app \u2014 a searchable clinical repertory and repertorisation tool, after Oscar E. Boericke, M.D. (1927)."
+  },
+  "app-panchang": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T08:59",
+   "release": "v0.2.2",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "A daily Indian almanac \u2014 tithi, nakshatra, yoga, karana, rahu-kaal and muhurat, computed offline."
+  },
+  "offline-pdf-toolkit": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-03T07:53",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "Merge, split, rotate, reorder, watermark, number and compress PDFs entirely in the browser \u2014 no upload, no account, no server, works offline."
+  },
+  "Matneo": {
+   "private": false,
+   "created": "2026-07-07",
+   "pushed": "2026-11-03T02:49",
+   "release": null,
+   "workflows": 4,
+   "workflow_files": [
+    "blog.yml",
+    "products.yml",
+    "store-images.yml",
+    "store.yml"
+   ],
+   "crons": [
+    "0 3 1,16 * *",
+    "12 4 * * 2",
+    "22 4 * * 2"
+   ],
+   "description": "An AI-powered digital products and automation platform \u2014 practical planners, templates, AI resources and offline browser tools."
+  },
+  "dumps": {
+   "private": true,
+   "created": "2026-10-24",
+   "pushed": "2026-11-03T00:44",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "backup-all.yml"
+   ],
+   "crons": [
+    "0 */6 * * *"
+   ],
+   "description": "Pre-merge backups written by drsamonline/backup. PRIVATE on purpose: it holds source code, and a public dumps repo would publish any private repository it backs"
+  },
+  "dumps-5": {
+   "private": true,
+   "created": "2026-10-31",
+   "pushed": "2026-11-02T19:37",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "Pre-merge backups (part 5). Written by drsamonline/backup."
+  },
+  "dumps-4": {
+   "private": true,
+   "created": "2026-10-31",
+   "pushed": "2026-11-02T19:37",
+   "release": null,
+   "workflows": 0,
+   "workflow_files": [],
+   "crons": [],
+   "description": "Pre-merge backups (part 4). Written by drsamonline/backup."
+  },
+  "lumen": {
+   "private": false,
+   "created": "2026-11-02",
+   "pushed": "2026-11-02T19:08",
+   "release": "v1.7.3",
+   "workflows": 3,
+   "workflow_files": [
+    "presentation.yml",
+    "release.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "Lumen \u2014 a fast, fully offline photo library in the spirit of Google Picasa. Windows, Linux and Android from one Flutter codebase."
+  },
+  "CLDR": {
+   "private": false,
+   "created": "2026-09-24",
+   "pushed": "2026-11-02T19:00",
+   "release": "v1.3.0",
+   "workflows": 2,
+   "workflow_files": [
+    "build-release.yml",
+    "deploy-demo.yml"
+   ],
+   "crons": [],
+   "description": "A single tiny Rust binary that sits in the system tray, pops up on a keystroke and runs whatever you type \u2014 a sum, a path, an app or a search."
+  },
+  "registry": {
+   "private": true,
+   "created": "2026-10-22",
+   "pushed": "2026-11-02T12:50",
+   "release": null,
+   "workflows": 1,
+   "workflow_files": [
+    "refresh.yml"
+   ],
+   "crons": [
+    "42 4 * * 1"
+   ],
+   "description": "Central database for Forge: repo list, kit dependency graph, build status, audit history, quota, queue."
+  },
+  "bmi-bmr-tdee-macros-fluid-calculator": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-02T07:32",
+   "release": "app-latest",
+   "workflows": 3,
+   "workflow_files": [
+    "build-apps.yml",
+    "release-extras.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "A single-file clinical calculator \u2014 BMI, BMR (Mifflin\u2013St Jeor), TDEE, macros, fluids and body composition, with Indian and WHO cut-offs in English, Hindi and Gu"
+  },
+  "today-card": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-02T07:23",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "Today Card \u2014 one card for the day: your date, one intention, one task and a streak. Offline, no accounts."
+  },
+  "seance": {
+   "private": false,
+   "created": "2026-10-22",
+   "pushed": "2026-11-02T07:23",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "Strongbox \u2014 sealed notes opened once: seal a note with a passphrase and it opens a single time. Offline, no accounts."
+  },
+  "lockhtml": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-11-01T12:50",
+   "release": "app-latest",
+   "workflows": 3,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml",
+    "publish.yml"
+   ],
+   "crons": [],
+   "description": "PIN-protect or one-time-view any HTML file with AES-256-GCM \u2014 a cross-platform CLI plus a browser GUI that runs on any OS."
+  },
+  "the-symphony-companion": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-10-31T09:42",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "A pocket PWA companion to The Symphony of the Present \u2014 the book's ideas as cards, its practices as a checklist, a breathing timer and a gratitude journal."
+  },
+  "unstoppable-mind-companion": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-10-31T09:41",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "An offline companion to The Unstoppable Mind \u2014 the book's key points, exercises, a 7-day challenge and flashcards."
+  },
+  "retro-strike": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-10-31T09:41",
+   "release": "app-latest",
+   "workflows": 2,
+   "workflow_files": [
+    "build-apps.yml",
+    "test.yml"
+   ],
+   "crons": [],
+   "description": "A complete retro third-person shooter in a single HTML file \u2014 a custom software 3D renderer and chiptune audio, no dependencies."
+  },
+  "read-live-transform-app": {
+   "private": false,
+   "created": "2026-10-20",
+   "pushed": "2026-10-31T09:41",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "A companion PWA to Read. Live. Transform.: A Practical Reading of the Qur'an \u2014 read the verse, live the practice, keep the change."
+  },
+  "MATERIA-MEDICA-BUILDER": {
+   "private": false,
+   "created": "2026-09-17",
+   "pushed": "2026-10-31T09:31",
+   "release": "app-latest",
+   "workflows": 1,
+   "workflow_files": [
+    "build-apps.yml"
+   ],
+   "crons": [],
+   "description": "Build your own materia medica and repertory \u2014 offline, private and yours to export."
+  },
+  "The_Browser": {
+   "private": false,
+   "created": "2026-08-19",
+   "pushed": "2026-10-30T18:13",
+   "release": null,
+   "workflows": 2,
+   "workflow_files": [
+    "build-aetheris.yml",
+    "deploy-demo.yml"
+   ],
+   "crons": [],
+   "description": "Aetheris \u2014 an experimental C++ browser engine on a Ladybird/SerenityOS-derived codebase, built to learn how rendering works. Not production-ready."
+  }
+ }
+}
