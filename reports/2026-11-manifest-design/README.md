@@ -1,7 +1,7 @@
 # The manifest and drift design — the record
 
-**4 November 2026** · `drsamonline` · seven rounds of design and review · status: **ready to ship after
-one string change**
+**4 November 2026** · `drsamonline` · seven rounds of design and review · status: **ready to ship —
+the last defect is closed and verified**
 
 This is the durable record of a design that took seven rounds. It exists so that the next session — human
 or agent — does not have to re-derive why the manifest looks the way it does, which of the fourteen
@@ -192,12 +192,27 @@ Every finding below was checked against the code, and the ones marked *reproduce
 **Verified at the end:** with the prefix fixed and the writers patched, the auditor reports
 `OK: 16 tracked path(s), every one declared and recorded by its writer` and exits 0.
 
-### The one outstanding item
+### The last item, closed
 
-`manifest-paths.json` → `repos.apps.*.writer` is `"forge/tools/app-deliver.py"`. In the `lint.yml` layout
-forge's files are at the workspace root (`actions/checkout` with no `path:`), so it must be
-`"tools/app-deliver.py"`. Four entries, one string each. Until then the audit reports four "declared
-writer not found", with an error message that blames the other checkouts rather than the prefix.
+`manifest-paths.json` → `repos.apps.*.writer` was `"forge/tools/app-deliver.py"`. In the `lint.yml` layout
+forge's files are at the workspace root (`actions/checkout` with no `path:`), so that named a directory
+that does not exist — and the error it produced blamed the other checkouts rather than the prefix.
+
+**Fixed:** four entries, one string each, now `"tools/app-deliver.py"`. Verified in the layout the
+workflow creates:
+
+```
+$ python3 tools/manifest-audit.py          # writers not yet patched
+16 failure(s) across 16 tracked non-hand path(s)   # every one "exists but does not call _manifest_record"
+
+$ python3 tools/manifest-audit.py          # writers carrying the marker
+OK: 16 tracked path(s), every one declared and recorded by its writer
+exit=0
+```
+
+So the config is correct and the gate is real: what remains red is the rollout — the five writers gaining
+`_manifest_record` — not the configuration. That is the order v7 §3 already specifies: the audit step lands
+at the end of Step 3 (four generators) and Step 6 (`app-deliver.py`).
 
 ---
 
@@ -287,9 +302,14 @@ The most reusable part of seven rounds, because each one recurred:
 5. **Ordering in a read-modify-write** — once. The fixer read the manifest, shelled out to a tool that
    rewrote it, then wrote its own stale copy. When two things write one file, the subprocess must go last.
 
-A sixth, smaller: **a config file whose paths are relative to a layout nobody wrote down.** `forge/` in a
-config, when forge *is* the root. One string, found only by running the check in the layout the workflow
-creates.
+6. **A config whose paths are relative to a layout nobody wrote down** — once. `"forge/tools/app-deliver.py"`
+   in a config, when forge *is* the checkout root. Found only by running the check in the layout the
+   workflow actually creates, never by reading it. The durable rule, now a comment at the top of the file:
+
+   > A writer path in `manifest-paths.json` is relative to the `manifest-audit.py` checkout root — the
+   > repository whose `lint.yml` runs the audit. Paths to that repository's own tools have no prefix; paths
+   > to another repository's tools begin with that repository's checkout subdirectory, which is what
+   > `actions/checkout`'s `path:` parameter names.
 
 ---
 
@@ -310,5 +330,8 @@ creates.
 
 The design was right from round 3. Every defect after that was in the code that checks the design — a
 tool that could not see its own inputs, a test that could not see its own result, a config that named a
-directory that does not exist. That is the right place for the last of them to be: the idea no longer has
-anything left to fix.
+directory that does not exist. All three are closed, and the last one is verified by running the check
+rather than by reading it.
+
+The idea no longer has anything left to fix. What remains is work, not design: five writers gaining
+`_manifest_record`, and seventeen deferred paths gaining a gate each.
