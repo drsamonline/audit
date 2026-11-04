@@ -144,7 +144,7 @@ Release 1 tracks **16 paths, every one of which names its writer, and every one 
 | every app | `README.md`, `docs/index.html`, `docs/play/index.html`, `.github/workflows/build-apps.yml` | `tools/app-deliver.py` |
 | `forge` | `registry/deps.json`, `registry/licence-policy.json`, `SPEC-SHAPE.json` | `hand` — a decision, not a generator |
 
-**Seventeen paths are deferred, with the writer that must be gated before each is added** — a work list,
+**Sixteen paths are deferred, with the writer that must be gated before each is added** — a work list,
 not an excuse:
 
 | Repository | Deferred path | Writer to gate |
@@ -334,4 +334,4 @@ directory that does not exist. All three are closed, and the last one is verifie
 rather than by reading it.
 
 The idea no longer has anything left to fix. What remains is work, not design: five writers gaining
-`_manifest_record`, and seventeen deferred paths gaining a gate each.
+`_manifest_record`, and sixteen deferred paths gaining a gate each.
