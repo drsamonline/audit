@@ -33,11 +33,11 @@ Both paths end at the same place, and both are checked by the same phase 6.
 
 ## 2. What is inside — the manifest, by directory
 
-Counts are the tree at `forge@main`, 2 November 2026: **373 files**.
+Counts are the tree at `forge@main`, re-measured 4 November 2026: **373 files and 28 workflows**.
 
 | Directory | Files | What it carries | In the seed? |
 |---|---|---|---|
-| `.github/workflows/` | 27 | the control plane: intake, new-app, adopt, app-deliver, sweep, self-diagnose, self-heal, lint, health, kit-audit, licence, dumps-dedupe, heartbeat, repo-learning, backlog-status, self-update, credential-guard, log-append, plus the reusable audit/docs/pages/release/test/build | yes |
+| `.github/workflows/` | 28 | the control plane: intake, new-app, adopt, app-deliver, sweep, self-diagnose, self-heal, lint, health, kit-audit, licence, dumps-dedupe, heartbeat, repo-learning, backlog-status, self-update, credential-guard, log-append, `state-set` (sets one dotted key in `STATE.json`, added 3 Nov), plus the reusable audit/docs/pages/release/test/build | yes |
 | `tools/` | 34 | `commit-and-verify.sh`, `self-diagnose.py`, `sweep.py`, `kit-audit.py`, `kit-drift.py`, `licence.py`, `policy-guard.py`, `register-check.py`, `spec-guard.py`, `spec-shape.py`, `spec-gap.py`, `demo-drift.py`, `startup-failure-watch.py`, `dumps-dedupe.py`, `dumps-compact.py`, `dumps-consolidate.py`, `dumps-record.py`, `repo-learning.py`, `runlog.py`, `rules.py`, `forge_rules.py`, `shellcheck-runs.py`, `strip-shared-block.py`, `restore-schedules.sh`, `wf-check.py`, `adopt.py`, `app-deliver.py`, `code-compression.py`, `credential-guard.py`, `backlog-status.py`, `licence-headers.py`, `self-update.py`, `spec-audit.py`, `LICENCE.md` | yes |
 | `scripts/` | 6 | `intake.py`, `batch.py`, `new-app.py`, `new-kit.py`, `attempts.py`, `forge` (the CLI) | yes |
 | `PROMPTS/` | 21 | 20 canonical prompts + `.gitkeep`: `preflight`, `access`, `rules`, `build`, `changelog`, `priority`, `pipeline`, `next-cycle`, `run-log`, `retry`, `refresh`, `topics`, `dataset-licence`, `deck-brief`, `free-ai`, `naughty-inputs`, `shellcheck`, `loop-safety`, `advance`, `retrofit` (retired, kept for the record) | yes |
@@ -88,7 +88,7 @@ release, and it is why the seed is not simply a tarball of today's `forge`.
 | 5 | **No artifact without a producer or a consumer.** `builds.json` is gone; `gaps.json` and `routes.json` are produced and rendered or removed | three artifacts written by nothing and read by nothing | `wf-check.py` over the inventory |
 | 6 | **Every commit step carries a verdict** — "did it land", read back by blob sha | a commit step reporting `git`'s exit code instead of the data | `commit-and-verify.sh`, vendored into the seed and called by 11 workflows |
 | 7 | **A reusable workflow suffixes its `concurrency` group** with a literal | 40 failed runs before any job was created, and nothing able to report it | `lint.yml` parses every workflow and fails on an unsuffixed group |
-| 8 | **Reusable workflows are pinned to a SHA**, never `@main` | one edit reaching 46 builds with no staging and no tag | `make-seed.py` rewrites every `uses:` to the release SHA |
+| 8 | **Reusable workflows are pinned to a SHA**, never `@main` — **and a fixer bumps them** | one edit reaching 47 builds with no staging and no tag; and, once pinned, a pin nobody bumps, which is a slower `@main` | `make-seed.py` rewrites every `uses:` to the release SHA; `sweep.py` gains a `build_pin` fixer, and `mode: verify` re-checks the pin on every run |
 | 9 | **A secret that may be absent is `required: false`**, checked in the first step | a `required: true` secret rejecting the call before validation, so the workflow's own guard could never run | `self-diagnose.py` cross-checks declared inputs and secrets against every caller |
 | 10 | **A startup failure is detectable** — 0 jobs, or a run named after its own path | the one failure class with 0 jobs, 0 checks, 0 annotations and a 22-byte log | `startup-failure-watch.py`, wired into `self-diagnose` |
 | 11 | **A backup proves itself.** `--restore-test` runs on the newest dump; dedupe groups by `(repository, tree sha)` | 349-file restores verified by hand and never again; a dedupe that compared the wrong level and always said "nothing duplicated" | `backup.py --restore-test` in `bootstrap` phase 6, and monthly |
@@ -139,7 +139,8 @@ caller, pinned to the release SHA, and **verify it landed by comparing blob shas
 
 ### Phase 5 — Schedules
 The timetable from `02-workflows.md` §4, written into the workflow files themselves (crons are code,
-not settings). Asserts no two crons share a minute, and that the two Chromium jobs run twice a month.
+not settings). Asserts that no two crons that share state collide, and that the two Chromium jobs
+run twice a month.
 A scheduled workflow is not a schedule until it has fired once; phase 8 records the first fire.
 
 ### Phase 6 — Guards
@@ -176,7 +177,7 @@ failure is visible on the repository and not only in a log.
 
 The bootstrap stands the system up. This is what then runs, with no further input.
 
-**Hour 1.** `heartbeat` stamps. `self-diagnose` parses all 27 workflows and checks each cron is real.
+**Hour 1.** `heartbeat` stamps. `self-diagnose` parses all 28 workflows and checks each cron is real.
 `register-check` passes. The dashboard is live and lists what exists.
 
 **Day 1.** `dumps/backup-all` snapshots the estate (every 6 hours). `audit/health` writes the health
@@ -208,7 +209,7 @@ actually lives after the release, and the honest status of each.
 | # | The capability | Where it lives | Status |
 |---|---|---|---|
 | 1 | **Feed an idea, get an app** | `issues: [app-idea]` -> `intake.py` -> `QUEUE/` -> `new-app.yml` auto | **live** — proved end to end with a real issue |
-| 2 | **The same twelve steps every time** | `PROMPTS/` + the canonical caller + the reusable build | **live** — 46 callers, contract verified |
+| 2 | **The same twelve steps every time** | `PROMPTS/` + the canonical caller + the reusable build | **live** — 47 callers, contract verified |
 | 3 | **Every app delivered, not just built** | `app-deliver.yml`, seven checks | **live** |
 | 4 | **Three platforms from one commit** | `app-builder/build.yml`: EXE, APK, Linux | **live** |
 | 5 | **A spec before a scaffold** | `spec-guard.py` + the 400-byte and DRAFT checks in `new-app` | **live** — Rule 0 in executable form |
