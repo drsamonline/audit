@@ -155,7 +155,7 @@ live"** with the verification table. If it is labelled `needs-you`, a phase fail
 
 Then, in order — each one dispatch-only, each one safe to run twice:
 
-    Actions -> self-diagnose   -> Run workflow    (parses all 27 workflows, checks every cron is real)
+    Actions -> self-diagnose   -> Run workflow    (parses all 28 workflows, checks every cron is real)
     Actions -> lint            -> Run workflow    (the guards)
     Actions -> audit           -> Run workflow    (score every repository)
     Actions -> app-deliver     -> Run workflow    (dry_run: true first — it reports what is undelivered)
