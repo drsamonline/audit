@@ -13,10 +13,11 @@ Five documents. Read them in this order.
 | # | File | What it answers |
 |---|---|---|
 | 1 | [`01-system-map.md`](01-system-map.md) | What every repository is for, what actually controls what, and where the truth lives |
-| 2 | [`02-workflows.md`](02-workflows.md) | All 164 workflows: what runs, when, what calls what, and what each one needs |
+| 2 | [`02-workflows.md`](02-workflows.md) | All 186 workflows: what runs, when, what calls what, and what each one needs |
 | 3 | [`03-one-release.md`](03-one-release.md) | The design of the release: contents, manifest, the eight bootstrap phases, the fourteen fixes baked in |
 | 4 | [`04-setup-guide.md`](04-setup-guide.md) | Every setting, token, secret and click, in the order they must happen |
 | 5 | [`05-release-plan.md`](05-release-plan.md) | Phases, acceptance tests, risks, rollback, and what is deliberately out of scope |
+| — | [`verify-2026-11-04.md`](verify-2026-11-04.md) | Stage R4, run early: the fourteen invariants measured against the live estate — 5 pass, 1 part, 4 fail, 4 unverified |
 
 ---
 
@@ -95,7 +96,7 @@ the previous one failed. `bootstrap.yml` takes `dry_run: true` by default.
 | 2 | **Discovery** — the one measured census, with `{seen, skipped}` | `FANOUT_TOKEN` | `seen + skipped` equals the account's own repo count |
 | 3 | **Settings** — Actions permissions, Pages source, topics, description, licence, branch protection where the plan allows | `FANOUT_TOKEN` | read back from the API, not assumed |
 | 4 | **Pipeline** — write the canonical caller into every app repo that lacks it | `FANOUT_TOKEN` | the file lands in the *new* repo, by blob sha |
-| 5 | **Schedules** — register the collision-free timetable | the files themselves | no two crons share a minute |
+| 5 | **Schedules** — register the timetable | the files themselves | no two crons that share state collide |
 | 6 | **Guards** — health, licence, kit-audit, demo-drift, spec-guard, register-check | nothing | every guard passes on the empty estate, so a later failure is real |
 | 7 | **Publish** — dashboard, control panel, hub | Pages | three URLs return 200 with a body |
 | 8 | **Report** — one issue: "Forge is live", with the verification table | `issues: write` | the next reader starts from evidence |
