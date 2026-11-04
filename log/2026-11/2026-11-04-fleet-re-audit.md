@@ -110,6 +110,12 @@ to be a profile page. The invariant "exactly one cross-repo mechanism" is now fa
   `STATE.json` so a cycle whose credential cannot rewrite a 30 KB file can still record state),
   `musicgen/pages.yml`, `ziptastic/ci.yml`, `conqueror-os/sw-3.2.0.yml`.
 - 59 repositories publish a release; the delivery sweep is holding.
+- **The backup pipeline is green and proved itself today.** Four scheduled runs in a row succeeded,
+  and the 05:06 run printed `PASS EXACT RESTORE — 63 files match drsamonline/app-builder@3c8459e`.
+  That is invariant 11 exercised rather than asserted. The same day's other entry
+  (`2026-11-04-state-format-bug.md`) records why the skip rate had decayed — two timestamp formats
+  compared as strings — and the fix. It is the one subsystem whose failure mode was found by its own
+  numbers rather than by a person reading a log.
 
 ## What I changed
 
