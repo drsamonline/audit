@@ -1,8 +1,9 @@
 # 01 — The system map
 
-**Measured 3 November 2026.** Every number here was read from the API at that date: 100 public
-repositories and 9 private ones under `drsamonline`, 109 in total. The 9 private are `forge`,
-`registry`, `knowledge`, `dumps` and `dumps-2` … `dumps-6`.
+**Measured 3 November 2026, re-measured 4 November.** Every number here was read from the API:
+101 public repositories and 9 private ones under `drsamonline`, **110 in total**. The 9 private are
+`forge`, `registry`, `knowledge`, `dumps` and `dumps-2` … `dumps-6`. Where a figure moved between the
+two days it is marked; the full delta is in [`verify-2026-11-04.md`](verify-2026-11-04.md).
 
 This document answers three questions: **what each repository is for**, **what actually controls
 what**, and **where the truth lives when two things disagree**.
@@ -49,7 +50,7 @@ imports another app. That is principle 1 of the system plan and it has held.
 
 ### 2.1 The control plane
 
-**`forge` — private, 373 files, 26 workflows.** The brain, and the only repository that writes to
+**`forge` — private, 373 files, 28 workflows.** The brain, and the only repository that writes to
 other repositories on its own initiative. It holds six kinds of thing:
 
 | What | Where | Who reads it |
