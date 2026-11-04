@@ -1,9 +1,16 @@
 # 02 — Every workflow: what runs, when, and what calls what
 
-**Measured 3 November 2026.** The estate's own map (`control-panel/docs/inventory.json`, rebuilt by
-`scan.yml` on its weekly schedule) parsed **97 repositories, 164 workflows, 207 jobs and 768 steps**,
-with **53 edges** between them: 11 reusable workflows and 162 dispatchable ones. Eight repositories
-carry no workflow at all.
+**Measured 3 November 2026, re-measured 4 November.** A direct parse of every workflow file in the
+estate — 186 of them, fetched and read rather than quoted from the panel — gives **97 repositories,
+186 workflows, 249 jobs and 990 steps**, with **52 edges** between them: 11 reusable workflows and
+175 dispatchable ones. **Thirteen** repositories carry no workflow at all, including two apps
+(`repertory-reader`, `corefit-md`) that were delivered without a pipeline.
+
+For comparison, the panel's own inventory said 164 workflows on 1 November and 182 on its next scan;
+the difference is four workflows added since (`forge/state-set.yml`, `musicgen/pages.yml`,
+`ziptastic/ci.yml`, `conqueror-os/sw-3.2.0.yml`) and a change in what each tool counts. Two tools, two
+denominators — the estate's oldest conflict, and [`verify-2026-11-04.md`](verify-2026-11-04.md) records
+it as invariant 1 failing.
 
 The 164 divide by job, not by repository:
 
@@ -18,7 +25,7 @@ The 164 divide by job, not by repository:
 
 ---
 
-## 1. The control plane — `forge`'s 26 workflows
+## 1. The control plane — `forge`'s 28 workflows
 
 These are the ones that decide what the system does. Grouped by the stage they belong to.
 
@@ -106,7 +113,7 @@ reproduce exactly.
 called this the strongest part of the estate and found the input contract clean in every caller.
 
 **Two weaknesses, unchanged and recorded rather than hidden:** no staging — a push to `app-builder`
-reaches all 46 callers at once — and failure is local: a red build notifies nobody, because no
+reaches all 47 callers at once — and failure is local: a red build notifies nobody, because no
 workflow in the estate uses `workflow_run`.
 
 ---
@@ -140,8 +147,12 @@ comparable.
 
 ## 4. The timetable
 
-**31 scheduled workflows.** The rule that produced it: no two crons share a minute, and the two that
-install a Chromium browser run twice a month rather than weekly because that is the expensive step.
+**32 scheduled workflows.** Two things are true of the timetable and only one of them was ever the
+rule. The two jobs that install a Chromium browser run twice a month rather than weekly, because that
+is the expensive step. And same-minute groups **do** exist — `adopt` and `audit` both fire Monday
+04:00, `new-app` and `repo-learning` both Monday 07:00 — because those pairs share no state. The
+invariant that actually matters is the `concurrency` group, not the minute; "no two crons share a
+minute" was a description that read like a rule, and a fresh install should not be built on it.
 
     daily      03:17  profile        03:37  hub (1st/16th)   03:43  audit health
                06:00  heartbeat      every 6h  dumps/backup-all
@@ -172,7 +183,7 @@ Earned by failure, one line each. The bootstrap enforces all nine on every file 
 2. **`timeout-minutes` on every job.**
 3. **`fetch-depth: 1`** unless the job needs history.
 4. **A pinned SHA** for every `uses:`, including reusable workflows. `@main` means an edit to one file
-   reaches 46 builds immediately.
+   reaches 47 builds immediately.
 5. **`permissions:` scoped to the job**, and an `AUTHORITY:` comment when the file writes to another
    repository — because the `permissions:` block does not describe what a PAT can do.
 6. **No token in a remote URL.** `gh auth setup-git`.
