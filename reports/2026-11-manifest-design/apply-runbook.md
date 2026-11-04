@@ -201,16 +201,20 @@ it and raises.
 
 ---
 
-## Phase 6 — The four broken schedules, then restore
+## Phase 6 — The four broken schedules — **three fixed, one needs the owner**
 
 Fix first, restore second. Starting with `heartbeat` and `backlog-status` for 24 hours.
 
-| Workflow | Fix |
+| Workflow | State |
 |---|---|
-| `forge/new-app.yml` | `FANOUT_TOKEN` cannot `createRepository` — widen it, or move the scaffold to a token that can |
-| `forge/health.yml` | the notifier fails on a blank body — an empty report is a skip, not a failure |
-| `forge/kit-audit.yml` | `kit-drift` reads with the installation token — point it at a token that can read other repos |
-| `audit/licence-check.yml` | `HCS` and `compfactory` have no `LICENSE` file |
+| `forge/health.yml` | **fixed.** `[ ! -s ]` tests size, and `print("")` wrote a newline — so a quiet fleet made a 1-byte body, the guard passed, and `gh` rejected the comment with *"Body cannot be blank"*. The notifier now writes nothing and the guard tests for content, not size. Verified against the exact old failure: 1 byte → skip, real content → proceed. |
+| `forge/kit-audit.yml` | **fixed.** `GITHUB_TOKEN` is an installation token scoped to one repository, so `/user/repos` 403s and the public fallback silently narrows the audit to public repos. Now reads `FANOUT_TOKEN` with `GITHUB_TOKEN` as fallback. And the failure message no longer asserts a cause it has not verified — it prints the tool's own last error. |
+| `audit/licence-check.yml` | **fixed, by adding the files it was complaining about.** `HCS` and `compfactory` had no `LICENSE`; both now carry the estate's standard PolyForm Noncommercial 1.0.0, byte-identical to `audit/LICENSE`, which is the policy's default for a repository not named in `registry/licence-policy.json`. |
+| `forge/new-app.yml` | **needs the owner.** `FANOUT_TOKEN` cannot `createRepository` — that is a token permission, not a code defect, and no patch fixes it. Create or widen a fine-grained PAT with **Administration: write** on all repositories (repository creation is an account-level permission) and set it as `FANOUT_TOKEN`, or point the scaffold at a token that has it. Nothing else in the estate can build a new repository until this is done. |
+
+**Do not restore the schedules until `new-app`'s token is fixed.** The other three are green, but the
+loop that turns a queue spec into a repository is still dead, and restoring would hide that behind three
+working neighbours.
 
 Then `bash tools/restore-schedules.sh`, verifying with `--verify`.
 
@@ -237,4 +241,4 @@ Then `bash tools/restore-schedules.sh`, verifying with `--verify`.
 | 3 Bootstrap | **meta half done and verified; app fixer verified — 70 PRs pending a write token** |
 | 4 Gates + the five cases | **gates done and proven — 7 files live; the five cases next** |
 | 5 `app-deliver` + lint | **done — the audit is green, 16/16** |
-| 6 Schedules | |
+| 6 Schedules | **3 of 4 fixed; `new-app`'s token is an owner action** |
