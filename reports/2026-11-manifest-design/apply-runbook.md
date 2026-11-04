@@ -78,7 +78,7 @@ Both halves of the summary are true, which is the v6 re-read working.
 
 ---
 
-## Phase 3 — Bootstrap
+## Phase 3 — Bootstrap — **meta half done, app half verified**
 
 ```bash
 bash scripts/bootstrap-manifest.sh                      # the four meta repos, direct
@@ -86,8 +86,40 @@ python3 tools/sweep.py --fixer bootstrap --cap 20 --dry-run
 python3 tools/sweep.py --fixer bootstrap --cap 20       # ~70 app PRs, four runs
 ```
 
+**Meta half — done, through the API rather than the script.** The script's `git push` needs a
+`contents:write` credential the review sandbox does not have, so the four meta repositories were
+bootstrapped by computing each entry from the file's committed blob sha — exactly what
+`manifest.py record` writes — and committing `MANIFEST.json` plus the vendored tool:
+
+| Repository | Entries | Verification in a fresh clone |
+|---|---|---|
+| `forge` | 3 (`hand`) | all three `protected`, rc=4 — **correct**: a hand path is never writable |
+| `dashboard` | 7 | 7/7 `clean`, rc=0 |
+| `registry` | 3 | 3/3 `clean`, rc=0 |
+| `control-panel` | 2 | 2/2 `clean`, rc=0 |
+| `app-builder` | — | tool vendored only; it writes no tracked path of its own |
+
+`tools/manifest.py` is vendored into `app-builder`, `registry`, `control-panel` and `dashboard` at the same
+blob (`e2493507`) as `forge`'s.
+
+**App half — the fixer is verified, the PRs are not yet opened.** Run against a real checkout of
+`app-thermals`:
+
+```
+note: add MANIFEST.json (4 file(s)) and tools/manifest.py
+files: 4   classes: {generated: 3, canonical: 1}
+README.md / docs/index.html / docs/play/index.html   clean  class=generated
+.github/workflows/build-apps.yml                     clean  class=canonical
+?? MANIFEST.json   ?? tools/manifest.py      <- exactly what the PR would carry
+```
+
 **Gate — a count, not a sample:** every public app repo has a `MANIFEST.json` or an open bootstrap PR.
 Merge in batches after spot-checking three by hand.
+
+**A limitation worth knowing before you run it:** `sweep --dry-run` returns
+`WOULD open a PR on <repo>: <fixer name>` **without calling the fixer at all** — `open_pr`'s dry branch
+returns before `APPLY[fixer](d)`. So `--dry-run` verifies *selection*, not *behaviour*. Behaviour is
+verified by calling the fixer on a checkout, which is what the block above does.
 
 ---
 
@@ -155,7 +187,7 @@ Then `bash tools/restore-schedules.sh`, verifying with `--verify`.
 | 0 Backup | **done** — estate run dispatched, baseline published |
 | 1 Tool + config | **done and verified** |
 | 2 `sweep.py` | **done and verified** — the mixed case protects the user edit and syncs the bot path |
-| 3 Bootstrap | next |
-| 4 Gates + the five cases | |
+| 3 Bootstrap | **meta half done and verified; app fixer verified — 70 PRs pending a write token** |
+| 4 Gates + the five cases | next |
 | 5 `app-deliver` + lint | |
 | 6 Schedules | |
