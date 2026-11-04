@@ -123,7 +123,7 @@ verified by calling the fixer on a checkout, which is what the block above does.
 
 ---
 
-## Phase 4 — The gates and the test
+## Phase 4 — The gates and the test — **gates done and proven; the five cases next**
 
 | File | Change |
 |---|---|
@@ -135,6 +135,27 @@ verified by calling the fixer on a checkout, which is what the block above does.
 | `control-panel/tools/fetch.py` | emit `"locked": true` per repo from `LOCK_MARKERS` |
 | `control-panel/tools/gaps.py` | skip locked repos in `no-workflows` |
 | `forge/tools/adopt.py` | `LOCK_MARKERS` check before `missing_for()` |
+
+**Seven files patched, published, byte-identical on read-back.** Every one was patched
+programmatically with an anchor assertion, compiled, then exercised against a real git repository:
+
+| Proof | Result |
+|---|---|
+| `plan.py` writes + records on the first run | `docs/plan.json` recorded, `clean` on the second run |
+| a human commits an edit to `docs/plan.json` | `committed-drift`, then **rc=3, refused, the user's line survived** |
+| `publish_dashboard` with a protected `history.json` | returns the degraded message and **no file changed** — all-or-nothing |
+| the same with `history.json` released | all 7 files written, and **every recorded sha == the file on disk** |
+| `adopt.py` on a repo with `LOCKED.md` | skipped before `missing_for()`, nothing added |
+| `scan.py` with one locked repo | `repos_without_workflows` = `['orphan-repo']` — the locked one excluded |
+
+`manifest-audit.py` went from **16 failures to 4**: every non-app path now names a writer that records. The
+four left are `app-deliver.py`, which is Phase 5 — exactly the sequence the design specifies.
+
+**Two things the tests caught that review did not:** `drsoam.py` never imported `Path`, so the new
+annotation raised `NameError` at import while `py_compile` passed — a compile check is not an import check.
+And `publish_dashboard` writes `history.json` *before* the artifact block, so checking only the artifact
+would have let a protected history be skipped while `data.json` (which carries `data["history"]`) was still
+written; the single check now runs before the first write, over every path the run touches.
 
 **Gate — the five cases.** A, B, C, D, E. **C and E are the ship condition:** C proves the fixer protects
 instead of adopting; E proves untracked refuses.
@@ -188,6 +209,6 @@ Then `bash tools/restore-schedules.sh`, verifying with `--verify`.
 | 1 Tool + config | **done and verified** |
 | 2 `sweep.py` | **done and verified** — the mixed case protects the user edit and syncs the bot path |
 | 3 Bootstrap | **meta half done and verified; app fixer verified — 70 PRs pending a write token** |
-| 4 Gates + the five cases | next |
+| 4 Gates + the five cases | **gates done and proven — 7 files live; the five cases next** |
 | 5 `app-deliver` + lint | |
 | 6 Schedules | |
