@@ -1,4 +1,4 @@
-name: health
+name: Fleet health
 
 # Asks the fleet whether it still works, every day, and publishes the answer as a
 # page so nobody has to read a log to find out.
