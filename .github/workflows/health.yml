@@ -32,6 +32,14 @@ jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # REQUIRED, and its absence was the whole failure. actions/deploy-pages@v4 refuses
+    # with "Missing environment. Ensure your workflow's deployment job has an
+    # environment" - a Pages deployment has to be attached to the github-pages
+    # environment, and this job deployed from inside the check job without one. Three
+    # runs out of three failed at that step while every check above it passed.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
