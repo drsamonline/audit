@@ -99,8 +99,22 @@ def badge_urls(text):
     return out
 
 
+# The estate's own licence badge is a LOCAL SVG whose alt text names the licence:
+#   <a href="LICENSE"><img alt="licence: PolyForm NC 1.0.0" src="docs/assets/badge-licence.svg"></a>
+# badge_urls() keeps only shields.io URLs, so every one of those READMEs came back
+# NO BADGE - 24 of them - and the run went red over pages that are correct. A check
+# that cannot see the estate's own badge is measuring the wrong thing.
+LOCAL_LICENCE_BADGE = re.compile(
+    r'<img[^>]+alt=["\']([^"\']*licen[cs]e[^"\']*)["\'][^>]*>'
+    r'|<img[^>]+src=["\']([^"\']*(?:licen[cs]e|badge-licen)[^"\']*)["\'][^>]*>', re.I)
+
+
 def alt_texts(text):
-    return re.findall(r"!\[([^\]]*)\]\(https?://img\.shields\.io/[^)]*licen[cs]e[^)]*\)", text, re.I)
+    out = re.findall(r"!\[([^\]]*)\]\(https?://img\.shields\.io/[^)]*licen[cs]e[^)]*\)", text, re.I)
+    # the local badge's alt text counts as a claim too, so a badge that names the
+    # wrong licence is a CONTRADICTION here as well
+    out += [m.group(1) for m in LOCAL_LICENCE_BADGE.finditer(text or "") if m.group(1)]
+    return out
 
 
 def is_colour(c):
@@ -134,6 +148,10 @@ def check(name, readme, licence_text, spdx):
 
     urls = [u for u in badge_urls(readme)
             if "licen" in u.lower() and ("/badge/" in u or "/github/license" in u)]
+    # A local SVG badge is a badge. Treating it as absent is what made this check red
+    # across the fleet while every one of those READMEs carried a correct licence badge.
+    if not urls and LOCAL_LICENCE_BADGE.search(readme or ""):
+        urls = ["local-badge"]
     if not urls:
         if not (licence_text or "").strip():
             # No LICENSE file at all. A badge here would claim a licence the
@@ -153,6 +171,13 @@ def check(name, readme, licence_text, spdx):
                 verdicts.append("NOASSERTION")
             else:
                 verdicts.append("ok")
+            continue
+
+        if u == "local-badge":
+            # A local SVG has no URL segments to parse. Its CLAIM is its alt text, and
+            # the alt_texts() loop below checks that against the LICENSE - so there is
+            # nothing to do here but not crash on it.
+            verdicts.append("ok")
             continue
 
         body = u.split("/badge/", 1)[1].split("?")[0]
