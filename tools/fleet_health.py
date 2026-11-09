@@ -35,7 +35,11 @@ GENERATED = [
     ("control-panel", "docs/inventory.json", 24 * 8, None),      # weekly, Tue 06:00
     ("drsamonline.github.io", "repos.json", 24 * 17, None),      # twice monthly
     ("Matneo", "docs/data/posts.json", 24 * 8, "generated"),     # weekly, Tue 04:12
-    ("drsamonline.github.io", "kits/index.html", 24 * 60, None), # static, edited by hand
+    # kits/index.html is NOT listed: the 2026-11-05 page audit deleted it on purpose
+    # (p088, PAGES.json -> deleted) and that file forbids a sweep from restoring it.
+    # Expecting it here made this job red every week for a page the estate had
+    # deliberately removed - the same shape of false alarm as dashboard's structure
+    # suite reading a deleted index.html. The reference is what was wrong, not the page.
 ]
 
 
