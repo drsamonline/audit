@@ -94,13 +94,50 @@ def scheduled_workflows():
             crons = trg.get("crons") or []
             events = [e.lower() for e in (trg.get("events") or [])]
             if crons or "schedule" in events:
-                found.append((name, wf.get("file") or wf.get("name")))
+                # The cron comes along: staleness has to be measured against the
+                # cadence the workflow declares, not against a guess.
+                found.append((name, wf.get("file") or wf.get("name"), crons))
     return found, ""
+
+
+def cron_gap_days(crons):
+    """The longest gap between runs a cron schedule implies, in days.
+
+    A flat "9 days is stale" is right for a weekly job and wrong for a fortnightly
+    one: store-images runs on the 1st and the 16th, so on the 10th it is nine days
+    old, perfectly on time, and reported stale. A monitor that cries wolf on a
+    healthy job teaches everyone to ignore the page.
+    """
+    gaps = []
+    for c in crons or []:
+        parts = str(c).split()
+        if len(parts) < 5:
+            continue
+        dom, dow = parts[2], parts[4]
+        if dom != "*":
+            days = []
+            for tok in dom.split(","):
+                head = tok.split("-")[0].split("/")[0]
+                if head.isdigit():
+                    days.append(int(head))
+            days = sorted(set(days))
+            if len(days) >= 2:
+                gaps.append(max(b - a for a, b in zip(days, days[1:])))
+                gaps.append(days[0] + 30 - days[-1])   # across the month boundary
+            elif len(days) == 1:
+                gaps.append(30)
+        elif dow != "*":
+            gaps.append(7)
+        else:
+            gaps.append(1)
+    return max(gaps) if gaps else 7
 
 
 def check_schedules(pairs):
     rows = []
-    for repo, wf in pairs:
+    for pair in pairs:
+        repo, wf = pair[0], pair[1]
+        crons = pair[2] if len(pair) > 2 else []
         if not repo or not wf:
             continue
         fname = str(wf).split("/")[-1]
@@ -117,8 +154,11 @@ def check_schedules(pairs):
                          "run_url": r.get("html_url")})
             continue
         age = age_hours(r.get("created_at"))
-        # weekly jobs are allowed a generous window; anything over 9 days is stale
-        stale = age is not None and age > 24 * 9
+        # Stale means "older than this workflow's own cadence, plus a day of grace".
+        # A weekly job is allowed 8 days; a fortnightly one, 16.
+        gap = cron_gap_days(crons)
+        limit = 24 * (gap + 1)
+        stale = age is not None and age > limit
         state = "ok"
         if conclusion not in ("success", "cancelled"):
             state = "failing"
@@ -127,6 +167,7 @@ def check_schedules(pairs):
         rows.append({"repo": repo, "workflow": fname, "state": state,
                      "conclusion": conclusion,
                      "age_hours": round(age, 1) if age is not None else None,
+                     "max_age_hours": limit, "cadence_days": gap,
                      "run_url": r.get("html_url")})
     return rows
 
