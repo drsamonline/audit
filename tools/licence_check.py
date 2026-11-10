@@ -106,14 +106,23 @@ def badge_urls(text):
 # that cannot see the estate's own badge is measuring the wrong thing.
 LOCAL_LICENCE_BADGE = re.compile(
     r'<img[^>]+alt=["\']([^"\']*licen[cs]e[^"\']*)["\'][^>]*>'
-    r'|<img[^>]+src=["\']([^"\']*(?:licen[cs]e|badge-licen)[^"\']*)["\'][^>]*>', re.I)
+    r'|<img[^>]+src=["\']([^"\']*(?:licen[cs]e|badge-licen)[^"\']*)["\'][^>]*>'
+    # …and the MARKDOWN form, which is what most of the estate actually writes:
+    #   ![licence](docs/assets/badge-licence.svg)
+    # Only the <img> form was recognised, so seven READMEs carrying a correct local
+    # badge were reported NO BADGE and the gate stayed red over pages that are right.
+    r'|!\[([^\]]*licen[cs]e[^\]]*)\]\(([^)]+)\)'
+    r'|!\[[^\]]*\]\(([^)]*badge-licen[^)]*)\)', re.I)
 
 
 def alt_texts(text):
     out = re.findall(r"!\[([^\]]*)\]\(https?://img\.shields\.io/[^)]*licen[cs]e[^)]*\)", text, re.I)
     # the local badge's alt text counts as a claim too, so a badge that names the
     # wrong licence is a CONTRADICTION here as well
-    out += [m.group(1) for m in LOCAL_LICENCE_BADGE.finditer(text or "") if m.group(1)]
+    for m in LOCAL_LICENCE_BADGE.finditer(text or ""):
+        claim = next((g for g in m.groups() if g and "licen" in g.lower() and not g.lower().endswith((".svg", ".png"))), None)
+        if claim:
+            out.append(claim)
     return out
 
 
