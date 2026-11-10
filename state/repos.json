@@ -566,7 +566,21 @@
      "tag": "v0.1.3"
     }
    ],
-   "root_files": [],
+   "root_files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "MANIFEST.json",
+    "PAGES.json",
+    "PRIVACY.md",
+    "README.md",
+    "RELEASE_AUDIT.md",
+    "SECURITY.md",
+    "VERSION",
+    "docs",
+    "play",
+    "sw.js",
+    "tools"
+   ],
    "topics": [
     "arcade",
     "browser-game",
@@ -1624,7 +1638,16 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pushed_at": "2026-11-10T15:11:28Z",
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "weft-puzzles-linux",
+      "weft-puzzles-portable.exe",
+      "weft-puzzles.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
     ".github",
     ".gitignore",
@@ -1768,7 +1791,7 @@
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-10T16:51:32Z",
+   "pushed_at": "2026-11-10T16:57:32Z",
    "releases": [],
    "root_files": [
     ".github",
@@ -1801,7 +1824,7 @@
    "homepage": "[https://crystal-world-project.github.io/crystal-world/index-en.html](https://crystal-world-project.github.io/crystal-world/index-en.html)",
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
-   "pushed_at": "2026-11-10T13:45:22Z",
+   "pushed_at": "2026-11-10T16:57:13Z",
    "releases": [],
    "root_files": [
     "LICENSE",
@@ -2441,7 +2464,7 @@
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-09T11:30:33Z",
+   "pushed_at": "2026-11-10T16:56:52Z",
    "releases": [],
    "root_files": [
     ".gitignore",
@@ -4567,7 +4590,9 @@
     "tests"
    ],
    "topics": [],
-   "workflow_files": []
+   "workflow_files": [
+    "test.yml"
+   ]
   },
   "retro-strike": {
    "default_branch": "main",
@@ -4687,7 +4712,18 @@
      "tag": "app-latest"
     }
    ],
-   "root_files": [],
+   "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "LICENSE",
+    "MANIFEST.json",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "VERSION",
+    "docs",
+    "tools"
+   ],
    "topics": [
     "encryption",
     "notes",
