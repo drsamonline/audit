@@ -87,8 +87,19 @@ def probe(repo, page, theme):
     m = re.search(r'<pre id="__contrast__">CONTRAST_JSON(.*?)</pre>', r.stdout or "", re.S)
     return json.loads(m.group(1)) if m else None
 
+missing = 0
 for repo, page in [tuple(a.split(":")) for a in sys.argv[1:]]:
     for theme in ("light","dark"):
         res = probe(repo, page, theme)
-        if res is None: print(f"{repo:22} {theme:5} no measurement"); continue
+        if res is None:
+            print(f"{repo:22} {theme:5} NO MEASUREMENT - the page did not render or the browser is missing")
+            missing += 1
+            continue
         print(f"{repo:22} {theme:5} unreadable={res['total']:3} unmeasurable={res.get('unmeasurable',0):3}  {[ (b['sel'],b['text'][:18],b['ratio']) for b in res['bad'][:3] ]}")
+
+# A RUN THAT MEASURED NOTHING MUST NOT PASS. The first CI run of this tool reported every
+# page as "no measurement" - no browser on the runner - and the workflow went green,
+# because nothing failed. Exit non-zero when a page could not be read at all.
+if missing:
+    print(f"\n{missing} measurement(s) could not be taken - treating that as a failure")
+    sys.exit(1)

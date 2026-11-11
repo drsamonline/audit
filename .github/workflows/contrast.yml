@@ -22,10 +22,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install a browser
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq chromium-browser || sudo apt-get install -y -qq chromium || true
-          which chromium-browser || which chromium || echo "no chromium from apt"
+        # apt's chromium is a snap on ubuntu-latest and is not there; setup-chrome gives a
+        # real binary and sets CHROME_PATH
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
 
       - uses: actions/setup-python@v5
         with:
@@ -36,8 +37,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -uo pipefail
-          BIN=$(which chromium-browser || which chromium || echo chromium)
-          export CHROMIUM_BIN="$BIN"
+          export CHROMIUM_BIN="${CHROME_PATH:-$(which chromium || which chromium-browser || echo chromium)}"
+          echo "browser: $CHROMIUM_BIN"
+          "$CHROMIUM_BIN" --version || { echo "::error::no browser - nothing can be measured"; exit 1; }
           # the pages worth watching: the ones with a theme toggle and a support block
           pages="
             remedy-finder:site/index.html
