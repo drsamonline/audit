@@ -68,3 +68,23 @@ jobs:
             exit 1
           fi
           echo "every measured page reads in both themes"
+
+      - name: Measure the pixels behind the text
+        # the stylesheet check has to skip anything on a photograph or a gradient; this one
+        # crops each text box out of a screenshot and reads the colour it actually sits on
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          export CHROMIUM_BIN="${CHROME_PATH:-$(which chromium || echo chromium)}"
+          export CONTRAST_WORKDIR="$RUNNER_TEMP"
+          python -m pip install --quiet pillow
+          python -c "import PIL; print('pillow', PIL.__version__)"
+          echo "browser: $CHROMIUM_BIN"; "$CHROMIUM_BIN" --version
+          set +e
+          for p in remedy-finder:site/index.html repertory-reader:docs/index.html \
+                   chalk-lan:docs/index.html canteen-lan:docs/index.html \
+                   app-jacquard:docs/index.html neon-runner:docs/index.html; do
+            echo "--- $p"
+            python tools/contrast_pixels.py "$p"
+            echo "exit=$?"
+          done
