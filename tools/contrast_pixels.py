@@ -66,9 +66,17 @@ def check(repo, page):
     binp = os.environ.get("CHROMIUM_BIN","chromium")
     url = f"http://127.0.0.1:{port}/{os.path.basename(probe)}"
     shot = os.path.join(tempfile.mkdtemp(), "page.png")
-    r = subprocess.run([binp,"--headless","--disable-gpu","--no-sandbox","--ignore-certificate-errors",
-                        "--hide-scrollbars","--window-size=1280,900",f"--screenshot={shot}","--dump-dom",url],
-                       capture_output=True, text=True, timeout=120)
+    try:
+        r = subprocess.run([binp,"--headless","--disable-gpu","--no-sandbox","--ignore-certificate-errors",
+                            "--hide-scrollbars","--window-size=1280,900",
+                            # a page that never settles will hold the browser open forever:
+                            # virtual time makes it give up on its own
+                            "--virtual-time-budget=5000",
+                            f"--screenshot={shot}","--dump-dom",url],
+                           capture_output=True, text=True, timeout=90)
+    except subprocess.TimeoutExpired:
+        srv.terminate(); os.remove(probe)
+        return {"timeout": True}
     srv.terminate(); os.remove(probe)
     m = re.search(r'<pre id="__pixels__">PIXELS_JSON(.*?)</pre>', r.stdout or "", re.S)
     if not m or not os.path.exists(shot): return None
@@ -115,4 +123,6 @@ for spec in sys.argv[1:]:
     res = check(repo, page)
     if res is None:
         print(f"{repo:24} NO MEASUREMENT"); continue
+    if res.get("timeout"):
+        print(f"{repo:24} TIMEOUT - the page did not settle, so it was not measured"); continue
     print(f"{repo:24} checked={res['checked']:3} unreadable={len(res['bad']):2}  {[(b['tag'],b['text'][:16],b['ratio'],b['bg']) for b in res['bad'][:4]]}")

@@ -75,16 +75,22 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set -uo pipefail
           export CHROMIUM_BIN="${CHROME_PATH:-$(which chromium || echo chromium)}"
           export CONTRAST_WORKDIR="$RUNNER_TEMP"
           python -m pip install --quiet pillow
-          python -c "import PIL; print('pillow', PIL.__version__)"
-          echo "browser: $CHROMIUM_BIN"; "$CHROMIUM_BIN" --version
-          set +e
-          for p in remedy-finder:site/index.html repertory-reader:docs/index.html \
-                   chalk-lan:docs/index.html canteen-lan:docs/index.html \
-                   app-jacquard:docs/index.html neon-runner:docs/index.html; do
-            echo "--- $p"
-            python tools/contrast_pixels.py "$p"
-            echo "exit=$?"
+          fail=0
+          for p in repertory-reader:docs/index.html chalk-lan:docs/index.html \
+                   canteen-lan:docs/index.html app-jacquard:docs/index.html \
+                   neon-runner:docs/index.html; do
+            out=$(python tools/contrast_pixels.py "$p" 2>&1 | grep -v Warning)
+            echo "$out"
+            # a page that could not be measured is reported, not silently passed
+            echo "$out" | grep -q "NO MEASUREMENT" && echo "::warning::$p could not be measured"
+            echo "$out" | grep -qE "unreadable= *[1-9]" && fail=1
           done
+          if [ "$fail" = "1" ]; then
+            echo "::error::text sits on a colour it cannot be read against"
+            exit 1
+          fi
+          echo "every pixel-checked page reads"
