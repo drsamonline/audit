@@ -40,15 +40,22 @@ def load():
 
 
 def is_listy(name, rec, readme):
-    """A curated list, a profile or a directory is not a product with a landing page."""
+    """A curated list, a profile or a directory is not a product with a landing page.
+
+    The first version read only the repository description, so a list that says "This is a
+    list of single-file web apps" in its opening line was measured as an app missing a demo.
+    """
     d = (rec.get("description") or "").lower()
-    return any(w in d for w in ("curated", "directory", "awesome", "a list of")) or name in ("drsamonline",)
+    opening = (readme or "")[:600].lower()
+    return (any(w in d for w in ("curated", "directory", "awesome", "a list of"))
+            or any(w in opening for w in ("this is a list", "a list of", "a curated", "awesome-"))
+            or name in ("drsamonline",))
 
 
 def has_demo(rec, readme):
     # any index.html at any depth, an external homepage, or a binary-only repo
     files = rec.get("root_files") or []
-    if any(f.endswith(".html") for f in files):
+    if any(f.endswith(".html") for f in files) or rec.get("docs_index"):
         return True
     if rec.get("has_pages") and rec.get("homepage"):
         return True
@@ -62,7 +69,7 @@ def gaps(name, rec, readme):
     r = readme or ""
     files = {f.lower() for f in (rec.get("root_files") or [])}
     product = not is_listy(name, rec, r)
-    if not rec.get("homepage"):
+    if not rec.get("homepage") and product:
         g.append("website")
     if not rec.get("topics"):
         g.append("topics")
@@ -77,9 +84,10 @@ def gaps(name, rec, readme):
     # 54 repositories that keep their documentation in docs/ were reported as having none
     docs = [f for f in files if f.endswith((".md", ".rst")) and f not in META_FILES
             and not f.startswith("readme") and not f.startswith("changelog")]
-    if not docs and "docs" not in files:
+    if not docs and "docs" not in files and product:
         g.append("docs")
-    if not any(f.endswith(".html") for f in files) and product and not rec.get("has_pages"):
+    if (not any(f.endswith(".html") for f in files) and not rec.get("docs_index")
+            and product and not rec.get("has_pages")):
         g.append("landing")
     if product and not has_demo(rec, r):
         g.append("demo")

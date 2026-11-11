@@ -89,6 +89,9 @@ def fetch_repo(name):
         "default_branch": branch,
         "pushed_at": meta.get("pushed_at"),
         "root_files": root,
+        # docs/index.html is the estate's landing-page convention, and root_files cannot
+        # show it: the listing stops at the folder
+        "docs_index": bool(landing),
         "workflow_files": wf,
         "workflows": workflows,
         "releases": [{"tag": r.get("tag_name"),
