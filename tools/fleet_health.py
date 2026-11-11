@@ -280,6 +280,44 @@ if the job that rebuilds one fails, the file stays old and every page built from
     ), verdict, bad, blind
 
 
+
+def check_release_assets():
+    """A latest release with no assets breaks every /releases/latest/download link.
+
+    THE FAILURE THIS EXISTS FOR. Every app landing page links its binaries as
+    /releases/latest/download/<app>.apk. That resolves only while the LATEST release
+    carries assets - so publishing a versioned release without them silently 404s the
+    download button, with nothing red anywhere. On 2026-11-11 a batch of versioned
+    releases did exactly that: 25 repositories, 45 links, found by the owner clicking
+    one. A check that reads the releases and compares them is the only thing that
+    would have caught it.
+    """
+    out = []
+    inv = gh(f"/repos/{OWNER}/control-panel/contents/docs/inventory.json")
+    if not inv or "content" not in inv:
+        return []
+    import base64
+    try:
+        data = json.loads(base64.b64decode(inv["content"]).decode("utf-8", "replace"))
+    except Exception:
+        return []
+    for r in data.get("repos", []):
+        n = r.get("repo") if isinstance(r, dict) else r
+        rel = gh(f"/repos/{OWNER}/{n}/releases?per_page=20")
+        if not isinstance(rel, list) or not rel:
+            continue
+        latest = next((x for x in rel if not x.get("prerelease") and not x.get("draft")), None)
+        if not latest or latest.get("assets"):
+            continue
+        donor = next((x for x in rel if x.get("assets")), None)
+        if donor:
+            out.append({"repo": n, "latest": latest["tag_name"],
+                        "assets_live_on": donor["tag_name"],
+                        "conclusion": "the latest release carries no files; the binaries are on "
+                                      "%s, so every /releases/latest/download link 404s" % donor["tag_name"],
+                        "state": "failing"})
+    return out
+
 def main():
     notes = []
     pairs, err = scheduled_workflows()
@@ -287,6 +325,8 @@ def main():
         notes.append(err)
     schedules = check_schedules(pairs)
     generated = check_generated()
+    # a broken download link is invisible everywhere else: no red build, no failing test
+    schedules += check_release_assets()
 
     page, verdict, bad, blind = render(schedules, generated, notes)
     if blind and not bad:
