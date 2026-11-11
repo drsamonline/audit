@@ -57,7 +57,8 @@ def free_port():
     s=socket.socket(); s.bind(("127.0.0.1",0)); p=s.getsockname()[1]; s.close(); return p
 
 def probe(repo, page, theme):
-    d = f"/scratch/work/ct_{repo}"
+    # a working copy under the current directory: /scratch does not exist on a CI runner
+    d = os.path.join(os.environ.get("CONTRAST_WORKDIR", "/scratch/work"), f"ct_{repo}")
     if not os.path.isdir(d):
         subprocess.run(["gh","repo","clone",f"drsamonline/{repo}",d,"--","--depth","1"], capture_output=True)
     full = os.path.join(d, page)

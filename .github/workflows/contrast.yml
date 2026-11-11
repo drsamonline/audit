@@ -38,6 +38,7 @@ jobs:
         run: |
           set -uo pipefail
           export CHROMIUM_BIN="${CHROME_PATH:-$(which chromium || which chromium-browser || echo chromium)}"
+          export CONTRAST_WORKDIR="$RUNNER_TEMP"
           echo "browser: $CHROMIUM_BIN"
           "$CHROMIUM_BIN" --version || { echo "::error::no browser - nothing can be measured"; exit 1; }
           # the pages worth watching: the ones with a theme toggle and a support block
