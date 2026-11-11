@@ -106,7 +106,19 @@ def main():
     ap.add_argument("--only", default="", help="comma-separated repo names")
     args = ap.parse_args()
 
-    repos = gh("users/%s/repos?per_page=100" % OWNER) or []
+    # PAGINATE. `?per_page=100` returns the first hundred and says nothing about the rest,
+    # so the fleet report silently covered 100 of 125 repositories - the newest ones missing,
+    # which are exactly the ones a report should look at.
+    repos = []
+    page = 1
+    while True:
+        batch = gh("users/%s/repos?per_page=100&page=%d" % (OWNER, page)) or []
+        if not batch:
+            break
+        repos += batch
+        if len(batch) < 100:
+            break
+        page += 1
     names = [r["name"] for r in repos]
     if args.only:
         wanted = {x.strip() for x in args.only.split(",") if x.strip()}
