@@ -80,10 +80,21 @@ def check(repo, page):
         box = (max(0,e["x"]), max(0,e["y"]), min(im.width,e["x"]+e["w"]), min(im.height,e["y"]+e["h"]))
         if box[2]-box[0] < 4 or box[3]-box[1] < 4: continue
         crop = im.crop(box)
-        # the MODE, not the median: in a small button the glyphs can outnumber the paper in
-        # a median sort, and then the measurement compares the text with itself
+        # SAMPLE THE EDGE, not the middle. In a small button the glyphs outnumber the paper,
+        # and a glowing text-shadow puts its colour around every letter - both make the
+        # middle of the box a poor answer to "what is behind this text". The ring a few
+        # pixels inside the box edge is background in every layout worth measuring.
         from collections import Counter
-        px = list(crop.getdata())
+        w, h = crop.size
+        ring = []
+        m = max(1, min(3, w // 8, h // 8))
+        for x in range(w):
+            for y in (m, h - 1 - m):
+                ring.append(crop.getpixel((x, y)))
+        for y in range(m, h - m):
+            for x in (m, w - 1 - m):
+                ring.append(crop.getpixel((x, y)))
+        px = ring or list(crop.getdata())
         bg = Counter(px).most_common(1)[0][0]
         c = e["c"]
         if c.startswith("#"):

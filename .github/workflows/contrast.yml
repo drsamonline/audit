@@ -68,3 +68,25 @@ jobs:
             exit 1
           fi
           echo "every measured page reads in both themes"
+
+      - name: Measure the pixels behind the text
+        # the stylesheet check has to skip anything on a photograph or a gradient; this one
+        # crops each text box out of a screenshot and reads the colour it actually sits on
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          export CHROMIUM_BIN="${CHROME_PATH:-$(which chromium || echo chromium)}"
+          export CONTRAST_WORKDIR="$RUNNER_TEMP"
+          pip install --quiet pillow
+          fail=0
+          for p in remedy-finder:site/index.html repertory-reader:docs/index.html \
+                   chalk-lan:docs/index.html canteen-lan:docs/index.html \
+                   app-jacquard:docs/index.html neon-runner:docs/index.html; do
+            out=$(python tools/contrast_pixels.py "$p" 2>&1 | grep -v Warning)
+            echo "$out"
+            echo "$out" | grep -qE "unreadable= *[1-9]" && fail=1
+            echo "$out" | grep -q "NO MEASUREMENT" && fail=1
+          done
+          [ "$fail" = "1" ] && { echo "::error::text is unreadable on a page"; exit 1; }
+          echo "every pixel-checked page reads"
