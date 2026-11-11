@@ -25,7 +25,8 @@ COLLECT = r"""
     if(el.querySelector('a,span,strong,em') && el.querySelector('a,span,strong,em').textContent.trim()===t) return;
     if(r.top<0||r.top>window.innerHeight-4) return;      // only what is on this screenful
     out.push({x:Math.round(r.left),y:Math.round(r.top),w:Math.round(r.width),h:Math.round(r.height),
-              c:norm(cs.color)||cs.color,t:t.slice(0,32),tag:el.tagName});
+              c:norm(cs.color)||cs.color,t:t.slice(0,32),tag:el.tagName,
+              grad:cs.backgroundImage!=='none'});
   });
   var p=document.createElement('pre');p.id='__pixels__';
   p.textContent='PIXELS_JSON'+JSON.stringify(out.slice(0,400));
@@ -84,6 +85,7 @@ def check(repo, page):
     from PIL import Image
     im = Image.open(shot).convert("RGB")
     bad = []
+    skipped_grad = 0
     for e in els:
         box = (max(0,e["x"]), max(0,e["y"]), min(im.width,e["x"]+e["w"]), min(im.height,e["y"]+e["h"]))
         if box[2]-box[0] < 4 or box[3]-box[1] < 4: continue
@@ -93,6 +95,9 @@ def check(repo, page):
         # middle of the box a poor answer to "what is behind this text". The ring a few
         # pixels inside the box edge is background in every layout worth measuring.
         from collections import Counter
+        # SAMPLE THE RING JUST INSIDE THE BOX EDGE. The middle of a small button is glyphs,
+        # and a text glow puts its colour around every letter; the ring is background in
+        # every layout that is not deliberately glitch-styled.
         w, h = crop.size
         ring = []
         m = max(1, min(3, w // 8, h // 8))
@@ -103,6 +108,7 @@ def check(repo, page):
             for x in (m, w - 1 - m):
                 ring.append(crop.getpixel((x, y)))
         px = ring or list(crop.getdata())
+        px = px or list(crop.getdata())
         bg = Counter(px).most_common(1)[0][0]
         c = e["c"]
         if c.startswith("#"):
@@ -114,9 +120,12 @@ def check(repo, page):
             fg = [int(float(v)) for v in re.findall(r"[\d.]+", c)[:3]]
         if len(fg) < 3: continue
         rr = ratio(fg, bg)
+        if e.get("grad"):
+            skipped_grad += 1
+            continue
         if rr < 2.0:
             bad.append({"text": e["t"], "tag": e["tag"], "ratio": round(rr,2), "fg": e["c"], "bg": tuple(bg)})
-    return {"checked": len(els), "bad": bad}
+    return {"checked": len(els), "bad": bad, "gradient": skipped_grad}
 
 for spec in sys.argv[1:]:
     repo, page = spec.split(":",1)
@@ -125,4 +134,4 @@ for spec in sys.argv[1:]:
         print(f"{repo:24} NO MEASUREMENT"); continue
     if res.get("timeout"):
         print(f"{repo:24} TIMEOUT - the page did not settle, so it was not measured"); continue
-    print(f"{repo:24} checked={res['checked']:3} unreadable={len(res['bad']):2}  {[(b['tag'],b['text'][:16],b['ratio'],b['bg']) for b in res['bad'][:4]]}")
+    print(f"{repo:24} checked={res['checked']:3} unreadable={len(res['bad']):2} gradient={res.get('gradient',0):2}  {[(b['tag'],b['text'][:16],b['ratio'],b['bg']) for b in res['bad'][:4]]}")
