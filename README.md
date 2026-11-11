@@ -2,6 +2,8 @@
 
 [![Licence](https://img.shields.io/badge/licence-PolyForm%20Noncommercial%201.0.0-3f7a52
 
+
+![Screenshot](docs/shot.png)
 The change log for the drsamonline fleet — **78 repositories, 105 workflow files, 10 scheduled jobs**.
 
 Every audit, fix and correction lands here, with the evidence. Nothing in this repo is a plan for
