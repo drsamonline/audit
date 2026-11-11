@@ -8,11 +8,17 @@
    "homepage": "https://drsamonline.github.io/All4ONE/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-10T13:39:14Z",
+   "pushed_at": "2026-11-10T18:45:12Z",
    "releases": [
     {
      "assets": [
-      "All4one-4.0.0-windows.zip"
+      "All4one-4.1.0-windows.zip"
+     ],
+     "tag": "v4.1.0"
+    },
+    {
+     "assets": [
+      "All4one-4.1.0-windows.zip"
      ],
      "tag": "latest-build"
     }
@@ -232,7 +238,7 @@
    "homepage": "https://drsamonline.github.io/HMS/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-10T16:41:21Z",
+   "pushed_at": "2026-11-10T18:58:50Z",
    "releases": [
     {
      "assets": [
@@ -600,11 +606,12 @@
    "description": "Just a list of Single-File Web Apps (apps that are made of a single .html file with all dependencies embedded).",
    "has_pages": false,
    "homepage": "",
-   "licence_file": "",
-   "licence_spdx": null,
-   "pushed_at": "2026-11-10T13:39:20Z",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pushed_at": "2026-11-10T19:05:17Z",
    "releases": [],
    "root_files": [
+    "LICENSE",
     "README.md"
    ],
    "topics": [],
@@ -1791,7 +1798,11 @@
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
+<<<<<<< Updated upstream
    "pushed_at": "2026-11-10T16:57:32Z",
+=======
+   "pushed_at": "2026-11-10T18:15:05Z",
+>>>>>>> Stashed changes
    "releases": [],
    "root_files": [
     ".github",
@@ -2564,7 +2575,7 @@
    "homepage": "https://drsamonline.github.io/dashboard/play/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-10T13:41:56Z",
+   "pushed_at": "2026-11-10T18:50:04Z",
    "releases": [],
    "root_files": [
     ".github",
@@ -2993,7 +3004,7 @@
    "homepage": "https://drsamonline.github.io/gentle-pediatrics-companion/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-10T15:12:13Z",
+   "pushed_at": "2026-11-10T18:49:14Z",
    "releases": [
     {
      "assets": [
@@ -3166,13 +3177,14 @@
    "description": "",
    "has_pages": false,
    "homepage": "https://iamsingle.app",
-   "licence_file": "",
-   "licence_spdx": null,
-   "pushed_at": "2026-11-10T13:42:44Z",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pushed_at": "2026-11-10T19:05:20Z",
    "releases": [],
    "root_files": [
     ".github",
     ".gitignore",
+    "LICENSE",
     "README.md",
     "api",
     "assets",
@@ -3732,7 +3744,7 @@
    "homepage": "https://drsamonline.github.io/mnemosyne-companion/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-10T15:12:44Z",
+   "pushed_at": "2026-11-10T18:49:16Z",
    "releases": [
     {
      "assets": [
@@ -3814,12 +3826,13 @@
    "description": "Album-wise music page for drsamonline.github.io/music \u2014 streams from SoundCloud, Suno, Flow Music, Newgrounds and Freesound",
    "has_pages": false,
    "homepage": "",
-   "licence_file": "",
-   "licence_spdx": null,
-   "pushed_at": "2026-11-10T16:32:48Z",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pushed_at": "2026-11-10T19:05:22Z",
    "releases": [],
    "root_files": [
     ".github",
+    "LICENSE",
     "README.md",
     "app.js",
     "data",
@@ -4807,7 +4820,7 @@
    "homepage": "https://drsamonline.github.io/skin-case-tracker/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-10T15:13:06Z",
+   "pushed_at": "2026-11-10T19:20:29Z",
    "releases": [
     {
      "assets": [

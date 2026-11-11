@@ -1,0 +1,67 @@
+name: contrast
+
+# A page can be perfect in one theme and unreadable in the other: white headings on a
+# cream page, a light support card under the page's light text. Nothing else in the estate
+# looks at that - a build is green, the tests pass, and the link is invisible.
+#
+# This renders every listed page in light and dark, computes the contrast of every visible
+# text run against its own background, and fails on anything below 2:1.
+
+on:
+  schedule:
+    - cron: "25 5 * * 1"        # Mondays, after the health run
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contrast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install a browser
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq chromium-browser || sudo apt-get install -y -qq chromium || true
+          which chromium-browser || which chromium || echo "no chromium from apt"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Measure every page in both themes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          BIN=$(which chromium-browser || which chromium || echo chromium)
+          export CHROMIUM_BIN="$BIN"
+          # the pages worth watching: the ones with a theme toggle and a support block
+          pages="
+            remedy-finder:site/index.html
+            repertory-reader:docs/index.html
+            Repertorium-Publicum:docs/index.html
+            mnemosyne-companion:docs/index.html
+            chalk-lan:docs/index.html
+            canteen-lan:docs/index.html
+            game-kit:docs/index.html
+            web-kit:docs/index.html
+            saga-vn-engine:docs/index.html
+            app-poets-studio:docs/index.html
+            base-bench:docs/index.html
+            lumen:docs/index.html
+            app-jacquard:docs/index.html
+          "
+          fail=0
+          for p in $pages; do
+            out=$(python tools/contrast_audit.py "$p" 2>&1)
+            echo "$out"
+            echo "$out" | grep -qE "unreadable= *[1-9]" && fail=1
+          done
+          if [ "$fail" = "1" ]; then
+            echo "::error::a page has text that cannot be read in one of its themes"
+            exit 1
+          fi
+          echo "every measured page reads in both themes"
