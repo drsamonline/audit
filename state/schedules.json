@@ -3,6 +3,7 @@
  "Matneo/store-images.yml": "0 3 1,16 * *\"   # every 15 days (1st and 16th), 03:00 UTC",
  "Matneo/store.yml": "22 4 * * 2\"   # weekly, Tuesday 04:22 UTC",
  "app-builder/kit-tests.yml": "0 5 * * 3\"   # weekly, Wednesday 05:00 UTC",
+ "audit/contrast.yml": "25 5 * * 1\"        # Mondays, after the health run",
  "audit/health.yml": "51 3 * * *\"   # daily 03:43 UTC - clear of every other cron",
  "audit/licence-check.yml": "31 3 * * 1\"   # Mondays, 03:31 UTC - clear of every other cron",
  "control-panel/scan.yml": "40 8 * * 2\"   # weekly, Tuesday 06:00 UTC",
@@ -12,6 +13,5 @@
  "drsamonline/update-profile.yml": "17 3 * * *\"   # daily, 03:17 UTC",
  "iamsingle-sfwa-directory/discover-candidates.yml": "23 5 * * 1\" # once a week, Monday",
  "iamsingle-sfwa-directory/snapshot-stars.yml": "17 4 * * *\" # once a day, as a backstop",
- "local-first-tools/link-check.yml": "0 9 * * 1",
- "skills/refresh.yml": "23 3 * * 1\"   # weekly, Monday 03:23 UTC"
+ "local-first-tools/link-check.yml": "0 9 * * 1"
 }
