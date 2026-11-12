@@ -85,7 +85,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:47:26Z",
+   "pushed_at": "2026-11-12T06:48:37Z",
    "readable": true,
    "releases": [
     {
@@ -280,7 +280,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:10:19Z",
+   "pushed_at": "2026-11-12T06:40:11Z",
    "readable": true,
    "releases": [
     {
@@ -290,7 +290,7 @@
       "HHMS-Setup-0.0.3.exe",
       "SHA256SUMS.txt"
      ],
-     "tag": "v0.0.3"
+     "tag": "nightly"
     },
     {
      "assets": [
@@ -299,7 +299,7 @@
       "HHMS-Setup-0.0.3.exe",
       "SHA256SUMS.txt"
      ],
-     "tag": "nightly"
+     "tag": "v0.0.3"
     },
     {
      "assets": [
@@ -379,7 +379,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:47:40Z",
+   "pushed_at": "2026-11-12T06:39:24Z",
    "readable": true,
    "releases": [
     {
@@ -441,7 +441,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:31:42Z",
+   "pushed_at": "2026-11-12T11:29:56Z",
    "readable": true,
    "releases": [
     {
@@ -573,7 +573,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:15:53Z",
+   "pushed_at": "2026-11-12T06:35:51Z",
    "readable": true,
    "releases": [
     {
@@ -1118,7 +1118,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:14:50Z",
+   "pushed_at": "2026-11-12T06:35:37Z",
    "readable": true,
    "releases": [
     {
@@ -1338,7 +1338,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:48:13Z",
+   "pushed_at": "2026-11-12T06:36:24Z",
    "readable": true,
    "releases": [
     {
@@ -1415,7 +1415,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:32:10Z",
+   "pushed_at": "2026-11-12T06:43:41Z",
    "readable": true,
    "releases": [
     {
@@ -1467,7 +1467,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:50:15Z",
+   "pushed_at": "2026-11-12T06:46:57Z",
    "readable": true,
    "releases": [
     {
@@ -1527,7 +1527,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:59Z",
+   "pushed_at": "2026-11-12T06:47:06Z",
    "readable": true,
    "releases": [
     {
@@ -1583,7 +1583,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:51:21Z",
+   "pushed_at": "2026-11-12T06:46:14Z",
    "readable": true,
    "releases": [
     {
@@ -1653,7 +1653,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:51:08Z",
+   "pushed_at": "2026-11-12T06:46:22Z",
    "readable": true,
    "releases": [
     {
@@ -1715,7 +1715,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T14:57:22Z",
+   "pushed_at": "2026-11-12T06:44:57Z",
    "readable": true,
    "releases": [
     {
@@ -1781,7 +1781,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:14:57Z",
+   "pushed_at": "2026-11-12T06:35:27Z",
    "readable": true,
    "releases": [
     {
@@ -1979,7 +1979,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:15:04Z",
+   "pushed_at": "2026-11-12T06:43:13Z",
    "readable": true,
    "releases": [
     {
@@ -2051,7 +2051,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:44:42Z",
+   "pushed_at": "2026-11-12T06:48:42Z",
    "readable": true,
    "releases": [
     {
@@ -2143,7 +2143,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T15:29:45Z",
+   "pushed_at": "2026-11-12T06:44:55Z",
    "readable": true,
    "releases": [
     {
@@ -2216,7 +2216,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:51:01Z",
+   "pushed_at": "2026-11-12T06:46:26Z",
    "readable": true,
    "releases": [
     {
@@ -2276,7 +2276,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:50:54Z",
+   "pushed_at": "2026-11-12T06:46:31Z",
    "readable": true,
    "releases": [
     {
@@ -2343,7 +2343,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:15:10Z",
+   "pushed_at": "2026-11-12T06:43:21Z",
    "readable": true,
    "releases": [
     {
@@ -2544,7 +2544,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T04:16:14Z",
+   "pushed_at": "2026-11-12T05:03:30Z",
    "readable": true,
    "releases": [
     {
@@ -2660,7 +2660,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:15:19Z",
+   "pushed_at": "2026-11-12T06:43:17Z",
    "readable": true,
    "releases": [
     {
@@ -2718,7 +2718,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:47:32Z",
+   "pushed_at": "2026-11-12T06:48:32Z",
    "readable": true,
    "releases": [
     {
@@ -2784,7 +2784,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:48:06Z",
+   "pushed_at": "2026-11-12T07:39:54Z",
    "readable": true,
    "releases": [
     {
@@ -2859,7 +2859,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:48:39Z",
+   "pushed_at": "2026-11-12T06:47:58Z",
    "readable": true,
    "releases": [
     {
@@ -2989,7 +2989,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:50:06Z",
+   "pushed_at": "2026-11-12T06:47:01Z",
    "readable": true,
    "releases": [
     {
@@ -3091,7 +3091,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:15:25Z",
+   "pushed_at": "2026-11-12T06:35:41Z",
    "readable": true,
    "releases": [
     {
@@ -3283,7 +3283,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:47:46Z",
+   "pushed_at": "2026-11-12T06:58:01Z",
    "readable": true,
    "releases": [
     {
@@ -3500,7 +3500,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:48:00Z",
+   "pushed_at": "2026-11-12T06:48:16Z",
    "readable": true,
    "releases": [
     {
@@ -3556,7 +3556,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:14:54Z",
+   "pushed_at": "2026-11-12T06:53:26Z",
    "readable": true,
    "releases": [
     {
@@ -3618,14 +3618,14 @@
    "archived": false,
    "default_branch": "main",
    "description": "Dr. Sohil Momin \u2014 homeopathic physician & builder of offline-first open-source software",
-   "docs_index": true,
+   "docs_index": false,
    "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T04:23:57Z",
+   "pushed_at": "2026-11-12T11:27:11Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -3637,7 +3637,6 @@
     "SECURITY.md",
     "assets",
     "catalogue.json",
-    "docs",
     "tools"
    ],
    "topics": [
@@ -3668,7 +3667,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:46:27Z",
+   "pushed_at": "2026-11-12T11:47:57Z",
    "readable": true,
    "releases": [
     {
@@ -3719,7 +3718,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:50:47Z",
+   "pushed_at": "2026-11-12T06:39:36Z",
    "readable": true,
    "releases": [
     {
@@ -3770,6 +3769,7 @@
     "docs",
     "icon-192.png",
     "icon-512.png",
+    "index.html",
     "manifest.json",
     "robots.txt",
     "server.js",
@@ -3777,6 +3777,7 @@
     "sitemap.xml",
     "src",
     "sw.js",
+    "tests",
     "tools"
    ],
    "topics": [
@@ -4090,7 +4091,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:13Z",
+   "pushed_at": "2026-11-12T06:47:41Z",
    "readable": true,
    "releases": [
     {
@@ -4151,7 +4152,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-12T04:29:22Z",
+   "pushed_at": "2026-11-12T05:43:23Z",
    "readable": true,
    "releases": [
     {
@@ -4201,7 +4202,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:39Z",
+   "pushed_at": "2026-11-12T06:47:19Z",
    "readable": true,
    "releases": [
     {
@@ -4483,7 +4484,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:48:26Z",
+   "pushed_at": "2026-11-12T06:55:23Z",
    "readable": true,
    "releases": [
     {
@@ -4554,7 +4555,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:15:32Z",
+   "pushed_at": "2026-11-12T06:43:24Z",
    "readable": true,
    "releases": [
     {
@@ -4668,7 +4669,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:46:35Z",
+   "pushed_at": "2026-11-12T11:35:35Z",
    "readable": true,
    "releases": [
     {
@@ -4701,7 +4702,9 @@
    ],
    "upstream": null,
    "workflow_files": [
-    "ci.yml"
+    "ci.yml",
+    "fuzz.yml",
+    "release.yml"
    ]
   },
   "lan-kit": {
@@ -4852,7 +4855,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:48:54Z",
+   "pushed_at": "2026-11-12T06:49:00Z",
    "readable": true,
    "releases": [
     {
@@ -5236,7 +5239,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:15:39Z",
+   "pushed_at": "2026-11-12T06:39:35Z",
    "readable": true,
    "releases": [
     {
@@ -5560,7 +5563,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:47:53Z",
+   "pushed_at": "2026-11-12T06:48:21Z",
    "readable": true,
    "releases": [
     {
@@ -5634,7 +5637,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:15:47Z",
+   "pushed_at": "2026-11-12T06:35:47Z",
    "readable": true,
    "releases": [
     {
@@ -5917,7 +5920,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:33Z",
+   "pushed_at": "2026-11-12T06:47:24Z",
    "readable": true,
    "releases": [
     {
@@ -5991,7 +5994,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:48:47Z",
+   "pushed_at": "2026-11-12T06:48:51Z",
    "readable": true,
    "releases": [
     {
@@ -6108,12 +6111,6 @@
    "releases": [
     {
      "assets": [
-      "planner-pro-14.9.0-android.apk"
-     ],
-     "tag": "v14.9.0"
-    },
-    {
-     "assets": [
       "planner-pro-15.2.0-android.apk",
       "planner-pro-15.2.0-macos-arm64.dmg",
       "planner-pro-15.2.0-windows-portable.exe",
@@ -6159,6 +6156,18 @@
       "planner-pro_14.10.0_amd64.deb"
      ],
      "tag": "v14.10.0"
+    },
+    {
+     "assets": [
+      "planner-pro-14.9.0-android.apk",
+      "planner-pro-14.9.0-macos-arm64.dmg",
+      "planner-pro-14.9.0-windows-portable.exe",
+      "planner-pro-14.9.0-windows-setup.exe",
+      "planner-pro-web.zip",
+      "planner-pro.html",
+      "planner-pro_14.9.0_amd64.deb"
+     ],
+     "tag": "v14.9.0"
     }
    ],
    "root_files": [
@@ -6308,7 +6317,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:48:32Z",
+   "pushed_at": "2026-11-12T06:56:33Z",
    "readable": true,
    "releases": [
     {
@@ -6473,7 +6482,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:26Z",
+   "pushed_at": "2026-11-12T06:47:32Z",
    "readable": true,
    "releases": [
     {
@@ -6648,7 +6657,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:51:15Z",
+   "pushed_at": "2026-11-12T06:55:10Z",
    "readable": true,
    "releases": [
     {
@@ -6769,7 +6778,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:52Z",
+   "pushed_at": "2026-11-12T06:47:10Z",
    "readable": true,
    "releases": [
     {
@@ -6911,7 +6920,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:00Z",
+   "pushed_at": "2026-11-12T06:47:50Z",
    "readable": true,
    "releases": [
     {
@@ -6974,7 +6983,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T01:16:00Z",
+   "pushed_at": "2026-11-12T06:39:16Z",
    "readable": true,
    "releases": [
     {
@@ -7137,7 +7146,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:08Z",
+   "pushed_at": "2026-11-12T06:55:54Z",
    "readable": true,
    "releases": [
     {
@@ -7202,7 +7211,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:46Z",
+   "pushed_at": "2026-11-12T06:54:42Z",
    "readable": true,
    "releases": [
     {
@@ -7358,7 +7367,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:49:20Z",
+   "pushed_at": "2026-11-12T06:47:36Z",
    "readable": true,
    "releases": [
     {
@@ -7468,7 +7477,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:50:34Z",
+   "pushed_at": "2026-11-12T06:46:39Z",
    "readable": true,
    "releases": [
     {
@@ -7528,7 +7537,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:50:41Z",
+   "pushed_at": "2026-11-12T06:46:35Z",
    "readable": true,
    "releases": [
     {
@@ -7587,7 +7596,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:50:21Z",
+   "pushed_at": "2026-11-12T06:46:50Z",
    "readable": true,
    "releases": [
     {
@@ -7645,7 +7654,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:50:28Z",
+   "pushed_at": "2026-11-12T06:46:44Z",
    "readable": true,
    "releases": [
     {
@@ -7703,7 +7712,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:48:19Z",
+   "pushed_at": "2026-11-12T06:48:11Z",
    "readable": true,
    "releases": [
     {
