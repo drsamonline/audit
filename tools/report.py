@@ -65,6 +65,17 @@ def has_demo(rec, readme):
 
 
 def gaps(name, rec, readme):
+    # AN ARCHIVED REPOSITORY IS FINISHED, not deficient. A kit that was merged into another
+    # one is deliberately read-only with a pointer README; measuring it for a landing page,
+    # a release or a screenshot asks it to keep working after it was retired.
+    if rec.get("archived"):
+        return []
+    # A FORK IS SOMEONE ELSE'S PROJECT. Its licence, its badges, its support block and its
+    # documentation are the upstream maintainer's decisions, not this fleet's: measuring them
+    # here once produced a sweep that wrote this owner's UPI into four forks of other people's
+    # work, and a licence the upstream had never granted. A fork is left alone.
+    if rec.get("fork"):
+        return []
     g = []
     r = readme or ""
     files = {f.lower() for f in (rec.get("root_files") or [])}

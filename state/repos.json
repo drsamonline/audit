@@ -2,9 +2,11 @@
  "count": 126,
  "repos": {
   "All4ONE": {
+   "archived": false,
    "default_branch": "main",
    "description": "403 working tools in one portable Windows binary \u2014 file and folder work, encoding and hashing, images, PDFs, media, documents, network diagnostics, system maintenance, security checks and generators. No installer, no registry writes, no telemetry.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/All4ONE/",
    "licence_file": "LICENSE",
@@ -62,6 +64,7 @@
     "utilities",
     "windows"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-windows.yml",
     "ci.yml",
@@ -70,9 +73,11 @@
    ]
   },
   "BLINKTRANSFER": {
+   "archived": false,
    "default_branch": "main",
    "description": "Offline file transfer over animated QR codes \u2014 no internet, no Bluetooth, no cables.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/BLINKTRANSFER/",
    "licence_file": "LICENSE",
@@ -126,15 +131,18 @@
     "single-file",
     "transfer"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "ci.yml"
    ]
   },
   "CLDR": {
+   "archived": false,
    "default_branch": "main",
    "description": "A single tiny Rust binary that sits in the system tray, pops up on a keystroke and runs whatever you type \u2014 a sum, a path, an app or a search.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/CLDR/",
    "licence_file": "LICENSE",
@@ -203,15 +211,18 @@
     "rust",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-release.yml",
     "deploy-demo.yml"
    ]
   },
   "HCS": {
+   "archived": false,
    "default_branch": "main",
    "description": "CHCE \u2014 Holistic Compression Sources: the reference compressor sources the CHCE engines are built from.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/HCS/",
    "licence_file": "LICENSE",
@@ -245,19 +256,22 @@
     "compression",
     "research"
    ],
+   "upstream": null,
    "workflow_files": [
     "vendor-check.yml"
    ]
   },
   "HMS": {
+   "archived": false,
    "default_branch": "main",
    "description": "HHMS \u2014 a LAN-based hospital management system purpose-built for homeopathic hospitals and clinics, with a server-owned database and no cloud lock-in.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/HMS/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T15:23:17Z",
+   "pushed_at": "2026-11-12T01:10:19Z",
    "releases": [
     {
      "assets": [
@@ -339,14 +353,17 @@
     "lan",
     "offline-first"
    ],
+   "upstream": null,
    "workflow_files": [
     "release.yml"
    ]
   },
   "MATERIA-MEDICA-BUILDER": {
+   "archived": false,
    "default_branch": "main",
    "description": "Build your own materia medica and repertory \u2014 offline, private and yours to export.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/MATERIA-MEDICA-BUILDER/",
    "licence_file": "LICENSE",
@@ -396,14 +413,17 @@
     "offline-first",
     "tooling"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "Matneo": {
+   "archived": false,
    "default_branch": "main",
    "description": "An AI-powered digital products and automation platform \u2014 practical planners, templates, AI resources and offline browser tools.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/Matneo/",
    "licence_file": "LICENSE",
@@ -438,6 +458,7 @@
     "static-site",
     "storefront"
    ],
+   "upstream": null,
    "workflow_files": [
     "blog.yml",
     "products.yml",
@@ -446,9 +467,11 @@
    ]
   },
   "NEO": {
+   "archived": false,
    "default_branch": "master",
    "description": "NOVA \u2014 a statically typed, compiled systems programming language whose compiler lowers to C, JavaScript, Rust and WebAssembly.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/NEO/",
    "licence_file": "LICENSE",
@@ -518,19 +541,22 @@
     "rust",
     "systems-programming"
    ],
+   "upstream": null,
    "workflow_files": [
     "ci.yml"
    ]
   },
   "Repertorium-Publicum": {
+   "archived": false,
    "default_branch": "main",
    "description": "Repertorium Publicum (2008), an open Kent-derived repertory, as a searchable ledger \u2014 74,480 rubrics, 735,460 graded remedy links, a case builder and grade-weighted repertorisation. Offline in one HTML file: no server, no account.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/Repertorium-Publicum/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T15:37:45Z",
+   "pushed_at": "2026-11-12T01:15:53Z",
    "releases": [
     {
      "assets": [
@@ -577,15 +603,18 @@
     "repertory",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "Scrap-and-Gun": {
+   "archived": false,
    "default_branch": "main",
    "description": "SCRAP & GUN \u2014 a retro pixel-art arena-defence shooter with tactical construction, escalating waves, persistent upgrades, roguelite drafts, bosses and local co-op.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/Scrap-and-Gun/",
    "licence_file": "LICENSE",
@@ -651,21 +680,22 @@
     "roguelite",
     "tower-defense"
    ],
+   "upstream": null,
    "workflow_files": []
   },
   "Single-File-Web-Apps": {
+   "archived": false,
    "default_branch": "main",
    "description": "Just a list of Single-File Web Apps (apps that are made of a single .html file with all dependencies embedded).",
    "docs_index": false,
+   "fork": true,
    "has_pages": false,
    "homepage": "",
-   "licence_file": "LICENSE",
-   "licence_spdx": "MIT",
-   "pushed_at": "2026-11-11T14:53:27Z",
+   "licence_file": "",
+   "licence_spdx": null,
+   "pushed_at": "2026-11-11T19:20:54Z",
    "releases": [],
    "root_files": [
-    ".github",
-    "LICENSE",
     "README.md"
    ],
    "topics": [
@@ -675,12 +705,15 @@
     "offline-first",
     "single-file"
    ],
+   "upstream": "calebmadrigal/Single-File-Web-Apps",
    "workflow_files": []
   },
   "SmartNotes": {
+   "archived": false,
    "default_branch": "main",
    "description": "SmartNote Scheduler \u2014 AI-powered notes, reminders and scheduling: write in plain English and it files itself.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/SmartNotes/",
    "licence_file": "LICENSE",
@@ -729,12 +762,15 @@
     "pwa",
     "task-management"
    ],
+   "upstream": null,
    "workflow_files": []
   },
   "TTB": {
+   "archived": false,
    "default_branch": "main",
    "description": "TinyToolBox \u2014 591 tiny utilities bundled into one lightweight, offline-first browser extension for Chrome, Edge, Firefox and Safari.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/TTB/",
    "licence_file": "LICENSE",
@@ -800,14 +836,17 @@
     "toolbox",
     "utilities"
    ],
+   "upstream": null,
    "workflow_files": [
     "validate.yml"
    ]
   },
   "The_Browser": {
+   "archived": false,
    "default_branch": "main",
    "description": "Aetheris \u2014 an experimental C++ browser engine on a Ladybird/SerenityOS-derived codebase, built to learn how rendering works. Not production-ready.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/The_Browser/",
    "licence_file": "LICENSE",
@@ -881,15 +920,18 @@
     "rendering-engine",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-aetheris.yml",
     "deploy-demo.yml"
    ]
   },
   "ULTIMATE-WINDOWS-OPTIMIZER": {
+   "archived": false,
    "default_branch": "main",
    "description": "A PowerShell and batch toolkit for documented, reversible Windows 10/11 debloat and performance tweaks.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/ULTIMATE-WINDOWS-OPTIMIZER/",
    "licence_file": "LICENSE",
@@ -941,14 +983,17 @@
     "productivity",
     "windows"
    ],
+   "upstream": null,
    "workflow_files": [
     "ci.yml"
    ]
   },
   "UniRep": {
+   "archived": false,
    "default_branch": "main",
    "description": "Universal index over the classical homoeopathic repertories \u2014 one search surface across several books. Policy documents here; the app runs on Replit.",
    "docs_index": true,
+   "fork": false,
    "has_pages": false,
    "homepage": "https://replit.com/@sohilmomin2000/Homeopathic-Digital-Repe",
    "licence_file": "LICENSE",
@@ -976,12 +1021,15 @@
     "search",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": []
   },
   "accent-oracle": {
+   "archived": false,
    "default_branch": "main",
    "description": "It listens to four seconds of speech and guesses which accent it heard \u2014 on device, with a band on how sure it is.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/accent-oracle/",
    "licence_file": "LICENSE",
@@ -1019,20 +1067,23 @@
     "vanilla-js",
     "web-audio"
    ],
+   "upstream": null,
    "workflow_files": [
     "presentation.yml",
     "test.yml"
    ]
   },
   "aethelgard-games": {
+   "archived": false,
    "default_branch": "main",
    "description": "Two free Aethelgard browser games \u2014 a visual novel (The Books) and a role-playing game (Chronicles of Fate).",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/aethelgard-games/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T18:32:02Z",
+   "pushed_at": "2026-11-12T01:14:50Z",
    "releases": [
     {
      "assets": [
@@ -1091,14 +1142,17 @@
     "github-pages",
     "offline-first"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "aethelgard-rpg-engine": {
+   "archived": false,
    "default_branch": "main",
    "description": "A dependency-free vanilla-JavaScript engine for deep single-player browser RPGs. Engine only \u2014 the games it powers live in aethelgard-games.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/aethelgard-rpg-engine/",
    "licence_file": "LICENSE",
@@ -1147,14 +1201,17 @@
     "javascript",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "ci.yml"
    ]
   },
   "ai-bridge": {
+   "archived": false,
    "default_branch": "main",
    "description": "A VS Code extension that brings web-chat AI models into the editor, so you can work without leaving the code.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/ai-bridge/",
    "licence_file": "LICENSE",
@@ -1222,6 +1279,7 @@
     "typescript",
     "vscode-extension"
    ],
+   "upstream": null,
    "workflow_files": [
     "ci.yml",
     "debate-release.yml",
@@ -1230,9 +1288,11 @@
    ]
   },
   "ambient-sound-studio": {
+   "archived": false,
    "default_branch": "main",
    "description": "A private, offline ambient sound mixer in a single HTML file \u2014 25 synthesised layers, 36 presets and WAV/Opus export.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/ambient-sound-studio/",
    "licence_file": "LICENSE",
@@ -1297,14 +1357,17 @@
     "pwa",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "app-builder": {
+   "archived": false,
    "default_branch": "main",
    "description": "A shared build kit that compiles a static web app into a single-file portable Windows EXE and an Android WebView APK.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-builder/",
    "licence_file": "LICENSE",
@@ -1341,6 +1404,7 @@
     "single-file",
     "tooling"
    ],
+   "upstream": null,
    "workflow_files": [
     "build.yml",
     "kit-tests.yml",
@@ -1349,9 +1413,11 @@
    ]
   },
   "app-clip-loom": {
+   "archived": false,
    "default_branch": "main",
    "description": "Clip Loom \u2014 clipboard programs you can read: strip tracking, tidy text, keep what matters. Weft-8 on the Loom.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-clip-loom/",
    "licence_file": "LICENSE",
@@ -1398,15 +1464,18 @@
     "single-file",
     "weft-8"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-companion-forge": {
+   "archived": false,
    "default_branch": "main",
    "description": "Forge tooling, not a product app \u2014 an offline pocket console for the Forge system.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-companion-forge/",
    "licence_file": "LICENSE",
@@ -1450,14 +1519,17 @@
     "single-file",
     "tooling"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "app-encrypted-case-log": {
+   "archived": false,
    "default_branch": "main",
    "description": "Per-patient clinical notes encrypted on the device with AES-256-GCM \u2014 offline, no account, no server.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-encrypted-case-log/",
    "licence_file": "LICENSE",
@@ -1514,15 +1586,18 @@
     "privacy",
     "pwa"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-endpoints": {
+   "archived": false,
    "default_branch": "main",
    "description": "Endpoints \u2014 find the right free API for a job: an offline directory of 2,214 public APIs, filterable by auth, CORS and HTTPS. No account, no server, no network at runtime.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-endpoints/",
    "licence_file": "LICENSE",
@@ -1571,15 +1646,18 @@
     "offline-first",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-image-toolkit": {
+   "archived": false,
    "default_branch": "main",
    "description": "Compress, resize, convert and strip the GPS from photos on your own device \u2014 nothing uploaded, no account, works offline.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-image-toolkit/",
    "licence_file": "LICENSE",
@@ -1632,20 +1710,23 @@
     "privacy-first",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-jacquard": {
+   "archived": false,
    "default_branch": "main",
    "description": "Jacquard \u2014 the loom you program: a Weft-8 8-bit assembler and VM with the device's sensors as memory-mapped peripherals.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-jacquard/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T15:29:43Z",
+   "pushed_at": "2026-11-12T01:14:57Z",
    "releases": [
     {
      "assets": [
@@ -1692,15 +1773,18 @@
     "web-app",
     "weft-8"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-lantern": {
+   "archived": false,
    "default_branch": "main",
    "description": "A whole library served over your own Wi-Fi \u2014 browse and search offline content on the LAN, with no internet at any point.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-lantern/",
    "licence_file": "LICENSE",
@@ -1762,6 +1846,7 @@
     "offline-first",
     "zero-dependencies"
    ],
+   "upstream": null,
    "workflow_files": [
     "desktop.yml",
     "release.yml",
@@ -1769,14 +1854,16 @@
    ]
   },
   "app-opd-register": {
+   "archived": false,
    "default_branch": "main",
    "description": "A daily OPD register for multi-location clinics \u2014 month register, dashboard, day-wise statistics, print and Excel. Offline, no account, no server.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-opd-register/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T18:54:39Z",
+   "pushed_at": "2026-11-12T01:57:13Z",
    "releases": [
     {
      "assets": [
@@ -1815,20 +1902,23 @@
     "single-file",
     "vanilla-js"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-organon-reader": {
+   "archived": false,
    "default_branch": "main",
    "description": "An offline reader for the Organon of Medicine, sixth edition, in the 1922 Boericke translation \u2014 full-text search, bookmarks and notes, no network.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-organon-reader/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T18:32:13Z",
+   "pushed_at": "2026-11-12T01:15:04Z",
    "releases": [
     {
      "assets": [],
@@ -1882,15 +1972,18 @@
     "reader",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-panchang": {
+   "archived": false,
    "default_branch": "main",
    "description": "A daily Indian almanac \u2014 tithi, nakshatra, yoga, karana, rahu-kaal and muhurat, computed offline.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-panchang/",
    "licence_file": "LICENSE",
@@ -1969,15 +2062,18 @@
     "pwa",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-poets-studio": {
+   "archived": false,
    "default_branch": "main",
    "description": "Rhyme, metre and fixed forms, fully offline \u2014 a poetry workshop that measures what you wrote, with 124,085 words bundled.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-poets-studio/",
    "licence_file": "LICENSE",
@@ -2037,15 +2133,18 @@
     "single-file",
     "writing"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-story-engine": {
+   "archived": false,
    "default_branch": "main",
    "description": "A book the reader moves through: choices, carried state, and a trail of where you have been. Offline, no accounts.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-story-engine/",
    "licence_file": "LICENSE",
@@ -2092,15 +2191,18 @@
     "single-file",
     "story-engine"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-thermals": {
+   "archived": false,
    "default_branch": "main",
    "description": "Homoeopathic remedies by thermal reaction \u2014 what each classical source actually says, quoted in its own words with the source named, and where the sources do not say the same thing. Offline, no accounts.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-thermals/",
    "licence_file": "LICENSE",
@@ -2154,20 +2256,23 @@
     "thermal-reaction",
     "zero-dependencies"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "app-weft-puzzles": {
+   "archived": false,
    "default_branch": "main",
    "description": "Weft Puzzles \u2014 small programming puzzles you solve in Weft-8 assembly, on the machine from Jacquard.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/app-weft-puzzles/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T14:56:33Z",
+   "pushed_at": "2026-11-12T01:15:10Z",
    "releases": [
     {
      "assets": [
@@ -2208,15 +2313,18 @@
     "puzzle",
     "retrocomputing"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "art-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The art primitives Forge was missing: an indexed palette, a pixel canvas, draw ops, a delta undo stack, dithering, median-cut quantisation and sprite sheets.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/art-kit/",
    "licence_file": "LICENSE",
@@ -2254,14 +2362,17 @@
     "sprite-sheet",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "astro-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The shared astronomy core: sun and moon longitude (Meeus), ayanamsa, sunrise/sunset, and tithi, nakshatra, yoga and karana.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/astro-kit/",
    "licence_file": "LICENSE",
@@ -2292,14 +2403,17 @@
     "kit",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "audio-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "Synthesis, theory, patterns and notation for offline apps: ADSR envelopes, oscillator voices, filters, scales, chords, a pattern sequencer and staff layout.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/audio-kit/",
    "licence_file": "LICENSE",
@@ -2336,19 +2450,22 @@
     "webaudio",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "audit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The change log for the drsamonline fleet: what was measured, what was fixed, and the evidence.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/audit/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T18:58:45Z",
+   "pushed_at": "2026-11-11T19:05:42Z",
    "releases": [
     {
      "assets": [],
@@ -2374,6 +2491,7 @@
     "github-actions",
     "tooling"
    ],
+   "upstream": null,
    "workflow_files": [
     "contrast.yml",
     "health.yml",
@@ -2381,17 +2499,18 @@
    ]
   },
   "awesome-singlefile-tools": {
+   "archived": false,
    "default_branch": "main",
    "description": "A curated list of zero-dependency, local-first, single-file HTML apps, frameworks, and platforms.",
    "docs_index": false,
+   "fork": true,
    "has_pages": false,
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
-   "pushed_at": "2026-11-11T14:53:21Z",
+   "pushed_at": "2026-11-11T19:21:18Z",
    "releases": [],
    "root_files": [
-    ".github",
     "LICENSE",
     "README.kr.md",
     "README.md",
@@ -2404,12 +2523,15 @@
     "single-file",
     "zero-dependency"
    ],
+   "upstream": "charmfrog/awesome-singlefile-tools",
    "workflow_files": []
   },
   "backup": {
+   "archived": false,
    "default_branch": "main",
    "description": "Snapshot a repository before a merge replaces it \u2014 a reusable GitHub workflow plus a zero-dependency script, compressed, timestamped and rotated to keep the newest 100.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/backup/",
    "licence_file": "LICENSE",
@@ -2438,19 +2560,22 @@
     "github-actions",
     "tooling"
    ],
+   "upstream": null,
    "workflow_files": [
     "backup.yml"
    ]
   },
   "base-bench": {
+   "archived": false,
    "default_branch": "main",
    "description": "Every number base, unit and timezone on one page, with the working shown \u2014 offline, no accounts.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/base-bench/play/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T15:29:47Z",
+   "pushed_at": "2026-11-12T01:15:19Z",
    "releases": [
     {
      "assets": [
@@ -2490,15 +2615,18 @@
     "single-file",
     "units"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "blinkcode-ai": {
+   "archived": false,
    "default_branch": "main",
    "description": "An optical file-transfer PWA \u2014 compress a file into a File DNA container, paint it as SpectraCode colour matrices and recover it with a camera.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/blinkcode-ai/",
    "licence_file": "LICENSE",
@@ -2551,15 +2679,18 @@
     "single-file",
     "transfer"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "ci.yml"
    ]
   },
   "bmi-bmr-tdee-macros-fluid-calculator": {
+   "archived": false,
    "default_branch": "main",
    "description": "A single-file clinical calculator \u2014 BMI, BMR (Mifflin\u2013St Jeor), TDEE, macros, fluids and body composition, with Indian and WHO cut-offs in English, Hindi and Gujarati.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/bmi-bmr-tdee-macros-fluid-calculator/",
    "licence_file": "LICENSE",
@@ -2620,6 +2751,7 @@
     "offline-first",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "release-extras.yml",
@@ -2627,9 +2759,11 @@
    ]
   },
   "boericke-repertory": {
+   "archived": false,
    "default_branch": "main",
    "description": "Boericke's Repertory as a free, offline single-file web app \u2014 a searchable clinical repertory and repertorisation tool, after Oscar E. Boericke, M.D. (1927).",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/boericke-repertory/",
    "licence_file": "LICENSE",
@@ -2705,14 +2839,17 @@
     "repertory",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "book-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The companion-app-from-a-book pattern: chapters, key points, practices, flashcards, search and reading progress.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/book-kit/",
    "licence_file": "LICENSE",
@@ -2742,14 +2879,17 @@
     "reading",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "canteen-lan": {
+   "archived": false,
    "default_branch": "main",
    "description": "Order from your table over the room's own Wi-Fi \u2014 a LAN canteen board built with Forge.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/canteen-lan/",
    "licence_file": "LICENSE",
@@ -2797,14 +2937,17 @@
     "restaurant",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "case-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "Clinical case tracking: sections, dated symptoms, follow-ups, a timeline and a summary.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/case-kit/",
    "licence_file": "LICENSE",
@@ -2834,19 +2977,22 @@
     "kit",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "chalk-lan": {
+   "archived": false,
    "default_branch": "main",
    "description": "A shared whiteboard for the room: everyone on the same Wi-Fi draws on the same board, live.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/chalk-lan/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T15:29:49Z",
+   "pushed_at": "2026-11-12T01:15:25Z",
    "releases": [
     {
      "assets": [
@@ -2888,14 +3034,17 @@
     "offline-first",
     "whiteboard"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "code-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "QR encoding (versions 1-40, L/M/Q/H, all eight masks), a small syntax highlighter and copyable snippet blocks \u2014 one zero-dependency file.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/code-kit/",
    "licence_file": "LICENSE",
@@ -2931,14 +3080,17 @@
     "syntax-highlighting",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "compfactory": {
+   "archived": false,
    "default_branch": "main",
    "description": "The development workspace for the CHCE multi-repository project.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/compfactory/",
    "licence_file": "LICENSE",
@@ -2968,20 +3120,23 @@
     "compression",
     "devtools"
    ],
+   "upstream": null,
    "workflow_files": [
     "dispatch-sync.yml",
     "tests.yml"
    ]
   },
   "compress-kit": {
+   "archived": true,
    "default_branch": "main",
    "description": "The shared compression core: gzip, deflate and deflate-raw via the platform's Compression Streams.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/compress-kit/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T15:00:14Z",
+   "pushed_at": "2026-11-11T19:53:38Z",
    "releases": [
     {
      "assets": [],
@@ -3006,14 +3161,17 @@
     "kit",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "conqueror-os": {
+   "archived": false,
    "default_branch": "main",
    "description": "A private, offline resilience workspace in a single HTML file \u2014 read, reflect, journal, track and review.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/conqueror-os/",
    "licence_file": "LICENSE",
@@ -3087,6 +3245,7 @@
     "productivity",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "ci.yml",
@@ -3095,9 +3254,11 @@
    ]
   },
   "control-panel": {
+   "archived": false,
    "default_branch": "main",
    "description": "Every workflow in every repo: what runs, when, what calls what, and what is connected to nothing.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/control-panel/",
    "licence_file": "LICENSE",
@@ -3125,14 +3286,17 @@
     "tooling",
     "workflow"
    ],
+   "upstream": null,
    "workflow_files": [
     "scan.yml"
    ]
   },
   "corefit-md": {
+   "archived": false,
    "default_branch": "main",
    "description": "CoreFit MD \u2014 a five-minute video-guided morning core routine. Clip-accurate playback (every set opens at 0:30), six-week progression, streaks, trilingual UI. Static, offline-first, no backend.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/corefit-md/",
    "licence_file": "LICENSE",
@@ -3167,12 +3331,15 @@
     "offline-first",
     "video"
    ],
+   "upstream": null,
    "workflow_files": []
   },
   "crypto-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The shared crypto core: AES-256-GCM, PBKDF2 passphrase keys, sealed envelopes and one-time view, on Web Crypto.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/crypto-kit/",
    "licence_file": "LICENSE",
@@ -3203,14 +3370,17 @@
     "kit",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "dance-fight": {
+   "archived": false,
    "default_branch": "main",
    "description": "A single-file browser rhythm game where every fight move is a dance move, driven by the beat grid of your own track.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/dance-fight/",
    "licence_file": "LICENSE",
@@ -3254,19 +3424,22 @@
     "offline-first",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "dashboard": {
+   "archived": false,
    "default_branch": "main",
    "description": "Live status of the drsamonline system \u2014 the repo fleet, build health, downloads and the store.",
    "docs_index": false,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/dashboard/play/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T18:43:12Z",
+   "pushed_at": "2026-11-12T01:14:54Z",
    "releases": [
     {
      "assets": [],
@@ -3317,15 +3490,18 @@
     "static-site",
     "tooling"
    ],
+   "upstream": null,
    "workflow_files": [
     "refresh.yml",
     "test.yml"
    ]
   },
   "drsamonline": {
+   "archived": false,
    "default_branch": "main",
    "description": "Dr. Sohil Momin \u2014 homeopathic physician & builder of offline-first open-source software",
    "docs_index": false,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/",
    "licence_file": "LICENSE",
@@ -3349,6 +3525,7 @@
     "offline-first",
     "static-site"
    ],
+   "upstream": null,
    "workflow_files": [
     "add-download-blocks.yml",
     "apply-all.yml",
@@ -3360,14 +3537,16 @@
    ]
   },
   "drsamonline.github.io": {
+   "archived": false,
    "default_branch": "main",
    "description": "Personal project index \u2014 a self-updating page that reads the GitHub API so new repositories appear automatically. Served at drsamonline.github.io",
    "docs_index": false,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T18:32:33Z",
+   "pushed_at": "2026-11-12T01:46:27Z",
    "releases": [
     {
      "assets": [],
@@ -3401,14 +3580,17 @@
     "project-index",
     "static-site"
    ],
+   "upstream": null,
    "workflow_files": [
     "refresh-hub.yml"
    ]
   },
   "eon-commando": {
+   "archived": false,
    "default_branch": "main",
    "description": "EON COMMANDO \u2014 a retro run-and-gun platformer in one self-contained HTML file: three eras, five weapons, three bosses, chiptune audio. No dependencies, works offline.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/eon-commando/",
    "licence_file": "LICENSE",
@@ -3487,20 +3669,27 @@
     "run-and-gun",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "export-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "Save text, JSON, CSV and binary to the user's device, and bundle files into a store-only ZIP.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/export-kit/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T18:32:36Z",
+   "pushed_at": "2026-11-11T19:53:30Z",
    "releases": [
+    {
+     "assets": [],
+     "tag": "v2.0.0"
+    },
     {
      "assets": [],
      "tag": "v1.0.0"
@@ -3524,14 +3713,17 @@
     "kit",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "feather": {
+   "archived": false,
    "default_branch": "main",
    "description": "A read-only document viewer that opens before you blink \u2014 small, portable, cross-platform, summoned by a keystroke.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/feather/",
    "licence_file": "LICENSE",
@@ -3616,15 +3808,18 @@
     "offline-first",
     "rust"
    ],
+   "upstream": null,
    "workflow_files": [
     "ci.yml",
     "release.yml"
    ]
   },
   "form-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "24 form controls for offline apps \u2014 inputs, OTP, select, autocomplete, calendar, upload, checkbox, switch, slider, rate, toggles, colour \u2014 with one API and one validation pass.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/form-kit/",
    "licence_file": "LICENSE",
@@ -3659,20 +3854,27 @@
     "validation",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "frame-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The shared transfer-frame core: a self-describing frame, a rateless collector and byte/checksum utilities.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/frame-kit/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T18:32:38Z",
+   "pushed_at": "2026-11-12T01:59:04Z",
    "releases": [
+    {
+     "assets": [],
+     "tag": "v2.0.0"
+    },
     {
      "assets": [],
      "tag": "v1.0.0"
@@ -3697,12 +3899,15 @@
     "transfer",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": []
   },
   "game-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The shared game core: a fixed-timestep loop, input, scenes, save/load and maths.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/game-kit/",
    "licence_file": "LICENSE",
@@ -3734,14 +3939,17 @@
     "kit",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "gentle-pediatrics-companion": {
+   "archived": false,
    "default_branch": "main",
    "description": "A triage-first home companion for a sick child \u2014 nine common childhood situations, a red-flag check and remedy orientation from the book Gentle Pediatrics.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/gentle-pediatrics-companion/",
    "licence_file": "LICENSE",
@@ -3790,19 +3998,22 @@
     "pediatrics",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "heavenzip": {
+   "archived": false,
    "default_branch": "main",
    "description": "The CHCE orchestrator \u2014 chains prebuilt compression binaries into one pipeline.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/heavenzip/",
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
-   "pushed_at": "2026-11-11T18:56:22Z",
+   "pushed_at": "2026-11-12T01:42:16Z",
    "releases": [
     {
      "assets": [],
@@ -3813,6 +4024,7 @@
     ".github",
     ".gitignore",
     "AGENT_PROMPT.md",
+    "CMakeLists.txt",
     "LICENSE",
     "PRIVACY.md",
     "PROJECT_OVERVIEW.md",
@@ -3822,6 +4034,7 @@
     "bin",
     "config",
     "docs",
+    "include",
     "src",
     "tests",
     "tools"
@@ -3832,14 +4045,18 @@
     "compression",
     "orchestrator"
    ],
+   "upstream": null,
    "workflow_files": [
+    "ci.yml",
     "sync-binaries.yml"
    ]
   },
   "helioprism": {
+   "archived": false,
    "default_branch": "main",
    "description": "One app, two optical transports \u2014 send a file with light over QR codes or a colour matrix, with no network at all.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/helioprism/",
    "licence_file": "LICENSE",
@@ -3892,15 +4109,18 @@
     "single-file",
     "transfer"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "ci.yml"
    ]
   },
   "holistic": {
+   "archived": false,
    "default_branch": "main",
    "description": "Eight traditions, one quiet app \u2014 numerology, sun-sign astrology, lunar phase and biorhythm. Offline, private, 92 KB, zero network requests.",
    "docs_index": false,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/holistic/",
    "licence_file": "LICENSE",
@@ -3992,6 +4212,7 @@
     "tarot",
     "vanilla-js"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "pages.yml",
@@ -3999,9 +4220,11 @@
    ]
   },
   "homoeopathic-materia-medica-repertory-json": {
+   "archived": false,
    "default_branch": "main",
    "description": "Open-domain homoeopathic materia medica and repertory texts as app-ready JSON \u2014 13 books (1840\u20131906), about 108,000 rubrics.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/homoeopathic-materia-medica-repertory-json/",
    "licence_file": "LICENSE",
@@ -4044,22 +4267,24 @@
     "open-data",
     "repertory"
    ],
+   "upstream": null,
    "workflow_files": []
   },
   "iamsingle-sfwa-directory": {
+   "archived": false,
    "default_branch": "main",
    "description": "A curated, community-submittable directory of single-file web apps \u2014 one HTML file, all dependencies embedded.",
    "docs_index": true,
+   "fork": true,
    "has_pages": false,
    "homepage": "https://iamsingle.app",
-   "licence_file": "LICENSE",
-   "licence_spdx": "MIT",
-   "pushed_at": "2026-11-11T14:53:15Z",
+   "licence_file": "",
+   "licence_spdx": null,
+   "pushed_at": "2026-11-11T19:21:07Z",
    "releases": [],
    "root_files": [
     ".github",
     ".gitignore",
-    "LICENSE",
     "README.md",
     "api",
     "assets",
@@ -4090,6 +4315,7 @@
     "offline-first",
     "single-file"
    ],
+   "upstream": "HabibiCodeCH/iamsingle-sfwa-directory",
    "workflow_files": [
     "build-pages.yml",
     "discover-candidates.yml",
@@ -4100,9 +4326,11 @@
    ]
   },
   "idle-city-ages-of-growth": {
+   "archived": false,
    "default_branch": "main",
    "description": "A single-file idle city-builder that grows from a Stone Age village into a Fusion Age world-city.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/idle-city-ages-of-growth/",
    "licence_file": "LICENSE",
@@ -4159,6 +4387,7 @@
     "offline-first",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "build.yml",
@@ -4166,14 +4395,16 @@
    ]
   },
   "kitbox": {
+   "archived": false,
    "default_branch": "main",
    "description": "493 tools across 27 categories in one HTML file",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/kitbox/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T18:32:44Z",
+   "pushed_at": "2026-11-12T01:15:32Z",
    "releases": [
     {
      "assets": [],
@@ -4268,6 +4499,7 @@
     "utilities",
     "vanilla-js"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "release.yml",
@@ -4275,14 +4507,16 @@
    ]
   },
   "kosh": {
+   "archived": false,
    "default_branch": "main",
    "description": "The CHCE file workbench \u2014 split, squeeze, archive, verify and inspect files. CLI plus a local web UI.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/kosh/",
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
-   "pushed_at": "2026-11-11T18:54:43Z",
+   "pushed_at": "2026-11-12T01:46:35Z",
    "releases": [
     {
      "assets": [],
@@ -4312,14 +4546,17 @@
     "offline-first",
     "python"
    ],
+   "upstream": null,
    "workflow_files": [
     "ci.yml"
    ]
   },
   "lan-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The shared LAN core: a local room with a real-time channel over Server-Sent Events and POST.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/lan-kit/",
    "licence_file": "LICENSE",
@@ -4353,14 +4590,17 @@
     "offline-first",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "lexora": {
+   "archived": false,
    "default_branch": "main",
    "description": "LEXORA \u2014 Layered EXact-text Repository and Adaptive compression architecture: canonicalise text, then compress it with guaranteed byte-exact recovery.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/lexora/",
    "licence_file": "LICENSE",
@@ -4408,19 +4648,22 @@
     "offline-first",
     "python"
    ],
+   "upstream": null,
    "workflow_files": [
     "ci.yml"
    ]
   },
   "local-first-tools": {
+   "archived": false,
    "default_branch": "main",
    "description": "Curated list of local-first, offline-capable, privacy-respecting tools",
    "docs_index": false,
+   "fork": true,
    "has_pages": false,
    "homepage": "",
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
-   "pushed_at": "2026-11-11T14:53:09Z",
+   "pushed_at": "2026-11-11T19:21:12Z",
    "releases": [],
    "root_files": [
     ".github",
@@ -4434,14 +4677,17 @@
     "offline-first",
     "privacy"
    ],
+   "upstream": "ResourceChest/local-first-tools",
    "workflow_files": [
     "link-check.yml"
    ]
   },
   "lockhtml": {
+   "archived": false,
    "default_branch": "main",
    "description": "PIN-protect or one-time-view any HTML file with AES-256-GCM \u2014 a cross-platform CLI plus a browser GUI that runs on any OS.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/lockhtml/",
    "licence_file": "LICENSE",
@@ -4524,6 +4770,7 @@
     "privacy-first",
     "security"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "ci.yml",
@@ -4531,9 +4778,11 @@
    ]
   },
   "lofi-studio-pro": {
+   "archived": false,
    "default_branch": "main",
    "description": "A lofi beat machine that runs entirely in the browser. Six tracks, nine ambience layers, live tape chain \u2014 offline-first PWA, no samples, no account.",
    "docs_index": false,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/lofi-studio-pro/",
    "licence_file": "LICENSE",
@@ -4618,6 +4867,7 @@
     "tonejs",
     "web-audio"
    ],
+   "upstream": null,
    "workflow_files": [
     "android.yml",
     "tests.yml",
@@ -4625,9 +4875,11 @@
    ]
   },
   "lumen": {
+   "archived": false,
    "default_branch": "main",
    "description": "Lumen \u2014 a fast, fully offline photo library in the spirit of Google Picasa. Windows, Linux and Android from one Flutter codebase.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/lumen/",
    "licence_file": "LICENSE",
@@ -4705,6 +4957,7 @@
     "photo-library",
     "photo-manager"
    ],
+   "upstream": null,
    "workflow_files": [
     "presentation.yml",
     "release.yml",
@@ -4712,9 +4965,11 @@
    ]
   },
   "markdown-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "Markdown to HTML with a streaming reveal: render what is finished and hold back what could still change, so model output never flashes a broken parse.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/markdown-kit/",
    "licence_file": "LICENSE",
@@ -4749,14 +5004,17 @@
     "streaming",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "ml-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The classic algorithms from scratch for offline features: tf-idf, Naive Bayes, k-NN, k-means, PCA, ID3, linear regression and Markov chains \u2014 no model, no API key, no network.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/ml-kit/",
    "licence_file": "LICENSE",
@@ -4793,19 +5051,22 @@
     "tf-idf",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "mnemosyne-companion": {
+   "archived": false,
    "default_branch": "main",
    "description": "A study companion for Mnemosyne Materia Medica \u2014 100 polycrest remedies as poetic pearls, keynotes and spaced-repetition drills.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/mnemosyne-companion/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T15:44:40Z",
+   "pushed_at": "2026-11-12T01:15:39Z",
    "releases": [
     {
      "assets": [
@@ -4850,19 +5111,22 @@
     "offline-first",
     "spaced-repetition"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "motion-kit": {
+   "archived": true,
    "default_branch": "main",
    "description": "The shared motion core: springs, easings and transition presets as numbers \u2014 the Lobe UI motion vocabulary in one zero-dependency file.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/motion-kit/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T14:54:19Z",
+   "pushed_at": "2026-11-12T01:16:35Z",
    "releases": [
     {
      "assets": [],
@@ -4892,19 +5156,22 @@
     "spring",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "music": {
+   "archived": false,
    "default_branch": "main",
    "description": "Album-wise music page for drsamonline.github.io/music \u2014 streams from SoundCloud, Suno, Flow Music, Newgrounds and Freesound",
    "docs_index": false,
+   "fork": false,
    "has_pages": false,
    "homepage": "https://drsamonline.github.io/music/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T17:16:00Z",
+   "pushed_at": "2026-11-12T01:38:42Z",
    "releases": [
     {
      "assets": [],
@@ -4935,15 +5202,18 @@
     "soundcloud",
     "suno"
    ],
+   "upstream": null,
    "workflow_files": [
     "publish-check.yml",
     "rebuild.yml"
    ]
   },
   "musicgen": {
+   "archived": false,
    "default_branch": "main",
    "description": "A pocket generative composer \u2014 an offline-first PWA that writes, synthesises, masters and exports music in the browser, with no server and no samples.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/musicgen/",
    "licence_file": "LICENSE",
@@ -5010,15 +5280,18 @@
     "vanilla-js",
     "web-audio"
    ],
+   "upstream": null,
    "workflow_files": [
     "pages.yml",
     "test.yml"
    ]
   },
   "neon-engine": {
+   "archived": false,
    "default_branch": "main",
    "description": "A code-only open-world game engine for the browser \u2014 no assets, no dependencies; every texture, mesh and sound is generated at runtime.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/neon-engine/",
    "licence_file": "LICENSE",
@@ -5092,14 +5365,17 @@
     "pwa",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "neon-games": {
+   "archived": false,
    "default_branch": "main",
    "description": "Two free open-world browser games on the Neon Engine \u2014 Dead Zone (zombie survival) and Neon Police.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/neon-games/",
    "licence_file": "LICENSE",
@@ -5161,19 +5437,22 @@
     "offline-first",
     "pwa"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "neon-runner": {
+   "archived": false,
    "default_branch": "main",
    "description": "A retro auto-fire side-scrolling shooter in one self-contained HTML file \u2014 move, jump and duck; the gun fires itself.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/neon-runner/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T16:36:19Z",
+   "pushed_at": "2026-11-12T01:15:47Z",
    "releases": [
     {
      "assets": [
@@ -5216,15 +5495,18 @@
     "pixel-art",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "ci.yml"
    ]
   },
   "neon-velocity": {
+   "archived": false,
    "default_branch": "main",
    "description": "A procedural retro side-scrolling shooter for Godot 4.3 \u2014 zero binary assets, every sprite and sound generated at runtime.",
    "docs_index": false,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/neon-velocity/",
    "licence_file": "LICENSE",
@@ -5296,14 +5578,17 @@
     "procedural-generation",
     "shooter"
    ],
+   "upstream": null,
    "workflow_files": [
     "build.yml"
    ]
   },
   "neonboom": {
+   "archived": false,
    "default_branch": "main",
    "description": "A beat workstation that lives in a browser tab. 27 procedurally synthesised loops, hardware-style pad grid, canvas arrangement, mixer with sends, master FX, automation, scenes and WAV/stem export. Offline-first PWA, 192 KB single file, zero dependencies. Feature-frozen at 2.4.0.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/neonboom/",
    "licence_file": "LICENSE",
@@ -5426,6 +5711,7 @@
     "vanilla-javascript",
     "web-audio"
    ],
+   "upstream": null,
    "workflow_files": [
     "android.yml",
     "pages.yml",
@@ -5434,9 +5720,11 @@
    ]
   },
   "offline-pdf-toolkit": {
+   "archived": false,
    "default_branch": "main",
    "description": "Merge, split, rotate, reorder, watermark, number and compress PDFs entirely in the browser \u2014 no upload, no account, no server, works offline.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/offline-pdf-toolkit/",
    "licence_file": "LICENSE",
@@ -5498,14 +5786,17 @@
     "privacy-first",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "open-materia-medica": {
+   "archived": false,
    "default_branch": "main",
    "description": "The classical homeopathic materia medica in plain language \u2014 344 remedy portraits, with a free web edition and an offline Android companion.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/open-materia-medica/",
    "licence_file": "LICENSE",
@@ -5563,19 +5854,22 @@
     "offline-first",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "optical-kit": {
+   "archived": true,
    "default_branch": "main",
    "description": "The shared optical-transfer core: a systematic LT fountain code, self-describing frames and a pluggable codec.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/optical-kit/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T15:00:26Z",
+   "pushed_at": "2026-11-11T19:24:17Z",
    "releases": [
     {
      "assets": [],
@@ -5600,14 +5894,17 @@
     "transfer",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "planner-pro": {
+   "archived": false,
    "default_branch": "main",
    "description": "An offline-first planner for day, week, month and year. Multi-profile, PIN locked, no accounts, no servers, no networking code. ~210 KB of vanilla JS.",
    "docs_index": false,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/planner-pro/",
    "licence_file": "LICENSE",
@@ -5698,6 +5995,7 @@
     "task-manager",
     "vanilla-javascript"
    ],
+   "upstream": null,
    "workflow_files": [
     "android.yml",
     "desktop.yml",
@@ -5706,9 +6004,11 @@
    ]
   },
   "profile-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "A small reusable kit for a theme-aware, self-updating GitHub profile \u2014 hero banner, metrics card and README generator.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/profile-kit/",
    "licence_file": "LICENSE",
@@ -5737,12 +6037,15 @@
     "kit",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": []
   },
   "raylib-starter": {
+   "archived": false,
    "default_branch": "main",
    "description": "One C file on raylib: fixed timestep, scenes, CRC-checked save and an ECS \u2014 the C answer to game-kit, built for the 10 MB ceiling.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/raylib-starter/",
    "licence_file": "LICENSE",
@@ -5790,14 +6093,17 @@
     "offline-first",
     "raylib"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "read-live-transform-app": {
+   "archived": false,
    "default_branch": "main",
    "description": "A companion PWA to Read. Live. Transform.: A Practical Reading of the Qur'an \u2014 read the verse, live the practice, keep the change.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/read-live-transform-app/",
    "licence_file": "LICENSE",
@@ -5859,14 +6165,17 @@
     "reading",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "remedy-finder": {
+   "archived": false,
    "default_branch": "main",
    "description": "An offline homeopathic repertory workbench \u2014 178 remedies, 634 symptoms, 30,412 graded links from Repertorium Publicum (2008). Single-file HTML, PWA, no account, no tracking.",
    "docs_index": false,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/remedy-finder/",
    "licence_file": "LICENSE",
@@ -5943,6 +6252,7 @@
     "single-file",
     "vanilla-js"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-exe.yml",
     "pages.yml",
@@ -5950,9 +6260,11 @@
    ]
   },
   "remedy-relationship-explorer": {
+   "archived": false,
    "default_branch": "main",
    "description": "An offline single-file explorer for homeopathic remedy relationships, built from public-domain materia medicas (Boericke 1927, Clarke 1900, Hering 1879).",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/remedy-relationship-explorer/",
    "licence_file": "LICENSE",
@@ -6024,6 +6336,7 @@
     "repertory",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-android.yml",
     "build-apps.yml",
@@ -6032,9 +6345,11 @@
    ]
   },
   "repertory-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The homeopathic repertorisation core: rubric grading and grade-weighted remedy scoring.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/repertory-kit/",
    "licence_file": "LICENSE",
@@ -6063,14 +6378,17 @@
     "repertory",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "repertory-reader": {
+   "archived": false,
    "default_branch": "main",
    "description": "A quiet reading room for seventeen classical homoeopathic repertories \u2014 271,421 rubrics and 744,394 graded remedy links, read straight from the open JSON library. No account, no server, no tracking, no build step.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/repertory-reader/",
    "licence_file": "LICENSE",
@@ -6105,14 +6423,17 @@
     "repertory",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "retro-strike": {
+   "archived": false,
    "default_branch": "main",
    "description": "A complete retro third-person shooter in a single HTML file \u2014 a custom software 3D renderer and chiptune audio, no dependencies.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/retro-strike/",
    "licence_file": "LICENSE",
@@ -6164,15 +6485,18 @@
     "shooter",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "saga-vn-engine": {
+   "archived": false,
    "default_branch": "main",
    "description": "Saga \u2014 a small, dependency-free visual-novel engine for the browser. Plain JavaScript, one stylesheet, no build step.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/saga-vn-engine/",
    "licence_file": "LICENSE",
@@ -6218,12 +6542,15 @@
     "visual-novel",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": []
   },
   "seance": {
+   "archived": false,
    "default_branch": "main",
    "description": "Strongbox \u2014 sealed notes opened once: seal a note with a passphrase and it opens a single time. Offline, no accounts.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/seance/",
    "licence_file": "LICENSE",
@@ -6266,14 +6593,17 @@
     "productivity",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "search-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "Ranked search over big corpora \u2014 an inverted index with prefix and fuzzy matching.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/search-kit/",
    "licence_file": "LICENSE",
@@ -6302,14 +6632,17 @@
     "search",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "skills": {
+   "archived": false,
    "default_branch": "main",
    "description": "Reusable, machine-consumable skills extracted from every drsamonline project \u2014 a categorised, self-updating catalogue.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/skills/",
    "licence_file": "LICENSE",
@@ -6342,15 +6675,18 @@
     "skills",
     "tooling"
    ],
+   "upstream": null,
    "workflow_files": [
     "normalize.yml",
     "refresh.yml"
    ]
   },
   "skin-case-tracker": {
+   "archived": false,
    "default_branch": "main",
    "description": "A private, offline skin-case tracker built on the HHMS dashboard \u2014 history, habits, mapping and symptoms \u2014 with a 90-day pattern engine, from the book The Skin Is a Liar.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/skin-case-tracker/",
    "licence_file": "LICENSE",
@@ -6401,19 +6737,22 @@
     "offline-first",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "smartbill-app": {
+   "archived": false,
    "default_branch": "main",
    "description": "A fast, serverless single-page GST billing and invoicing app for Indian businesses, with local IndexedDB storage.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/smartbill-app/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T15:08:15Z",
+   "pushed_at": "2026-11-12T01:16:00Z",
    "releases": [
     {
      "assets": [
@@ -6455,14 +6794,17 @@
     "productivity",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "smartnote-scheduler": {
+   "archived": false,
    "default_branch": "main",
    "description": "Notes that schedule themselves \u2014 write in plain English and the note is classified, prioritised, dated and reminded. In development.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/smartnote-scheduler/",
    "licence_file": "LICENSE",
@@ -6515,12 +6857,15 @@
     "trpc",
     "typescript"
    ],
+   "upstream": null,
    "workflow_files": []
   },
   "srs-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "Spaced repetition (SM-2) for flashcards \u2014 scheduling, lapses, due cards and stats.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/srs-kit/",
    "licence_file": "LICENSE",
@@ -6549,14 +6894,17 @@
     "spaced-repetition",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "the-symphony-companion": {
+   "archived": false,
    "default_branch": "main",
    "description": "A pocket PWA companion to The Symphony of the Present \u2014 the book's ideas as cards, its practices as a checklist, a breathing timer and a gratitude journal.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/the-symphony-companion/",
    "licence_file": "LICENSE",
@@ -6609,14 +6957,17 @@
     "pwa",
     "wellbeing"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "today-card": {
+   "archived": false,
    "default_branch": "main",
    "description": "Today Card \u2014 one card for the day: your date, one intention, one task and a streak. Offline, no accounts.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/today-card/",
    "licence_file": "LICENSE",
@@ -6657,20 +7008,27 @@
     "productivity",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "tokens-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The Lobe UI token set as data: 121 colour names, 187 values per mode, sizes and shadows \u2014 generated from lobe-mygo, opt-in only.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/tokens-kit/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
-   "pushed_at": "2026-11-11T14:54:13Z",
+   "pushed_at": "2026-11-11T19:57:16Z",
    "releases": [
+    {
+     "assets": [],
+     "tag": "v2.0.0"
+    },
     {
      "assets": [],
      "tag": "v1.0.0"
@@ -6701,14 +7059,17 @@
     "theme",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "ui-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "A reactive UI layer small enough for a single file: signals, computed, reactive effects, hyperscript, a keyed list, events, a hash router and form binding.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/ui-kit/",
    "licence_file": "LICENSE",
@@ -6746,14 +7107,17 @@
     "ui",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "unstoppable-mind-companion": {
+   "archived": false,
    "default_branch": "main",
    "description": "An offline companion to The Unstoppable Mind \u2014 the book's key points, exercises, a 7-day challenge and flashcards.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/unstoppable-mind-companion/",
    "licence_file": "LICENSE",
@@ -6801,14 +7165,17 @@
     "psychology",
     "self-help"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml"
    ]
   },
   "web-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The shared offline-first runtime for drsamonline apps: storage, i18n (EN/HI/GU), CSV, PWA, theme, SEO and accessibility.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/web-kit/",
    "licence_file": "LICENSE",
@@ -6846,14 +7213,17 @@
     "pwa",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "weft8-classroom": {
+   "archived": false,
    "default_branch": "main",
    "description": "Weft-8 Classroom \u2014 a teacher's pack and exercises for teaching how a computer works, offline, in one file.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/weft8-classroom/",
    "licence_file": "LICENSE",
@@ -6900,15 +7270,18 @@
     "retrocomputing",
     "teaching"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "weft8-compare": {
+   "archived": false,
    "default_branch": "main",
    "description": "Weft-8 beside x86 and ARM \u2014 the same algorithm in three machines, so you can see which part is the computer.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/weft8-compare/",
    "licence_file": "LICENSE",
@@ -6954,15 +7327,18 @@
     "retrocomputing",
     "weft-8"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "weft8-hardware": {
+   "archived": false,
    "default_branch": "main",
    "description": "Weft-8 on real silicon \u2014 a C port of the Loom's 8-bit machine, an Arduino/ESP32 sketch and a parity harness.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/weft8-hardware/",
    "licence_file": "LICENSE",
@@ -7007,15 +7383,18 @@
     "esp32",
     "retrocomputing"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "weft8-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The Loom's Weft-8 as a reusable kit \u2014 an auditable, step-limited rule engine you can drop into another app.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/weft8-kit/",
    "licence_file": "LICENSE",
@@ -7060,15 +7439,18 @@
     "retrocomputing",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "whispering-body-first-aid": {
+   "archived": false,
    "default_branch": "main",
    "description": "A home homeopathic first-aid companion of 30 remedies with a symptom finder, dosing guidance and emergency signs, in English, Hindi and Gujarati.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/whispering-body-first-aid/",
    "licence_file": "LICENSE",
@@ -7122,15 +7504,18 @@
     "offline-first",
     "single-file"
    ],
+   "upstream": null,
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
    ]
   },
   "widgets-kit": {
+   "archived": false,
    "default_branch": "main",
    "description": "The component layer for offline apps: buttons, tags, avatars, alerts, progress, modals, drawers, toasts, menus, tabs, accordion, pagination, steps and layout. No CSS ships.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/widgets-kit/",
    "licence_file": "LICENSE",
@@ -7165,19 +7550,22 @@
     "widgets",
     "zero-dependency"
    ],
+   "upstream": null,
    "workflow_files": [
     "test.yml"
    ]
   },
   "ziptastic": {
+   "archived": false,
    "default_branch": "main",
    "description": "The CHCE native engine \u2014 a single binary with the codecs embedded.",
    "docs_index": true,
+   "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/ziptastic/",
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
-   "pushed_at": "2026-11-11T19:04:52Z",
+   "pushed_at": "2026-11-11T19:57:24Z",
    "releases": [
     {
      "assets": [
@@ -7241,6 +7629,7 @@
     "compression",
     "cpp"
    ],
+   "upstream": null,
    "workflow_files": [
     "ci.yml",
     "release.yml",
