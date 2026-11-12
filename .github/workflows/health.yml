@@ -19,10 +19,16 @@ on:
       - "tools/**"
       - ".github/workflows/health.yml"
 
+# The site is published by Pages' branch builder from docs/ on main, which the
+# "Commit the page" step already feeds - so this job needs only contents: write.
+# It used to also carry pages: write + id-token: write for an Actions-based deploy
+# (configure-pages / upload-pages-artifact / deploy-pages), which failed on EVERY
+# run with "Failed to create deployment (status: 400) ... Missing environment":
+# that path needs `environment: github-pages` on the job AND the repository's Pages
+# source set to "GitHub Actions", and the source here is "legacy" (branch builder).
+# Two publishers for one folder, one of them always red. The branch builder wins.
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: health
@@ -98,14 +104,6 @@ jobs:
           done
           echo "::error::could not push the health page after 4 attempts"
           exit 1
-
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs
-
-      - id: deployment
-        uses: actions/deploy-pages@v4
 
       - name: Fail if the fleet has a real problem
         run: |
