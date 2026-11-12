@@ -186,30 +186,39 @@ def main():
     if not args.only and prev and len(records) < prev * 0.8:
         sys.exit("refusing to write: %d repositories collected, %d were there before - "
                  "a partial crawl is not a smaller fleet" % (len(records), prev))
-    if args.only:
-        # a subset run updates those records and leaves the rest alone
-        try:
-            old = json.load(open(prev_path))["repos"]
-        except Exception:
-            old = {}
-        old.update({n: {k: v for k, v in r.items() if k not in ("readme", "licence_text", "landing_html", "workflows")}
-                    for n, r in records.items()})
-        records = old
+    payload_repos = {n: {k: v for k, v in r.items() if k not in ("readme", "licence_text", "landing_html", "workflows")}
+                     for n, r in records.items()}
+    readme_payload = {n: r["readme"] for n, r in records.items()}
+    licence_payload = {n: {"file": r["licence_file"], "text": r["licence_text"]} for n, r in records.items()}
 
-    payload = {
-        "repos": {n: {k: v for k, v in r.items() if k not in ("readme", "licence_text", "landing_html", "workflows")}
-                  for n, r in records.items()},
-        "count": len(records),
-    }
+    if args.only:
+        # A SUBSET RUN UPDATES, NEVER REPLACES. It used to write one repository over
+        # repos.json, readmes.json and licences.json, and the report then described 119
+        # repositories as having no README - with every number in it still plausible.
+        def merged(path, fresh):
+            try:
+                old = json.load(open(os.path.join(STATE, path)))
+                if isinstance(old, dict):
+                    old.update(fresh)
+                    return old
+            except Exception:
+                pass
+            return fresh
+        payload_repos = merged("repos.json", payload_repos)
+        if "repos" in payload_repos:            # repos.json is wrapped, the others are flat
+            payload_repos = payload_repos["repos"]
+        readme_payload = merged("readmes.json", readme_payload)
+        licence_payload = merged("licences.json", licence_payload)
+
+    payload = {"repos": payload_repos, "count": len(payload_repos)}
     with open(os.path.join(STATE, "repos.json"), "w", encoding="utf-8") as fh:
         json.dump(payload, fh, indent=1, sort_keys=True)
     with open(os.path.join(STATE, "schedules.json"), "w", encoding="utf-8") as fh:
         json.dump(schedules, fh, indent=1, sort_keys=True)
     with open(os.path.join(STATE, "readmes.json"), "w", encoding="utf-8") as fh:
-        json.dump({n: r["readme"] for n, r in records.items()}, fh, indent=1, sort_keys=True)
+        json.dump(readme_payload, fh, indent=1, sort_keys=True)
     with open(os.path.join(STATE, "licences.json"), "w", encoding="utf-8") as fh:
-        json.dump({n: {"file": r["licence_file"], "text": r["licence_text"]}
-                   for n, r in records.items()}, fh, indent=1, sort_keys=True)
+        json.dump(licence_payload, fh, indent=1, sort_keys=True)
 
     print("\n%d repos -> state/repos.json, schedules.json, readmes.json, licences.json" % len(records))
     print("%d cron entries" % len(schedules))

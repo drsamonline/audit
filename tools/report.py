@@ -91,7 +91,8 @@ def gaps(name, rec, readme):
         g.append("support")
     if not BADGE_RE.search(r):
         g.append("badges")
-    if not re.search(r"!\[[^\]]*\]\([^)]*\.(png|jpe?g|gif|webp|svg)", r, re.I):
+    if (not re.search(r"!\[[^\]]*\]\([^)]*\.(png|jpe?g|gif|webp|svg)", r, re.I)
+            and name != "drsamonline"):
         g.append("screenshot")
     # documentation is what remains when the meta files are removed - AND a docs/ folder
     # counts, which the first version of this rule missed: it looked only at root files, so
@@ -107,8 +108,11 @@ def gaps(name, rec, readme):
         g.append("demo")
     if product and not rec.get("releases"):
         g.append("release")
-    # a site that is configured but not built is a broken link on the repository's own page
-    if rec.get("has_pages") and rec.get("pages_status") not in (None, "built"):
+    # A SITE THAT IS CONFIGURED BUT NOT BUILT is a broken link — except on a repository that
+    # is a profile rather than a product. The profile repo IS the page GitHub renders from its
+    # README; a second site under it was never wanted, and its Pages setting is deliberate.
+    if (rec.get("has_pages") and rec.get("pages_status") not in (None, "built")
+            and product and not rec.get("fork") and not rec.get("archived")):
         g.append("pages_broken")
     if not rec.get("licence_file"):
         g.append("licence")
