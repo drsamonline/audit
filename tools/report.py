@@ -76,6 +76,9 @@ def gaps(name, rec, readme):
     # work, and a licence the upstream had never granted. A fork is left alone.
     if rec.get("fork"):
         return []
+    # a repository whose listing could not be read is unmeasured, not deficient
+    if rec.get("readable") is False:
+        return []
     g = []
     r = readme or ""
     files = {f.lower() for f in (rec.get("root_files") or [])}
@@ -104,6 +107,9 @@ def gaps(name, rec, readme):
         g.append("demo")
     if product and not rec.get("releases"):
         g.append("release")
+    # a site that is configured but not built is a broken link on the repository's own page
+    if rec.get("has_pages") and rec.get("pages_status") not in (None, "built"):
+        g.append("pages_broken")
     if not rec.get("licence_file"):
         g.append("licence")
     if len(r) < 1200:
@@ -113,11 +119,11 @@ def gaps(name, rec, readme):
     return g
 
 
-LABEL = {"website": "no website link", "topics": "no topics", "support": "no support block",
+LABEL = {"pages_broken": "Pages site is not building", "website": "no website link", "topics": "no topics", "support": "no support block",
          "badges": "no README badges", "screenshot": "no screenshot", "docs": "no docs past README",
          "landing": "no landing page", "demo": "nothing clickable", "release": "no release",
          "licence": "no licence", "thin_readme": "thin README", "wip": "marked work-in-progress"}
-ORDER = ["licence", "support", "website", "topics", "badges", "docs", "landing", "demo",
+ORDER = ["pages_broken", "licence", "support", "website", "topics", "badges", "docs", "landing", "demo",
          "release", "screenshot", "thin_readme", "wip"]
 
 

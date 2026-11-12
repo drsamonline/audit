@@ -49,11 +49,31 @@ def raw(repo, branch, path):
     return body
 
 
+def pages_status(name):
+    """The Pages build state, or None when it cannot be read.
+
+    `has_pages` says a site is CONFIGURED, not that it works: one repository had Pages
+    pointed at main /docs with no docs directory, and its root domain served an error page
+    for as long as anyone cared to look.
+    """
+    r = gh("repos/%s/%s/pages" % (OWNER, name))
+    if not r:
+        return None
+    try:
+        return json.loads(r).get("status")
+    except Exception:
+        return None
+
+
 def fetch_repo(name):
     meta = gh("repos/%s/%s" % (OWNER, name)) or {}
     branch = meta.get("default_branch", "main")
     root = gh("repos/%s/%s/contents/" % (OWNER, name)) or []
     root = [f["name"] for f in root] if isinstance(root, list) else []
+    # AN EMPTY LISTING IS NOT AN EMPTY REPOSITORY. A rate-limited or failed call returns
+    # nothing, and every rule then reports a gap against a repository nobody managed to read.
+    # Two repos were flagged "no docs, no screenshot, no licence" for exactly this.
+    readable = bool(root)
     wf = gh("repos/%s/%s/contents/.github/workflows" % (OWNER, name)) or []
     wf = [f["name"] for f in wf] if isinstance(wf, list) else []
     releases = gh("repos/%s/%s/releases?per_page=5" % (OWNER, name)) or []
@@ -87,11 +107,16 @@ def fetch_repo(name):
         "licence_spdx": (meta.get("license") or {}).get("spdx_id"),
         "has_pages": meta.get("has_pages"),
         "archived": bool(meta.get("archived")),
+        # has_pages says a site is CONFIGURED, not that it works: drsamonline had Pages
+        # pointed at main /docs with no docs directory, and the root domain served an error
+        # page for as long as anyone cared to look. This asks whether the build succeeded.
+        "pages_status": pages_status(name) if meta.get("has_pages") else None,
         "fork": bool(meta.get("fork")),
         "upstream": (meta.get("parent") or {}).get("full_name"),
         "default_branch": branch,
         "pushed_at": meta.get("pushed_at"),
         "root_files": root,
+        "readable": readable,
         # docs/index.html is the estate's landing-page convention, and root_files cannot
         # show it: the listing stops at the folder
         "docs_index": bool(landing),
@@ -147,6 +172,29 @@ def main():
                 s = line.strip()
                 if s.startswith("- cron:") or s.startswith("cron:"):
                     schedules["%s/%s" % (name, fname)] = s.split(":", 1)[1].strip().strip("'\"")
+
+    # NEVER WRITE A SNAPSHOT THAT SHRANK. `--only` wrote a two-repository snapshot over a
+    # 126-repository one, and the report then described a fleet of two while every number in
+    # it stayed plausible. A partial crawl is not a smaller fleet.
+    prev = 0
+    prev_path = os.path.join(STATE, "repos.json")
+    if os.path.exists(prev_path):
+        try:
+            prev = json.load(open(prev_path)).get("count", 0)
+        except Exception:
+            prev = 0
+    if not args.only and prev and len(records) < prev * 0.8:
+        sys.exit("refusing to write: %d repositories collected, %d were there before - "
+                 "a partial crawl is not a smaller fleet" % (len(records), prev))
+    if args.only:
+        # a subset run updates those records and leaves the rest alone
+        try:
+            old = json.load(open(prev_path))["repos"]
+        except Exception:
+            old = {}
+        old.update({n: {k: v for k, v in r.items() if k not in ("readme", "licence_text", "landing_html", "workflows")}
+                    for n, r in records.items()})
+        records = old
 
     payload = {
         "repos": {n: {k: v for k, v in r.items() if k not in ("readme", "licence_text", "landing_html", "workflows")}
