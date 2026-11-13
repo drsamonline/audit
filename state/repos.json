@@ -1,5 +1,5 @@
 {
- "count": 126,
+ "count": 130,
  "repos": {
   "All4ONE": {
    "archived": false,
@@ -85,7 +85,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:48:37Z",
+   "pushed_at": "2026-11-12T18:54:34Z",
    "readable": true,
    "releases": [
     {
@@ -366,6 +366,88 @@
    "upstream": null,
    "workflow_files": [
     "release.yml"
+   ]
+  },
+  "KILN": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Spec in. Finished app out. A deterministic compiler for offline single-file apps \u2014 no model, no network, no dependencies.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/KILN/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-13T11:31:55Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "AUDIT-FORGE.md",
+    "CHANGELOG.md",
+    "CITATION.cff",
+    "CODE_OF_CONDUCT.md",
+    "COMMERCIAL.md",
+    "CONTRIBUTING.md",
+    "DISCLAIMER.md",
+    "GUIDE-CONTRIBUTE.md",
+    "GUIDE-COOKBOOK.md",
+    "GUIDE-FEATURES.md",
+    "GUIDE-LICENSING.md",
+    "GUIDE-LIMITS.md",
+    "GUIDE-PATTERNS.md",
+    "GUIDE-QUICKSTART.md",
+    "GUIDE-SPEC-REF.md",
+    "INDEX.md",
+    "INSTALL.md",
+    "LICENSE",
+    "LICENSING.md",
+    "MANIFEST.json",
+    "NOTICE",
+    "PAGES.json",
+    "PLAN.md",
+    "PRIVACY.md",
+    "PROMPT.md",
+    "README.md",
+    "RELEASE.md",
+    "SECURITY.md",
+    "SPEC-SHAPE.md",
+    "SUPPORT.md",
+    "TERMS.md",
+    "USAGE.md",
+    "assets",
+    "catalogue",
+    "demo.html",
+    "docs",
+    "icon.svg",
+    "index.html",
+    "kiln",
+    "manifest.webmanifest",
+    "schema",
+    "specs",
+    "studio.html",
+    "templates",
+    "tests"
+   ],
+   "topics": [
+    "app-builder",
+    "code-generator",
+    "deterministic",
+    "developer-tools",
+    "local-first",
+    "no-dependencies",
+    "offline-first",
+    "python",
+    "single-file",
+    "spec-driven"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "kiln.yml"
    ]
   },
   "MATERIA-MEDICA-BUILDER": {
@@ -800,7 +882,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T15:04:14Z",
+   "pushed_at": "2026-11-12T12:40:47Z",
    "readable": true,
    "releases": [
     {
@@ -1255,7 +1337,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:32:08Z",
+   "pushed_at": "2026-11-13T06:54:10Z",
    "readable": true,
    "releases": [
     {
@@ -1846,7 +1928,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T14:55:42Z",
+   "pushed_at": "2026-11-13T06:54:52Z",
    "readable": true,
    "releases": [
     {
@@ -2544,7 +2626,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T05:03:30Z",
+   "pushed_at": "2026-11-13T03:44:29Z",
    "readable": true,
    "releases": [
     {
@@ -3556,7 +3638,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:53:26Z",
+   "pushed_at": "2026-11-13T00:52:35Z",
    "readable": true,
    "releases": [
     {
@@ -3625,7 +3707,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T11:27:11Z",
+   "pushed_at": "2026-11-13T11:10:40Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -3667,7 +3749,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T11:47:57Z",
+   "pushed_at": "2026-11-13T11:29:45Z",
    "readable": true,
    "releases": [
     {
@@ -4152,7 +4234,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-12T05:43:23Z",
+   "pushed_at": "2026-11-12T13:51:22Z",
    "readable": true,
    "releases": [
     {
@@ -4484,7 +4566,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:55:23Z",
+   "pushed_at": "2026-11-12T18:44:05Z",
    "readable": true,
    "releases": [
     {
@@ -4542,6 +4624,126 @@
     "build-apps.yml",
     "build.yml",
     "test.yml"
+   ]
+  },
+  "kinemorph": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "A browser animation studio for real video: React + TypeScript + PixiJS editor with a GSAP timeline, a Tone.js generative score and WebCodecs MP4 export. The heavy sibling of Kinemotif.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/kinemorph/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pages_status": null,
+   "pushed_at": "2026-11-13T11:32:02Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "404.html",
+    "CHANGELOG.md",
+    "CITATION.cff",
+    "CODE_OF_CONDUCT.md",
+    "LICENSE",
+    "MANIFEST.json",
+    "PAGES.json",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "apps",
+    "assets",
+    "docs",
+    "favicon.svg",
+    "index.html",
+    "manifest.webmanifest",
+    "package-lock.json",
+    "package.json",
+    "packages",
+    "playwright.config.ts",
+    "robots.txt",
+    "sitemap.xml",
+    "studio",
+    "tests",
+    "tools",
+    "tsconfig.base.json",
+    "tsconfig.json"
+   ],
+   "topics": [
+    "animation",
+    "motion-graphics",
+    "mp4-export",
+    "pixijs",
+    "react",
+    "tone-js",
+    "typescript",
+    "video",
+    "web-audio",
+    "webcodecs"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "ci.yml"
+   ]
+  },
+  "kinemotif": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "A single-file HTML animation studio: turn a paragraph into a moving, scored presentation. Six art styles, real shape morphing, a procedurally synthesised soundtrack, and a one-file offline HTML export.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/kinemotif/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pages_status": null,
+   "pushed_at": "2026-11-13T08:19:04Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "404.html",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "MANIFEST.json",
+    "PAGES.json",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "assets",
+    "build.py",
+    "docs",
+    "examples",
+    "favicon.svg",
+    "index.html",
+    "manifest.webmanifest",
+    "robots.txt",
+    "sitemap.xml",
+    "src",
+    "studio",
+    "tools"
+   ],
+   "topics": [
+    "animation",
+    "canvas",
+    "generative",
+    "html",
+    "motion-graphics",
+    "no-dependencies",
+    "presentation",
+    "single-file",
+    "slideshow",
+    "web-audio"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "ci.yml"
    ]
   },
   "kitbox": {
@@ -4764,7 +4966,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:32:47Z",
+   "pushed_at": "2026-11-13T00:48:32Z",
    "readable": true,
    "releases": [
     {
@@ -5290,6 +5492,78 @@
     "build-apps.yml"
    ]
   },
+  "mood-mixer": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "A private, offline-ready color playground: three mood sliders in, a four-color palette out. HSL/RGB/HSV, six harmony schemes, WCAG contrast, CSS/JSON/Tailwind/PNG export, PWA. No tracking.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/mood-mixer/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pages_status": null,
+   "pushed_at": "2026-11-13T08:06:08Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".editorconfig",
+    ".github",
+    ".gitignore",
+    ".htmlvalidate.json",
+    ".nojekyll",
+    "404.html",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "color-core.js",
+    "docs",
+    "favicon.svg",
+    "icons",
+    "index.html",
+    "landing.css",
+    "landing.js",
+    "manifest.json",
+    "mixer",
+    "package.json",
+    "robots.txt",
+    "screenshots",
+    "script.js",
+    "selftest.html",
+    "service-worker.js",
+    "sitemap.xml",
+    "style.css",
+    "stylelint.config.js",
+    "theme.css",
+    "tools"
+   ],
+   "topics": [
+    "accessibility",
+    "color",
+    "color-palette",
+    "color-picker",
+    "color-theory",
+    "contrast-checker",
+    "creative-tool",
+    "design-tools",
+    "github-pages",
+    "html-css-javascript",
+    "localstorage",
+    "mood",
+    "no-tracking",
+    "offline-first",
+    "palette-generator",
+    "progressive-web-app",
+    "pwa",
+    "sponsor",
+    "vanilla-js",
+    "wcag"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "check.yml"
+   ]
+  },
   "motion-kit": {
    "archived": true,
    "default_branch": "main",
@@ -5477,7 +5751,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T15:03:27Z",
+   "pushed_at": "2026-11-13T06:47:42Z",
    "readable": true,
    "releases": [
     {
@@ -6874,7 +7148,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:33:01Z",
+   "pushed_at": "2026-11-12T12:37:56Z",
    "readable": true,
    "releases": [
     {
