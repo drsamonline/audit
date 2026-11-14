@@ -1,5 +1,5 @@
 {
- "count": 130,
+ "count": 134,
  "repos": {
   "All4ONE": {
    "archived": false,
@@ -12,7 +12,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T15:04:26Z",
+   "pushed_at": "2026-11-13T18:45:14Z",
    "readable": true,
    "releases": [
     {
@@ -379,7 +379,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-13T11:31:55Z",
+   "pushed_at": "2026-11-14T07:08:00Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -402,6 +402,7 @@
     "GUIDE-PATTERNS.md",
     "GUIDE-QUICKSTART.md",
     "GUIDE-SPEC-REF.md",
+    "HANDOVER.md",
     "INDEX.md",
     "INSTALL.md",
     "LICENSE",
@@ -523,7 +524,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T11:29:56Z",
+   "pushed_at": "2026-11-14T07:11:54Z",
    "readable": true,
    "releases": [
     {
@@ -573,7 +574,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:31:45Z",
+   "pushed_at": "2026-11-14T07:27:50Z",
    "readable": true,
    "releases": [
     {
@@ -614,6 +615,7 @@
     "SECURITY.md",
     "VISION.md",
     "backends",
+    "benches",
     "bootstrap",
     "compiler",
     "configs",
@@ -1276,7 +1278,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:32:05Z",
+   "pushed_at": "2026-11-14T00:38:58Z",
    "readable": true,
    "releases": [
     {
@@ -1311,6 +1313,7 @@
     "manifest.json",
     "style.css",
     "sw.js",
+    "test10.js",
     "test8.js",
     "test9.js",
     "tools"
@@ -1497,7 +1500,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:43:41Z",
+   "pushed_at": "2026-11-14T07:03:15Z",
    "readable": true,
    "releases": [
     {
@@ -2626,7 +2629,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-13T03:44:29Z",
+   "pushed_at": "2026-11-14T03:33:49Z",
    "readable": true,
    "releases": [
     {
@@ -3365,7 +3368,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:58:01Z",
+   "pushed_at": "2026-11-13T12:50:14Z",
    "readable": true,
    "releases": [
     {
@@ -3439,8 +3442,7 @@
    "workflow_files": [
     "build-apps.yml",
     "ci.yml",
-    "repair-src.yml",
-    "sw-3.2.0.yml"
+    "repair-src.yml"
    ]
   },
   "control-panel": {
@@ -3638,7 +3640,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-13T00:52:35Z",
+   "pushed_at": "2026-11-14T06:44:16Z",
    "readable": true,
    "releases": [
     {
@@ -3707,7 +3709,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-13T11:10:40Z",
+   "pushed_at": "2026-11-14T10:37:22Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -3749,7 +3751,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-13T11:29:45Z",
+   "pushed_at": "2026-11-14T10:52:45Z",
    "readable": true,
    "releases": [
     {
@@ -4234,7 +4236,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-12T13:51:22Z",
+   "pushed_at": "2026-11-13T13:14:24Z",
    "readable": true,
    "releases": [
     {
@@ -4637,9 +4639,30 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-13T11:32:02Z",
+   "pushed_at": "2026-11-14T07:36:29Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v0.17.0"
+    },
+    {
+     "assets": [],
+     "tag": "v0.16.0"
+    },
+    {
+     "assets": [],
+     "tag": "v0.15.0"
+    },
+    {
+     "assets": [],
+     "tag": "v0.14.0"
+    },
+    {
+     "assets": [],
+     "tag": "v0.13.0"
+    }
+   ],
    "root_files": [
     ".github",
     ".gitignore",
@@ -4648,8 +4671,10 @@
     "CHANGELOG.md",
     "CITATION.cff",
     "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
     "LICENSE",
     "MANIFEST.json",
+    "NOTICE.md",
     "PAGES.json",
     "PRIVACY.md",
     "README.md",
@@ -4686,7 +4711,8 @@
    ],
    "upstream": null,
    "workflow_files": [
-    "ci.yml"
+    "ci.yml",
+    "release.yml"
    ]
   },
   "kinemotif": {
@@ -4700,9 +4726,22 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-13T08:19:04Z",
+   "pushed_at": "2026-11-14T07:22:13Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v1.8.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.7.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.6.0"
+    }
+   ],
    "root_files": [
     ".github",
     ".gitignore",
@@ -4743,7 +4782,8 @@
    ],
    "upstream": null,
    "workflow_files": [
-    "ci.yml"
+    "ci.yml",
+    "release.yml"
    ]
   },
   "kitbox": {
@@ -6268,7 +6308,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:48:51Z",
+   "pushed_at": "2026-11-14T06:39:30Z",
    "readable": true,
    "releases": [
     {
@@ -6367,6 +6407,90 @@
    "upstream": null,
    "workflow_files": [
     "test.yml"
+   ]
+  },
+  "pico": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "A personal automation engine on the Python standard library alone: 66 rules, four risk tiers, universal undo, and an optional model that may only propose a command \u2014 never run one.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/pico/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-14T10:10:04Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "pico-linux-x86_64",
+      "pico-macos-arm64",
+      "pico-source.zip",
+      "pico-windows-x86_64.exe"
+     ],
+     "tag": "v1.2.0"
+    },
+    {
+     "assets": [
+      "pico-linux-x86_64",
+      "pico-macos-arm64",
+      "pico-source.zip",
+      "pico-windows-x86_64.exe"
+     ],
+     "tag": "v1.1.0"
+    },
+    {
+     "assets": [
+      "pico-linux-x86_64",
+      "pico-macos-arm64",
+      "pico-source.zip",
+      "pico-windows-x86_64.exe"
+     ],
+     "tag": "v1.0.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "LICENSE",
+    "PRIVACY.md",
+    "PROJECT_OVERVIEW.md",
+    "README.md",
+    "SECURITY.md",
+    "docs",
+    "install.ps1",
+    "install.sh",
+    "packs",
+    "pico.py",
+    "pico.spec",
+    "pico",
+    "templates",
+    "tests",
+    "web"
+   ],
+   "topics": [
+    "automation",
+    "cli",
+    "deterministic",
+    "local-first",
+    "offline-first",
+    "personal-assistant",
+    "polyform-noncommercial",
+    "privacy",
+    "productivity",
+    "pwa",
+    "python",
+    "single-file",
+    "task-manager",
+    "zero-dependency"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "ci.yml",
+    "release.yml"
    ]
   },
   "planner-pro": {
@@ -7409,6 +7533,174 @@
     "test.yml"
    ]
   },
+  "sui": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Sui \u2014 verification-first, privacy-aware free-tier AI gateway. Free tiers, verified before use.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/sui/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pages_status": null,
+   "pushed_at": "2026-11-14T10:18:26Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".env.example",
+    ".github",
+    ".gitignore",
+    "AUDIT.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "NOTICE",
+    "PRIVACY.md",
+    "README.md",
+    "ROADMAP.md",
+    "SECURITY.md",
+    "TERMS.md",
+    "apps",
+    "config",
+    "docs",
+    "evals",
+    "package-lock.json",
+    "package.json",
+    "packages",
+    "scripts",
+    "sui-usage.csv.gz",
+    "test",
+    "true",
+    "vendor"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "ci.yml"
+   ]
+  },
+  "tessera": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "The mosaic layer above every CRM: federation mesh, hash-chained ledger, seat-based workforce. Specification, audited: 43 defects found, 43 closed. 709 tests.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/tessera/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-14T09:31:26Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v1.26.0"
+    }
+   ],
+   "root_files": [
+    ".editorconfig",
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "Dockerfile",
+    "LICENSE",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "VERSION",
+    "deliverables",
+    "deploy",
+    "docker-compose.yml",
+    "docs",
+    "pyproject.toml",
+    "scripts",
+    "tessera",
+    "tests"
+   ],
+   "topics": [
+    "architecture",
+    "audit-log",
+    "crm",
+    "django",
+    "event-sourcing",
+    "federation",
+    "local-first",
+    "multi-tenant",
+    "specification",
+    "systems-design"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "docs.yml"
+   ]
+  },
+  "tessera-app": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "One customer view across every system, with a record you can prove. Offline, installable console for the TESSERA reference core: field-level merge, conflict resolution, hash-chained ledger, seat-based routing.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/tessera-app/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-14T10:10:47Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v1.8.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.7.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.6.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.5.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.4.0"
+    }
+   ],
+   "root_files": [
+    ".nojekyll",
+    "BUILDING.md",
+    "CHANGELOG.md",
+    "ENHANCEMENTS.md",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "assets",
+    "index.html",
+    "manifest.webmanifest",
+    "sw.js"
+   ],
+   "topics": [
+    "audit-log",
+    "crm",
+    "data-federation",
+    "hash-chain",
+    "local-first",
+    "offline-first",
+    "pwa",
+    "single-file",
+    "ui",
+    "vanilla-js"
+   ],
+   "upstream": null,
+   "workflow_files": []
+  },
   "the-symphony-companion": {
    "archived": false,
    "default_branch": "main",
@@ -7751,7 +8043,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:46:39Z",
+   "pushed_at": "2026-11-14T10:43:04Z",
    "readable": true,
    "releases": [
     {
