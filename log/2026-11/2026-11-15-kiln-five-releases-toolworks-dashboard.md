@@ -119,9 +119,42 @@ cannot measure. The scheduled refresh runs `--write` and commits `README.md` wit
 so the prose is refreshed by the same job that refreshes the data. Six tests cover the rewrite,
 the refusal paths and the real README's currency.
 
+## Afternoon — what the same session did next
+
+| Repo | What landed | Version |
+|---|---|---|
+| KILN | the feed carries `generated_at`, and a daily schedule republishes it | **v1.3.2** |
+| TOOLWORKS | six documents it did not have, a 21-check CI job, a Windows package | **v1.1.0** |
+| TOOLWORKS | the PowerShell server removed — it had never run on Windows | **v1.1.1** |
+| dashboard | the KILN panel shows the age of the measurement, and marks a feed past 48 hours | `ec3eb61` |
+
+Two of the four "left" items closed themselves and did not need building: `TOOLWORKS`
+appeared on the profile index automatically, and in the dashboard's data on its next
+refresh (**products 106**, up from 105).
+
+### A removal, and why it is in the record
+
+The Windows package first shipped an 80-line PowerShell server (`serve.ps1`) so a phone on
+the same Wi-Fi could open the index. There is no Windows and no PowerShell in the build
+environment, so that file was **never executed** — its routing rules were tested through a
+mirror of the same algorithm, and nothing else. The owner's call was to drop it rather than
+ship unrun code to serve one file. `v1.1.1` removes it, and the checker now asserts its
+absence, along with the absence of any `.exe`.
+
+The Windows story is now one line: `start "" "%~dp0index.html"`.
+
+### What this session could not verify
+
+| Thing | Why |
+|---|---|
+| `serve.ps1` on Windows | no Windows, no PowerShell, no wine. Removed rather than shipped untested |
+| a genuine `.exe` | no cross-compiler: no Go, no mingw, and `go.dev` returns 502 from the sandbox |
+| `gh workflow run` | 403, no `actions:write` on the App token. The same dispatch works through MCP, which is how `crawl` was finally exercised |
+
 ## Next
 
-- Add `TOOLWORKS` to the dashboard and the profile index now that Pages is live.
+- Nothing is outstanding. The next session should start by reading `state/repos.json` rather
+  than this file for the fleet's current numbers.
 - `TOOLWORKS` should be added to the dashboard and the profile index now that Pages is live.
 - The fleet page's backup is proven for `localStorage` only; an app that ever moves to
   IndexedDB would need the same treatment.
