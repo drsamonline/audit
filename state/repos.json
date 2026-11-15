@@ -85,7 +85,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T18:54:34Z",
+   "pushed_at": "2026-11-15T11:54:25Z",
    "readable": true,
    "releases": [
     {
@@ -152,7 +152,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-11T15:04:08Z",
+   "pushed_at": "2026-11-15T11:54:27Z",
    "readable": true,
    "releases": [
     {
@@ -234,7 +234,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T10:23:44Z",
+   "pushed_at": "2026-11-15T12:46:39Z",
    "readable": true,
    "releases": [
     {
@@ -575,7 +575,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T10:30:45Z",
+   "pushed_at": "2026-11-15T12:42:30Z",
    "readable": true,
    "releases": [
     {
@@ -936,15 +936,22 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T09:09:16Z",
+   "pushed_at": "2026-11-15T12:48:54Z",
    "readable": true,
    "releases": [],
    "root_files": [
+    ".github",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
     "LICENSE",
+    "PRIVACY.md",
     "README.md",
+    "SECURITY.md",
     "SOURCES.md",
     "data",
-    "index.html"
+    "index.html",
+    "tools_check.py"
    ],
    "topics": [
     "catalogue",
@@ -956,7 +963,9 @@
     "utilities"
    ],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "check.yml"
+   ]
   },
   "TTB": {
    "archived": false,
@@ -969,7 +978,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-14T18:04:56Z",
+   "pushed_at": "2026-11-15T12:45:59Z",
    "readable": true,
    "releases": [
     {
@@ -1047,9 +1056,15 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T10:11:45Z",
+   "pushed_at": "2026-11-15T12:35:46Z",
    "readable": true,
    "releases": [
+    {
+     "assets": [
+      "aetheris-linux-x86_64.tar.gz"
+     ],
+     "tag": "v0.4.4"
+    },
     {
      "assets": [
       "aetheris-linux-x86_64.tar.gz",
@@ -1712,7 +1727,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:47:06Z",
+   "pushed_at": "2026-11-15T11:54:29Z",
    "readable": true,
    "releases": [
     {
@@ -2528,7 +2543,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-14T18:12:57Z",
+   "pushed_at": "2026-11-15T11:54:32Z",
    "readable": true,
    "releases": [
     {
@@ -2729,7 +2744,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T03:41:14Z",
+   "pushed_at": "2026-11-15T11:53:39Z",
    "readable": true,
    "releases": [
     {
@@ -2903,7 +2918,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:48:32Z",
+   "pushed_at": "2026-11-15T11:54:35Z",
    "readable": true,
    "releases": [
     {
@@ -3383,7 +3398,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T09:05:21Z",
+   "pushed_at": "2026-11-15T12:46:08Z",
    "readable": true,
    "releases": [
     {
@@ -3740,7 +3755,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T09:22:47Z",
+   "pushed_at": "2026-11-15T12:44:34Z",
    "readable": true,
    "releases": [
     {
@@ -3852,7 +3867,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:30:19Z",
+   "pushed_at": "2026-11-15T12:46:14Z",
    "readable": true,
    "releases": [
     {
@@ -4337,7 +4352,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:28:05Z",
+   "pushed_at": "2026-11-15T12:46:26Z",
    "readable": true,
    "releases": [
     {
@@ -4351,6 +4366,7 @@
     "AGENT_PROMPT.md",
     "CMakeLists.txt",
     "LICENSE",
+    "NOTICE",
     "PRIVACY.md",
     "PROJECT_OVERVIEW.md",
     "README.md",
@@ -4387,7 +4403,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:47:19Z",
+   "pushed_at": "2026-11-15T12:49:16Z",
    "readable": true,
    "releases": [
     {
@@ -5012,7 +5028,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:29:18Z",
+   "pushed_at": "2026-11-15T12:46:12Z",
    "readable": true,
    "releases": [
     {
@@ -5025,6 +5041,7 @@
     ".gitignore",
     "CHANGELOG.md",
     "LICENSE",
+    "NOTICE",
     "PRIVACY.md",
     "PROJECT_OVERVIEW.md",
     "README.md",
@@ -5395,7 +5412,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T15:29:52Z",
+   "pushed_at": "2026-11-15T12:47:02Z",
    "readable": true,
    "releases": [
     {
@@ -6522,7 +6539,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:28:17Z",
+   "pushed_at": "2026-11-15T12:47:40Z",
    "readable": true,
    "releases": [
     {
@@ -6532,7 +6549,7 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.24.0"
+     "tag": "v1.27.0"
     },
     {
      "assets": [
@@ -6541,7 +6558,7 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.23.0"
+     "tag": "v1.26.1"
     },
     {
      "assets": [
@@ -6550,7 +6567,7 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.22.0"
+     "tag": "v1.26.0"
     },
     {
      "assets": [
@@ -6559,7 +6576,7 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.21.0"
+     "tag": "v1.25.0"
     },
     {
      "assets": [
@@ -6568,10 +6585,11 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.20.0"
+     "tag": "v1.24.1"
     }
    ],
    "root_files": [
+    ".gitattributes",
     ".github",
     ".gitignore",
     "CHANGELOG.md",
@@ -6580,6 +6598,7 @@
     "PROJECT_OVERVIEW.md",
     "README.md",
     "SECURITY.md",
+    "budget.json",
     "docs",
     "install.ps1",
     "install.sh",
@@ -7665,12 +7684,12 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T10:13:01Z",
+   "pushed_at": "2026-11-15T11:57:08Z",
    "readable": true,
    "releases": [
     {
      "assets": [],
-     "tag": "v0.10.0"
+     "tag": "v0.11.0"
     }
    ],
    "root_files": [
@@ -7679,6 +7698,7 @@
     ".gitignore",
     "AUDIT-2026-11-15.md",
     "AUDIT.md",
+    "CHANGELOG.md",
     "CONTRIBUTING.md",
     "LICENSE",
     "NOTICE",
@@ -7710,7 +7730,7 @@
   "tessera": {
    "archived": false,
    "default_branch": "main",
-   "description": "The mosaic layer above every CRM: federation mesh, hash-chained ledger, seat-based workforce. Specification, audited: 43 defects found, 43 closed. 709 tests.",
+   "description": "UNDER DEVELOPMENT \u2014 not finished, not released. Federation mesh + CRM core with a hash-chained ledger. 748 tests, 53 documents, 4 claims unverified.",
    "docs_index": true,
    "fork": false,
    "has_pages": true,
@@ -7718,9 +7738,17 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:26:14Z",
+   "pushed_at": "2026-11-15T11:55:06Z",
    "readable": true,
    "releases": [
+    {
+     "assets": [],
+     "tag": "v1.46.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.45.0"
+    },
     {
      "assets": [],
      "tag": "v1.44.0"
@@ -7732,14 +7760,6 @@
     {
      "assets": [],
      "tag": "v1.42.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.41.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.40.0"
     }
    ],
    "root_files": [
@@ -7750,8 +7770,10 @@
     "AGENTS.md",
     "CHANGELOG.md",
     "CLAIMS.md",
+    "COMMERCIAL.md",
     "CONFORMANCE.md",
     "CONTRIBUTING.md",
+    "DEVELOPMENT.md",
     "Dockerfile",
     "LICENSE",
     "PRIVACY.md",
@@ -7772,13 +7794,13 @@
     "architecture",
     "audit-log",
     "crm",
-    "django",
     "event-sourcing",
     "federation",
     "local-first",
     "multi-tenant",
     "specification",
-    "systems-design"
+    "systems-design",
+    "under-development"
    ],
    "upstream": null,
    "workflow_files": [
@@ -7788,7 +7810,7 @@
   "tessera-app": {
    "archived": false,
    "default_branch": "main",
-   "description": "One customer view across every system, with a record you can prove. Offline, installable console for the TESSERA reference core: field-level merge, conflict resolution, hash-chained ledger, seat-based routing.",
+   "description": "UNDER DEVELOPMENT \u2014 not finished, not released. Single-file CRM console: provenance per field, hash-chained ledger, works offline and as an installable app.",
    "docs_index": false,
    "fork": false,
    "has_pages": true,
@@ -7796,9 +7818,17 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T09:57:03Z",
+   "pushed_at": "2026-11-15T11:57:26Z",
    "readable": true,
    "releases": [
+    {
+     "assets": [],
+     "tag": "v1.31.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.30.0"
+    },
     {
      "assets": [],
      "tag": "v1.29.0"
@@ -7810,14 +7840,6 @@
     {
      "assets": [],
      "tag": "v1.27.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.26.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.25.0"
     }
    ],
    "root_files": [
@@ -7827,7 +7849,9 @@
     "AGENTS.md",
     "BUILDING.md",
     "CHANGELOG.md",
+    "COMMERCIAL.md",
     "DESIGN-REVIEW.md",
+    "DEVELOPMENT.md",
     "ENHANCEMENTS.md",
     "LICENSE",
     "PERFORMANCE.md",
@@ -7855,7 +7879,7 @@
     "offline-first",
     "pwa",
     "single-file",
-    "ui",
+    "under-development",
     "vanilla-js"
    ],
    "upstream": null,
@@ -8554,7 +8578,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:27:38Z",
+   "pushed_at": "2026-11-15T12:46:05Z",
    "readable": true,
    "releases": [
     {
@@ -8594,13 +8618,16 @@
     }
    ],
    "root_files": [
+    ".gitattributes",
     ".github",
     ".gitignore",
     ".gitmodules",
     "CHANGELOG.md",
     "CMakeLists.txt",
     "LICENSE",
+    "NOTICE",
     "PRIVACY.md",
+    "PROBE.md",
     "PROJECT_OVERVIEW.md",
     "README.md",
     "SECURITY.md",
