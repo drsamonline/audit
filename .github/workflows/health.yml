@@ -148,11 +148,17 @@ jobs:
         run: python tools/collect.py
       - name: Build the report
         run: python tools/report.py
+      # The README states three counts. They come from the snapshot, not from prose:
+      # the hand-written version said 78 / 105 / 10 while the file held 135 / 220 / 21.
+      - name: Sync the README counts
+        run: python tools/sync_readme.py --write
+      - name: The sync tool's own tests
+        run: python tools/test_sync_readme.py
       - name: Commit the snapshot
         run: |
           git config user.name  "fleet-bot"
           git config user.email "fleet-bot@users.noreply.github.com"
-          git add state/ docs/report.html
+          git add state/ docs/report.html README.md
           if git diff --cached --quiet; then echo "no change"; exit 0; fi
           git commit -m "chore(state): refresh the fleet snapshot [skip ci]"
           git pull --rebase --autostash origin main

@@ -100,12 +100,27 @@ cap — and committed `febe4f4`, "refresh the fleet snapshot [skip ci]". That sn
 | `gh repo list`, non-fork | 142 | a different question: it counts forks and archived repos differently |
 
 The lesson is the one KILN learned twice this session: a number in prose drifts, and a number
-in a generated file does not. The README should read `state/repos.json` rather than restate it.
+in a generated file does not. So the prose stopped being hand-written — see below.
+
+## The README stopped restating the snapshot
+
+`tools/sync_readme.py` now owns exactly one sentence — the fleet count — and fills it from
+`state/repos.json` and `state/schedules.json`:
+
+| Figure | Was | Now, from the file |
+|---|---|---|
+| Repositories | 78 | **135** |
+| Workflow files | 105 | **220** |
+| Scheduled jobs | 10 | **21** |
+
+It refuses three things rather than guessing: a snapshot that says zero repositories (a failed
+crawl is not an empty fleet), a README whose sentence it does not recognise, and a figure it
+cannot measure. The scheduled refresh runs `--write` and commits `README.md` with the snapshot,
+so the prose is refreshed by the same job that refreshes the data. Six tests cover the rewrite,
+the refusal paths and the real README's currency.
 
 ## Next
 
-- Make the README count come from `state/repos.json` instead of prose. The snapshot is now
-  current at 135; the prose still says 78.
 - Add `TOOLWORKS` to the dashboard and the profile index now that Pages is live.
 - `TOOLWORKS` should be added to the dashboard and the profile index now that Pages is live.
 - The fleet page's backup is proven for `localStorage` only; an app that ever moves to
