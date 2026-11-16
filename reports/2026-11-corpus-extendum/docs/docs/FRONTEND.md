@@ -82,6 +82,19 @@ a stalled fetch looked exactly like an empty page, which cost a debugging round.
 One function, `turn(dir)`, dispatched by format — because a "page" only means
 something for a PDF.
 
+## Which formats a book offers
+
+The chips are not a fixed list. They come from the book's own record and are
+then filtered by what can actually render on this device:
+
+| Rule | Why |
+|---|---|
+| Chips come from `b.formats` | a book shelved without a PDF (two are) has no PDF chip |
+| A format that failed once is retired for that book | a chip that leads to a blank pane is worse than no chip |
+| Selecting a retired format falls back to the next one | `epub → txt → pdf → json` |
+| `json` is always available | it is the book's own record, which always exists |
+| A browser with no PDF viewer keeps the PDF chip | the canvas renderer works regardless; the *native* viewer is only used when `navigator.pdfViewerEnabled` says it exists |
+
 | Format | Prev/Next does | Position readout |
 |---|---|---|
 | PDF (desktop) | previous / next page | `Page 4 / 121` |

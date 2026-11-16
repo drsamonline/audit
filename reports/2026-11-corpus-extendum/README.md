@@ -105,7 +105,7 @@ books; and the EPUB path lacked the raw fallback the PDF path already had.
 
 ## Evidence in this folder
 
-- `docs/` — the full documentation set, mirrored at commit `6d6ffe1`
+- `docs/` — the full documentation set, mirrored at commit `fcafe16`
 - `SYNC.json` — source commit, sync timestamp and a hash per file, so the mirror
   can be proven current rather than assumed current
 

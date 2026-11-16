@@ -5,6 +5,30 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · Only the formats that can actually open
+
+**Changed**
+- The format chips now come from the book's own record and are filtered by what
+  can render here, instead of being a fixed list. A book shelved without a PDF
+  has no PDF chip; a format that failed once is retired for that book and the
+  reader falls back to the next (`epub → txt → pdf → json`); `json` is always
+  offered because the record always exists.
+- The **native** PDF viewer is used only when `navigator.pdfViewerEnabled` says
+  the browser has one. Where it does not, the canvas renderer runs instead —
+  previously that combination produced a blank pane on a phone.
+
+**Verified**
+- a book with no PDF shows `EPUB, TXT, JSON` and opens as EPUB
+- a browser with no PDF viewer still offers PDF, via canvas
+- retiring EPUB leaves `TXT, JSON` and moves the reader to text
+- retiring text as well lands on the record
+
+**Note**
+- The card chips on the shelf already came from `b.formats`; the reader's bar was
+  the part that was fixed, plus the fallback behaviour it never had.
+
+---
+
 ## 2026-11-16 · Three viewing bugs, all found by opening the files
 
 **Fixed**
