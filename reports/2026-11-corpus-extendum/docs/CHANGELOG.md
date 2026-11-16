@@ -5,6 +5,35 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · A design pass: one contrast failure, three layout ones
+
+Ran `ui-design-critique` against real screenshots and `frontend-engineering`'s
+performance method against the shipped page.
+
+**Fixed**
+- The reader's note line sat at **4.33:1** — below the 4.5 minimum for 9.5–10.5 px
+  text. Now `#8C8175` on the dark bar (5.16:1). It was the only colour failure in
+  the set; the eyebrow, body, side labels and chips all pass, which I checked by
+  computing the ratios for the tokens actually in use rather than the ones I
+  assumed.
+- The reader's *Stored in* row printed the full path and broke mid-word in a
+  312 px column, dominating the panel. It shows the vault name now; the path is
+  on hover.
+- The phone search placeholder was cut mid-quote. Shortened to "Title, author,
+  subject".
+- The category rail scrolls with no scrollbar and no hint that it does; a fade
+  mask at the right edge says so. Removed above 1100 px where nothing overflows.
+
+**Measured**
+| What | Value |
+|---|---|
+| First paint, gzipped | 4.2 KB HTML + 6.2 KB CSS + 11.2 KB JS + 17.2 KB catalogue ≈ **39 KB** |
+| PDF, only when a PDF is opened | 313 KB + 1,062 KB worker |
+| EPUB, only when an EPUB is opened | 219 KB + 96 KB |
+| Largest text block | 101 KB catalogue, 17 KB gzipped |
+
+---
+
 ## 2026-11-16 · I broke the reader; here is what was actually wrong
 
 **Regression, fixed**

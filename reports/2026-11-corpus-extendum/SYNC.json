@@ -1,10 +1,10 @@
 {
   "source": "drsamonline/corpus-extendum",
-  "commit": "74f0d00f59e2e78a9deaa4760de78fec9c4c215e",
-  "synced": "2026-11-16T17:47Z",
+  "commit": "5d166e79a93a942810da07fe4dc64df16b4f9330",
+  "synced": "2026-11-16T17:50Z",
   "files": {
     "README.md": "9cd99a154877eb54",
-    "CHANGELOG.md": "a2f421ba18147cf0",
+    "CHANGELOG.md": "cc9a80ebb78a8748",
     "SECURITY.md": "9bc0b453d28902d4",
     "CONTRIBUTING.md": "c89a3fd4ad531421",
     "docs/README.md": "d2c2ba90e389856e",
