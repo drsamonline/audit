@@ -39,6 +39,13 @@ session, with its documentation mirrored beside it as evidence). A report is a m
 the decision. Neither
 is a substitute for the other.
 
+## Before investigating something that looks wrong
+
+`docs/known-states.md` lists states that have already been investigated and found
+correct — PolyForm repositories reporting `NOASSERTION`, and the dated matrix in
+`state/fleet-audit.json` counting fewer repositories than the live snapshot. Read it
+before opening an investigation, and add to it when you close one.
+
 ## The rule
 
 **A change is not done when it is pushed. It is done when it is read back from the API and the
