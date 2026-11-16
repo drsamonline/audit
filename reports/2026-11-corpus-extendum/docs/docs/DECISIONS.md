@@ -50,8 +50,9 @@ the same bytes. Normalisation is what makes the digest comparable across
 Gutenberg, Standard Ebooks and a scan.
 
 **Cost.** Normalisation will not make a 1902 printing and a 1990 scholarly
-edition hash identically. That is what the (unbuilt) work-key and trigram tests
-are for. The gate is tuned to prefer a false *non*-duplicate over a false
+edition hash identically. That is what the work-key and trigram tests are for,
+and both are now built — the trigram threshold at 0.62 after measuring that no
+real near-duplicate reaches the 0.92 the design proposed. The gate is tuned to prefer a false *non*-duplicate over a false
 duplicate: a missing book is visible, a library that lies about its size is not.
 
 ---

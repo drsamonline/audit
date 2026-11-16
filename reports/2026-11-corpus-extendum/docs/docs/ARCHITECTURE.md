@@ -77,7 +77,7 @@ should be assumed built and working.
 | EPUB (epub.js), plain text, JSON record view | built |
 | Rights gate (author death + 60, US pre-1930) | built |
 | Dedupe tests 1–2 (source ref, normalised text hash) | built |
-| Dedupe tests 3–4 (work key, trigram similarity) | designed |
+| Dedupe tests 3–4 (work key, trigram similarity) | built |
 | Vault rotation with token preflight | built |
 | Weekly scan and rebuild | built |
 | In-book search | planned |

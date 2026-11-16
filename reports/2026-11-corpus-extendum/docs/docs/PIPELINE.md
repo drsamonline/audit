@@ -140,10 +140,20 @@ Before a file is committed, two tests run:
 1. `source_ref` already in `data/dedupe.json` → refuse, never fetched.
 2. `text_sha256` already registered → refuse as a duplicate of that slug.
 
-Tests 3 and 4 from the design — work key, and trigram similarity ≥ 0.92 — are
-**designed and not implemented**. `work_keys` are recorded in the registry but
-nothing reads them yet. Until they exist, a different edition of the same work
-arrives as a separate record unless its text hash happens to match.
+Then the two tests that catch what a hash cannot:
+
+3. **Work key** — `surname|title|year`, subtitle stripped. A match means this is
+   another edition of a work already shelved: the ingest records it in the
+   canonical record's `editions[]` and does **not** create a second card.
+4. **Trigram similarity ≥ 0.62** with the same author — a title close enough to
+   be the same book. Held in `data/review-queue.json`, never auto-added.
+
+The 0.62 threshold is measured, not chosen. Real near-duplicates: *The
+Adventures of Huckleberry Finn* vs *Adventures of Huckleberry Finn* 0.88,
+*Pride and Prejudice* vs *Pride & Prejudice* 0.68. Different works by the same
+author: *Dracula* vs *Dracula's Guest* 0.47, *Jane Eyre* vs *Villette* 0.00. The
+original design specified 0.92, which no real near-duplicate reaches — it would
+never have fired.
 
 The gate has fired in anger twice: once blocking a re-ingest of Alice, once
 when `--replace` was needed and absent.

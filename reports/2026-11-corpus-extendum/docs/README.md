@@ -104,12 +104,14 @@ Before fetching, the source reference is checked against `data/dedupe.json`. At 
 |---|---|---|---|
 | source ref | the same ebook pulled twice | refuse, never fetched | built |
 | text hash | the same text from a different source | merge formats into the existing record | built |
-| work key | a different edition of the same work | merge as an edition | designed, not built |
-| trigram ≥ 0.92 + same author | near-duplicates the hashes missed | hold for review, never auto-add | designed, not built |
+| work key | a different edition of the same work | recorded on the existing record, not added as a second card | built |
+| trigram ≥ 0.62 + same author | near-duplicates the hashes missed | held for review, never auto-added | built |
 
-The first two have fired in anger; the last two are recorded in the registry but
-not yet consulted, so a different edition of the same work can still arrive as a
-separate record. Nothing is ever added on a fuzzy match. A false duplicate is a book missing from the shelf; a missed duplicate is a library that lies about its size — the gate prefers the first.
+All four run now. The trigram threshold is 0.62 because it was measured against
+real titles — genuine near-duplicates score 0.68–0.88 while different works by
+the same author sit at 0.00–0.47. The design said 0.92, which no real
+near-duplicate reaches. Nothing is ever added on a fuzzy match: a held title
+goes to `data/review-queue.json`. A false duplicate is a book missing from the shelf; a missed duplicate is a library that lies about its size — the gate prefers the first.
 
 ---
 

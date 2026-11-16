@@ -82,6 +82,8 @@ One per book, in the vault. Everything else is derived from these.
 | `file_sha8` | first 8 hex of the PDF's SHA-256 |
 | `translator` | present only when the edition has one |
 | `quarantined` | added by `build_catalog.py` if a duplicate slipped through; the book then disappears from the site |
+| `editions` | other editions of the same work, recorded here rather than shelved as separate cards |
+| `rights.translation_verified` | true when the translator's death year was read from a source |
 
 ---
 

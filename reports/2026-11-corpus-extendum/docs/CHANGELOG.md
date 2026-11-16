@@ -5,6 +5,23 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · The two dedupe tests that catch what a hash cannot
+
+**Added**
+- **Work key** (`surname|title|year`, subtitle stripped): a match means another
+  edition of a shelved work, so it is recorded in the canonical record's
+  `editions[]` instead of becoming a second card.
+- **Trigram similarity**: a title close enough to be the same book is held in
+  `data/review-queue.json` and never auto-added.
+
+**Corrected**
+- The threshold was 0.92 in the design, which is unreachable: real
+  near-duplicates score 0.68–0.88 while different works by the same author sit
+  at 0.00–0.47. It is now 0.62, set from measurement, with the pairs recorded in
+  the docstring so the number can be argued with.
+
+---
+
 ## 2026-11-16 · Translations, gated on the translator
 
 **Added**

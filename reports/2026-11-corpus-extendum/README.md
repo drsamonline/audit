@@ -16,7 +16,7 @@ its documentation mirrored beside this file as evidence.
 | Rights gate — India life+60 **and** US pre-1930, both must pass | working |
 | Dedupe — source reference, normalised-text hash | working |
 | Translator gate — verified registry, refuses unverified translators | working |
-| Dedupe — work key, trigram similarity | designed, not built |
+| Dedupe — work key, trigram similarity | working |
 | Ingest pipeline — fetch, verify, typeset, hash, shelve | working |
 | Vault rotation with token preflight | working |
 | Weekly scan, catalogue rebuild, doc-drift repair | working |
@@ -84,7 +84,7 @@ same reason.
 
 ## Evidence in this folder
 
-- `docs/` — the full documentation set, mirrored at commit `0160b8c`
+- `docs/` — the full documentation set, mirrored at commit `0f73de4`
 - `SYNC.json` — source commit, sync timestamp and a hash per file, so the mirror
   can be proven current rather than assumed current
 
