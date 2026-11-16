@@ -84,6 +84,7 @@ One per book, in the vault. Everything else is derived from these.
 | `quarantined` | added by `build_catalog.py` if a duplicate slipped through; the book then disappears from the site |
 | `editions` | other editions of the same work, recorded here rather than shelved as separate cards |
 | `rights.translation_verified` | true when the translator's death year was read from a source |
+| `notes` | present only when something was left out, e.g. a book shelved without a PDF because typesetting exceeded the run budget |
 
 ---
 
@@ -91,7 +92,7 @@ One per book, in the vault. Everything else is derived from these.
 
 An array of every `meta.json` from every vault, minus anything quarantined,
 sorted by category then year then title. This is the only file the page reads
-for book data. At 63 books it is 95 KB.
+for book data. At 65 books it is 99 KB.
 
 ## `data/shards.json` — the vault registry
 

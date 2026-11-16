@@ -46,6 +46,20 @@ git add -A && git commit -m "shelf: add Jane Eyre" && git push
 The library must be rebuilt **after** the vault is pushed, or the catalogue
 points at files that are not there yet. Pages redeploys on the library push.
 
+### When a book will not fit the budget
+
+Typesetting is the slow part. A 900-page book can exceed the 290 s a run is given
+even though the download took seconds. `--no-pdf` shelves the EPUB and the text
+without one, and writes the reason into the record's `notes`:
+
+```bash
+python3 scripts/ingest.py --vault ../corpus-extendum-vault-01 --only 1676 --no-pdf
+```
+
+The reader handles a book with no PDF — the format chips show only what exists,
+and the book opens in whatever format it has. Two books are shelved this way:
+Plato's *Dialogues* and Chekhov's collected *Short Fiction*.
+
 ## Rebuild the catalogue without adding books
 
 ```bash

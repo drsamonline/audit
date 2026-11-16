@@ -5,6 +5,26 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · The two long books, shelved without a PDF
+
+**Added**
+- `--no-pdf`: shelve a book as EPUB and text only, when typesetting it cannot
+  finish inside the run budget. The record carries a `notes` field saying what
+  was left out and why, so the omission is visible rather than silent.
+- Plato's *Dialogues* (trans. Jowett) and Chekhov's collected *Short Fiction*
+  (trans. Garnett) are now on the shelf — 65 books. Both had failed twice on the
+  290 s ceiling; neither needed a PDF to be worth having.
+
+**Fixed**
+- `dedupe.json` stored source refs as a bare list with no slug attached, which
+  made `--replace` impossible: a ref could not be traced back to the book that
+  owned it, so re-shelving anything was always refused as a duplicate. Refs are
+  now a `{ref: slug}` map.
+- A `--no-pdf` run crashed on `pdf.name` in its own success message — the copy
+  was guarded, the log line was not.
+
+---
+
 ## 2026-11-16 · Sixteen more books, and the shelf passes sixty
 
 **Added** — Austen's other five (*Emma*, *Sense and Sensibility*, *Mansfield

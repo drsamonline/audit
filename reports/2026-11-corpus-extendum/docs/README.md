@@ -7,7 +7,7 @@
 A free library of out-of-copyright books. Read them in the page as a PDF, an EPUB or plain text; download anything; keep it forever. No accounts, no tracking, no paywall — because the copyright has expired, not because someone is being generous.
 
 [![live](https://img.shields.io/badge/live-drsamonline.github.io%2Fcorpus--extendum-8C3A2B?style=flat-square)](https://drsamonline.github.io/corpus-extendum/)
-[![books](https://img.shields.io/badge/books-63-1F4E46?style=flat-square)](data/catalog.json)
+[![books](https://img.shields.io/badge/books-65-1F4E46?style=flat-square)](data/catalog.json)
 [![formats](https://img.shields.io/badge/formats-12%20renderable-1F4E46?style=flat-square)](#what-opens-in-the-page)
 [![licence](https://img.shields.io/badge/licence-CC0--1.0-A8823F?style=flat-square)](LICENSE)
 [![dependencies](https://img.shields.io/badge/runtime%20dependencies-0-1F4E46?style=flat-square)](#running-it)
@@ -21,7 +21,7 @@ A free library of out-of-copyright books. Read them in the page as a PDF, an EPU
 
 ## What this is
 
-63 books, 12 categories, one shelf that grows by itself. Every title is public domain in **both India and the United States** — the stricter of the two tests is the one that gates a book — and each record says on what basis, so you can audit the claim instead of trusting it.
+65 books, 12 categories, one shelf that grows by itself. Every title is public domain in **both India and the United States** — the stricter of the two tests is the one that gates a book — and each record says on what basis, so you can audit the claim instead of trusting it.
 
 - **Read in the page.** PDF, EPUB and plain text all open inside the library. No plugin, no "download to view", no new tab.
 - **One book, one card.** A title that exists as PDF, EPUB and text is a single entry with format chips, not three near-duplicate entries. The dedupe gate refuses a second copy before it is ever fetched.
@@ -81,24 +81,26 @@ A free library of out-of-copyright books. Read them in the page as a PDF, an EPU
 | 43 | The Hound of the Baskervilles | Arthur Conan Doyle | 1902 | Mystery & Detective | Standard Ebooks |
 | 44 | The Innocence of Father Brown | G. K. Chesterton | 1911 | Mystery & Detective | Standard Ebooks |
 | 45 | The Wisdom of Father Brown | G. K. Chesterton | 1914 | Mystery & Detective | Standard Ebooks |
-| 46 | The Discourses of Epictetus | Epictetus | 108 | Philosophy | Standard Ebooks |
-| 47 | Meditations | Marcus Aurelius | 180 | Philosophy | Standard Ebooks |
-| 48 | Leviathan | Thomas Hobbes | 1651 | Philosophy | Standard Ebooks |
-| 49 | On Liberty | John Stuart Mill | 1859 | Philosophy | Standard Ebooks |
-| 50 | Poems | John Keats | 1820 | Poetry | Standard Ebooks |
-| 51 | Leaves of Grass | Walt Whitman | 1855 | Poetry | Standard Ebooks |
-| 52 | Gitanjali | Rabindranath Tagore | 1912 | Poetry | Standard Ebooks |
-| 53 | The Prophet | Kahlil Gibran | 1923 | Poetry | Standard Ebooks |
-| 54 | Tao Te Ching | Laozi | -400 | Sacred Texts | Standard Ebooks |
-| 55 | The Song Celestial; or, Bhagavad-Gita | trans. Sir Edwin Arnold | 1885 | Sacred Texts | Gutenberg mirror |
-| 56 | Gulliver's Travels | Jonathan Swift | 1726 | Satire | Standard Ebooks |
-| 57 | The Last Man | Mary Wollstonecraft Shelley | 1826 | Science Fiction | Standard Ebooks |
-| 58 | The Time Machine | H. G. Wells | 1895 | Science Fiction | Standard Ebooks |
-| 59 | The Island of Doctor Moreau | H. G. Wells | 1896 | Science Fiction | Standard Ebooks |
-| 60 | The Invisible Man | H. G. Wells | 1897 | Science Fiction | Standard Ebooks |
-| 61 | The War of the Worlds | H. G. Wells | 1898 | Science Fiction | Standard Ebooks |
-| 62 | The First Men in the Moon | H. G. Wells | 1901 | Science Fiction | Standard Ebooks |
-| 63 | Dubliners | James Joyce | 1914 | Short Stories | Standard Ebooks |
+| 46 | Dialogues | Plato | -380 | Philosophy | Standard Ebooks |
+| 47 | The Discourses of Epictetus | Epictetus | 108 | Philosophy | Standard Ebooks |
+| 48 | Meditations | Marcus Aurelius | 180 | Philosophy | Standard Ebooks |
+| 49 | Leviathan | Thomas Hobbes | 1651 | Philosophy | Standard Ebooks |
+| 50 | On Liberty | John Stuart Mill | 1859 | Philosophy | Standard Ebooks |
+| 51 | Poems | John Keats | 1820 | Poetry | Standard Ebooks |
+| 52 | Leaves of Grass | Walt Whitman | 1855 | Poetry | Standard Ebooks |
+| 53 | Gitanjali | Rabindranath Tagore | 1912 | Poetry | Standard Ebooks |
+| 54 | The Prophet | Kahlil Gibran | 1923 | Poetry | Standard Ebooks |
+| 55 | Tao Te Ching | Laozi | -400 | Sacred Texts | Standard Ebooks |
+| 56 | The Song Celestial; or, Bhagavad-Gita | trans. Sir Edwin Arnold | 1885 | Sacred Texts | Gutenberg mirror |
+| 57 | Gulliver's Travels | Jonathan Swift | 1726 | Satire | Standard Ebooks |
+| 58 | The Last Man | Mary Wollstonecraft Shelley | 1826 | Science Fiction | Standard Ebooks |
+| 59 | The Time Machine | H. G. Wells | 1895 | Science Fiction | Standard Ebooks |
+| 60 | The Island of Doctor Moreau | H. G. Wells | 1896 | Science Fiction | Standard Ebooks |
+| 61 | The Invisible Man | H. G. Wells | 1897 | Science Fiction | Standard Ebooks |
+| 62 | The War of the Worlds | H. G. Wells | 1898 | Science Fiction | Standard Ebooks |
+| 63 | The First Men in the Moon | H. G. Wells | 1901 | Science Fiction | Standard Ebooks |
+| 64 | Short Fiction | Anton Chekhov | 1886 | Short Stories | Standard Ebooks |
+| 65 | Dubliners | James Joyce | 1914 | Short Stories | Standard Ebooks |
 
 Every record — title, author, translator, year, subjects, source URL, rights basis, file hashes — is in [`data/catalog.json`](data/catalog.json), and the same list is in [`index.txt`](index.txt) for anyone who would rather read it without a browser.
 
