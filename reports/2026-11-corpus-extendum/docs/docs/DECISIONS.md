@@ -22,6 +22,15 @@ header is what allows pdf.js to read a PDF from a different origin than the page
 **Cost.** A dependency on a third-party CDN, and a 20 MB per-file ceiling that
 illustrated editions can approach.
 
+**And one limit found the hard way:** jsDelivr refuses **text** files from a
+repository over 50 MB — its package limit — while continuing to serve PDFs,
+EPUBs and covers from the same repository. Measured directly: from a 139 MB
+vault, `tao-te-ching.pdf` returned 200 and `tao-te-ching.txt` returned 403 with
+"Package size exceeded the configured limit of 50 MB". So plain text is fetched
+from `raw.githubusercontent.com`, which has no such limit, and binary files try
+the CDN first and fall back to raw. Anything that reads a text file must use
+that route.
+
 ---
 
 ## D2 · 600 books / 2.5 GB per vault

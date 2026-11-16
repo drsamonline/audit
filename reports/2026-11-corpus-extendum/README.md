@@ -13,6 +13,7 @@ its documentation mirrored beside this file as evidence.
 |---|---|
 | Static shelf — search, filters, sort, dark mode | working |
 | Reader — PDF (pdf.js, native on phones), EPUB, plain text, JSON record | working |
+| Search inside a book — over the plain text, with jump and highlight | working |
 | Rights gate — India life+60 **and** US pre-1930, both must pass | working |
 | Dedupe — source reference, normalised-text hash | working |
 | Translator gate — verified registry, refuses unverified translators | working |
@@ -84,7 +85,7 @@ same reason.
 
 ## Evidence in this folder
 
-- `docs/` — the full documentation set, mirrored at commit `0f73de4`
+- `docs/` — the full documentation set, mirrored at commit `7cba630`
 - `SYNC.json` — source commit, sync timestamp and a hash per file, so the mirror
   can be proven current rather than assumed current
 

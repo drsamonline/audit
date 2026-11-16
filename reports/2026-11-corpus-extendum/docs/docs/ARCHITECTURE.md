@@ -80,7 +80,7 @@ should be assumed built and working.
 | Dedupe tests 3–4 (work key, trigram similarity) | built |
 | Vault rotation with token preflight | built |
 | Weekly scan and rebuild | built |
-| In-book search | planned |
+| In-book search — over the plain text, with jump and highlight | built |
 | Translator gate — verified registry | built |
 | Format conversion (MOBI, DjVu, DOCX, CBR…) | planned |
 | archive.org source adapter | planned |

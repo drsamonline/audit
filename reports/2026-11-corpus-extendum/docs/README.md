@@ -125,12 +125,16 @@ Built today, honestly labelled:
 | EPUB | epub.js | working |
 | TXT | plain text, wrapped by the browser | working |
 | JSON | the book's own record as a syntax-highlighted tree | working |
+| **Search inside a book** | `Find` in the reader, or `Ctrl/⌘+F` or `/` | working — searches the plain text, jumps and highlights |
 
-Designed and not yet built — in-book search (no text layer is extracted for it
-yet), Markdown, HTML, XML, CSV, images, audio, video and CBZ viewers, and the
-ingest-side conversion of MOBI, AZW3, DjVu, DOCX, ODT, RTF and CBR. They are
-specified in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) with a status marker on
-each, and nothing here claims them as working.
+Search runs against the plain text every vault already holds, so it works for
+every book rather than only the ones with a text layer. A hit switches the
+reader to the text view and highlights the paragraph.
+
+Designed and not yet built — Markdown, HTML, XML, CSV, images, audio, video and
+CBZ viewers, and the ingest-side conversion of MOBI, AZW3, DjVu, DOCX, ODT, RTF
+and CBR. They are specified in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) with
+a status marker on each, and nothing here claims them as working.
 
 The four renderers that do exist are vendored in `assets/vendor/` and lazy-loaded
 per format, so opening a text file downloads no PDF engine. Nothing on a reading

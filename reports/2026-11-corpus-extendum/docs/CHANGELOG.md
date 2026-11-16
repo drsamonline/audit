@@ -5,6 +5,23 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · Search inside a book, and a CDN limit worth knowing
+
+**Added**
+- In-book search: `Find` in the reader toolbar, or `Ctrl/⌘+F`, or `/`. It
+  searches the plain text every vault already holds, lists matches with context,
+  and a click switches to the text view, scrolls to the paragraph and highlights
+  it. Works at every width, including phones where the side panel is hidden.
+
+**Fixed**
+- Plain text was being fetched from jsDelivr, which **refuses text files from a
+  repository over 50 MB**. The vault is 139 MB, so every `.txt` returned 403
+  while the PDFs beside them returned 200. Text now comes from
+  `raw.githubusercontent.com`; binary files try the CDN and fall back to raw.
+  Found by a search that returned zero matches on a book full of the word.
+
+---
+
 ## 2026-11-16 · The two dedupe tests that catch what a hash cannot
 
 **Added**

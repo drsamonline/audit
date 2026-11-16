@@ -43,7 +43,6 @@ The current gaps, stated plainly:
 | Gap | Consequence |
 |---|---|
 | Translator registry is short | only translators with a read source are accepted, so Chekhov and most Verne wait on an entry |
-| No in-book search | the reader has no text layer to search |
 | No format conversion | MOBI, DjVu, DOCX, CBR are not handled |
 | No archive.org adapter | scanned editions are unreachable |
 
