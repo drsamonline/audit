@@ -1,5 +1,5 @@
 {
- "count": 135,
+ "count": 140,
  "repos": {
   "All4ONE": {
    "archived": false,
@@ -12,7 +12,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T10:30:43Z",
+   "pushed_at": "2026-11-16T00:47:08Z",
    "readable": true,
    "releases": [
     {
@@ -63,7 +63,7 @@
     "offline-tools",
     "portable-app",
     "productivity",
-    "utilities",
+    "tooling",
     "windows"
    ],
    "upstream": null,
@@ -234,7 +234,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:46:39Z",
+   "pushed_at": "2026-11-15T14:55:33Z",
    "readable": true,
    "releases": [
     {
@@ -381,9 +381,19 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T10:20:08Z",
+   "pushed_at": "2026-11-15T14:15:16Z",
    "readable": true,
    "releases": [
+    {
+     "assets": [
+      "fleet-1.3.2.html",
+      "KILN-1.3.2.zip",
+      "KILN-apps-1.3.2.zip",
+      "KILN-changelog-1.3.2.pdf",
+      "studio-1.3.2.html"
+     ],
+     "tag": "v1.3.2"
+    },
     {
      "assets": [
       "fleet-1.3.1.html",
@@ -421,15 +431,6 @@
       "studio-1.1.0.html"
      ],
      "tag": "v1.1.0"
-    },
-    {
-     "assets": [
-      "KILN-1.0.14.zip",
-      "KILN-apps-1.0.14.zip",
-      "KILN-changelog.pdf",
-      "studio-1.0.14.html"
-     ],
-     "tag": "v1.0.14"
     }
    ],
    "root_files": [
@@ -490,12 +491,11 @@
     "code-generator",
     "deterministic",
     "developer-tools",
-    "local-first",
-    "no-dependencies",
     "offline-first",
     "python",
     "single-file",
-    "spec-driven"
+    "spec-driven",
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -575,7 +575,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:42:30Z",
+   "pushed_at": "2026-11-16T10:31:59Z",
    "readable": true,
    "releases": [
     {
@@ -625,7 +625,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T07:35:09Z",
+   "pushed_at": "2026-11-16T03:40:43Z",
    "readable": true,
    "releases": [
     {
@@ -664,6 +664,7 @@
     "PRIVACY.md",
     "README.md",
     "SECURITY.md",
+    "VERSION",
     "VISION.md",
     "backends",
     "benches",
@@ -828,13 +829,14 @@
     "arcade",
     "browser-game",
     "canvas",
-    "game",
+    "games",
     "html5-game",
     "javascript",
     "pixel-art",
     "pwa",
     "roguelite",
-    "tower-defense"
+    "tower-defense",
+    "vanilla-js"
    ],
    "upstream": null,
    "workflow_files": []
@@ -936,9 +938,24 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:48:54Z",
+   "pushed_at": "2026-11-15T14:40:49Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "Toolworks-1.1.1-source.zip",
+      "Toolworks-1.1.1-windows.zip"
+     ],
+     "tag": "v1.1.1"
+    },
+    {
+     "assets": [
+      "Toolworks-1.1.0-source.zip",
+      "Toolworks-1.1.0-windows.zip"
+     ],
+     "tag": "v1.1.0"
+    }
+   ],
    "root_files": [
     ".github",
     "CHANGELOG.md",
@@ -951,16 +968,16 @@
     "SOURCES.md",
     "data",
     "index.html",
-    "tools_check.py"
+    "tools_check.py",
+    "windows"
    ],
    "topics": [
     "catalogue",
     "index",
-    "offline",
+    "offline-first",
     "productivity",
     "toolbox",
-    "tools",
-    "utilities"
+    "tooling"
    ],
    "upstream": null,
    "workflow_files": [
@@ -1038,7 +1055,7 @@
     "offline-first",
     "productivity",
     "toolbox",
-    "utilities"
+    "tooling"
    ],
    "upstream": null,
    "workflow_files": [
@@ -1056,27 +1073,43 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:35:46Z",
+   "pushed_at": "2026-11-16T10:53:25Z",
    "readable": true,
    "releases": [
     {
      "assets": [
-      "aetheris-linux-x86_64.tar.gz"
+      "aetheris-linux-x86_64.tar.gz",
+      "aetheris-windows-x86_64.zip"
      ],
-     "tag": "v0.4.4"
+     "tag": "v0.6.2"
     },
     {
      "assets": [
       "aetheris-linux-x86_64.tar.gz",
       "aetheris-windows-x86_64.zip"
      ],
-     "tag": "v0.4.2"
+     "tag": "v0.6.1"
     },
     {
      "assets": [
+      "aetheris-linux-x86_64.tar.gz",
       "aetheris-windows-x86_64.zip"
      ],
-     "tag": "v0.4.1"
+     "tag": "v0.6.0"
+    },
+    {
+     "assets": [
+      "aetheris-linux-x86_64.tar.gz",
+      "aetheris-windows-x86_64.zip"
+     ],
+     "tag": "v0.5.6"
+    },
+    {
+     "assets": [
+      "aetheris-linux-x86_64.tar.gz",
+      "aetheris-windows-x86_64.zip"
+     ],
+     "tag": "v0.5.5"
     }
    ],
    "root_files": [
@@ -1109,6 +1142,7 @@
     "Cargo.toml",
     "DEVELOPMENT_WORKFLOW.md",
     "Documentation",
+    "FAMILY.md",
     "ISSUES.md",
     "LICENSE",
     "Libraries",
@@ -1137,6 +1171,7 @@
     "vcpkg.json"
    ],
    "topics": [
+    "aetheris-family",
     "browser",
     "cpp",
     "rendering-engine",
@@ -1218,12 +1253,12 @@
    "description": "Universal index over the classical homoeopathic repertories \u2014 one search surface across several books. Policy documents here; the app runs on Replit.",
    "docs_index": true,
    "fork": false,
-   "has_pages": false,
-   "homepage": "https://replit.com/@sohilmomin2000/Homeopathic-Digital-Repe",
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/UniRep/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T09:05:02Z",
+   "pushed_at": "2026-11-16T07:18:42Z",
    "readable": true,
    "releases": [
     {
@@ -1233,14 +1268,18 @@
    ],
    "root_files": [
     ".github",
+    ".gitignore",
     ".lychee.toml",
     "LICENSE",
     "PRIVACY.md",
     "README.md",
     "SECURITY.md",
     "VERSION",
+    "app",
+    "desktop",
     "docs",
-    "scripts"
+    "scripts",
+    "unirep_data"
    ],
    "topics": [
     "homeopathy",
@@ -1251,6 +1290,8 @@
    ],
    "upstream": null,
    "workflow_files": [
+    "android.yml",
+    "desktop.yml",
     "links.yml",
     "pages.yml"
    ]
@@ -1437,6 +1478,7 @@
     "game-engine",
     "games",
     "javascript",
+    "vanilla-js",
     "zero-dependency"
    ],
    "upstream": null,
@@ -1455,7 +1497,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-13T06:54:10Z",
+   "pushed_at": "2026-11-15T18:44:29Z",
    "readable": true,
    "releases": [
     {
@@ -1615,7 +1657,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-14T07:03:15Z",
+   "pushed_at": "2026-11-15T16:34:11Z",
    "readable": true,
    "releases": [
     {
@@ -2022,12 +2064,12 @@
     "assembler",
     "jacquard",
     "learning",
-    "no-dependencies",
     "offline-first",
     "single-page",
     "virtual-machine",
     "web-app",
-    "weft-8"
+    "weft-8",
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -2099,10 +2141,9 @@
     "full-text-search",
     "internet-in-a-box",
     "lan",
-    "local-first",
     "nodejs",
     "offline-first",
-    "zero-dependencies"
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -2154,13 +2195,14 @@
     "clinical",
     "hospital",
     "india",
+    "javascript",
     "medical-records",
-    "no-dependencies",
     "offline-first",
     "opd",
     "pwa",
     "single-file",
-    "vanilla-js"
+    "vanilla-js",
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -2226,7 +2268,7 @@
     "tools"
    ],
    "topics": [
-    "homoeopathy",
+    "homeopathy",
     "no-tracking",
     "offline-first",
     "organon",
@@ -2397,6 +2439,7 @@
     "pwa",
     "rhyme",
     "single-file",
+    "vanilla-js",
     "writing"
    ],
    "upstream": null,
@@ -2416,7 +2459,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:46:26Z",
+   "pushed_at": "2026-11-16T09:55:02Z",
    "readable": true,
    "releases": [
     {
@@ -2453,9 +2496,8 @@
    "topics": [
     "github-pages",
     "interactive-fiction",
-    "local-first",
     "no-account",
-    "offline",
+    "offline-first",
     "single-file",
     "story-engine"
    ],
@@ -2524,7 +2566,7 @@
     "pwa",
     "static-site",
     "thermal-reaction",
-    "zero-dependencies"
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -2634,6 +2676,7 @@
     "quantisation",
     "single-file",
     "sprite-sheet",
+    "vanilla-js",
     "zero-dependency"
    ],
    "upstream": null,
@@ -2652,7 +2695,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T14:59:40Z",
+   "pushed_at": "2026-11-15T16:34:20Z",
    "readable": true,
    "releases": [
     {
@@ -2725,6 +2768,7 @@
     "single-file",
     "sonification",
     "synthesis",
+    "vanilla-js",
     "webaudio",
     "zero-dependency"
    ],
@@ -2744,7 +2788,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:53:39Z",
+   "pushed_at": "2026-11-16T11:03:35Z",
    "readable": true,
    "releases": [
     {
@@ -2754,6 +2798,7 @@
    ],
    "root_files": [
     ".github",
+    ".gitignore",
     "LICENSE",
     "PRIVACY.md",
     "README.md",
@@ -3291,7 +3336,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T10:33:22Z",
+   "pushed_at": "2026-11-15T14:57:14Z",
    "readable": true,
    "releases": [
     {
@@ -3398,7 +3443,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:46:08Z",
+   "pushed_at": "2026-11-15T14:42:36Z",
    "readable": true,
    "releases": [
     {
@@ -3483,7 +3528,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T07:27:49Z",
+   "pushed_at": "2026-11-15T12:56:13Z",
    "readable": true,
    "releases": [
     {
@@ -3611,7 +3656,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T14:55:15Z",
+   "pushed_at": "2026-11-15T13:44:56Z",
    "readable": true,
    "releases": [
     {
@@ -3641,6 +3686,90 @@
     "health",
     "offline-first",
     "video"
+   ],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "corpus-extendum": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "The public domain, properly shelved \u2014 a free library of out-of-copyright books, readable in the page as PDF, EPUB or text. No accounts, no tracking, no paywall.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/corpus-extendum/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-16T11:03:23Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LEGAL-INDEX.md",
+    "LICENSE",
+    "MANIFEST.json",
+    "NOTICE.md",
+    "PAGES.json",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "assets",
+    "data",
+    "dedupe-report.txt",
+    "docs",
+    "index.html",
+    "index.txt",
+    "scripts"
+   ],
+   "topics": [
+    "books",
+    "ebook",
+    "epub",
+    "github-pages",
+    "library",
+    "open-access",
+    "pdf",
+    "public-domain",
+    "reading",
+    "static-site"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "deploy.yml",
+    "scan.yml"
+   ]
+  },
+  "corpus-extendum-vault-01": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Book storage for Corpus Extendum \u2014 the public-domain library. Ten books, PDF + EPUB + text + records. No website here on purpose: Pages caps a site at 1 GB, and this vault is built to reach 2.5 GB.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "",
+   "licence_spdx": null,
+   "pages_status": null,
+   "pushed_at": "2026-11-16T10:19:25Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    "README.md",
+    "books",
+    "index.txt",
+    "manifest.json"
+   ],
+   "topics": [
+    "books",
+    "corpus-extendum",
+    "ebook",
+    "public-domain",
+    "storage"
    ],
    "upstream": null,
    "workflow_files": []
@@ -3755,7 +3884,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:44:34Z",
+   "pushed_at": "2026-11-16T06:46:42Z",
    "readable": true,
    "releases": [
     {
@@ -3790,7 +3919,6 @@
     "history.json",
     "icon.svg",
     "manifest.webmanifest",
-    "node_modules",
     "package-lock.json",
     "package.json",
     "paused.json",
@@ -3825,7 +3953,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:08:26Z",
+   "pushed_at": "2026-11-16T11:37:42Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -3867,7 +3995,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:46:14Z",
+   "pushed_at": "2026-11-16T04:12:46Z",
    "readable": true,
    "releases": [
     {
@@ -3984,16 +4112,16 @@
     "browser-game",
     "canvas",
     "chiptune",
-    "game",
+    "games",
     "html5-game",
-    "javascript",
-    "no-dependencies",
-    "offline",
+    "offline-first",
     "pixel-art",
     "platformer",
     "retro",
     "run-and-gun",
-    "single-file"
+    "single-file",
+    "vanilla-js",
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -4352,11 +4480,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:46:26Z",
+   "pushed_at": "2026-11-16T11:39:17Z",
    "readable": true,
    "releases": [
     {
-     "assets": [],
+     "assets": [
+      "heavenzip-0.1.0-linux-x86_64.tar.gz",
+      "heavenzip-0.1.0-linux-x86_64.tar.gz.sha256",
+      "heavenzip-linux-x86_64.tar.gz",
+      "heavenzip-linux-x86_64.tar.gz.sha256",
+      "paq8px-linux-x86_64.tar.gz",
+      "paq8px-linux-x86_64.tar.gz.sha256",
+      "preflate-windows-x86_64.tar.gz",
+      "preflate-windows-x86_64.tar.gz.sha256"
+     ],
      "tag": "v1.0.0"
     }
    ],
@@ -4388,6 +4525,8 @@
    ],
    "upstream": null,
    "workflow_files": [
+    "build-tools.yml",
+    "build-windows-tools.yml",
     "ci.yml",
     "sync-binaries.yml"
    ]
@@ -4545,7 +4684,7 @@
     "astrology",
     "biorhythm",
     "i-ching",
-    "local-first",
+    "javascript",
     "moon-phase",
     "no-tracking",
     "numerology",
@@ -4685,7 +4824,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-14T18:28:39Z",
+   "pushed_at": "2026-11-15T18:45:35Z",
    "readable": true,
    "releases": [
     {
@@ -4843,7 +4982,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-14T07:22:13Z",
+   "pushed_at": "2026-11-15T14:06:17Z",
    "readable": true,
    "releases": [
     {
@@ -4891,11 +5030,11 @@
     "generative",
     "html",
     "motion-graphics",
-    "no-dependencies",
     "presentation",
     "single-file",
     "slideshow",
-    "web-audio"
+    "web-audio",
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -4999,16 +5138,15 @@
     "tsconfig.json"
    ],
    "topics": [
-    "no-dependencies",
-    "offline",
     "offline-first",
     "productivity",
     "pwa",
     "self-hosted",
     "single-file",
     "toolbox",
-    "utilities",
-    "vanilla-js"
+    "tooling",
+    "vanilla-js",
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -5028,11 +5166,14 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:46:12Z",
+   "pushed_at": "2026-11-15T14:42:41Z",
    "readable": true,
    "releases": [
     {
-     "assets": [],
+     "assets": [
+      "kosh-1.1.0-py3-none-any.whl",
+      "kosh-1.1.0.tar.gz"
+     ],
      "tag": "v1.1.0"
     }
    ],
@@ -5048,6 +5189,7 @@
     "SECURITY.md",
     "docs",
     "examples",
+    "index.html",
     "kosh",
     "pyproject.toml",
     "tests",
@@ -5057,7 +5199,6 @@
     "cli",
     "compression",
     "file-management",
-    "local-first",
     "offline-first",
     "python"
    ],
@@ -5125,13 +5266,13 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-13T00:48:32Z",
+   "pushed_at": "2026-11-16T00:42:48Z",
    "readable": true,
    "releases": [
     {
      "assets": [
-      "lexora-0.1.0a1-py3-none-any.whl",
-      "lexora-0.1.0a1.tar.gz"
+      "lexora-0.1.0a2-py3-none-any.whl",
+      "lexora-0.1.0a2.tar.gz"
      ],
      "tag": "v0.1.0a2"
     },
@@ -5152,11 +5293,13 @@
     "CONTRIBUTING.md",
     "LEXORA_Full_Blueprint_Design_Master_Prompt.md",
     "LICENSE",
+    "NOTICE",
     "PRIVACY.md",
     "README.md",
     "SECURITY.md",
     "benchmarks",
     "docs",
+    "packages",
     "packaging",
     "pyproject.toml",
     "scripts",
@@ -5392,6 +5535,7 @@
     "pwa",
     "sequencer",
     "tonejs",
+    "vanilla-js",
     "web-audio"
    ],
    "upstream": null,
@@ -5582,6 +5726,7 @@
     "offline-first",
     "single-file",
     "tf-idf",
+    "vanilla-js",
     "zero-dependency"
    ],
    "upstream": null,
@@ -5707,12 +5852,12 @@
     "design-tools",
     "github-pages",
     "html-css-javascript",
+    "javascript",
     "localstorage",
     "mood",
     "no-tracking",
     "offline-first",
     "palette-generator",
-    "progressive-web-app",
     "pwa",
     "sponsor",
     "vanilla-js",
@@ -5884,14 +6029,15 @@
    ],
    "topics": [
     "generative-music",
+    "javascript",
     "music",
-    "no-dependencies",
     "offline-first",
     "pwa",
     "synthesis",
     "synthesizer",
     "vanilla-js",
-    "web-audio"
+    "web-audio",
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -5910,7 +6056,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-14T18:41:28Z",
+   "pushed_at": "2026-11-16T06:42:30Z",
    "readable": true,
    "releases": [
     {
@@ -6194,7 +6340,7 @@
     "web"
    ],
    "topics": [
-    "game",
+    "games",
     "godot",
     "procedural-generation",
     "shooter"
@@ -6326,13 +6472,14 @@
     "canvas",
     "daw",
     "drum-machine",
+    "javascript",
     "music-production",
-    "no-dependencies",
     "offline-first",
     "pwa",
     "sampler",
-    "vanilla-javascript",
-    "web-audio"
+    "vanilla-js",
+    "web-audio",
+    "zero-dependency"
    ],
    "upstream": null,
    "workflow_files": [
@@ -6340,6 +6487,71 @@
     "pages.yml",
     "release.yml",
     "test.yml"
+   ]
+  },
+  "nodus": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "One browser core, many faces. Fork of NetSurf rebuilt as a library with framebuffer, GTK, headless and text frontends. Tier 1 of the Aetheris browser family.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "COPYING",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-16T01:57:29Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".clang-format",
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "AGENTS.md",
+    "COPYING",
+    "DESIGN.md",
+    "FAMILY.md",
+    "INNOVATIONS.md",
+    "Makefile",
+    "Makefile.config.example",
+    "Makefile.defaults",
+    "Makefile.macros",
+    "Makefile.tools",
+    "PATCHES.md",
+    "PERFORMANCE.md",
+    "PLAN.md",
+    "README.md",
+    "ROADMAP.md",
+    "SOURCES.md",
+    "START_PROMPT.md",
+    "content",
+    "desktop",
+    "docs",
+    "examples",
+    "frontends",
+    "include",
+    "resources",
+    "shared",
+    "test",
+    "tools",
+    "utils"
+   ],
+   "topics": [
+    "aetheris-family",
+    "browser",
+    "browser-engine",
+    "c",
+    "framebuffer",
+    "headless",
+    "netsurf",
+    "text-browser"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "build.yaml",
+    "monkey-test.yaml",
+    "static-analysis.yaml"
    ]
   },
   "offline-pdf-toolkit": {
@@ -6427,7 +6639,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-14T06:39:30Z",
+   "pushed_at": "2026-11-15T13:16:52Z",
    "readable": true,
    "releases": [
     {
@@ -6539,7 +6751,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:47:40Z",
+   "pushed_at": "2026-11-15T17:08:05Z",
    "readable": true,
    "releases": [
     {
@@ -6549,7 +6761,7 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.27.0"
+     "tag": "v1.40.1"
     },
     {
      "assets": [
@@ -6558,7 +6770,7 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.26.1"
+     "tag": "v1.40.0"
     },
     {
      "assets": [
@@ -6567,7 +6779,7 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.26.0"
+     "tag": "v1.39.0"
     },
     {
      "assets": [
@@ -6576,7 +6788,7 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.25.0"
+     "tag": "v1.38.0"
     },
     {
      "assets": [
@@ -6585,7 +6797,7 @@
       "pico-source.zip",
       "pico-windows-x86_64.exe"
      ],
-     "tag": "v1.24.1"
+     "tag": "v1.37.0"
     }
    ],
    "root_files": [
@@ -6615,7 +6827,6 @@
     "automation",
     "cli",
     "deterministic",
-    "local-first",
     "offline-first",
     "personal-assistant",
     "polyform-noncommercial",
@@ -6726,8 +6937,8 @@
     "test"
    ],
    "topics": [
+    "javascript",
     "journal",
-    "local-first",
     "offline-first",
     "planner",
     "planner-app",
@@ -6735,7 +6946,7 @@
     "productivity",
     "pwa",
     "task-manager",
-    "vanilla-javascript"
+    "vanilla-js"
    ],
    "upstream": null,
    "workflow_files": [
@@ -6992,6 +7203,7 @@
     "boericke",
     "health-informatics",
     "homeopathy",
+    "javascript",
     "kent",
     "materia-medica",
     "medical-education",
@@ -7412,7 +7624,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T12:37:56Z",
+   "pushed_at": "2026-11-16T11:40:51Z",
    "readable": true,
    "releases": [
     {
@@ -7632,6 +7844,80 @@
    "upstream": null,
    "workflow_files": []
   },
+  "sorex": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "A featherweight FLTK browser for machines the modern web forgot. Fork of Dillo, hardened for speed, scriptable from the shell. Tier 2 of the Aetheris browser family.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "COPYING",
+   "licence_spdx": "GPL-3.0",
+   "pages_status": null,
+   "pushed_at": "2026-11-16T01:57:25Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".rtfl",
+    "AGENTS.md",
+    "AUTHORS",
+    "COPYING",
+    "ChangeLog",
+    "DESIGN.md",
+    "Doxyfile",
+    "FAMILY.md",
+    "FUNDING.yml",
+    "INNOVATIONS.md",
+    "INSTALL",
+    "Makefile.am",
+    "NEWS",
+    "PATCHES.md",
+    "PERFORMANCE.md",
+    "PLAN.md",
+    "README.md",
+    "ROADMAP.md",
+    "SOURCES.md",
+    "START_PROMPT.md",
+    "autogen.sh",
+    "configure.ac",
+    "d_size.h",
+    "devdoc",
+    "dillo-install-hyphenation",
+    "dillo.desktop",
+    "dillorc",
+    "dlib",
+    "doc",
+    "docs",
+    "dpi",
+    "dpid",
+    "dpip",
+    "dw",
+    "icons",
+    "install-dpi-local",
+    "lout",
+    "shared",
+    "src",
+    "test",
+    "tools"
+   ],
+   "topics": [
+    "aetheris-family",
+    "browser",
+    "c",
+    "dillo",
+    "fltk",
+    "lightweight-browser",
+    "minimal",
+    "no-javascript"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "build.yml"
+   ]
+  },
   "srs-kit": {
    "archived": false,
    "default_branch": "main",
@@ -7684,7 +7970,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:57:08Z",
+   "pushed_at": "2026-11-16T11:10:03Z",
    "readable": true,
    "releases": [
     {
@@ -7721,7 +8007,13 @@
     "true",
     "vendor"
    ],
-   "topics": [],
+   "topics": [
+    "ai",
+    "api",
+    "javascript",
+    "llm",
+    "privacy-first"
+   ],
    "upstream": null,
    "workflow_files": [
     "ci.yml"
@@ -7738,7 +8030,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T11:55:06Z",
+   "pushed_at": "2026-11-16T04:13:01Z",
    "readable": true,
    "releases": [
     {
@@ -7796,8 +8088,8 @@
     "crm",
     "event-sourcing",
     "federation",
-    "local-first",
     "multi-tenant",
+    "offline-first",
     "specification",
     "systems-design",
     "under-development"
@@ -7875,7 +8167,7 @@
     "crm",
     "data-federation",
     "hash-chain",
-    "local-first",
+    "javascript",
     "offline-first",
     "pwa",
     "single-file",
@@ -8101,6 +8393,7 @@
     "single-file",
     "todomvc",
     "ui",
+    "vanilla-js",
     "zero-dependency"
    ],
    "upstream": null,
@@ -8119,7 +8412,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:47:36Z",
+   "pushed_at": "2026-11-15T13:44:47Z",
    "readable": true,
    "releases": [
     {
@@ -8167,6 +8460,96 @@
    "workflow_files": [
     "build-apps.yml"
    ]
+  },
+  "volumen": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "The web as text, at the speed of reading. Fork of Lynx with deterministic markdown and JSON dumps for automation. Tier 3 of the Aetheris browser family.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "COPYING",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-16T01:57:31Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    "ABOUT-NLS",
+    "AGENTS.md",
+    "AUTHORS",
+    "BUILD",
+    "CHANGES",
+    "COPYHEADER",
+    "COPYHEADER.asc",
+    "COPYING",
+    "COPYING.asc",
+    "DESIGN.md",
+    "FAMILY.md",
+    "INNOVATIONS.md",
+    "INSTALLATION",
+    "LYHelp.hin",
+    "LYMessages_en.h",
+    "PACKAGE",
+    "PATCHES.md",
+    "PERFORMANCE.md",
+    "PLAN.md",
+    "PROBLEMS",
+    "README.md",
+    "ROADMAP.md",
+    "SOURCES.md",
+    "START_PROMPT.md",
+    "VMSPrint.com",
+    "WWW",
+    "aclocal.m4",
+    "bcblibs.bat",
+    "build.bat",
+    "build.com",
+    "clean.com",
+    "config.guess",
+    "config.hin",
+    "config.sub",
+    "configure",
+    "configure.in",
+    "descrip.mms",
+    "docs",
+    "fixed512.com",
+    "install-sh",
+    "lib",
+    "lynx.cfg",
+    "lynx.hlp",
+    "lynx.man",
+    "lynx_help",
+    "make-msc.bat",
+    "makefile.bcb",
+    "makefile.in",
+    "makefile.msc",
+    "makelynx.bat",
+    "makew32.bat",
+    "plink.sh",
+    "po",
+    "samples",
+    "scripts",
+    "shared",
+    "src",
+    "test",
+    "tools",
+    "userdefs.h"
+   ],
+   "topics": [
+    "aetheris-family",
+    "automation",
+    "browser",
+    "cli",
+    "lynx",
+    "markdown",
+    "scraper",
+    "text-browser"
+   ],
+   "upstream": null,
+   "workflow_files": []
   },
   "web-kit": {
    "archived": false,
@@ -8406,7 +8789,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:46:44Z",
+   "pushed_at": "2026-11-15T14:59:05Z",
    "readable": true,
    "releases": [
     {
@@ -8464,7 +8847,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-12T06:48:11Z",
+   "pushed_at": "2026-11-15T15:00:13Z",
    "readable": true,
    "releases": [
     {
@@ -8578,7 +8961,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-15T12:46:05Z",
+   "pushed_at": "2026-11-15T15:00:13Z",
    "readable": true,
    "releases": [
     {
