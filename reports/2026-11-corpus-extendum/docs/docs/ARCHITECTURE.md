@@ -83,6 +83,6 @@ should be assumed built and working.
 | In-book search — over the plain text, with jump and highlight | built |
 | Translator gate — verified registry | built |
 | Format conversion (MOBI, DjVu, DOCX, CBR…) | planned |
-| archive.org source adapter | planned |
+| Internet Archive adapter — dated public-domain scans, PDF as scanned | built |
 | Reading progress and a continue-reading rail | built (local storage only) |
 | Bookmarks — named places, jump back, delete | built (local storage only) |

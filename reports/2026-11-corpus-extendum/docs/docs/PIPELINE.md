@@ -61,6 +61,17 @@ from the `.txt`, and a valid EPUB3 is assembled from it.
 `collection:gutenberg` items are metadata stubs with no text — checked. Real
 scans live in `opensource` and `americana`, which is a different adapter.
 
+### Internet Archive
+
+A different kind of source: a scan, not a text. The PDF is the archive's own and
+is not re-typeset; the OCR text (`_djvu.txt`) is required, because that is what
+makes the book searchable and what the EPUB is built from.
+
+The item's own rights statement is read first and the item refused unless it is
+marked public domain. That is necessary, not sufficient — a search on
+`possible-copyright-status:NOT_IN_COPYRIGHT` returns 2001 books — so the author
+gate runs on top of it. Anonymous works take the publication-only branch.
+
 ## 2 · The rights gate
 
 ```python

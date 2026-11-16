@@ -5,6 +5,30 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · A second kind of source: scans from the Internet Archive
+
+**Added**
+- An adapter for Internet Archive items. The PDF is the archive's own scan and is
+  not re-typeset; the OCR text is required because it is what makes the book
+  searchable and what the EPUB is built from. The cover is the scan's first page.
+- The item's rights statement is read before anything is downloaded, and the item
+  refused unless marked public domain. Necessary, not sufficient: a search on
+  `possible-copyright-status:NOT_IN_COPYRIGHT` returns 2001 books, so the author
+  gate still runs on top.
+- An **anonymous** branch in the rights gate: with no death year to count from,
+  both tests become publication tests — India 60 years from publication, US
+  pre-1930. The record says "anonymous" rather than implying an author.
+- *Goody Two-Shoes* (1888), the first scanned book: 16 image pages, no text
+  layer, so the OCR text is what the search finds.
+
+**Fixed**
+- A patch of mine replaced `def check_translation(...)` instead of inserting
+  before it, orphaning its body under the new function. Caught by running the
+  gate rather than by reading the diff.
+- `src_root` was referenced for scan sources, which have no source tree.
+
+---
+
 ## 2026-11-16 · The two long books, shelved without a PDF
 
 **Added**

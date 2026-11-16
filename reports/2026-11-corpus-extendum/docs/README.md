@@ -7,7 +7,7 @@
 A free library of out-of-copyright books. Read them in the page as a PDF, an EPUB or plain text; download anything; keep it forever. No accounts, no tracking, no paywall — because the copyright has expired, not because someone is being generous.
 
 [![live](https://img.shields.io/badge/live-drsamonline.github.io%2Fcorpus--extendum-8C3A2B?style=flat-square)](https://drsamonline.github.io/corpus-extendum/)
-[![books](https://img.shields.io/badge/books-65-1F4E46?style=flat-square)](data/catalog.json)
+[![books](https://img.shields.io/badge/books-66-1F4E46?style=flat-square)](data/catalog.json)
 [![formats](https://img.shields.io/badge/formats-12%20renderable-1F4E46?style=flat-square)](#what-opens-in-the-page)
 [![licence](https://img.shields.io/badge/licence-CC0--1.0-A8823F?style=flat-square)](LICENSE)
 [![dependencies](https://img.shields.io/badge/runtime%20dependencies-0-1F4E46?style=flat-square)](#running-it)
@@ -21,7 +21,7 @@ A free library of out-of-copyright books. Read them in the page as a PDF, an EPU
 
 ## What this is
 
-65 books, 12 categories, one shelf that grows by itself. Every title is public domain in **both India and the United States** — the stricter of the two tests is the one that gates a book — and each record says on what basis, so you can audit the claim instead of trusting it.
+66 books, 12 categories, one shelf that grows by itself. Every title is public domain in **both India and the United States** — the stricter of the two tests is the one that gates a book — and each record says on what basis, so you can audit the claim instead of trusting it.
 
 - **Read in the page.** PDF, EPUB and plain text all open inside the library. No plugin, no "download to view", no new tab.
 - **One book, one card.** A title that exists as PDF, EPUB and text is a single entry with format chips, not three near-duplicate entries. The dedupe gate refuses a second copy before it is ever fetched.

@@ -28,6 +28,18 @@ The stricter test wins. Both are computed at ingest and written into the record:
 A reader can audit the claim instead of trusting it, and a future audit can
 recompute it from the record.
 
+## Anonymous and corporate works
+
+No death year exists to count from, so both tests become publication tests:
+
+| Jurisdiction | Test |
+|---|---|
+| India | 60 years from publication |
+| United States | published before 1930 |
+
+The record says so in `rights.basis` — "anonymous; first published 1888" — rather
+than implying an author who does not exist.
+
 ## Translations
 
 For a translation the term runs on the **translator's** death, not the author's.
