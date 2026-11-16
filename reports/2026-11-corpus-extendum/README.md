@@ -83,7 +83,7 @@ same reason.
 
 ## Evidence in this folder
 
-- `docs/` — the full documentation set, mirrored at commit `f2347ca`
+- `docs/` — the full documentation set, mirrored at commit `7420e0f`
 - `SYNC.json` — source commit, sync timestamp and a hash per file, so the mirror
   can be proven current rather than assumed current
 
