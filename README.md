@@ -29,11 +29,13 @@ what moved.
     tools/presentation_audit.py        landing page, app, badges, shots, support block, per repo
     tools/verify.py                    the repo-presentation skill's gate, copied verbatim
 
-Four report sets live here so far: `reports/2026-11-fleet-audit/` (the whole estate read end to
+Five report sets live here so far: `reports/2026-11-fleet-audit/` (the whole estate read end to
 end), `reports/2026-11-forge-release/` (the plan to ship the control plane as one release),
 `reports/2026-11-presentation-audit/` (all 100 repos against the presentation skill, with the delta
-each one still needs) and `reports/2026-11-manifest-design/` (seven rounds of design and review for
-per-file provenance and drift-aware healing). A report is a measurement or a plan; the log entry is
+each one still needs), `reports/2026-11-manifest-design/` (seven rounds of design and review for
+per-file provenance and drift-aware healing) and
+`reports/2026-11-corpus-extendum/` (a public-domain library built and shipped in one
+session, with its documentation mirrored beside it as evidence). A report is a measurement or a plan; the log entry is
 the decision. Neither
 is a substitute for the other.
 

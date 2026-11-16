@@ -1,0 +1,107 @@
+# Changelog
+
+Dated, factual, including the things that went wrong. The library is a static
+site and a set of vaults; there are no releases, so this records the build.
+
+---
+
+## 2026-11-16 · Documentation, rotation, and the illustrated edition
+
+**Added**
+- `docs/` — architecture, pipeline, data model, operations, decisions, rights.
+- `scripts/rotate_vault.py` — seals a full vault and opens the next, with a
+  token preflight that creates and deletes a throwaway repo before touching
+  anything real. Exits 3 and prints the exact `gh` command when it cannot.
+- Rotation step in `scan.yml`, which opens an issue when rotation is blocked.
+- Sixteen books: Wells, Shelley's *The Last Man*, Haggard, *The Hound of the
+  Baskervilles*, *Father Brown*, *The Moonstone*, *The Woman in White*,
+  *Through the Looking-Glass*, *Wind in the Willows*, *The Secret Garden*,
+  *Five Children and It*, *Leaves of Grass*, Keats, *Walden*, Emerson's
+  *Essays*, *Leviathan*, *On Liberty*.
+
+**Fixed**
+- Illustrated editions could not finish inside the ingest budget. WeasyPrint
+  cannot get through 153 MB of path data in 57 plates; lowering the resolution
+  did not help because the cost is parsing, not drawing. Plates now render in a
+  four-worker pool using PyMuPDF: 2 m 25 s for *Through the Looking-Glass*.
+- README claimed in-book search and format conversion that were never built.
+  Corrected, with a status column instead.
+
+**Found**
+- Standard Ebooks uses initials in its slugs (`e-nesbit_`, `g-k-chesterton_`,
+  `john-keats_poetry`). Three books 404'd before this was noticed.
+- The slug check itself was broken: `gh api --jq .name` prints `null` on a 404,
+  and `null` passes a shell truthiness test, so the check reported repos that do
+  not exist. Verification now goes through codeload.
+
+---
+
+## 2026-11-15 · The reader, the cache, and the first forty-two
+
+**Added**
+- Mobile reader: at ≤820 px the PDF goes to the browser's own viewer in a
+  full-width frame; above that, pdf.js draws pages to a canvas. If the canvas
+  fails, the native viewer takes over rather than leaving a blank pane.
+- `?t=<timestamp>` and `cache: 'no-store'` on every data fetch; versioned asset
+  URLs; `site build <version>` printed in the footer.
+- A visible `catalogue built <date>` line in the shard bar, so staleness is
+  visible instead of silent.
+- Twenty-six books across twelve categories, including the first illustrated
+  edition (*Alice*), which needed its 42 vector plates rasterised.
+
+**Fixed**
+- **The shelf showed ten books after it held twenty-six.** The data was correct
+  on the server the whole time; the browser was answering from its HTTP cache
+  because the JSON had no version and no cache directive. The CSS and JS were
+  versioned and the data was not.
+- `disableAutoFetch: true` made pdf.js use range requests, which hang against any
+  server that does not answer them. Removed. Added a 30 s timeout so a stall
+  surfaces as an error.
+- The reader toolbar was one unwrapping row, which pushed the page wider than a
+  phone viewport and clipped the book.
+- The PDF was fitted to width only, so the bottom of every page was cut off on a
+  phone.
+- Plain text was hard-wrapped at 72 columns, which ran off a 360 px screen.
+- Vault size counted `.git`, reporting 138 MB for 87 MB of books.
+
+**Found**
+- `drsamonline.github.io` is not on this environment's egress allowlist, so the
+  live site can only be read through a fetch tool, not `curl`.
+- The GitHub CLI token can push but cannot administer: Pages, topics and workflow
+  dispatch all return 403 through `gh`, and all work through the GitHub MCP.
+
+---
+
+## 2026-11-15 · Publication
+
+**Added**
+- `corpus-extendum` (Pages, workflow build type) and
+  `corpus-extendum-vault-01`, both public, with topics, description and homepage.
+- Ten seed books, one per category, each public domain in India *and* the US.
+- `ingest.py`, `build_catalog.py`, `make_shots.py`, `deploy.yml`, `scan.yml`.
+- Vendored pdf.js, epub.js and JSZip — reused from the owner's own
+  `app-lantern` repo rather than fetched from a CDN.
+
+**Found**
+- An installed GitHub App **cannot create repositories** — 403 on both GraphQL
+  and REST. The GitHub MCP can. That asymmetry shaped everything after.
+- gutenberg.org returns **403 to every request from a datacenter IP**, including
+  plain file paths. The pipeline reads Standard Ebooks and the GITenberg mirror
+  instead, both served by GitHub.
+- Most Gutenberg titles have **no PDF at all**, so the PDFs had to be typeset.
+
+---
+
+## Known gaps
+
+Listed here so they are not mistaken for finished work:
+
+| Gap | Consequence |
+|---|---|
+| Translator death-year check | no translated work can be shelved — Verne, Plato, Voltaire, Chekhov |
+| Dedupe tests 3–4 | a different edition of the same work can arrive as a second record |
+| In-book search | the reader has no text layer to search |
+| Format conversion | MOBI, DjVu, DOCX, CBR are not handled |
+| archive.org adapter | scans are unreachable |
+| Reading progress, bookmarks | not built |
+| Blueprint document | the v2 HTML blueprint predates the built system (600 books, jsDelivr, native mobile viewer); `docs/` supersedes it |
