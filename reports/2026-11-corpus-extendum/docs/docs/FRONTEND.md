@@ -118,6 +118,22 @@ drives `openBook()` / `setFormat()` and records results into `document.title`,
 then `--dump-dom` and read the title. `scripts/shoot_reader.py` does this for
 screenshots. Verify one format per run, and expect PDF to be unverifiable here.
 
+## Reading progress
+
+Position is stored per book in `localStorage` under
+`corpus-extendum:progress`, as `{fmt, page, pct, at}`. The **format is stored
+with the place**, because the reader always opens a book as PDF — without it, a
+book last read as text would restore into the wrong view.
+
+| Format | Restores to | Caveat |
+|---|---|---|
+| PDF | the page, via `pendingPage` if the document is still loading | — |
+| TXT · JSON | the scroll fraction, after waiting for the text to render | — |
+| EPUB | **the start of the book** | epub.js can only jump by percentage once its locations are generated, which this reader does not do. Generating them costs a full pass over the book, so it is deferred rather than faked. |
+
+The shelf renders a *Continue reading* rail from the same store, newest first,
+capped at eight, with a clear button. Nothing leaves the device.
+
 ## Design tokens
 
 Every colour is a CSS variable in `:root`, with a dark set under

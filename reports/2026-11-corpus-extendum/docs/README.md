@@ -25,6 +25,7 @@ A free library of out-of-copyright books. Read them in the page as a PDF, an EPU
 
 - **Read in the page.** PDF, EPUB and plain text all open inside the library. No plugin, no "download to view", no new tab.
 - **One book, one card.** A title that exists as PDF, EPUB and text is a single entry with format chips, not three near-duplicate entries. The dedupe gate refuses a second copy before it is ever fetched.
+- **It remembers where you were.** Position is saved per book, in your browser only, and the shelf opens with a *Continue reading* rail. Clearing it is one button; nothing is transmitted anywhere.
 - **Nothing to sign up for.** No accounts, no cookies, no analytics, no email capture. A library that cannot sell you anything does not need to know who you are.
 
 ![The reader](docs/assets/reader.png)

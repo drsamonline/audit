@@ -84,4 +84,5 @@ should be assumed built and working.
 | Translator gate — verified registry | built |
 | Format conversion (MOBI, DjVu, DOCX, CBR…) | planned |
 | archive.org source adapter | planned |
-| Reading progress, bookmarks | planned |
+| Reading progress and a continue-reading rail | built (local storage only) |
+| Bookmarks | planned |

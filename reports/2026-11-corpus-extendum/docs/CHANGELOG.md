@@ -5,6 +5,27 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · It remembers where you were
+
+**Added**
+- Reading position saved per book in local storage, restored on reopen, with the
+  **format** stored alongside the place — the reader always opens a book as PDF,
+  so without that a book last read as text restored into the wrong view.
+- A *Continue reading* rail on the shelf: newest first, up to eight, each with a
+  progress bar and a one-button clear.
+- Saves on close, on page turn, on scroll (debounced) and on section change.
+
+**Known limitation, stated rather than hidden**
+- An EPUB reopens at the start of the book. epub.js can only jump by percentage
+  once its locations are generated, and generating them costs a full pass over
+  the book. Deferred rather than faked.
+
+**Removed**
+- A `Bookmark` button I had added to the markup before wiring it. A dead control
+  is worse than an absent one, and this project has already shipped one of those.
+
+---
+
 ## 2026-11-16 · Two skills applied: legal attribution, and a code review
 
 Ran `repo-legal-docs` and `code-review-and-release-gate` against the repository
