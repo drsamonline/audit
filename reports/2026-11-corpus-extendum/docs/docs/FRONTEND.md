@@ -93,7 +93,8 @@ then filtered by what can actually render on this device:
 | A format that failed once is retired for that book | a chip that leads to a blank pane is worse than no chip |
 | Selecting a retired format falls back to the next one | `epub → txt → pdf → json` |
 | `json` is always available | it is the book's own record, which always exists |
-| A browser with no PDF viewer keeps the PDF chip | the canvas renderer works regardless; the *native* viewer is only used when `navigator.pdfViewerEnabled` says it exists |
+| **A phone is not offered the PDF at all** | the native viewer is what iOS will not render from another origin, and a canvas cannot be pinched. EPUB and text are better there. A book that exists only as a PDF still gets it, as the last resort |
+| A browser with no PDF viewer keeps the PDF on desktop | the canvas renderer works regardless; the *native* viewer is only used when `navigator.pdfViewerEnabled` says it exists |
 
 | Format | Prev/Next does | Position readout |
 |---|---|---|
@@ -166,6 +167,13 @@ timestamp, stored per book under `corpus-extendum:bookmarks`:
 - Capped at 30 per book.
 - Jumping reuses the same restore path as progress, so a bookmark taken in the
   text view opens the text view even if you are in the PDF.
+
+## The build stamp
+
+The footer prints `site build <version>`, read from this script's own `?v=`
+query. It used to be a hand-written string, which sat at `20261116d` for six
+releases while the assets moved on — useless for the one job it had. Deriving it
+means it cannot drift.
 
 ## Design tokens
 

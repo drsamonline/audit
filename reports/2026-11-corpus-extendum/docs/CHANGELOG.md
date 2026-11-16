@@ -5,6 +5,29 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · PDF is not offered on a phone, and the build stamp is honest
+
+**Changed**
+- On screens ≤820 px the PDF chip is **gone**. The native viewer is what iOS
+  will not render from another origin — the blank pane — and a canvas cannot be
+  pinched or scrolled past one page. EPUB and text are better there. A book that
+  exists only as a PDF still gets it, as the last resort.
+- The footer's `site build` string was hand-written and had said `20261116d` for
+  six releases while the assets moved to `l`. It now reads the version off this
+  script's own `?v=`, so it cannot drift. That matters because it is the only
+  way a reader can tell whether they are on a stale build.
+
+**Verified**
+| Width | Book with 3 formats | Book with 2 |
+|---|---|---|
+| 390 px | `EPUB, TXT, JSON` | `EPUB, TXT, JSON` |
+| 1200 px | `PDF, EPUB, TXT, JSON` | `EPUB, TXT, JSON` |
+
+- footer stamp reads `site build 20261116m`
+- retiring EPUB leaves `TXT, JSON`; retiring text lands on the record
+
+---
+
 ## 2026-11-16 · Only the formats that can actually open
 
 **Changed**
