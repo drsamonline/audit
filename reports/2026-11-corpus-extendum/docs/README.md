@@ -7,7 +7,7 @@
 A free library of out-of-copyright books. Read them in the page as a PDF, an EPUB or plain text; download anything; keep it forever. No accounts, no tracking, no paywall — because the copyright has expired, not because someone is being generous.
 
 [![live](https://img.shields.io/badge/live-drsamonline.github.io%2Fcorpus--extendum-8C3A2B?style=flat-square)](https://drsamonline.github.io/corpus-extendum/)
-[![books](https://img.shields.io/badge/books-43-1F4E46?style=flat-square)](data/catalog.json)
+[![books](https://img.shields.io/badge/books-46-1F4E46?style=flat-square)](data/catalog.json)
 [![formats](https://img.shields.io/badge/formats-12%20renderable-1F4E46?style=flat-square)](#what-opens-in-the-page)
 [![licence](https://img.shields.io/badge/licence-CC0--1.0-A8823F?style=flat-square)](LICENSE)
 [![dependencies](https://img.shields.io/badge/runtime%20dependencies-0-1F4E46?style=flat-square)](#running-it)
@@ -21,7 +21,7 @@ A free library of out-of-copyright books. Read them in the page as a PDF, an EPU
 
 ## What this is
 
-43 books, 12 categories, one shelf that grows by itself. Every title is public domain in **both India and the United States** — the stricter of the two tests is the one that gates a book — and each record says on what basis, so you can audit the claim instead of trusting it.
+46 books, 12 categories, one shelf that grows by itself. Every title is public domain in **both India and the United States** — the stricter of the two tests is the one that gates a book — and each record says on what basis, so you can audit the claim instead of trusting it.
 
 - **Read in the page.** PDF, EPUB and plain text all open inside the library. No plugin, no "download to view", no new tab.
 - **One book, one card.** A title that exists as PDF, EPUB and text is a single entry with format chips, not three near-duplicate entries. The dedupe gate refuses a second copy before it is ever fetched.
@@ -35,49 +35,52 @@ A free library of out-of-copyright books. Read them in the page as a PDF, an EPU
 
 | # | Book | Author | Year | Category | Source |
 |---|---|---|---|---|---|
-| 1 | Treasure Island | Robert Louis Stevenson | 1883 | Adventure | Standard Ebooks |
-| 2 | The Adventures of Huckleberry Finn | Mark Twain | 1884 | Adventure | Standard Ebooks |
-| 3 | King Solomon's Mines | H. Rider Haggard | 1885 | Adventure | Standard Ebooks |
-| 4 | Alice's Adventures in Wonderland | Lewis Carroll | 1865 | Children's & Fable | Standard Ebooks |
-| 5 | Through the Looking-Glass | Lewis Carroll | 1871 | Children's & Fable | Standard Ebooks |
-| 6 | Five Children and It | E. Nesbit | 1902 | Children's & Fable | Standard Ebooks |
-| 7 | The Wind in the Willows | Kenneth Grahame | 1908 | Children's & Fable | Standard Ebooks |
-| 8 | The Secret Garden | Frances Hodgson Burnett | 1911 | Children's & Fable | Standard Ebooks |
-| 9 | Essays: First Series | Ralph Waldo Emerson | 1841 | Essays | Standard Ebooks |
-| 10 | Walden | Henry David Thoreau | 1854 | Essays | Standard Ebooks |
-| 11 | The Souls of Black Folk | W. E. B. Du Bois | 1903 | Essays | Standard Ebooks |
-| 12 | Pride and Prejudice | Jane Austen | 1813 | Fiction | Standard Ebooks |
-| 13 | Jane Eyre | Charlotte Bronte | 1847 | Fiction | Standard Ebooks |
-| 14 | Wuthering Heights | Emily Bronte | 1847 | Fiction | Standard Ebooks |
-| 15 | The Scarlet Letter | Nathaniel Hawthorne | 1850 | Fiction | Standard Ebooks |
-| 16 | Moby-Dick; or, The Whale | Herman Melville | 1851 | Fiction | Standard Ebooks |
-| 17 | A Tale of Two Cities | Charles Dickens | 1859 | Fiction | Standard Ebooks |
-| 18 | Great Expectations | Charles Dickens | 1861 | Fiction | Standard Ebooks |
-| 19 | The Picture of Dorian Gray | Oscar Wilde | 1890 | Fiction | Standard Ebooks |
-| 20 | The Awakening | Kate Chopin | 1899 | Fiction | Standard Ebooks |
-| 21 | The Age of Innocence | Edith Wharton | 1920 | Fiction | Standard Ebooks |
-| 22 | Frankenstein; or, The Modern Prometheus | Mary Wollstonecraft Shelley | 1818 | Gothic & Horror | Standard Ebooks |
-| 23 | The Strange Case of Dr. Jekyll and Mr. Hyde | Robert Louis Stevenson | 1886 | Gothic & Horror | Standard Ebooks |
-| 24 | Dracula | Bram Stoker | 1897 | Gothic & Horror | Standard Ebooks |
-| 25 | The Woman in White | Wilkie Collins | 1860 | Mystery & Detective | Standard Ebooks |
-| 26 | The Moonstone | Wilkie Collins | 1868 | Mystery & Detective | Standard Ebooks |
-| 27 | The Adventures of Sherlock Holmes | Arthur Conan Doyle | 1892 | Mystery & Detective | Standard Ebooks |
-| 28 | The Hound of the Baskervilles | Arthur Conan Doyle | 1902 | Mystery & Detective | Standard Ebooks |
-| 29 | The Innocence of Father Brown | G. K. Chesterton | 1911 | Mystery & Detective | Standard Ebooks |
-| 30 | Meditations | Marcus Aurelius | 180 | Philosophy | Standard Ebooks |
-| 31 | Leviathan | Thomas Hobbes | 1651 | Philosophy | Standard Ebooks |
-| 32 | On Liberty | John Stuart Mill | 1859 | Philosophy | Standard Ebooks |
-| 33 | Poems | John Keats | 1820 | Poetry | Standard Ebooks |
-| 34 | Leaves of Grass | Walt Whitman | 1855 | Poetry | Standard Ebooks |
-| 35 | Gitanjali | Rabindranath Tagore | 1912 | Poetry | Standard Ebooks |
-| 36 | The Prophet | Kahlil Gibran | 1923 | Poetry | Standard Ebooks |
-| 37 | The Song Celestial; or, Bhagavad-Gita | trans. Sir Edwin Arnold | 1885 | Sacred Texts | Gutenberg mirror |
-| 38 | Gulliver's Travels | Jonathan Swift | 1726 | Satire | Standard Ebooks |
-| 39 | The Last Man | Mary Wollstonecraft Shelley | 1826 | Science Fiction | Standard Ebooks |
-| 40 | The Time Machine | H. G. Wells | 1895 | Science Fiction | Standard Ebooks |
-| 41 | The Invisible Man | H. G. Wells | 1897 | Science Fiction | Standard Ebooks |
-| 42 | The War of the Worlds | H. G. Wells | 1898 | Science Fiction | Standard Ebooks |
-| 43 | Dubliners | James Joyce | 1914 | Short Stories | Standard Ebooks |
+| 1 | Around the World in Eighty Days | Jules Verne | 1872 | Adventure | Standard Ebooks |
+| 2 | Treasure Island | Robert Louis Stevenson | 1883 | Adventure | Standard Ebooks |
+| 3 | The Adventures of Huckleberry Finn | Mark Twain | 1884 | Adventure | Standard Ebooks |
+| 4 | King Solomon's Mines | H. Rider Haggard | 1885 | Adventure | Standard Ebooks |
+| 5 | Alice's Adventures in Wonderland | Lewis Carroll | 1865 | Children's & Fable | Standard Ebooks |
+| 6 | Through the Looking-Glass | Lewis Carroll | 1871 | Children's & Fable | Standard Ebooks |
+| 7 | Five Children and It | E. Nesbit | 1902 | Children's & Fable | Standard Ebooks |
+| 8 | The Wind in the Willows | Kenneth Grahame | 1908 | Children's & Fable | Standard Ebooks |
+| 9 | The Secret Garden | Frances Hodgson Burnett | 1911 | Children's & Fable | Standard Ebooks |
+| 10 | Essays: First Series | Ralph Waldo Emerson | 1841 | Essays | Standard Ebooks |
+| 11 | Walden | Henry David Thoreau | 1854 | Essays | Standard Ebooks |
+| 12 | The Souls of Black Folk | W. E. B. Du Bois | 1903 | Essays | Standard Ebooks |
+| 13 | Pride and Prejudice | Jane Austen | 1813 | Fiction | Standard Ebooks |
+| 14 | Jane Eyre | Charlotte Bronte | 1847 | Fiction | Standard Ebooks |
+| 15 | Wuthering Heights | Emily Bronte | 1847 | Fiction | Standard Ebooks |
+| 16 | The Scarlet Letter | Nathaniel Hawthorne | 1850 | Fiction | Standard Ebooks |
+| 17 | Moby-Dick; or, The Whale | Herman Melville | 1851 | Fiction | Standard Ebooks |
+| 18 | A Tale of Two Cities | Charles Dickens | 1859 | Fiction | Standard Ebooks |
+| 19 | Great Expectations | Charles Dickens | 1861 | Fiction | Standard Ebooks |
+| 20 | The Picture of Dorian Gray | Oscar Wilde | 1890 | Fiction | Standard Ebooks |
+| 21 | The Awakening | Kate Chopin | 1899 | Fiction | Standard Ebooks |
+| 22 | The Age of Innocence | Edith Wharton | 1920 | Fiction | Standard Ebooks |
+| 23 | Frankenstein; or, The Modern Prometheus | Mary Wollstonecraft Shelley | 1818 | Gothic & Horror | Standard Ebooks |
+| 24 | The Strange Case of Dr. Jekyll and Mr. Hyde | Robert Louis Stevenson | 1886 | Gothic & Horror | Standard Ebooks |
+| 25 | Dracula | Bram Stoker | 1897 | Gothic & Horror | Standard Ebooks |
+| 26 | The Woman in White | Wilkie Collins | 1860 | Mystery & Detective | Standard Ebooks |
+| 27 | The Moonstone | Wilkie Collins | 1868 | Mystery & Detective | Standard Ebooks |
+| 28 | The Adventures of Sherlock Holmes | Arthur Conan Doyle | 1892 | Mystery & Detective | Standard Ebooks |
+| 29 | The Hound of the Baskervilles | Arthur Conan Doyle | 1902 | Mystery & Detective | Standard Ebooks |
+| 30 | The Innocence of Father Brown | G. K. Chesterton | 1911 | Mystery & Detective | Standard Ebooks |
+| 31 | The Discourses of Epictetus | Epictetus | 108 | Philosophy | Standard Ebooks |
+| 32 | Meditations | Marcus Aurelius | 180 | Philosophy | Standard Ebooks |
+| 33 | Leviathan | Thomas Hobbes | 1651 | Philosophy | Standard Ebooks |
+| 34 | On Liberty | John Stuart Mill | 1859 | Philosophy | Standard Ebooks |
+| 35 | Poems | John Keats | 1820 | Poetry | Standard Ebooks |
+| 36 | Leaves of Grass | Walt Whitman | 1855 | Poetry | Standard Ebooks |
+| 37 | Gitanjali | Rabindranath Tagore | 1912 | Poetry | Standard Ebooks |
+| 38 | The Prophet | Kahlil Gibran | 1923 | Poetry | Standard Ebooks |
+| 39 | Tao Te Ching | Laozi | -400 | Sacred Texts | Standard Ebooks |
+| 40 | The Song Celestial; or, Bhagavad-Gita | trans. Sir Edwin Arnold | 1885 | Sacred Texts | Gutenberg mirror |
+| 41 | Gulliver's Travels | Jonathan Swift | 1726 | Satire | Standard Ebooks |
+| 42 | The Last Man | Mary Wollstonecraft Shelley | 1826 | Science Fiction | Standard Ebooks |
+| 43 | The Time Machine | H. G. Wells | 1895 | Science Fiction | Standard Ebooks |
+| 44 | The Invisible Man | H. G. Wells | 1897 | Science Fiction | Standard Ebooks |
+| 45 | The War of the Worlds | H. G. Wells | 1898 | Science Fiction | Standard Ebooks |
+| 46 | Dubliners | James Joyce | 1914 | Short Stories | Standard Ebooks |
 
 Every record — title, author, translator, year, subjects, source URL, rights basis, file hashes — is in [`data/catalog.json`](data/catalog.json), and the same list is in [`index.txt`](index.txt) for anyone who would rather read it without a browser.
 

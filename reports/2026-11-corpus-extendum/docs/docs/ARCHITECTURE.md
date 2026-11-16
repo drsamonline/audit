@@ -81,7 +81,7 @@ should be assumed built and working.
 | Vault rotation with token preflight | built |
 | Weekly scan and rebuild | built |
 | In-book search | planned |
-| Translator death-year check | planned |
+| Translator gate — verified registry | built |
 | Format conversion (MOBI, DjVu, DOCX, CBR…) | planned |
 | archive.org source adapter | planned |
 | Reading progress, bookmarks | planned |

@@ -6,7 +6,7 @@ storage repositories.
 
 **The shelf:** https://drsamonline.github.io/corpus-extendum/
 **The catalogue without a browser:** [`index.txt`](../index.txt)
-**What is on the shelf right now:** 43 books, 12 categories, 146.8 MB
+**What is on the shelf right now:** 46 books, 12 categories, 152.3 MB
 
 ---
 
@@ -42,7 +42,7 @@ The current gaps, stated plainly:
 
 | Gap | Consequence |
 |---|---|
-| No translator death-year check | no translated work can be shelved — Verne, Plato, Voltaire and Chekhov are absent for this reason |
+| Translator registry is short | only translators with a read source are accepted, so Chekhov and most Verne wait on an entry |
 | Dedupe tests 3–4 unbuilt | a different edition of the same work can arrive as a second record |
 | No in-book search | the reader has no text layer to search |
 | No format conversion | MOBI, DjVu, DOCX, CBR are not handled |

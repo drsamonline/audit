@@ -56,21 +56,23 @@ duplicate: a missing book is visible, a library that lies about its size is not.
 
 ---
 
-## D4 · Translations are refused until the translator can be checked
+## D4 · Translations are gated on a verified translator, not refused outright
 
-**Decision.** No translated work is ingested. Verne, Plato, Voltaire and
-Chekhov are absent despite being available and obviously public domain in
-origin.
+**Decision.** A translated work may be shelved only when the edition names its
+translator *and* that translator appears in `data/translators.json` with
+`verified: true` and a source that was read.
 
-**Why.** For a translation the copyright term runs on the **translator's**
-death. The gate computes the author's. Shelving Jules Verne because Verne died
-in 1905 would be exactly the quiet error this library claims not to make.
+**Why.** For a translation the copyright term runs on the translator's death.
+The author gate cannot see that person, so shelving Verne because Verne died in
+1905 would be exactly the quiet error this library claims not to make. The first
+version of this library refused translations entirely, which was correct but
+useless. A curated registry with evidence is the smallest thing that is both
+safe and useful.
 
-**Cost.** A large part of world literature is unreachable until the pipeline can
-read a translator's dates from the edition. This is the single most valuable
-piece of work left.
-
----
+**Cost.** Adding a translated book now needs a human to read a source and write
+an entry. That is the point — the entry records where the death year came from.
+Editions that credit a publisher instead of a person (the Modern Library
+*Candide*) can never pass, and should not.
 
 ## D5 · Standard Ebooks first, Gutenberg mirror second
 

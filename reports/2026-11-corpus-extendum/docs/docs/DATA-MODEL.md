@@ -89,7 +89,7 @@ One per book, in the vault. Everything else is derived from these.
 
 An array of every `meta.json` from every vault, minus anything quarantined,
 sorted by category then year then title. This is the only file the page reads
-for book data. At 43 books it is 64 KB.
+for book data. At 46 books it is 69 KB.
 
 ## `data/shards.json` — the vault registry
 
@@ -125,6 +125,14 @@ sorted by count descending.
 from title, author, category, subjects and blurb. Prefix matching happens in the
 browser. At 43 books this is 11 KB; it exists so search does not have to walk
 the whole catalogue on every keystroke.
+
+## `data/translators.json` — the translator registry
+
+Read by the rights gate before a translated work is accepted. Keys are
+normalised names; each entry carries a death year, a `verified` flag and the
+source the year came from. An entry with `verified: false` is refused, so the
+file is a whitelist with evidence rather than a guess. See
+[RIGHTS.md](RIGHTS.md#translations).
 
 ## `data/dedupe.json` — the register
 

@@ -15,6 +15,7 @@ its documentation mirrored beside this file as evidence.
 | Reader — PDF (pdf.js, native on phones), EPUB, plain text, JSON record | working |
 | Rights gate — India life+60 **and** US pre-1930, both must pass | working |
 | Dedupe — source reference, normalised-text hash | working |
+| Translator gate — verified registry, refuses unverified translators | working |
 | Dedupe — work key, trigram similarity | designed, not built |
 | Ingest pipeline — fetch, verify, typeset, hash, shelve | working |
 | Vault rotation with token preflight | working |
@@ -24,9 +25,9 @@ its documentation mirrored beside this file as evidence.
 
 | | |
 |---|---|
-| Books shelved | **43** |
+| Books shelved | **46** |
 | Categories | **12** |
-| Vault | `corpus-extendum-vault-01`, **146.8 MB** of a 2.5 GB cap |
+| Vault | `corpus-extendum-vault-01`, **152.3 MB** of a 2.5 GB cap |
 | Largest single file | 12.6 MB (an illustrated edition, 57 plates) |
 | Library repo | under 5 MB including four vendored renderers and two screenshots |
 | Cost | ₹0 per month — GitHub Pages plus jsDelivr |
@@ -83,7 +84,7 @@ same reason.
 
 ## Evidence in this folder
 
-- `docs/` — the full documentation set, mirrored at commit `7420e0f`
+- `docs/` — the full documentation set, mirrored at commit `0160b8c`
 - `SYNC.json` — source commit, sync timestamp and a hash per file, so the mirror
   can be proven current rather than assumed current
 

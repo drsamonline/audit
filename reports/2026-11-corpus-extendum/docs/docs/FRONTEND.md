@@ -77,6 +77,47 @@ acceptable outcome.
 **`withTimeout`** wraps the pdf.js document load in a 30-second race. Without it,
 a stalled fetch looked exactly like an empty page, which cost a debugging round.
 
+## Reader controls
+
+One function, `turn(dir)`, dispatched by format — because a "page" only means
+something for a PDF.
+
+| Format | Prev/Next does | Position readout |
+|---|---|---|
+| PDF (desktop) | previous / next page | `Page 4 / 121` |
+| PDF (≤820 px) | hidden — the native viewer scrolls and pinches | `Scroll` |
+| EPUB | previous / next section | `42%` |
+| TXT · JSON | one screenful | `38%` |
+
+| Key | Action |
+|---|---|
+| `→` `PageDown` `Space` | turn forward |
+| `←` `PageUp` | turn back |
+| `↑` `↓` | scroll a little |
+| `Home` `End` | top / bottom |
+| `1` `2` `3` `4` | PDF · EPUB · text · record |
+| `Esc` | close the reader |
+| `/` | focus search (reader closed) |
+
+Two things here were bugs, not preferences. The controls were hidden for every
+format except PDF, which left EPUB and text with no way to move at all. And
+EPUB used `flow: 'scrolled'`, which renders one section with no route to the
+next — `scrolled-continuous` is what makes the book scroll.
+
+## Verifying the reader
+
+There is no automated test for this that is worth trusting, and that is a
+finding rather than a gap. Chromium's `--virtual-time-budget` does not advance
+Web Workers, so pdf.js never finishes a document in headless; and a hung pdf.js
+worker starves epub.js of the task queue, so an EPUB check fails for a reason
+that has nothing to do with the EPUB. A standalone epub.js page renders in the
+same browser in under a second.
+
+What does work: serve the site over `http://127.0.0.1`, inject a probe that
+drives `openBook()` / `setFormat()` and records results into `document.title`,
+then `--dump-dom` and read the title. `scripts/shoot_reader.py` does this for
+screenshots. Verify one format per run, and expect PDF to be unverifiable here.
+
 ## Design tokens
 
 Every colour is a CSS variable in `:root`, with a dark set under

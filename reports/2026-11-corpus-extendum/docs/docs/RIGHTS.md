@@ -30,13 +30,32 @@ recompute it from the record.
 
 ## Translations
 
-For a translation the term runs on the **translator's** death. The pipeline does
-not read translator dates, so **translated works are not ingested at all**. This
-is why Verne, Plato, Voltaire and Chekhov are missing from a shelf that could
-easily hold them — see [DECISIONS.md D4](DECISIONS.md#d4--translations-are-refused-until-the-translator-can-be-checked).
+For a translation the term runs on the **translator's** death, not the author's.
+So a translated work is gated on a person the author check never sees.
 
-The one exception is `Meditations`, where George Long (d. 1879) was entered by
-hand and the record carries a `translator` block.
+The gate reads the translator from the edition's own record — the OPF contributor
+carrying the MARC relator `trl` — and then requires an entry in
+`data/translators.json` with `verified: true` and a source that was actually read:
+
+| Check | Rule |
+|---|---|
+| translator named by the edition | otherwise the author gate applies alone |
+| present in `data/translators.json` | unknown translators are refused |
+| `verified: true` with a source | an unverified entry is refused |
+| translator's death + 60 ≤ current year | India |
+| translation first published before 1930 | United States |
+
+The translation's own publication year comes from the book entry, not from the
+edition date — a Standard Ebooks edition is modern even when the translation is
+Victorian.
+
+**Refused today:** Constance Garnett (death believed 1946 but unverified), F. A.
+Malleson, F. H. Peters, and the anonymous Modern Library translator of *Candide*
+— the edition credits a publisher, not a person, which can never pass. Chekhov
+and Verne's other novels wait on those.
+
+**Shelved today:** Long's Epictetus and Marcus Aurelius, Legge's Tao Te Ching,
+Towle's Verne, and Arnold's Gita.
 
 ## Sources, and what each one's licence actually says
 
