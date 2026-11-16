@@ -5,6 +5,28 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · Three viewing bugs, all found by opening the files
+
+**Fixed**
+- **The generated EPUB was not an EPUB.** `container.xml` pointed straight at
+  `OEBPS/content.xhtml` with media-type `application/xhtml+xml`; the rootfile
+  must be an OPF package document. epub.js refused the file, so the reader said
+  "could not be opened" for every book from the new archive source. It now
+  writes a real `content.opf` with manifest and spine — verified by opening both
+  it and a Standard Ebooks edition in epub.js (spine 1 and 35).
+- **The download link for text pointed at the CDN**, which refuses text files
+  from a repository over 50 MB. It uses the same raw route as the reader now.
+- **Every scan shared the source ref `gutenberg:0`.** Archive books have no ebook
+  number, so the ref fell back to the id — meaning the second scan would have
+  been refused as a duplicate of the first. Refs are now `archive:<identifier>`.
+
+**Added**
+- `check_epub()` runs on every EPUB before it is shelved, whatever built it, and
+  refuses the book if the file cannot be opened. It caught the broken file
+  already on the shelf.
+
+---
+
 ## 2026-11-16 · A second kind of source: scans from the Internet Archive
 
 **Added**

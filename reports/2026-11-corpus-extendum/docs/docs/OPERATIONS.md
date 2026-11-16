@@ -46,6 +46,14 @@ git add -A && git commit -m "shelf: add Jane Eyre" && git push
 The library must be rebuilt **after** the vault is pushed, or the catalogue
 points at files that are not there yet. Pages redeploys on the library push.
 
+### Every EPUB is checked before it is shelved
+
+`check_epub()` runs on whatever built the file — Standard Ebooks' tree or our own
+for a scan — and refuses the book if the archive cannot open: `mimetype` must be
+first and uncompressed, `container.xml` must name a real `.opf` that exists in
+the zip, and that package document must have a manifest and a spine. A shelf
+full of unopenable files is worse than a smaller shelf.
+
 ### When a book will not fit the budget
 
 Typesetting is the slow part. A 900-page book can exceed the 290 s a run is given
