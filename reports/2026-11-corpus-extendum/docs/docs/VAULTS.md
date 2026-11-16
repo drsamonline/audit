@@ -78,7 +78,7 @@ cannot.
 
 | Vault | Books | Size | State |
 |---|---|---|---|
-| `corpus-extendum-vault-01` | 66 | 212.9 MB | open |
+| `corpus-extendum-vault-01` | 79 | 243.4 MB | open |
 
 Headroom: 557 books or 2353.2 MB.
 

@@ -5,6 +5,30 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · Thirteen more books, and the thin shelves filled
+
+**Added** — Epictetus' *Short Works* (Long), three Conrad (*The Secret Agent*,
+*Nostromo*, *Under Western Eyes*), Stevenson's *The Black Arrow*, two Doyle (*The
+Lost World*, *The Return of Sherlock Holmes*), Twain's *A Connecticut Yankee*,
+*Three Men in a Boat*, two Kipling (*Just So Stories*, *Captains Courageous*) and
+two Le Fanu (*Uncle Silas*, *The Room in the Dragon Volant*).
+
+**Effect on balance** — Satire 1 → 3, Short Stories 1 → 2, Gothic 3 → 5,
+Philosophy 4 → 6, Adventure 7 → 9. The two thinnest shelves were the point of
+the batch.
+
+**Corrected** — three ebook ids came from the editions' own records rather than
+my hand-typed values: *Under Western Eyes* 4602 → 2480, *The Return of Sherlock
+Holmes* 221 → 108, *Captains Courageous* 2661 → 2186. Seven ids corrected in
+total now.
+
+**Not available** — searching the Standard Ebooks org for the titles I wanted
+first showed that several simply do not exist there: *Heart of Darkness*,
+*Typhoon*, *A Tale of a Tub*, *Essays of Elia*, *Puck of Pook's Hill*, Mansfield,
+*Carmilla* and Bacon's essays. Verified against codeload, not the API.
+
+---
+
 ## 2026-11-16 · A design pass: one contrast failure, three layout ones
 
 Ran `ui-design-critique` against real screenshots and `frontend-engineering`'s
