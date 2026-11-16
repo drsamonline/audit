@@ -83,9 +83,27 @@ same reason.
 | Vault size counted `.git` | the catalogue reporting 138 MB for 87 MB of books | none — the number was visibly wrong |
 | "No browser here" | finding Chromium installed | two rounds of fixing the mobile reader blind |
 
+## Skills applied
+
+Two of the fleet's skills were run against this repository rather than guessed
+at, and both found real work.
+
+`repo-legal-docs` — its scanner reported the legal surface complete but flagged
+bundled assets. Correct: pdf.js (Apache-2.0), epub.js (BSD-2-Clause) and JSZip
+(MIT or GPLv3) were shipped without being named anywhere, and neither were the
+two Google Fonts. Apache-2.0 expects its notice to travel. NOTICE.md now carries
+a component table with versions and links to each licence text, the two missing
+files are vendored, and LEGAL-INDEX.md records what is deliberately absent.
+
+`code-review-and-release-gate` — three defects, each proved at file:line:
+ingest.py assumed the library was a sibling directory and would write the dedupe
+registry to a directory invented beside the vault when run in CI; a search jump
+waited a fixed 350 ms for an asynchronous render and lost the race on large
+books; and the EPUB path lacked the raw fallback the PDF path already had.
+
 ## Evidence in this folder
 
-- `docs/` — the full documentation set, mirrored at commit `7cba630`
+- `docs/` — the full documentation set, mirrored at commit `ac65313`
 - `SYNC.json` — source commit, sync timestamp and a hash per file, so the mirror
   can be proven current rather than assumed current
 

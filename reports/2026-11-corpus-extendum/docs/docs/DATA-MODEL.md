@@ -179,3 +179,4 @@ lost, `index.txt` is the file that still says what you had.
 | `dedupe-report.txt` | `build_catalog.py` | build time, counts, and every quarantine with its duplicate-of |
 | `data/scan-log.txt` | `scan.yml` | a heartbeat line per run; also keeps GitHub from disabling the schedule |
 | `data/rotation-log.txt` | `rotate_vault.py` | every seal, with the book and MB count it sealed at |
+| `data/review-queue.json` | `ingest.py` | titles held by dedupe test 4, with the slug each resembles and the similarity score |

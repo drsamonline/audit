@@ -166,6 +166,7 @@ Start at **[docs/](docs/README.md)** — it indexes the rest and states the curr
 | [Vaults](docs/VAULTS.md) | the storage contract, `index.txt`, sealing |
 | [Decisions](docs/DECISIONS.md) | eleven choices, with the evidence behind each |
 | [Rights](docs/RIGHTS.md) | the public-domain test, source licences, corrections |
+| [Legal index](LEGAL-INDEX.md) | every legal document, and what is deliberately absent |
 | [Security](SECURITY.md) | scope, how the obvious risks are handled |
 | [Contributing](CONTRIBUTING.md) | what gets accepted, and how to report a wrong record |
 | [Changelog](CHANGELOG.md) | what was built, when, and what broke on the way |

@@ -5,6 +5,38 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · Two skills applied: legal attribution, and a code review
+
+Ran `repo-legal-docs` and `code-review-and-release-gate` against the repository
+rather than guessing what they would say.
+
+**Legal — `repo-legal-docs`**
+- Its scanner found the legal surface complete but flagged bundled assets. It
+  was right: **pdf.js (Apache-2.0), epub.js (BSD-2-Clause) and JSZip (MIT or
+  GPLv3) were shipped without being named anywhere**, and neither were the two
+  Google Fonts. Apache-2.0 in particular expects its notice to travel.
+- `NOTICE.md` rewritten with a component table, version, licence and a link to
+  the full text of each; the two missing licence files fetched from their own
+  repositories and added under `assets/vendor/`.
+- `LEGAL-INDEX.md` added, listing each document and stating what is
+  deliberately absent — no TERMS, because there is nothing to agree to; no EULA,
+  because no binary is distributed.
+
+**Code review — `code-review-and-release-gate`**
+- `scripts/ingest.py:1039,1122` — the library directory was assumed to be a
+  sibling named `corpus-extendum`. In CI the vault clones to `../vaults/<name>`,
+  so the dedupe registry was written to a directory invented beside the vault,
+  silently and to the wrong place. Now `--library`, with a warning when the
+  default does not exist.
+- `assets/app.js:218` — jumping from a search hit waited a fixed 350 ms for an
+  asynchronous text render, which loses the race on a large book and does
+  nothing. Now waits for the paragraph itself.
+- `assets/app.js:390` — the EPUB path had no raw fallback while the PDF path
+  did, so a CDN refusal ended the book. Now falls back, with a per-book retry
+  flag (which my own first version forgot to reset).
+
+---
+
 ## 2026-11-16 · Search inside a book, and a CDN limit worth knowing
 
 **Added**
