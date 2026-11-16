@@ -95,6 +95,9 @@ something for a PDF.
 | `←` `PageUp` | turn back |
 | `↑` `↓` | scroll a little |
 | `Home` `End` | top / bottom |
+| `b` | bookmark this place |
+| `m` | open the bookmark list |
+| `/` `Ctrl/⌘+F` | search inside the book |
 | `1` `2` `3` `4` | PDF · EPUB · text · record |
 | `Esc` | close the reader |
 | `/` | focus search (reader closed) |
@@ -133,6 +136,23 @@ book last read as text would restore into the wrong view.
 
 The shelf renders a *Continue reading* rail from the same store, newest first,
 capped at eight, with a clear button. Nothing leaves the device.
+
+## Bookmarks
+
+A bookmark is the same position object as progress, with a label and a
+timestamp, stored per book under `corpus-extendum:bookmarks`:
+
+| Field | Meaning |
+|---|---|
+| `fmt`, `page`, `pct`, `cfi` | the place, exactly as progress stores it |
+| `label` | `page 42` · `section` · `40% through` |
+| `at` | when it was dropped |
+
+- One mark per place — pressing twice does not stack, because the comparison is
+  on the position, not on time.
+- Capped at 30 per book.
+- Jumping reuses the same restore path as progress, so a bookmark taken in the
+  text view opens the text view even if you are in the PDF.
 
 ## Design tokens
 

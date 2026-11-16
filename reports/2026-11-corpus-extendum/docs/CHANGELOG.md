@@ -5,6 +5,25 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · Bookmarks
+
+**Added**
+- `b` or **Mark** drops a bookmark on the current place; `m` or **Marks** lists
+  them. Each row shows its label, the time it was dropped and its format, and
+  jumps or deletes in one click.
+- Stored per book under `corpus-extendum:bookmarks`, using the same position
+  object as progress — so a bookmark taken in the text view opens the text view,
+  even if the reader is currently showing the PDF.
+- One mark per place: pressing twice does not stack duplicates, because the
+  comparison is on the position rather than on the timestamp.
+
+**Verified end to end**
+- panel opens on Mark · 1 row added · label "40% through" · stored pct 0.4
+- duplicate press leaves 1 row · jump from the top lands at 0.40 · panel closes
+  on jump · delete empties the list and shows the empty message
+
+---
+
 ## 2026-11-16 · EPUB restores where you left it
 
 **Added**

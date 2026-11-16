@@ -15,6 +15,7 @@ its documentation mirrored beside this file as evidence.
 | Reader — PDF (pdf.js, native on phones), EPUB, plain text, JSON record | working |
 | Search inside a book — over the plain text, with jump and highlight | working |
 | Reading progress, restored per book, with a continue-reading rail | working |
+| Bookmarks — drop, list, jump, delete | working |
 | Rights gate — India life+60 **and** US pre-1930, both must pass | working |
 | Dedupe — source reference, normalised-text hash | working |
 | Translator gate — verified registry, refuses unverified translators | working |
@@ -104,7 +105,7 @@ books; and the EPUB path lacked the raw fallback the PDF path already had.
 
 ## Evidence in this folder
 
-- `docs/` — the full documentation set, mirrored at commit `4e36ee9`
+- `docs/` — the full documentation set, mirrored at commit `431ebc2`
 - `SYNC.json` — source commit, sync timestamp and a hash per file, so the mirror
   can be proven current rather than assumed current
 

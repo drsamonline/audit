@@ -85,4 +85,4 @@ should be assumed built and working.
 | Format conversion (MOBI, DjVu, DOCX, CBR…) | planned |
 | archive.org source adapter | planned |
 | Reading progress and a continue-reading rail | built (local storage only) |
-| Bookmarks | planned |
+| Bookmarks — named places, jump back, delete | built (local storage only) |
