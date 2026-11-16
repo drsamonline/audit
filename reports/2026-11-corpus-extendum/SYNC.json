@@ -1,20 +1,20 @@
 {
   "source": "drsamonline/corpus-extendum",
-  "commit": "fc349afc83fe6e729550451399453693aa9548ff",
-  "synced": "2026-11-16T10:07Z",
+  "commit": "59018636708d7817be3e7fa09183e6bcfb19d5ba",
+  "synced": "2026-11-16T10:19Z",
   "files": {
-    "README.md": "3dcee314da9080b9",
-    "CHANGELOG.md": "c20a491fbeaa51c8",
+    "README.md": "b3cda41ef182a775",
+    "CHANGELOG.md": "01753e922a76a265",
     "SECURITY.md": "9bc0b453d28902d4",
     "CONTRIBUTING.md": "c89a3fd4ad531421",
-    "docs/README.md": "a2fbb184ecc5a273",
+    "docs/README.md": "e84d0e5810a87fee",
     "docs/ARCHITECTURE.md": "c858ac2656a39d68",
     "docs/PIPELINE.md": "f4ea8a57a5b56d78",
-    "docs/DATA-MODEL.md": "f26ef80691034a92",
+    "docs/DATA-MODEL.md": "1f62a2c202777dff",
     "docs/OPERATIONS.md": "1c54891addc2b7cd",
     "docs/FRONTEND.md": "874daa09e9619578",
-    "docs/VAULTS.md": "878da74f3c6319ea",
+    "docs/VAULTS.md": "9d4353b9c7c37819",
     "docs/DECISIONS.md": "a8dfb96e5b3c8f04",
-    "docs/RIGHTS.md": "6a2bf4f77dceff9d"
+    "docs/RIGHTS.md": "82bfab463d539be0"
   }
 }

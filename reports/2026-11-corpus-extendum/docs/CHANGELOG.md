@@ -5,6 +5,27 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · Chekhov, once the translator's death was actually read
+
+**Added**
+- Constance Garnett to `data/translators.json`, `verified: true`, after reading
+  her death from three sources rather than remembering it: 17 December 1946
+  (Wikipedia, Britannica, Orlando/Cambridge). Her Chekhov volumes ran 1916–1922,
+  so both tests pass — India from 2006, the US well before 1930.
+- **The Duel** (Chekhov, trans. Garnett), the first Russian translation on the
+  shelf.
+
+**Not shelved**
+- Chekhov's collected *Short Fiction* — six source volumes, too slow to typeset
+  inside the 290 s ingest budget. It joins Plato's *Dialogues* in needing a long
+  run rather than a longer timeout.
+
+**Corrected**
+- The ingest took the ebook id from the edition's own record again: 13416 →
+  13505. That mechanism has now caught three wrong ids typed by hand.
+
+---
+
 ## 2026-11-16 · It remembers where you were
 
 **Added**

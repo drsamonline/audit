@@ -49,13 +49,14 @@ The translation's own publication year comes from the book entry, not from the
 edition date — a Standard Ebooks edition is modern even when the translation is
 Victorian.
 
-**Refused today:** Constance Garnett (death believed 1946 but unverified), F. A.
-Malleson, F. H. Peters, and the anonymous Modern Library translator of *Candide*
-— the edition credits a publisher, not a person, which can never pass. Chekhov
-and Verne's other novels wait on those.
+**Refused today:** F. A. Malleson, F. H. Peters, and the anonymous Modern
+Library translator of *Candide* — the edition credits a publisher, not a person,
+which can never pass. Verne's other novels wait on those.
 
 **Shelved today:** Long's Epictetus and Marcus Aurelius, Legge's Tao Te Ching,
-Towle's Verne, and Arnold's Gita.
+Towle's Verne, Arnold's Gita, Jowett's Plato, and **Constance Garnett's
+Chekhov** — her death was read from three sources (17 December 1946) after being
+refused for two rounds on memory alone.
 
 ## Sources, and what each one's licence actually says
 

@@ -91,7 +91,7 @@ One per book, in the vault. Everything else is derived from these.
 
 An array of every `meta.json` from every vault, minus anything quarantined,
 sorted by category then year then title. This is the only file the page reads
-for book data. At 46 books it is 69 KB.
+for book data. At 47 books it is 71 KB.
 
 ## `data/shards.json` — the vault registry
 
