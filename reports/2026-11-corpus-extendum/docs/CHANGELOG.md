@@ -5,6 +5,30 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · I broke the reader; here is what was actually wrong
+
+**Regression, fixed**
+- I hid the PDF chip on phones to dodge a blank pane. When the EPUB also failed,
+  that left **nothing to read**. PDF is offered on every screen again, and the
+  canvas renderer fits the page to both axes — the phone case is handled now
+  instead of avoided.
+
+**Root cause of "EPUB opens nothing, blank screen"**
+- Book files were being fetched from jsDelivr, which at this vault's size is
+  unreliable: `pride-and-prejudice.epub` returns **404**, `meditations.epub` and
+  `goody-two-shoes.pdf` **time out**, `tao-te-ching.txt` returns **403** — while
+  raw returned 200 for every one of them. epub.js swallows a failed fetch and
+  never rejects, so the pane stayed blank with no error at all.
+- Every format now comes from raw; jsDelivr is a fallback.
+- `book.ready` is wrapped in a 25 s timeout, so a hung fetch becomes a visible
+  error and a fallback to text instead of an empty screen.
+
+**Verified**
+- at 390 px: chips `PDF, EPUB, TXT, JSON`, and `fileUrl()` returns the raw route
+  for all three formats
+
+---
+
 ## 2026-11-16 · PDF is not offered on a phone, and the build stamp is honest
 
 **Changed**

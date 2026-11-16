@@ -93,7 +93,7 @@ then filtered by what can actually render on this device:
 | A format that failed once is retired for that book | a chip that leads to a blank pane is worse than no chip |
 | Selecting a retired format falls back to the next one | `epub → txt → pdf → json` |
 | `json` is always available | it is the book's own record, which always exists |
-| **A phone is not offered the PDF at all** | the native viewer is what iOS will not render from another origin, and a canvas cannot be pinched. EPUB and text are better there. A book that exists only as a PDF still gets it, as the last resort |
+| PDF is offered on **every** screen | removing it on phones was a mistake: when the EPUB also failed there was nothing left to read. The canvas fits the page to both axes, so the phone case is handled rather than avoided |
 | A browser with no PDF viewer keeps the PDF on desktop | the canvas renderer works regardless; the *native* viewer is only used when `navigator.pdfViewerEnabled` says it exists |
 
 | Format | Prev/Next does | Position readout |
@@ -167,6 +167,13 @@ timestamp, stored per book under `corpus-extendum:bookmarks`:
 - Capped at 30 per book.
 - Jumping reuses the same restore path as progress, so a bookmark taken in the
   text view opens the text view even if you are in the PDF.
+
+## Where the files come from
+
+Every format is fetched from `raw.githubusercontent.com`. jsDelivr is a fallback
+only, because at 212 MB it returns 404 for some EPUBs, hangs on others and
+refuses text files outright. `fileUrl()` is the single place that decides, and a
+test asserts it returns the raw route.
 
 ## The build stamp
 

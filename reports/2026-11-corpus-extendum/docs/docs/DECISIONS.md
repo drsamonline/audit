@@ -9,9 +9,25 @@ accident.
 ## D1 · Books live in separate vault repos, served by jsDelivr, not GitHub Pages
 
 **Decision.** The library repo holds HTML and JSON only. Book files live in
-`corpus-extendum-vault-NN`, and are served through
-`cdn.jsdelivr.net/gh/…` with `raw.githubusercontent.com` as the download
-fallback. Vaults have no Pages site.
+`corpus-extendum-vault-NN` and are served from
+**`raw.githubusercontent.com`**, with `cdn.jsdelivr.net/gh/…` kept as a fallback.
+Vaults have no Pages site.
+
+**Revised after measurement.** jsDelivr was the primary route until it stopped
+being reliable at this size. Measured against the 212 MB vault:
+
+| File | jsDelivr | raw |
+|---|---|---|
+| `pride-and-prejudice.pdf` | 200 | 200 |
+| `pride-and-prejudice.epub` | **404** | 200 |
+| `meditations.epub` | **timeout** | 200 |
+| `goody-two-shoes.pdf` | **timeout** | 200 |
+| `tao-te-ching.txt` | **403** (50 MB package limit) | 200 |
+
+A CDN that returns 404 for one EPUB, hangs on another, and serves the PDF beside
+it is worse than no CDN: epub.js swallows the failure and the reader shows a
+blank pane with no error. raw served every file tested and sends
+`access-control-allow-origin: *`, which is the only property the readers need.
 
 **Why.** Pages caps a published site at **1 GB**; a vault is built for **2.5 GB**.
 Two vaults on Pages would simply fail to deploy. jsDelivr also answers with the
