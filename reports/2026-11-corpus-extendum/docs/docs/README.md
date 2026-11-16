@@ -6,7 +6,7 @@ storage repositories.
 
 **The shelf:** https://drsamonline.github.io/corpus-extendum/
 **The catalogue without a browser:** [`index.txt`](../index.txt)
-**What is on the shelf right now:** 47 books, 12 categories, 153.3 MB
+**What is on the shelf right now:** 63 books, 12 categories, 195.7 MB
 
 ---
 

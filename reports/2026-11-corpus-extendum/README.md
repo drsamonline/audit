@@ -28,9 +28,9 @@ its documentation mirrored beside this file as evidence.
 
 | | |
 |---|---|
-| Books shelved | **47** |
+| Books shelved | **63** |
 | Categories | **12** |
-| Vault | `corpus-extendum-vault-01`, **153.3 MB** of a 2.5 GB cap |
+| Vault | `corpus-extendum-vault-01`, **195.7 MB** of a 2.5 GB cap |
 | Largest single file | 12.6 MB (an illustrated edition, 57 plates) |
 | Library repo | under 5 MB including four vendored renderers and two screenshots |
 | Cost | ₹0 per month — GitHub Pages plus jsDelivr |
@@ -105,7 +105,7 @@ books; and the EPUB path lacked the raw fallback the PDF path already had.
 
 ## Evidence in this folder
 
-- `docs/` — the full documentation set, mirrored at commit `431ebc2`
+- `docs/` — the full documentation set, mirrored at commit `fa7114f`
 - `SYNC.json` — source commit, sync timestamp and a hash per file, so the mirror
   can be proven current rather than assumed current
 

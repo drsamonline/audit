@@ -5,6 +5,23 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · Sixteen more books, and the shelf passes sixty
+
+**Added** — Austen's other five (*Emma*, *Sense and Sensibility*, *Mansfield
+Park*, *Northanger Abbey*, *Persuasion*), three Dickens (*Oliver Twist*, *David
+Copperfield*, *Bleak House*), two Brontë (*Villette*, *The Tenant of Wildfell
+Hall*), two Wells (*The Island of Doctor Moreau*, *The First Men in the Moon*),
+*Kim*, *The Wisdom of Father Brown*, *Lord Jim* and *Kidnapped*.
+
+**Note on batching** — *Bleak House* alone exceeded the 290 s ingest budget and
+had to be run on its own; every other book in the batch went through three or
+four at a time. The constraint is typesetting, not download.
+
+**Corrected** — *Kidnapped*'s ebook id came from the edition's own record as
+421, not the 589 typed by hand. Fourth id caught this way.
+
+---
+
 ## 2026-11-16 · Bookmarks
 
 **Added**
