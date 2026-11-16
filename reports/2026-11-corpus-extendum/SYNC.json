@@ -1,10 +1,10 @@
 {
   "source": "drsamonline/corpus-extendum",
-  "commit": "59018636708d7817be3e7fa09183e6bcfb19d5ba",
-  "synced": "2026-11-16T10:48Z",
+  "commit": "4e36ee959b7394fe883d99d77e32db03e5cdec98",
+  "synced": "2026-11-16T10:53Z",
   "files": {
     "README.md": "b3cda41ef182a775",
-    "CHANGELOG.md": "01753e922a76a265",
+    "CHANGELOG.md": "a1326764d79ead49",
     "SECURITY.md": "9bc0b453d28902d4",
     "CONTRIBUTING.md": "c89a3fd4ad531421",
     "docs/README.md": "e84d0e5810a87fee",
@@ -12,7 +12,7 @@
     "docs/PIPELINE.md": "f4ea8a57a5b56d78",
     "docs/DATA-MODEL.md": "1f62a2c202777dff",
     "docs/OPERATIONS.md": "1c54891addc2b7cd",
-    "docs/FRONTEND.md": "874daa09e9619578",
+    "docs/FRONTEND.md": "8ae4b71a33c08af8",
     "docs/VAULTS.md": "9d4353b9c7c37819",
     "docs/DECISIONS.md": "a8dfb96e5b3c8f04",
     "docs/RIGHTS.md": "82bfab463d539be0"

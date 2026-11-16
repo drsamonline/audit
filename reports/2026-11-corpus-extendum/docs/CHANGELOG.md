@@ -5,6 +5,25 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · EPUB restores where you left it
+
+**Added**
+- The reader stores epub.js's own **CFI** alongside the position, so an EPUB
+  reopens at the exact place it was closed. The previous entry in this file said
+  this needed `book.locations.generate()` — a full pass over the book — and
+  deferred it. That was wrong: epub.js emits a CFI on every relocation for free,
+  and `rendition.display(cfi)` jumps straight to it. Storing a percentage was
+  the thing that needed locations, not restoring a place.
+
+**Verified**
+- CFI stored with the position; restore switches the format to EPUB and calls
+  `display(cfi)`; a book with no saved position makes no call at all.
+- The EPUB *render* still cannot be exercised headless — pdf.js's worker starves
+  epub.js under Chromium's virtual time — so this is verified at the logic
+  boundary rather than end to end. Said plainly rather than claimed as tested.
+
+---
+
 ## 2026-11-16 · Chekhov, once the translator's death was actually read
 
 **Added**

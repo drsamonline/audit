@@ -129,7 +129,7 @@ book last read as text would restore into the wrong view.
 |---|---|---|
 | PDF | the page, via `pendingPage` if the document is still loading | — |
 | TXT · JSON | the scroll fraction, after waiting for the text to render | — |
-| EPUB | **the start of the book** | epub.js can only jump by percentage once its locations are generated, which this reader does not do. Generating them costs a full pass over the book, so it is deferred rather than faked. |
+| EPUB | the saved **CFI** | epub.js hands back a CFI on every relocation; storing that needs no `book.locations.generate()`, which would cost a full pass over the book. Jumping by percentage would have needed it — jumping by CFI does not. |
 
 The shelf renders a *Continue reading* rail from the same store, newest first,
 capped at eight, with a clear button. Nothing leaves the device.
