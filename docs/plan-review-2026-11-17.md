@@ -73,7 +73,7 @@ Two axes, kept apart because they trade against each other.
 
 | # | item | why it beats the current list |
 |---|---|---|
-| A1 | **PNG filter-strategy search** — re-choose the per-row filter before compressing, instead of compressing the filters the file already had | upstream's measured ratio advantage comes from here, not from the deflate; it is the one accuracy gap we can name |
+| A1 | **PNG: choose filtered or unfiltered per file, by sample** — measured, not the filter *search* the plan first said | unfiltering is **−26.3%** on a UI screenshot and **+49.7%** on a photograph with this engine. The plan's original wording ("re-choose the filter", the optipng/ECT objective) optimises for deflate and would have been the wrong half. See `PNG_MEASUREMENT.md` |
 | A2 | A real PDF with embedded JPEGs | closes the only pure gap; brunsli is untested on PDF-embedded JPEGs |
 | A3 | Second PNG and a second screenshot class (photo-ish vs UI) | every PNG claim is n=1; two more files make the plan's numbers defensible |
 
@@ -95,3 +95,21 @@ Two axes, kept apart because they trade against each other.
 - **New S1** (a fast deflate path) replaces "make the PNG path faster", which the
   measurements show is not a matter of turning a knob.
 - **A3** added because every PNG number in the fleet is one file.
+
+## Correction, 2026-11-18: A1 was the wrong half
+
+The plan said "re-choose the per-row filter", which is the optipng/zopflipng/ECT
+objective: the smallest *deflate* stream. Measured on this engine, that is not where the
+ratio is:
+
+| image | filtered (today) | unfiltered + filter map | change |
+|---|---|---|---|
+| UI screenshot, flat colour | 60,678 | **44,694** | **−26.3%** |
+| photograph as PNG | **65,152** | 97,556 | **+49.7%** |
+
+Both directions, by a lot. So the transform is not "unfilter" and not "search filters" —
+it is **choose per file**, with a 256 KiB sample deciding (~1.3 s) rather than a full
+second pass (25 s), and the choice cannot be a constant because being wrong costs 50%.
+
+That redefinition is the plan's most useful output so far: the original item would have
+been implemented, measured against deflate's objective, and found to do nothing.
