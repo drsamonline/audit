@@ -635,8 +635,74 @@ project's own "check the instrument before the subject" rule is for, and I still
   repaint is cheap next to being wrong about it.
 - **No equivalent audit of the key path's `relayout()` call.** It already has the serial gate.
 
+---
+
+# Eleventh item, same session — upstream first
+
+Commits: `06dd8bf4`, `d1180e76`, `da6f4ebf`. Read upstream *before* writing this one; that ordering is the
+whole point of the entry.
+
+## The inline item, closed without code
+
+`DOM/CharacterData.cpp` on a text data change: `marks.text_data_changed = true; mark_box(marks)` — the text
+node's own box is marked, and the layout engine re-runs the formatting context. `set_needs_layout_tree_update`
+is called only for whitespace-only changes and emptiness, where a box may appear or disappear. Style
+invalidation for a text change is `invalidate_style_after_text_change_under()`, which exists for `:dir` and
+language and returns immediately on a document with no auto-directionality.
+
+So there is no per-run text reuse at this layer to port. The formatting context is the unit, which is what this
+engine already does. Implementing per-run reuse would have been an invention resting on this engine's per-run
+wrapping — a real line breaker's run depends on its neighbours — and inventing an optimisation that upstream
+deliberately does not make is not "porting the shape".
+
+That is a decision, not a task skipped. It is written down because the item had been carried for three turns.
+
+## The structural item, from the same reading
+
+Any structural mutation cleared the whole style cache. Upstream records a tree delta for the sequence a node
+left or joined — `record_subtree_disconnecting()` with `PreviousSiblings::Arrived/Departed`, per element — and
+the style engine recomputes the affected nodes.
+
+Ported as: the DOM says **which parent's child list changed** (`note_child_list_mutation_at`), and `relayout()`
+invalidates that parent's subtree plus the chain above it. Several child-list changes in one frame accumulate,
+so `appendChild` twice invalidates both parents; a note of any other kind clears the list.
+
+Narrowed once more, and this is the part worth stating: a positional selector is the only way one child's
+presence can restyle another, and the user-agent sheet has none (checked). When the page's sheet has none
+either, only the parent can change (`:empty`) — the new children resolve themselves because they have no cache
+entry — so the parent and its ancestors are dirtied and not the subtree.
+
+## Evidence
+
+| 200-row page, one mutation, 2 frames | before | after |
+| --- | --- | --- |
+| append a span inside row 150 | 407 resolves, 405 nodes | **6**, 7 |
+| innerHTML replace inside row 150 | 407 resolves, 405 nodes | **6**, 6 |
+| append a div to body, no positional selector | 406 resolves, 405 nodes | **5**, 5 |
+| append a div to body, `:first-child` in the sheet | 406 resolves, 405 nodes | 406 (on purpose) |
+
+The fourth row is the control. The `:empty` case is asserted by pixel: appending a child into an empty box
+restyles the box, so the parent's own state is re-evaluated even when no sibling can see the change.
+
+    ctest --test-dir build --no-tests=error -j 8  ->  100% of 59, twice in a row
+
+## The sharp edge this introduced
+
+`register_subtree()` and `purge_subtree()` no longer note a mutation — they walk the tree to hand out and free
+JS handles, and their callers now note which child list changed. A new caller that forgets to will leave the
+page stale. That is written in the handoff's next list rather than buried in the code, because it is the kind
+of omission that produces a silent stale frame.
+
+## What I deliberately did not do
+
+- **No per-run text reuse.** See above: upstream does not do it at this layer.
+- **No per-selector analysis of positional selectors.** The question is asked of the sheet, not of the
+  specific siblings whose index moved. Upstream has the finer version; this is the honest coarse one.
+- **No change to the `:empty` handling.** The parent is dirtied; whether the *parent's* parent could match
+  something is not a question this engine's selector set can ask.
+
 ## Next
 
 1. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
-2. Partial reuse inside inline flow: a dirty inline container re-lays out all its text runs.
-3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
+2. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
+3. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
