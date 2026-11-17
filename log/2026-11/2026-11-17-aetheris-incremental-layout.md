@@ -584,6 +584,57 @@ the count could not.
 - **No chrome in the comparison.** The URL differs by port; excluding it is honest, and the alternative
   (serving both pages on one fixed port) is racy.
 
+---
+
+# Tenth item, same session — a click is not a layout
+
+Commits: `a1514a7b`, `9d5543b2`, `0e72efe2`. Not on the list: found while reading `dispatch_click_at()` for
+the next item, and it was the largest single waste of the session.
+
+## What it was
+
+`dispatch_click_at()` ended with an unconditional `rendered.relayout()`. `relayout()` decides what kind of
+mutation it is from `last_mutated_node()`, and a click that changed nothing leaves that at null — which the
+function reads as a **structural** change. So it cleared the style cache and laid the page out from scratch.
+
+Clicking a 405-node page whose handler only logged:
+
+    407 resolves, 405 nodes laid out, 0 style hits
+
+That is the most expensive path the window has, and it was reached by clicking anywhere.
+
+## What shipped
+
+The click path is gated like the timer and key paths already were:
+
+    if (dom_mutation_serial() != before && attribute_mutation_needs_relayout(rendered))
+        rendered.relayout();
+
+| click handler | before | after |
+| --- | --- | --- |
+| logs only | layouts 2, 405 nodes | layouts 1 (no pass) |
+| writes an unobserved attribute | layouts 2, 405 nodes | layouts 1, 0 nodes |
+| changes a width (control) | layouts 2, 405 nodes | layouts 2, 5 nodes |
+
+The handler still runs in all three (`MARK clicked` is asserted on the first), and the control still reflows.
+
+## The instrument bug it exposed
+
+Both skip paths left `layout nodes:` reporting the **previous** pass. So `click_attr` printed 405 after a
+relayout that had laid out nothing — the number looked like evidence and was a leftover. Both paths reset it
+to zero now. A stale counter is worse than no counter.
+
+This is the sixth time this session that a number, not the engine, needed fixing first. It is also the second
+time the fix was to the instrument rather than the subject (`key checks` and now this) — which is what the
+project's own "check the instrument before the subject" rule is for, and I still needed six reminders.
+
+## What I deliberately did not do
+
+- **No per-click repaint decision.** `dispatch_click_at()` still returns true, so the caller repaints. A
+  click may change something the engine does not track (a canvas, a timer scheduled by the handler), and a
+  repaint is cheap next to being wrong about it.
+- **No equivalent audit of the key path's `relayout()` call.** It already has the serial gate.
+
 ## Next
 
 1. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
