@@ -1043,3 +1043,22 @@ before, so it could not pass by accident.
 2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
 3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
 4. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
+
+---
+
+# State saved
+
+Commit `235f8956` rewrites `docs/START-PROMPT.md` to resume from this session: the symbols that must exist
+before editing, the four items left, the environment recipe (including the `-Wno-error=#warnings` a fresh
+sandbox needs), the six-counter measurement surface with a good number for each, and the working rules as they
+were earned here.
+
+| Item | Value at save |
+| --- | --- |
+| `main` tip | `235f8956` |
+| Suite | 59/59, run twice at the last code commit |
+| Window test | ~80 s of the ~95 s suite; ~40 browser runs |
+| Session commits | 48 between `966ab44c` and `235f8956` |
+
+The next session starts from the prompt's Step 0, not from this file — the prompt is the entry point and this
+entry is the record of how it got there.
