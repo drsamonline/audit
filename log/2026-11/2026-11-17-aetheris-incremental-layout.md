@@ -295,9 +295,75 @@ test were calibrated against pixels before being written down.
   rules and a deep tree that is the next cost, and it is not measured yet.
 - **No sibling combinators.** Unchanged from the third item.
 
+---
+
+# Fifth item, same session — the layout key was an allow-list, and incomplete
+
+Commits: `89d03716`, `a00d1bf2`, `77437cd2`. Not on the plan for this session: the plan's next item was
+"extend `kLayoutProperties` when a property is added to `style.cpp`", and auditing that list against what
+`layout.cpp` actually reads found the bug it was warning about.
+
+## What I looked at upstream
+
+Nothing new. This one is internal: the property list has no upstream counterpart to copy, because upstream
+does not keep one — it derives the invalidation from the style *diff* (`RequiredInvalidationAfterStyleChange`),
+which cannot forget a property. That is the point of the change below: a list that must be remembered is the
+defect, and the fix is to make forgetting cheap.
+
+## What shipped
+
+`kLayoutProperties` (40 names, allow-list) is gone. `layout_key()` is now
+`StyleProperties::digest_excluding(kPaintOnlyProperties)` — the whole resolved style minus the sixteen
+properties that can only repaint. `fingerprint()` is `digest_excluding({})`, so the cache key and the layout
+key share one implementation and one sort.
+
+| Missing from the old allow-list | Read by |
+| --- | --- |
+| `gap`, `row-gap`, `column-gap` | `layout.cpp` |
+| `flex-direction`, `flex-grow`, `align-items`, `justify-content` | `layout.cpp` |
+| `grid-template-columns` | `layout.cpp` |
+| `aspect-ratio` | `layout.cpp` |
+
+## Evidence
+
+| page | before | after |
+| --- | --- | --- |
+| class toggle changing only `gap` | layouts 1, second box at x 50 | layouts 2, second box at x 250 |
+| class toggle changing only `background` | layouts 1 | layouts 1 |
+| class toggle changing only `color` | layouts 1 | layouts 1 |
+
+Pixels read, not inferred: `(250, 84)` is blue before and green after on the gap page — the box moved only
+once the engine actually ran.
+
+    ctest --test-dir build --no-tests=error -j 8  ->  100% of 59, twice in a row
+
+## The failure modes, stated
+
+An allow-list fails unsafely: a property nobody classified silently stops reflowing, and the symptom is a
+stale frame. A deny-list of paint-only properties fails safely: a property nobody classified costs a layout
+pass that was not needed. The cost of the safe failure is measurable and the cost of the unsafe one is the bug
+above, twice now in this project's history.
+
+## What I deliberately did not do
+
+- **No per-property diff.** Upstream compares the style diff; this still compares the whole key before and
+  after, so any non-paint change anywhere reflows the whole document. Per-node granularity is the next
+  structural step and is a bigger change than this session's item.
+- **No attempt to shrink the deny-list.** `border-style` is in it, and `border-style: none` might arguably
+  affect the box model here — it does not, because `resolve_edges()` reads `border-*-width` only. That was
+  read, not assumed.
+
+## One fixture trap
+
+`flex-grow` is read by `layout.cpp` and appears to have no effect: a page that sets `flex-grow: 1` at load
+renders identically to one without it. My first fixture used `flex-grow` to demonstrate the bug and proved
+nothing — both before and after looked the same. The `gap` page is the one that discriminates. Recorded as the
+next item rather than fixed here.
+
 ## Next
 
-1. Extend `kLayoutProperties` alongside any new property in `style.cpp`.
+1. `flex-grow` is read by `layout.cpp` and appears to have no effect; worth a separate look with a page that
+   discriminates.
 2. `[a=v i]` case flag, if a page needs it.
 3. Sibling combinators (`+`, `~`) are not matched; adding them means adding sibling invalidation.
 4. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
