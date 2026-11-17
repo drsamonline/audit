@@ -754,9 +754,53 @@ The window test went from ~50 s to ~95 s: ten extra browser runs over 200-row pa
 wall clock at `-j 8`. That is worth it for the only test that does not encode my assumptions, and it is
 written down so nobody removes it for being slow.
 
+---
+
+# Thirteenth item, same session — classList was writing to the DOM and telling nobody
+
+Commits: `0d52e64e`, `3fcdc1c1`, `4ed2c48c`. Upstream first: `DOM/Element.idl` has
+`[CEReactions, Reflect=class] attribute DOMString className` — a reflected attribute, the `class` content
+attribute read and written, nothing more.
+
+## What the reading turned up
+
+Looking for where to add `className` found the bigger problem. `write_classes()` — the single place
+`classList` writes — set `node->attributes["class"]` directly and noted **no mutation at all**.
+
+| page | before | after |
+| --- | --- | --- |
+| `classList.add('on')` | relayouts 0, pixel blue | relayouts 1, layouts 1, pixel magenta |
+| `className = 'on'` | relayouts 0, pixel blue | relayouts 1, layouts 1, pixel magenta |
+
+A page that toggles a class with `classList` — which is how most pages toggle a class — wrote the attribute,
+invalidated nothing, and left the frame blue. No error, no warning, nothing to notice unless you look at the
+pixel.
+
+Both now go through `set_class_attribute()`, which writes the attribute and notes it in the order
+`js_set_attribute` uses: the node-scoped note first, because it clears the recorded attribute name. `className`
+is a reflected accessor, absent reading as `""`.
+
+Both are in the reftest matrix now, mutated against baked. That is the second bug in two items that the
+reference comparison caught and an expectation would not have — I had no reason to suspect either, and no test
+asserted either.
+
+## A third specificity trap, on the way
+
+My first `className` fixture used `#a{background:#0000ff}` against `.on{background:#ff00ff}` — 10000 against
+100 — so the rule never applied and the working fix looked broken. Same trap as the `body:focus-within .title`
+fixture two items ago. The tell is the same both times: a relayout count that is right and a pixel that is not.
+
+## What I deliberately did not do
+
+- **No audit of the other attribute-writing APIs.** `set_control_value()`, the `value`/`checked` setters and
+  `classList`'s siblings may have the same defect. That is a sweep, not this item, and it is written down as
+  the next one rather than half-done here.
+- **No `classList` additions** (`.replace`, `.item`, `.length`, indexed access). Only what was there, made to
+  work.
+
 ## Next
 
-1. `className` is not implemented (only `classList`), so `el.className = 'x'` silently does nothing.
+1. Audit every DOM API that writes an attribute for a missing mutation note, as `classList` had.
 2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
 3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
 4. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
