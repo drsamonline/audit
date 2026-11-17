@@ -457,8 +457,78 @@ Two properties of the change that had to hold:
 - **No timing measurement.** `key checks` counts the comparisons, which is the cost that changed. Wall-clock
   in a sandbox with a shared CPU would be the weaker instrument.
 
+---
+
+# Eighth item, same session — per-node layout
+
+Commits: `f0ce1b21`, `5606dc69`, `30f0b793`. The second increment of incremental layout: the pass stops
+entering subtrees that cannot have changed.
+
+## What I looked at upstream
+
+Nothing new this time, and that is worth admitting: upstream has had this since forever (`Layout/Node.h`'s
+`NeedsLayoutUpdate` flag, laid out over the marked set). The port here is deliberately *not* that mechanism —
+there is still no per-node invalidation flag — but a condition on the origin, which is cheaper to get right
+with the data this engine keeps.
+
+## What shipped
+
+`LayoutReuse` carries the previous pass's geometry, the set of nodes a restyle reached (plus their ancestors),
+and a counter. `LayoutEngine::reuse_subtree()` fires when the node is outside that set, has a recorded entry,
+and is being laid out at the same `(x, y, available_width)`. Then the whole subtree's geometry is copied and
+the pass does not enter it. `LayoutEngine`'s private walkers stopped being `static` so they can read the
+context; `CachedGeometry` moved to `layout.hpp` and carries the origin.
+
+## The invariant
+
+A node's subtree geometry is a function of (resolved style, x, y, available_width, its DOM subtree).
+
+| Part of the tuple | Why it is safe |
+| --- | --- |
+| style | a clean node's style did not change; a structural change clears the style cache, so every node restyles |
+| x, y, available_width | the parent decides them, and they are in the key, so a node that moves or is given a new width is laid out again |
+| DOM subtree | unchanged, or the style cache was cleared |
+
+What would break it: anything making geometry depend on state outside that tuple. `float` is not implemented
+and flex items take their width from the parent, so nothing in the engine does today. That is the sentence to
+re-read before adding `float`.
+
+## Evidence
+
+405-node page, one edit, 2 frames:
+
+| case | layout nodes |
+| --- | --- |
+| text edit in row 100 of 200 | **4** |
+| first row grows 3 px → 60 px | 204 |
+
+The second is the control and it is the one that matters: every row below the grown one moved, so none can be
+reused where it used to be. Pixels: content y 1 blue (inside the grown row), content y 70 green (first row
+after it). Read off the frame, not inferred.
+
+    ctest --test-dir build --no-tests=error --junit  ->  100% of 59, twice in a row
+
+## One fixture error, caught before it became a claim
+
+The first version of the text-edit page had `#mid` in its stylesheet and no element with that id, so
+`getElementById('mid')` found nothing, no mutation happened, and the run reported `relayouts: 0` with the
+load-time counters — which reads exactly like "the reuse path did not fire". Adding the id made it 4. This is
+the fourth time this session that a fixture, not the engine, was the thing to fix, and the tell was the same
+each time: a number that did not match what the code plainly does.
+
+## What I deliberately did not do
+
+- **No per-node invalidation flag.** Upstream marks boxes; this conditions on the origin. The flag would be
+  cheaper per node and is the honest long-term shape, but it is a larger change than the measurement
+  justified here.
+- **No timing.** `layout nodes` counts the work that changed. Wall-clock on a shared CPU is the weaker
+  instrument.
+- **No partial reuse inside inline flow.** `layout_inline_children()` computes text children directly rather
+  than through `layout_node`, so a dirty inline container re-lays out all of its text. That is unchanged from
+  before this commit and is the next place the same idea would go.
+
 ## Next
 
-1. Per-node layout: a dirty layout subtree instead of an all-or-nothing document decision.
-2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
+1. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
+2. Partial reuse inside inline flow: a dirty inline container re-lays out all its text today.
 3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
