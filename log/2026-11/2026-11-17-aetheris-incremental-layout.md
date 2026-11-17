@@ -798,9 +798,61 @@ fixture two items ago. The tell is the same both times: a relayout count that is
 - **No `classList` additions** (`.replace`, `.item`, `.length`, indexed access). Only what was there, made to
   work.
 
+---
+
+# Fourteenth item, same session — the audit, and one choke point instead of six
+
+Commits: `9ab00cfc`, `a8e96ddf`, `2fe25873`. Upstream first: `Element::m_attributes` is private
+(`OwnPtr<AttributeList>`, `friend class NamedNodeMap`), and every write runs `Element::set_attribute` →
+`run_attribute_change_steps` → `invalidate_style_after_attribute_change`. The guarantee is in the type system: a
+caller cannot write an attribute and forget to invalidate, because there is no way to write one.
+
+Here the map is public, so the audit was a grep for `attributes[...] =`. Six runtime writers noted nothing:
+
+| writer | what a page does with it |
+| --- | --- |
+| `js_style_set_property` | `el.style.setProperty(p, v)` |
+| `js_style_set` | `el.style = '...'` |
+| `js_dataset_set` | `el.dataset.x = v` |
+| `js_checked_set` | `el.checked = true` |
+| `set_control_value` | `el.value = '...'` |
+| `set_class_attribute` | `classList`, `className` (previous item) |
+
+| write | before | after |
+| --- | --- | --- |
+| `el.style = 'background:#ff00ff'` | relayouts 0, blue | relayouts 1, magenta |
+| `el.style.setProperty('background', …)` | relayouts 0, blue | relayouts 1, magenta |
+| `el.dataset.x = '1'` | relayouts 0, blue | relayouts 1, magenta |
+
+`set_attribute()` / `remove_attribute()` in `dom_mutation.hpp` are the choke point now, and `js_set_attribute`
+and `set_class_attribute` use them too — the note order (node-scoped first, because it clears the attribute
+name) lives in one place instead of four.
+
+## What this says about the last two items
+
+`classList` was not an isolated mistake. It was the one I happened to look at. Six APIs had the same defect,
+all in the same way, all silent. The pattern is that the engine's invalidation contract was a convention
+("remember to note it") rather than a structure — and a convention with six call sites had five failures.
+
+Upstream does not have the convention. That is the difference the port is meant to close.
+
+## A fourth specificity trap
+
+The `dataset` fixture first used `#a{background}` against `[data-x]{background}` — 10000 against 100 — and read
+blue. The relayout count said the note worked; the pixel said the rule lost. That tell is now reliable enough
+to name: **relayout right, pixel wrong, look at specificity.** Fourth time in this session.
+
+## What I deliberately did not do
+
+- **No CSSStyleDeclaration.** `el.style.background = v` still sets a property on the throwaway object
+  `js_style_get()` returns. Upstream has `[PutForwards=cssText] readonly attribute CSSStyleDeclaration style`.
+  That is a CSSOM feature, not an invalidation fix, and it is the next item.
+- **No change to `DocumentRuntime::set_attribute()`**, which has its own `mark_dirty()` mechanism for the
+  non-JS host path. It is a separate contract and would need its own audit.
+
 ## Next
 
-1. Audit every DOM API that writes an attribute for a missing mutation note, as `classList` had.
+1. `el.style.background = v` needs a real `CSSStyleDeclaration`; today it silently does nothing.
 2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
 3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
 4. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
