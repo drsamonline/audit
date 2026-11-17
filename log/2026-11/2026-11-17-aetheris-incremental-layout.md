@@ -850,9 +850,60 @@ to name: **relayout right, pixel wrong, look at specificity.** Fourth time in th
 - **No change to `DocumentRuntime::set_attribute()`**, which has its own `mark_dirty()` mechanism for the
   non-JS host path. It is a separate contract and would need its own audit.
 
+---
+
+# Fifteenth item, same session — the CSSStyleDeclaration surface, and one thing not built
+
+Commits: `82120ae0`, `7a93af04`, `55cd9071`. Upstream first, and it changed the item before any code was
+written: `CSS/CSSStyleDeclaration.idl` declares
+
+    [CEReactions] attribute CSSOMString cssText;
+    readonly attribute unsigned long length;
+    getter CSSOMString item(unsigned long index);
+    CSSOMString getPropertyValue(CSSOMString property);
+    CSSOMString getPropertyPriority(CSSOMString property);
+    [CEReactions] undefined setProperty(...);
+    [CEReactions] CSSOMString removeProperty(CSSOMString property);
+
+— and **no named-property accessor at all**. So `el.style.background = v` is not part of the interface upstream
+either; the way a page sets a property is `setProperty` or `cssText`.
+
+I had been about to build a QuickJS proxy so that `el.style.prop = v` would work. That would have been a day of
+machinery for an API that is not in the spec, and the handoff note would then have been wrong in the other
+direction — claiming a feature the engine does not need. The reading cost one command.
+
+## What shipped
+
+| member | behaviour |
+| --- | --- |
+| `cssText` | get: the style attribute; set: writes it |
+| `getPropertyValue(p)` | the declared value, or `""` |
+| `removeProperty(p)` | returns the value it removed (was `undefined`) |
+| `length` | number of declarations |
+| `item(i)` | the property *name* at that position |
+
+The declaration list is parsed once into a vector that the accessors and `apply_style_property` share, so
+`cssText` and `item()` agree with what `setProperty` wrote. Every write still goes through the attribute choke
+point, so setting a property restyles.
+
+Read back by the page in a test rather than inferred:
+
+    MARK cssText background: #ff00ff
+    MARK get #ff00ff
+    MARK length 1
+    MARK item background
+    MARK removed #ff00ff
+    MARK after 0
+
+## What I deliberately did not do
+
+- **No named properties on `style`.** Not in the IDL, so not built, and the handoff says so explicitly so a
+  future session does not "fix" it.
+- **No `getPropertyPriority`.** It would return `""` for every declaration in this engine, since the parser
+  drops `!important`. Not worth a function that cannot be anything but empty; recorded here instead.
+
 ## Next
 
-1. `el.style.background = v` needs a real `CSSStyleDeclaration`; today it silently does nothing.
-2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
-3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
-4. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
+1. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
+2. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
+3. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
