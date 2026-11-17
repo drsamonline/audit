@@ -1196,3 +1196,27 @@ open internet.
 2. Coverage corpus on a machine with network.
 3. Font API (glyph ids, per-glyph advances) before any rasteriser wiring.
 4. Family P0 builds on a machine with dev packages.
+---
+
+# Plan saved, and a checklist that moves with the work
+
+Commit `77b0ec73`. The reviewed order went into `docs/PHASES.md` rather than a new file — it is the execution
+plan already, and a fourth planning document would be one more thing to fall out of date. Its older batch list
+stays underneath, kept for detail rather than sequencing.
+
+`docs/CHECKLIST.md` is the new live tracker, and it is the part meant to change every session:
+
+| Rule | Detail |
+| --- | --- |
+| A row moves only in the commit that makes it true | never in a standalone docs commit |
+| Every tick carries a proof | a commit sha, a test name, or a number from the window summary |
+| Blocked rows say what blocks them | `[!]` with the unblocking work named |
+| Out-of-scope rows are marked, not deleted | a deleted row gets re-proposed |
+| New work found mid-item becomes a row | same commit, `[ ]`, at its tier |
+
+It carries the reviewed tiers with the proof column already filled for what this session closed, plus an "Open
+defects" table — the fourth nested-syntax bug, the `of S` argument, the `register_subtree` sharp edge, and the
+unaudited `DocumentRuntime::set_attribute`.
+
+`START-PROMPT.md` now reads the checklist first and names `PHASES.md` as the authority on order, so the next
+session lands on the live list rather than on a handoff that is already one session long.
