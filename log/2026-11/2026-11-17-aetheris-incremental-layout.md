@@ -355,15 +355,58 @@ above, twice now in this project's history.
 
 ## One fixture trap
 
-`flex-grow` is read by `layout.cpp` and appears to have no effect: a page that sets `flex-grow: 1` at load
-renders identically to one without it. My first fixture used `flex-grow` to demonstrate the bug and proved
-nothing — both before and after looked the same. The `gap` page is the one that discriminates. Recorded as the
-next item rather than fixed here.
+My first fixture used `flex-grow` to demonstrate the bug and proved nothing: both before and after looked the
+same. The `gap` page is the one that discriminates. At the time I wrote that `flex-grow` had no effect in this
+engine. That was wrong — see the sixth item below, which retracts it.
+
+---
+
+# Sixth item, same session — `flex-grow`, and a retraction
+
+Commit: `0e0e43d4`. The fifth item left `flex-grow` on the list as "read by `layout.cpp` and appears to have
+no effect". Checked properly; there is no bug, and the claim was mine, not the engine's.
+
+## What the code does
+
+`LayoutEngine::layout_flex_children()`:
+
+    float grow = std::max(0.0f, parse_length(child->style.get("flex-grow"), 0, available_width));
+    if (width < 0) width = total_grow > 0 ? free_space * grow / total_grow : 0;
+
+`parse_length("1", 0, w)` returns 1.0 (no unit, so it falls through to the bare number), so `flex-grow: 1`
+works. `Tests/AetherisRendering/TestFlexLayout.cpp` has asserted it since before this session — "flex-grow
+expands both items".
+
+## Why my measurement said otherwise
+
+The fixture's children had no `height`. A block with one line of text is ~19 px tall, so every probe at
+y = 84 was *below* both children and read the parent's blue background. The children were there; I was
+looking past them.
+
+Re-measured with `height: 100px` on both children, `flex-grow: 1` against `flex-grow: 2`, 400 px row:
+
+| fixture | x=100 | x=150 | x=200 | x=300 |
+| --- | --- | --- | --- | --- |
+| `flex-grow: 1` / `2` | magenta | green | green | green |
+| no `flex-grow` | blue | blue | blue | blue |
+
+Magenta to x = 133 is the 1:2 split of 400. Correct.
+
+## What this cost and what it changes
+
+A wrong claim went into a **pushed commit message** (`89d03716`), which cannot be rewritten under this repo's
+rules, and into this entry. Both are corrected where they can be — the handoff and here — and the commit
+message stands as written with the correction pointing at it.
+
+No code change. A window-level `flex-grow` test would duplicate `TestAetherisFlexLayout`, which asserts
+rect widths directly; a pixel probe is the weaker instrument here, which is the lesson of the last hour.
+
+Third instrument failure of the session, all three the same shape: a coordinate or a fixture that did not mean
+what I assumed, read as if it were the engine's answer.
 
 ## Next
 
-1. `flex-grow` is read by `layout.cpp` and appears to have no effect; worth a separate look with a page that
-   discriminates.
-2. `[a=v i]` case flag, if a page needs it.
-3. Sibling combinators (`+`, `~`) are not matched; adding them means adding sibling invalidation.
+1. `[a=v i]` case flag, if a page needs it.
+2. Sibling combinators (`+`, `~`) are not matched; adding them means adding sibling invalidation.
+3. Per-node layout granularity: the key comparison is still whole-document.
 4. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
