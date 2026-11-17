@@ -112,7 +112,7 @@ Neither was the layout code. Both cost one probe each.
 
 # Second item, same session — cache across interaction-state changes
 
-Commits: `b2cc8a2f`, `88e01bbd`, `460b6595`. The item the handoff listed as needing upstream's
+Commits: `b2cc8a2f`, `88e01bbd`, `460b6595`, `cab7e8e8`. The item the handoff listed as needing upstream's
 `ancestor_traversal_for_pseudo_class`.
 
 ## What I looked at upstream
@@ -162,6 +162,8 @@ One interaction per run, 3 frames, `--window` against a loopback fixture:
 | `:focus-within`, background | 1 / 2 | 1 / **1** |
 | `:focus-within`, `width` (control) | 1 / 2 | 1 / 2 |
 | `:focus-within`, descendant | 1 / 2 | 1 / **1** |
+| `:active`, background only | 1 / 2 | 1 / **1**, 5 resolves |
+| `:active`, `width` | 1 / 2 | 1 / 2 |
 
 Pixels, read from the last frame rather than inferred: hovered element magenta and the element below it
 white; `.title` magenta while `#card` stays blue; `:focus-within` ancestor yellow and `.title` magenta.
