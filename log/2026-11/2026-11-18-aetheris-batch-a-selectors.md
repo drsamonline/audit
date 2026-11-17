@@ -147,10 +147,43 @@ It is a code comment at the call site, a row in `CHECKLIST.md` (1f3), and an ent
 The test asserts the state only, because a test asserting the event would be asserting something this batch
 does not do.
 
+## Row 1f3 closed: it was one request slot, not the handle guard
+
+Commits `cffba72c`, `2323679e`, `77223d5c`. The row guessed `set_focus()`'s `dom.handle_by_node` guard. That was
+wrong, and the probe that showed `__handlers_focus` had length 1 on the very handle being dispatched to killed
+it in one step.
+
+What was actually happening:
+
+    setTimeout(function () { a.focus(); }, 5);
+    setTimeout(function () { a.blur(); }, 12);
+
+`run_timers()` runs **every timer due in one frame's budget**, so both callbacks ran in the same frame. `focus()`
+set the single request slot, `blur()` replaced it with nullptr, and the loop performed a blur of nothing. The
+state moved for neither, and no event fired — which looked exactly like "the event does not dispatch".
+
+It is a queue now, drained in order:
+
+| script | events | final state |
+| --- | --- | --- |
+| `focus()`, `blur()` in two timers | F, B | unfocused |
+| `focus()` only | F | focused |
+| `focus()`, `blur()`, `focus()` in one timer | F, B, F | focused |
+
+## How it was narrowed, since that is the reusable part
+
+| Probe | Result | Eliminated |
+| --- | --- | --- |
+| `__handlers_focus.length` on the target | 1 | "the listener is not registered" |
+| same page without the `:focus` rule | event fires either way | the style re-resolve |
+| both listeners, one timer | fires | the blur listener |
+| one timer vs two | fires vs silent | **everything except what the two share: one `run_timers()` call** |
+
+Four probes, each killing one hypothesis, and the fourth left a single mechanism. That is the shape to keep: the
+discriminating probe is the one that varies *only* the thing you suspect.
+
 ## Next
 
-1. Row 1f3: why the focus event does not reach a listener. Start from `dom.handle_by_node` and whether a form
-   control gets a handle at all.
-2. Row 1e `localStorage`.
+1. Row 1e `localStorage`.
 3. `:has(+ .x)` now that sibling matching exists.
 4. Tier 0 corpus, still blocked here — no open internet.
