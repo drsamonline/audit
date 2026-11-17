@@ -232,9 +232,72 @@ sheet.
   descendant selectors need; the same trick would save two resolves and cost a second code path to get
   wrong.
 
+---
+
+# Fourth item, same session — per-element selector analysis
+
+Commits: `45b258b9`, `de915893`, `0d4af09e`. The third item's sheet-wide answer was a stopgap: one
+`.card:focus-within .title` rule anywhere made every focus move in the document coarse.
+
+## What I looked at upstream
+
+`CSS/Invalidation/PseudoClassInvalidator.cpp` again, for the third time in this session, and this time for the
+thing it does *not* do: it never asks the sheet a global question. It records a state fact per element and
+lets selector analysis narrow it to the elements a rule can actually reach. This commit is that idea with a
+blunt instrument: extract the compound that holds the pseudo-class and match it against the ancestor.
+
+## What shipped
+
+`StyleResolver::matches_ancestor_pseudo_class_rule(node, sheet, pseudo, state)` walks the selectors, finds
+`:focus-within` occurrences that are followed by a combinator (so the pseudo-class is on an ancestor, not on
+the subject), slices out that compound, and matches it against the node. The state passed is the one in which
+the pseudo-class holds for that chain — the new state for the element that gained focus, the old one for the
+element that lost it. Using the new state for both would fail to restyle a card that just lost focus.
+
+`CssStyleSheet::uses_pseudo_class_before_combinator()` (from `6cf3becb`) is deleted, with a note where it
+lived saying why it is not kept: reaching for it again would undo this.
+
+## Evidence
+
+200-row page, one focus move, paint only:
+
+| rule | focus | resolves | hits | layouts |
+| --- | --- | --- | --- | --- |
+| `#card:focus-within .title` | outside the card | **4** | 405 | 1 |
+| `#card:focus-within .title` | inside the card | 7 | 402 | 1 |
+| `body:focus-within .title` | inside the card | 408 | 1 | 1 |
+
+The first row is the win. The third is the control in the test: a compound that matches a wide ancestor still
+re-resolves the page, so the first two are not passing because the sheet is ignored.
+
+    ctest --test-dir build --no-tests=error -j 8  ->  100% of 59, twice in a row
+
+## Two fixture traps, both the instrument
+
+1. **Specificity, not matching.** I wrote the base rule as `#card .title{background:#00ff00}` and the focus
+   rule as `body:focus-within .title{background:#ff00ff}`. The base rule is 10100, the focus rule 202, so the
+   focus rule never applied. The page looked exactly like a broken `:focus-within` matcher. Read the pixels,
+   then read the specificity.
+2. **A bare compound does not match.** `:focus-within .title` matches nothing here: `matches_simple()` needs
+   a tag, class or id in the compound. That is a pre-existing parser limit, not a new one, and it is why the
+   control uses `body:focus-within .title`.
+
+Also: `--focus-key` takes a *window* y and the window subtracts the 34 px chrome. Two of my first measurements
+focused nothing and reported the load-time `resolves:` as if it were the interaction's. The coordinates in the
+test were calibrated against pixels before being written down.
+
+## What I deliberately did not do
+
+- **No general selector analysis.** This answers the `:focus-within`-on-an-ancestor question only. `:hover`
+  in the same position would need the same treatment, and it has not been needed yet: the hovered element's
+  subtree is dirtied anyway.
+- **No compound-level cache.** Every ancestor of a focus move re-scans the sheet. On a page with hundreds of
+  rules and a deep tree that is the next cost, and it is not measured yet.
+- **No sibling combinators.** Unchanged from the third item.
+
 ## Next
 
-1. Per-element selector analysis, so one `:focus-within .x` rule stops disabling the narrow path sheet-wide.
-2. Extend `kLayoutProperties` alongside any new property in `style.cpp`.
-3. `[a=v i]` case flag, if a page needs it.
+1. Extend `kLayoutProperties` alongside any new property in `style.cpp`.
+2. `[a=v i]` case flag, if a page needs it.
+3. Sibling combinators (`+`, `~`) are not matched; adding them means adding sibling invalidation.
 4. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
