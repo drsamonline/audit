@@ -946,11 +946,55 @@ itself rather than only the invalidation around it.
 That is now the fourth instrument failure of the session with the same root: a measurement whose result I
 accepted because it agreed with what I expected, rather than because it could have disagreed.
 
+---
+
+# Seventeenth item, same session — the structural pseudo-class set, and the list that must not drift
+
+Commits: `d4372085`, `e606bb35`, `963fc19d`. Upstream's set, from `CSS/SelectorMatching.cpp`:
+`:empty`, `:first-child`, `:first-of-type`, `:last-child`, `:last-of-type`, `:nth-child`, `:nth-last-child`,
+`:nth-of-type`, `:nth-last-of-type`, `:only-child`, `:only-of-type`, `:root`, plus `:not`, `:is`, `:where`,
+`:has` and the rest. This engine had four.
+
+## What shipped
+
+`:root`, `:first-of-type`, `:last-of-type`, `:only-of-type`, `:nth-of-type(n)`, `:nth-last-child(n)`,
+`:nth-last-of-type(n)`, and `:not(<compound>)` — the argument goes back through `matches_simple()`, so
+`:not(:first-child)` works.
+
+| rule | matching row | others |
+| --- | --- | --- |
+| `div:first-of-type` | magenta | — |
+| `div:nth-of-type(2)` | cyan | — |
+| `div:last-of-type` | blue | — |
+| `span:only-of-type` | yellow | — |
+| `div:not(.a)` | rows 2–3 | row 1 green |
+| `div:not(:first-child)` | rows 2–3 | row 1 green |
+
+Two supporting changes: `element_position()` now counts by tag name as well as by position, and the compound
+scanner no longer stops at a marker inside parentheses — `:not(.a)` had been captured as `"not("` and matched
+nothing, silently.
+
+## The coupling, which is the real content of this item
+
+The structural invalidation narrows to the parent when the sheet has no positional selector. That check was
+four terms in `render_document.cpp`, and the matcher is a different file. Adding a pseudo-class in one place
+and forgetting the other produces a stale frame — silent, and exactly the failure this whole session has been
+about.
+
+It is one list now: `CssStyleSheet::uses_positional_pseudo_class()`, next to the sheet. `:not(` counts as
+positional, because its argument may be. The guard is a test: a 200-row page with `div.r:first-of-type` in its
+sheet re-resolves 405 nodes on an append, not 5.
+
+## What I deliberately did not do
+
+- **No `An+b` notation.** `:nth-child(2n+1)` parses as a non-number and matches nothing — no match rather than
+  a wrong one. That is the honest failure, and it is written in `HANDOVER.md` rather than left to be discovered.
+- **No `:is`, `:where`, `:has`.** Each needs a selector-list argument and, for `:has`, invalidation in the
+  other direction (a child's change restyling an ancestor). Separate items.
+
 ## Next
 
-1. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
-2. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
-3. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
-4. The structural pseudo-class set is `:first-child`, `:last-child`, `:only-child`, `:nth-child(n)`, `:empty`.
-   `:nth-of-type`, `:first-of-type`, `:not(...)` and the rest are absent; a sweep against upstream's
-   `SelectorMatching.cpp` would say which a page would actually miss.
+1. `An+b` notation in `:nth-child()` and friends.
+2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
+3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
+4. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
