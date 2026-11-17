@@ -902,8 +902,55 @@ Read back by the page in a test rather than inferred:
 - **No `getPropertyPriority`.** It would return `""` for every declaration in this engine, since the parser
   drops `!important`. Not worth a function that cannot be anything but empty; recorded here instead.
 
+---
+
+# Sixteenth item, same session — `:empty` was not implemented, and a test was lying about it
+
+Commits: `901674f1`, `01d0d97b`, `fda24098`. Upstream's definition, from `DOM/SelectorQuery.cpp`: "Child nodes
+and their character data" — comments and doctypes do not count, and neither does text of length zero.
+
+## How it surfaced
+
+Probing `el.remove()` and `insertBefore` at runtime for the next reftest case. Both work. The pixel on the
+removal page was the wrong colour, and the cause was not the removal: `:empty` had never been implemented, so
+`#box:empty{...}` never matched anything.
+
+## The part that matters
+
+Two items ago I narrowed structural invalidation to the parent, with this reasoning:
+
+> only the parent can change (`:empty`) — the new children resolve themselves because they have no cache entry
+
+The reasoning is sound. The selector it was for did not exist.
+
+And the test I wrote for it asserted magenta after appending a child into an empty box — where the base colour
+was also magenta. So it passed for two commits while testing nothing at all. That is a control that cannot come
+out the other way, which is the one thing `UPSTREAM-FIRST.md` says a control must be able to do.
+
+Three runs now, and the first could not have passed before these commits:
+
+| case | expect |
+| --- | --- |
+| an empty box matches `:empty` | blue |
+| appending a child stops `:empty` matching | magenta |
+| removing the only child matches again | blue |
+
+The third also covers `el.remove()` through the narrowed structural path.
+
+## What I take from it
+
+The narrowing was correct, and I could not have known it was untested without looking. Two things would have
+caught it earlier and both are cheap: writing the assertion so it can fail (I did not), and probing the selector
+itself rather than only the invalidation around it.
+
+That is now the fourth instrument failure of the session with the same root: a measurement whose result I
+accepted because it agreed with what I expected, rather than because it could have disagreed.
+
 ## Next
 
 1. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
 2. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
 3. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
+4. The structural pseudo-class set is `:first-child`, `:last-child`, `:only-child`, `:nth-child(n)`, `:empty`.
+   `:nth-of-type`, `:first-of-type`, `:not(...)` and the rest are absent; a sweep against upstream's
+   `SelectorMatching.cpp` would say which a page would actually miss.
