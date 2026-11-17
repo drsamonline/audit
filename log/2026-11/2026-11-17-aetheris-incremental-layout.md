@@ -1149,3 +1149,50 @@ were earned here.
 
 The next session starts from the prompt's Step 0, not from this file — the prompt is the entry point and this
 entry is the record of how it got there.
+
+---
+
+# Twenty-first item, second session — custom properties and var()
+
+Commits: `a64cf097`, `e6694100`, `89f1a516`. First item of the plan after the roadmap review: parser-level, no
+layout work, the largest page-compat win per line.
+
+Upstream (`Rust/src/css/custom_properties.rs`, `resolve_vars`) resolves against an inherited store with a
+substitution context that detects a property referring back to itself. Same shape here, smaller: the ordinary
+property map as the store, a prefix copy for inheritance, a depth limit of 8 for cycles.
+
+| case | result |
+| --- | --- |
+| `:root{--c}` → `var(--c)` | magenta |
+| `var(--missing, #00ff00)` | green (fallback) |
+| `--b: var(--a)` chain | magenta |
+| `style="background:var(--c)"` | magenta |
+| `var()` read two elements up | magenta |
+| `--a: var(--b); --b: var(--a)` | exits 0, no substitution, no hang |
+
+## Three orderings, each wrong first
+
+1. **Inherit by prefix.** `inherit_from()` copied a fixed list of named properties; `--*` needed its own copy.
+2. **Collect before substitute.** `:root{--c}` outranks `div{background:var(--c)}`, so one pass substitutes the
+   div before the variable it reads exists.
+3. **Inherit before the cascade.** Full inheritance runs at the end of `resolve()`; substitution needs the
+   values at the start.
+
+The first measurement showed `(0,0,0)` on the `:root` case while the *fallback* case worked — which located the
+fault in the lookup, not the parser, in one step: the fallback path never touches the store.
+
+## Also in this batch
+
+Two roadmap claims were false or stale and are corrected (`89f1a516`): fonts cannot be wired until the font API
+asks for glyphs (`FontMetrics::advance(char)`), CSP is partly done rather than absent, and the window layer
+exists even though the shell UI does not. Process/site isolation moved to "out of scope". `docs/COVERAGE.md`
+is the snapshot those corrections rest on, with the corpus commands that would order them — blocked here, no
+open internet.
+
+## Next
+
+1. Rest of tier 1: sibling combinators with sibling invalidation, `[a=v i]`, `:checked`/`:disabled`/
+   `:placeholder-shown` — one parser+resolver cycle.
+2. Coverage corpus on a machine with network.
+3. Font API (glyph ids, per-glyph advances) before any rasteriser wiring.
+4. Family P0 builds on a machine with dev packages.
