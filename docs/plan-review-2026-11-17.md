@@ -113,3 +113,20 @@ second pass (25 s), and the choice cannot be a constant because being wrong cost
 
 That redefinition is the plan's most useful output so far: the original item would have
 been implemented, measured against deflate's objective, and found to do nothing.
+
+## A1 shipped, 2026-11-18
+
+`feat(png): choose filtered or unfiltered pixels by measurement` (ziptastic#34).
+
+| image | 1.4.3 | with A1 | change | time |
+|---|---|---|---|---|
+| 1,280×900 screenshot | 67,217 | **51,822** | **−22.9%** | 18.7 → 44.1 s |
+| 320×320 photograph as PNG | 70,322 | 70,308 | −0.02% | 1.4 → 2.3 s |
+
+The photograph is unharmed because the trial picks the filtered form — the reason the item
+was redefined from "filter search" to "choose by measurement" in the first place.
+
+**What it cost, and what is now top of the list:** +136% time on the screenshot, because
+two payloads are built and sampled before one is kept. The next move is to decide on a
+fraction of the rows rather than all of them, or to pre-filter the cases where unfiltering
+cannot win — and to measure both rather than assume either.
