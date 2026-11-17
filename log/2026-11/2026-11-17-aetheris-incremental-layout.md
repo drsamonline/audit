@@ -186,9 +186,55 @@ The baseline was taken by stashing the change and rebuilding HEAD, not by reason
 - **No per-node dirty flag.** Still one dirty set per rebuild, not upstream's per-box flag with a reason.
 - **No change to `relayout()`.** Its dirty set still comes from `collect_dirty()` with ancestors, unchanged.
 
+---
+
+# Third item, same session — narrow the focus-move dirty set
+
+Commits: `6cf3becb`, `3ba021cf`, `5fa49565`.
+
+## What I looked at upstream
+
+Nothing new: `CSS/Invalidation/PseudoClassInvalidator.cpp` again. Upstream does not dirty an ancestor's
+subtree for `:focus-within` at all. It records a state fact per element whose state changed and lets the
+style engine's selector analysis decide which *other* elements a rule can reach. The ancestor's subtree is
+never walked blindly.
+
+## What shipped
+
+The subtree walk only matters when a selector puts `:focus-within` on a compound that is not the last one —
+`.card:focus-within .title`. `CssStyleSheet::uses_pseudo_class_before_combinator()` answers that for the
+sheet, and the walk is skipped when the answer is no. The ancestor *chain* is still dirtied, which is what
+styles the ancestor itself (`#card:focus-within{background:...}`).
+
+The answer is sheet-wide, not per-element: one such rule anywhere turns the coarse path back on for every
+focus move. That is the honest version of upstream's question without selector analysis.
+
+## Evidence
+
+Same 200-row page, focus move into a card at the top, paint only:
+
+| page | resolves | hits | layouts |
+| --- | --- | --- | --- |
+| `#card:focus-within` only | **5** | 401 | 1 |
+| plus `#card:focus-within .title` | 408 | 0 | 1 |
+
+Both keep `layouts: 1`. The second row is the control in the test, so the first cannot pass by ignoring the
+sheet.
+
+    ctest --test-dir build --no-tests=error -j 8  ->  100% of 59, twice in a row
+
+## What I deliberately did not do
+
+- **No per-element analysis.** Answering "does a rule mention `:focus-within` on *this* ancestor" needs
+  matching each `:focus-within` compound against the element, which `StyleResolver` can do but does not
+  expose. Sheet-wide first; the sharper question is the next item.
+- **No change to the hover path.** Hover already dirties only the hovered subtree, which is the set its
+  descendant selectors need; the same trick would save two resolves and cost a second code path to get
+  wrong.
+
 ## Next
 
-1. Narrow the focus-move dirty set with selector analysis (does any rule mention `:focus-within` here).
+1. Per-element selector analysis, so one `:focus-within .x` rule stops disabling the narrow path sheet-wide.
 2. Extend `kLayoutProperties` alongside any new property in `style.cpp`.
 3. `[a=v i]` case flag, if a page needs it.
 4. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
