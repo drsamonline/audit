@@ -404,9 +404,61 @@ rect widths directly; a pixel probe is the weaker instrument here, which is the 
 Third instrument failure of the session, all three the same shape: a coordinate or a fixture that did not mean
 what I assumed, read as if it were the engine's answer.
 
+---
+
+# Seventh item, same session — two features closed by evidence, one cost paid down
+
+Commits: `9aeaf9b0`, `4c1fdffb`, `b6112a4a`.
+
+## `[a=v i]` and sibling combinators: not built
+
+Both were on the list as "if a page needs it". Checked whether anything does:
+
+    grep -rn " i\]" Tests/ docs/ src/        -> only vendored LibWeb hits, which Aetheris does not render
+    grep -rE "[a-z] *[+~] *\.[a-z]" Tests/AetherisRendering/ docs/  -> nothing
+
+So: no. Recorded as closed rather than built, and the handoff says what would have to change with them. The
+sibling case matters because the invalidation code leans on it: `style.cpp` splits on whitespace and `>` only,
+so a `+`/`~` selector matches nothing at all — a silent no-op, not a wrong answer. `collect_state_change_dirty()`
+carries a comment at the exact line that has to change if that ever becomes real.
+
+Not building something is only a decision if the evidence is written down; that is what this section is.
+
+## The key walk, narrowed
+
+The documented remaining cost of the layout skip was that it digested every node's style on every relayout.
+Only a node whose style was *re-resolved* can have a different key — everything else kept the exact
+`StyleProperties` the last snapshot digested — so the builder now reports the re-resolved set and the
+comparison walks that.
+
+| 200-row page (406 nodes), one hover | value |
+| --- | --- |
+| key comparisons, before | 406 |
+| key comparisons, after | **5** |
+| resolves | 5 |
+| layouts | 1 |
+
+`key checks:` is in the window summary beside `layouts:` and `resolves:`. The brief says to extend the
+instrument rather than open a debugger; this is that, and it turns a cost I had described in prose into a
+number.
+
+Two properties of the change that had to hold:
+
+- `restyled` empty means no style moved, so no key can have moved: one comparison instead of a walk.
+- A structural mutation clears the style cache, so every node re-resolves and the set is everything. The case
+  that must not skip is still the case that does not skip.
+- The node-count belt stays, but counts pointers instead of digesting styles, which is why it can be paid on
+  every skip.
+
+## What I deliberately did not do
+
+- **No per-node layout.** The skip is still all-or-nothing for the document: one changed box reflows
+  everything. That is the next structural step and it is bigger than this session's remaining budget.
+- **No timing measurement.** `key checks` counts the comparisons, which is the cost that changed. Wall-clock
+  in a sandbox with a shared CPU would be the weaker instrument.
+
 ## Next
 
-1. `[a=v i]` case flag, if a page needs it.
-2. Sibling combinators (`+`, `~`) are not matched; adding them means adding sibling invalidation.
-3. Per-node layout granularity: the key comparison is still whole-document.
-4. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
+1. Per-node layout: a dirty layout subtree instead of an all-or-nothing document decision.
+2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
+3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
