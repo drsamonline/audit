@@ -119,10 +119,38 @@ A residual is recorded rather than fixed: `specificity()` takes the **first** `)
 pseudo-class, so `:is(:not(.a))` mis-scores by a class. Rare, and now written down instead of waiting to be
 discovered.
 
+## Batch B, second half: focus() and blur()
+
+Commits `c1ec9b62`, `b73427e6`, `0889956a`. A script calls these while it is running, where the window loop's
+document, interpreter and interaction state are not in scope, so they record a request and the loop performs it
+with `set_focus()` — the same helper a click or a Tab key uses. The ordering written there (blur before the state
+change, focus after) therefore applies unchanged.
+
+| call | result |
+| --- | --- |
+| `element.focus()` on the first of two controls | magenta, the second stays green |
+| `focus()` then `blur()` | back to green |
+
+## One measurement that looked like a failure and was not
+
+The first probe ran focus → focus → blur across three timers and ended with both controls green. I read that as
+"focus does nothing". It was correct: the last call was `blur()`, and nothing was focused at the end. The
+sequence has to be read before its final frame is judged.
+
+## One real gap, opened as a row rather than hidden
+
+The state moves and `:focus` styling follows, but a listener registered with `addEventListener('focus', ...)`
+never runs. `set_focus()` guards its dispatch on `dom.handle_by_node`, so either the control has no handle or
+the listener is not reachable from it — not yet established which.
+
+It is a code comment at the call site, a row in `CHECKLIST.md` (1f3), and an entry in the open-defects table.
+The test asserts the state only, because a test asserting the event would be asserting something this batch
+does not do.
+
 ## Next
 
-1. Batch B's second half: `focus()` and `blur()`, which need the interaction state published the way
-   `g_current_page` now is.
+1. Row 1f3: why the focus event does not reach a listener. Start from `dom.handle_by_node` and whether a form
+   control gets a handle at all.
 2. Row 1e `localStorage`.
 3. `:has(+ .x)` now that sibling matching exists.
 4. Tier 0 corpus, still blocked here — no open internet.
