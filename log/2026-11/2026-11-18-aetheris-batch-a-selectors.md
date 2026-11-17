@@ -213,9 +213,44 @@ That last one is where this project keeps getting caught: a mechanism that is ob
 exactly where an unexamined assumption survives. The row exists so the next session either proves it or finds it
 broken.
 
+## Navigation: location, and a click that follows a link
+
+Commits `0f506632`, `58eff7ed`, `78bc3dfd`. This was the blocker for proving 1e2, and a gap in its own right.
+
+- `location.href` (get and set), `assign()`, `reload()`. The JS module owns the object and asks the embedder two
+  questions through hooks, so it knows nothing about sessions, tabs or fetching.
+- A click on a link navigates unless a handler called `preventDefault()`; the anchor may sit above the node that
+  was hit, so the walk goes up.
+- URL resolution: absolute, root-relative, or relative to the last path segment. Not RFC 3986 — no dot-segment
+  removal, no query merging — and the comment says so.
+
+| step | result |
+| --- | --- |
+| page A at load | `location.href` is its own URL |
+| click the link | page B loads, `location.href` is `/b` |
+| page B reads localStorage | the value page A wrote |
+
+### Two ordering bugs, both from the first probe
+
+| Symptom | Cause |
+| --- | --- |
+| `location.href` empty on the first page | the URL was assigned after the page was built, and scripts run inside the build |
+| localStorage `null` after navigating | the storage origin was assigned after the build, for the same reason |
+
+Both are now set before `create_scripted_document()`. The pattern is worth naming: **anything a script can read
+has to be true before the script runs**, and "before" here means before the call that runs it, not before the
+function that contains that call.
+
+### And one harness mistake of my own
+
+The first probe served the same body for every path, so the navigation looked broken when it was working. The
+second mistake was the flag: clicks take `--click X,Y`, not `--click-x`/`--click-y`, so two probes silently did
+nothing. Both are the same error as ever — the instrument, not the subject.
+
 ## Next
 
 1. `:has(+ .x)` now that sibling matching exists.
-2. Navigation in the harness — `location` and following a link — which is what 1e2 needs, and is a gap in its
-   own right: a browser that cannot follow a link is not browsing.
-3. Tier 0 corpus, still blocked here — no open internet.
+2. `history`, `location.pathname`/`search`/`hash`, dot-segment resolution (row 1g3).
+3. Realm isolation on navigation (row 1g2) — the interpreter surviving is what makes localStorage work, and it
+   is also why the old page's globals and listeners survive.
+4. Tier 0 corpus, still blocked here — no open internet.
