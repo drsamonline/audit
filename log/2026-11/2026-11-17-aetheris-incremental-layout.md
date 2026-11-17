@@ -701,8 +701,62 @@ of omission that produces a silent stale frame.
 - **No change to the `:empty` handling.** The parent is dirtied; whether the *parent's* parent could match
   something is not a question this engine's selector set can ask.
 
+---
+
+# Twelfth item, same session — reftests in upstream's shape, and a SIGSEGV they found
+
+Commits: `1e7fb156`, `253ab301`, `87f9f7d3`. Upstream checked first: Ladybird verifies rendering with
+`Tests/LibWeb/Ref`, where an input declares `<link rel="match" href="...-ref.html">` and the two must render
+identically. The item was to generalise the single differential into that shape.
+
+## What shipped
+
+Five shapes, each a page mutated at runtime compared byte for byte below the chrome against the same state
+loaded fresh, over a 200-row page so reuse is doing real work:
+
+| shape | mutation |
+| --- | --- |
+| a text write | `textContent`, same length |
+| a width change by class | class `r hit`, 400 → 200 px |
+| a paint-only class change | class `r hot`, background only |
+| an appended child | `appendChild` a styled span |
+| an innerHTML replace | `innerHTML` = one styled span |
+
+## What it found
+
+The innerHTML case **crashed the browser**:
+
+    thread 29145 panic: member access within misaligned address 0x92234d379374c60c for type
+    'const aetheris::rendering::DomNode', which requires 8 byte alignment
+    /scratch/work/The_Browser/src/rendering/render_document.cpp:254 in relayout
+        for (auto const* current = node; current; current = current->parent)
+
+`js_inner_html_set()` inserted the parsed children with `push_back()`, so they kept the parent pointer they
+were given while parsing — to the fragment root, which dies at the end of the block. Nothing walked `parent`
+after an `innerHTML` set, so the dangling pointer never showed, until the layout dirty-set walk (added two
+items ago) walked it. `append_child()` sets the link and every other insertion path already used it.
+
+This is the strongest argument the session has for reference-based testing: five cases agreed with what I
+expected, and the sixth was a use-after-free in the DOM layer. Asserting expectations would never have found
+it — I did not know it was there.
+
+## Two fixture errors on the way
+
+- `className` is not implemented here (only `classList`), so the appended span had no class and the case
+  failed for the wrong reason. `setAttribute` fixed it. Recorded as the next item, because a page setting
+  `className` silently gets nothing.
+- The failure message said "a reftest input run exits cleanly" for all five cases. Naming the case is what
+  made the crash reachable in one step; `require` now gets a built string.
+
+## Cost
+
+The window test went from ~50 s to ~95 s: ten extra browser runs over 200-row pages. The suite is ~65–70 s
+wall clock at `-j 8`. That is worth it for the only test that does not encode my assumptions, and it is
+written down so nobody removes it for being slow.
+
 ## Next
 
-1. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
-2. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
-3. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
+1. `className` is not implemented (only `classList`), so `el.className = 'x'` silently does nothing.
+2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
+3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
+4. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
