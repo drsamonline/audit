@@ -1079,9 +1079,54 @@ selector matched nothing at all — a second failure in the same code path, foun
   change — but that is a claim to test, not to assume.
 - **No `of S` argument** for `:nth-child(2n of .x)`. Upstream has it; nothing here needs it.
 
+---
+
+# Twentieth item, second session — :has(), and the third nested-syntax bug
+
+Commits: `65b57cca`, `18f38909`, `f8f42f4d`. Upstream: `Pc::Has => self.matches_relative(arguments, node,
+node, context)` — a selector list of *relative* selectors (optional combinator, descendant unless written),
+searched over what the element contains.
+
+| rule | direct `.x` | `.x` two levels down |
+| --- | --- | --- |
+| `:has(.x)` | match | match |
+| `:has(> .x)` | match | no |
+| `:has(>.x)` | match | no |
+| `:has(.nope)` | no | no |
+
+## The invalidation needed no change
+
+`collect_dirty()` already includes the ancestors of any mutation, so a child arriving restyles a `:has()`
+ancestor. I asserted it by pixel rather than assuming it — "it already works" is a claim, and this session has
+three examples of such claims being wrong.
+
+## The bug, and it took three probes
+
+`:has(> .x)` matched nothing while `:has(.x)` and `:has(> span)` both worked.
+
+The compound scanner stops at `#`, `.`, `:` and `[`. My functional-pseudo fix-up fired only when the captured
+value *ended* with `(` — true for `:not(.a)`, false for `:has(> .x)`, where the capture stopped at the `.`
+after a space. The pseudo text was `"has(> "`, with no `)` to find, and the rule was dropped silently.
+
+Two probes went into the wrong place before I printed the selector text at match time, which showed the text
+arriving intact and the block never being entered — and that located it in one step. The lesson is the same as
+ever: print the value, do not reason about which layer ate it.
+
+## Three bugs, one mistake
+
+| item | parser | mistake |
+| --- | --- | --- |
+| 19 | rule parser | split on every comma, including inside `:is(...)` |
+| 19 | combinator splitter | read a space inside `:is(...)` as a descendant |
+| 20 | compound scanner | stopped at a marker inside `:has(> .x)` |
+
+All three are a scanner for a nested syntax treating the inside of parentheses as flat. The two places left
+that walk a selector character by character are `specificity()` and `split_selector_list()`; if a fourth exists,
+it is there.
+
 ## Next
 
-1. `:has(...)`, starting from `invalidate_style_after_pseudo_class_state_change` upstream.
+1. The fourth nested-syntax bug, if one exists — `specificity()` and `split_selector_list()`.
 2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
 3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
 4. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
