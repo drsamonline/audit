@@ -9,15 +9,32 @@ rebuilt it, measured it, and committed it in four small commits plus the docs.
 
 ## What I looked at upstream
 
-`Libraries/LibWeb` was not sparse-cloned this session: the design was already written down, and the shape
-it follows is `Layout/` — boxes carry their geometry and an invalidation flag, and the engine lays out the
-dirty set rather than the tree. What is ported here is the *decision* (geometry is reusable while nothing
-that can move a box has changed), not the mechanism: there is no per-box dirty flag yet, so the decision is
-taken from style, by comparing the properties that can move a box.
+Read after the code was written, which is the wrong order and is worth recording as such: the design came
+from the handoff, and the upstream reading below was done to check the claim in `1b2417d7` rather than to
+make the design. It held, and it sharpened it.
 
-The one upstream idea this does **not** yet cover is `ancestor_traversal_for_pseudo_class` — reuse across
-interaction-state changes. That is the next item, and it is the reason `apply_visual_state()` still rebuilds
-every node.
+- `Layout/Node.h` — `NodeFlag::NeedsLayoutUpdate`, `set_needs_layout_update(DOM::SetNeedsLayoutReason)`.
+  Upstream invalidates per box, with a reason; Aetheris has no per-box flag, so the decision is taken from
+the resolved style instead.
+- `DOM/Node.h` — the reason lists are the interesting part: `ENUMERATE_SET_NEEDS_LAYOUT_REASONS` includes
+  `StyleChange`, and `ENUMERATE_SET_NEEDS_LAYOUT_TREE_UPDATE_REASONS` holds the structural ones
+  (`NodeInsertBefore`, `NodeRemove`, `CharacterDataReplaceData`, `HTMLImageElementUpdateTheImageData`).
+  Upstream separates *rebuild the layout tree* from *move the boxes*, which is the same split as
+  `text_or_structure` in `relayout()`: text and structure force a pass, an attribute write does not.
+- `CSS/UpdateStyle.cpp` — `RequiredInvalidationAfterStyleChange`, with `needs_relayout()` and
+  `needs_layout_tree_rebuild()` computed from what actually changed, plus accumulated-visual-context and
+  scroll-container invalidation as separate questions. On the relayout branch it *also* calls
+  `Painting::request_document_repaint(...)`, so a relayout is not a repaint and a repaint is not a relayout.
+
+So the port is the decision, not the mechanism: upstream asks the style *diff* which invalidation it needs;
+this asks the resolved *layout key* before and after, which is the coarser version of the same question and
+the right one while there is no per-property diff to consult. What is not ported is the granularity: upstream
+relayouts the marked subtree (`render_state_relayout_element_after_style_change`), this decides for the whole
+document.
+
+The one upstream idea this does **not** yet cover is `ancestor_traversal_for_pseudo_class`
+(`CSS/Invalidation/PseudoClassInvalidator.cpp`) — reuse across interaction-state changes. That is the next
+item, and it is the reason `apply_visual_state()` still rebuilds every node.
 
 ## What shipped
 
