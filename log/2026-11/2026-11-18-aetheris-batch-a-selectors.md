@@ -182,8 +182,40 @@ It is a queue now, drained in order:
 Four probes, each killing one hypothesis, and the fourth left a single mechanism. That is the shape to keep: the
 discriminating probe is the one that varies *only* the thing you suspect.
 
+## Row 1e: localStorage
+
+Commits `e142b937`, `5dbd9d37`, `2d40f263`. Upstream's Storage interface (`HTML/Storage.idl`) is `length`,
+`key(index)`, `getItem`, `setItem`, `removeItem`, `clear`, with one Storage object per origin held by the
+document (`DOM/Document.h`, `m_local_storage_holder`).
+
+Here the store is a map on the interpreter — which lives as long as the window — and the embedder sets the origin
+when a page loads. A missing key returns `null`, not `undefined`.
+
+| call | result |
+| --- | --- |
+| `setItem` twice, then `length` | 2 |
+| `getItem` of a stored key | the value |
+| `getItem` of a missing key | `null` |
+| `key(0)` / `key(9)` | a stored key / `null` |
+| `removeItem`, then `length` | 1 |
+| `clear`, then `length` | 0 |
+
+### Two limits, and one thing I refused to claim
+
+- **In memory only.** Upstream persists a storage area per profile; this ends with the process.
+- **`key(i)` is sorted, not insertion order** — the store is a `std::map`. A page walking keys by index sees
+  them alphabetically.
+- **Cross-load persistence is not proved.** It holds by construction (the interpreter outlives the document),
+  but the harness cannot navigate: there is no `location` object and a click does not follow a link. It is a row
+  in `CHECKLIST.md`, not a sentence in a commit message pretending to be evidence.
+
+That last one is where this project keeps getting caught: a mechanism that is obviously true by construction is
+exactly where an unexamined assumption survives. The row exists so the next session either proves it or finds it
+broken.
+
 ## Next
 
-1. Row 1e `localStorage`.
-3. `:has(+ .x)` now that sibling matching exists.
-4. Tier 0 corpus, still blocked here — no open internet.
+1. `:has(+ .x)` now that sibling matching exists.
+2. Navigation in the harness — `location` and following a link — which is what 1e2 needs, and is a gap in its
+   own right: a browser that cannot follow a link is not browsing.
+3. Tier 0 corpus, still blocked here — no open internet.
