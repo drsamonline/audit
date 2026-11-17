@@ -247,10 +247,38 @@ The first probe served the same body for every path, so the navigation looked br
 second mistake was the flag: clicks take `--click X,Y`, not `--click-x`/`--click-y`, so two probes silently did
 nothing. Both are the same error as ever — the instrument, not the subject.
 
+## `:has(+ .x)` and `:has(~ .x)`
+
+Commits `9a912b7d`, `061eda79`, `8f1ad806`. Both forms answered false until sibling combinators existed; now the
+relative-selector walk handles them — `+` looks at the next element sibling, `~` at every following one. They look
+forward, which is the opposite direction from the descendant forms.
+
+| rule | rows styled |
+| --- | --- |
+| `:has(+ .x)`, `.x` on row 2 | row 1 only |
+| `:has(~ .x)`, `.x` on row 3 | rows 1 and 2 |
+| `:has(+ .nope)` | none |
+| `r1` gains `.x` after load | row 1 restyles, resolves 4 → 7 |
+
+### The invalidation was the real work
+
+| Fix | Why |
+| --- | --- |
+| `uses_sibling_sequence()` scans at **any** depth | `:has(+ .x)` is a sibling dependency written inside parentheses; the depth-0 scan missed it |
+| an attribute change dirties the changed node's **siblings** | ancestors were already dirty, siblings were not |
+
+The selector matched correctly at load and went **stale on mutation** — the failure mode this engine produces more
+than any other, and the fourth time this session that a rule was right and the invalidation was not.
+
+### And a test expectation of mine that was wrong
+
+The `.x` rows are 10 px wide, so their pixel at x=200 is the page background, not their own colour. The first
+version of the test expected their own colour and failed against a correct engine. The probe that "passed" had
+simply not sampled those rows.
+
 ## Next
 
-1. `:has(+ .x)` now that sibling matching exists.
-2. `history`, `location.pathname`/`search`/`hash`, dot-segment resolution (row 1g3).
+1. `history`, `location.pathname`/`search`/`hash`, dot-segment resolution (row 1g3).
 3. Realm isolation on navigation (row 1g2) — the interpreter surviving is what makes localStorage work, and it
    is also why the old page's globals and listeners survive.
 4. Tier 0 corpus, still blocked here — no open internet.
