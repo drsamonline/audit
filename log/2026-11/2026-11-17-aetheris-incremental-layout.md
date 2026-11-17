@@ -108,9 +108,85 @@ Neither was the layout code. Both cost one probe each.
 - Geometry is only reused at the width that produced it (`m_layout_width`), and only when a text or
   structural mutation did not precede it.
 
+---
+
+# Second item, same session — cache across interaction-state changes
+
+Commits: `b2cc8a2f`, `88e01bbd`, `460b6595`. The item the handoff listed as needing upstream's
+`ancestor_traversal_for_pseudo_class`.
+
+## What I looked at upstream
+
+Read **before** writing this one, unlike the first item.
+
+- `CSS/Invalidation/PseudoClassInvalidator.cpp` — `ancestor_traversal_for_pseudo_class()` returns
+  `AncestorTraversal::FlatTree` for `:focus-within` and `ShadowIncluding` for everything else, i.e. exactly
+  one pseudo-class reaches ancestors. `pseudo_class_propagates_to_ancestors()` says the same thing in one
+  line.
+- The same file's `invalidate_style_after_pseudo_class_state_change()` builds the chain for the old state and
+  the chain for the new one, then walks each and invalidates only the elements **not** in the other chain —
+  so the dirty set is the elements whose state actually moved, and the walk stops at the first element that
+  is in both chains because everything above it is too.
+- `:focus-visible` publishes `element.should_indicate_focus()` rather than the focus move, which is why a
+  pointer focus does not light up every script-focused element. Aetheris already had that rule in
+  `style.cpp`; nothing to port.
+
+What I checked in this tree before trusting the port: `style.cpp`'s `matches_simple()` tests `:hover`,
+`:focus`, `:focus-visible` and `:active` against `interaction_state-><slot> != &node` — the element itself —
+and walks the ancestor chain only for `:focus-within`. The upstream split holds exactly.
+
+## What shipped
+
+`apply_visual_state()` keeps the style cache and the geometry snapshot instead of clearing both. It dirties
+
+- the subtrees of the element that lost the state and the one that gained it (`.card:hover .title` matches
+  descendants),
+- their ancestor chains (the element that lost the state may be an ancestor of the one that gained it),
+- and, for a **focus** move only, the ancestor's whole subtree — because `.card:focus-within .title` matches
+  a *sibling* of the focused input, which is neither on the chain nor in the focused subtree. That was the
+  one case where the obvious dirty set is silently wrong, and it is the reason the test asserts that pixel.
+
+The first pass now fills the cache as well, so the first interaction reuses instead of resolving the page
+once for free.
+
+## Evidence
+
+One interaction per run, 3 frames, `--window` against a loopback fixture:
+
+| page | before (relayouts/layouts) | after |
+| --- | --- | --- |
+| hover, background only | 1 / 2 | 1 / **1**, 5 resolves |
+| hover, `width` (control) | 1 / 2 | 1 / 2 |
+| hover, one row of a 200-row page | 1 / 2 | 1 / **1**, 5 resolves, 401 hits |
+| hover, `#card:hover .title` | 1 / 2 | 1 / **1** |
+| `:focus-within`, background | 1 / 2 | 1 / **1** |
+| `:focus-within`, `width` (control) | 1 / 2 | 1 / 2 |
+| `:focus-within`, descendant | 1 / 2 | 1 / **1** |
+
+Pixels, read from the last frame rather than inferred: hovered element magenta and the element below it
+white; `.title` magenta while `#card` stays blue; `:focus-within` ancestor yellow and `.title` magenta.
+
+    ctest --test-dir build --no-tests=error -j 8  ->  100% of 59, twice in a row
+
+A measurement trap worth recording: the **before** column reports `resolves: 0` on every row, and that is
+not because nothing was resolved. The old state path passed no `StyleCacheStats` to the tree builder, so the
+instrument had no reading for it at all. A `resolves:` number from a run before this commit means nothing.
+
+The baseline was taken by stashing the change and rebuilding HEAD, not by reasoning about the old code.
+
+## What I deliberately did not do
+
+- **No selector analysis.** Upstream narrows the focus case by asking which rules mention `:focus-within`
+  on this ancestor. Without that, a focus move dirties the ancestor's whole subtree — correct, and coarse.
+  Hover and `:active` get the full win; focus gets only the layout skip.
+- **No sibling invalidation.** `style.cpp` splits selectors on descendant and child combinators only, so
+  `+` and `~` cannot reach a sibling and none is dirtied. Adding sibling combinators means adding that here.
+- **No per-node dirty flag.** Still one dirty set per rebuild, not upstream's per-box flag with a reason.
+- **No change to `relayout()`.** Its dirty set still comes from `collect_dirty()` with ancestors, unchanged.
+
 ## Next
 
-1. Cache across interaction-state changes, with upstream's per-pseudo-class traversal.
+1. Narrow the focus-move dirty set with selector analysis (does any rule mention `:focus-within` here).
 2. Extend `kLayoutProperties` alongside any new property in `style.cpp`.
 3. `[a=v i]` case flag, if a page needs it.
 4. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
