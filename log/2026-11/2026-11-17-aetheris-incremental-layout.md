@@ -1036,10 +1036,52 @@ before, so it could not pass by accident.
 4. **Verification** — the reftest matrix in upstream's shape, which found a use-after-free in `innerHTML`, and
    an honest `layout nodes:` counter.
 
+---
+
+# Nineteenth item, second session — :is(), :where(), list :not(), and two splitters
+
+Commits: `a63ad018`, `b1d074ac`, `87f13a46`. The sandbox recycled between sessions: the tree was re-cloned at
+`235f8956`, rebuilt from the recipe in `START-PROMPT.md`, and 59/59 confirmed before any edit. That is the
+recipe working as written.
+
+Upstream (`Rust/src/css/style/component_matching.rs`) matches all three over a **selector list**:
+
+    Pc::Is | Pc::Where => self.matches_any(arguments, node, context),
+    Pc::Not           => Ok(!self.matches_any(arguments, node, context)?),
+
+and `selector_arena.rs` scores them: `Has | Is | Not => greatest(arguments)`, `Where => zero`, else one class.
+The greatest is compared component-wise — an int max would prefer 100 classes to 1 id.
+
+| rule | rows coloured, six-row list |
+| --- | --- |
+| `:is(#r0, #r2, #r4)` | 1, 3, 5 |
+| `:where(.r)` | none — zero specificity loses to `div.r` and `#r1` |
+| `:is(.r, #r1)` | all six — 1 id, ties with `#r1`, wins on order |
+| `div:not(#r0, #r1)` | 3, 4, 5, 6 |
+| `#box :is(#r2, #r3)` | 3, 4 |
+
+## The bug worth recording
+
+The rule parser split selectors on *every* comma token, so `:is(#r0, #r2, #r4)` became three selectors —
+`:is(#r0`, ` #r2`, ` #r4)` — and ` #r2` is a valid bare id selector, so it **matched**. The frame showed only
+the middle row magenta, which reads as a partially working feature rather than a broken splitter.
+
+That is the worst shape a bug can take here: it does not fail, it matches something. Only the pixel made it
+visible; a count or a "does it apply" check would have passed.
+
+After fixing that, the combinator splitter read the space inside `:is(...)` as a descendant combinator and the
+selector matched nothing at all — a second failure in the same code path, found the same way.
+
+## What I deliberately did not do
+
+- **No `:has()`.** It is the next item and it is not the same shape: a child's change has to restyle an
+  ancestor. The dirty sets already include ancestors of any mutation, so `:has(> .x)` may need no invalidation
+  change — but that is a claim to test, not to assume.
+- **No `of S` argument** for `:nth-child(2n of .x)`. Upstream has it; nothing here needs it.
+
 ## Next
 
-1. `:is`, `:where`, `:has` — each needs a selector-list argument; `:has` needs invalidation in the other
-   direction (a child's change restyling an ancestor).
+1. `:has(...)`, starting from `invalidate_style_after_pseudo_class_state_change` upstream.
 2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
 3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
 4. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
