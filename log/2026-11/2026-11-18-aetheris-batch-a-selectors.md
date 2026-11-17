@@ -83,9 +83,46 @@ control's* colour. The test fixtures now set `border:0;margin:0;padding:0` and s
 - **No `:indeterminate`, `:required`, `:optional`, `:read-only`.** Each is one more attribute fact; none is on
   the plan.
 
+## Batch B, first half: getBoundingClientRect()
+
+Commits `f654adbf`, `8e90f626`, `438d0cf7`. Upstream returns the layout node's border box through the viewport
+mapping (`DOM/Element.cpp`, `get_bounding_client_rect` → `Painting::bounding_client_rect`). Here the layout
+node's rect is the border box in document coordinates and this path has no scroll offset, so the two coincide.
+All eight DOMRect members are published.
+
+The window loop now publishes the page it is driving (`g_current_page`), the way it already publishes the DOM
+host, because the call has nothing but a handle to work from.
+
+| box | reported |
+| --- | --- |
+| `#a`, 200×50 at the top | x 0, y 0, width 200, height 50 |
+| its far edges | right 200, bottom 50 |
+| `#b`, `margin-left:30px`, below `#a` | x 30, y 50, width 100, height 20 |
+
+Proved by the page asserting its own numbers, which is the proof style the plan asks for: geometry checked by
+arithmetic the page does, not by a pixel someone eyeballed.
+
+**One honest difference from upstream.** There is no forced layout read. A script that runs at load has no
+layout to measure and gets a zeroed rect — upstream returns an empty rect there too, but only after forcing the
+read and answering with real numbers. Reading inside a timer works, which is where pages use it.
+
+That cost one measurement: the first version returned `undefined` when no page was published yet, so
+`rect.x` threw and the script produced no output at all. Silence, not a wrong number.
+
+## The scanner row closed, and one gap left
+
+`specificity()` was the last scanner walking a selector character by character. Probed with a rule whose score
+depends on whether a space inside `[data-x="a b"]` counts as an element: it does not, so brackets are consumed
+in one gulp and the row closes with no code change.
+
+A residual is recorded rather than fixed: `specificity()` takes the **first** `)` when scoring a functional
+pseudo-class, so `:is(:not(.a))` mis-scores by a class. Rare, and now written down instead of waiting to be
+discovered.
+
 ## Next
 
-1. Row 1e `localStorage` and 1f `focus()`/`getBoundingClientRect` — batch B, the JS bindings.
-2. `specificity()` is the last scanner without a depth notion; check it before it becomes bug five.
+1. Batch B's second half: `focus()` and `blur()`, which need the interaction state published the way
+   `g_current_page` now is.
+2. Row 1e `localStorage`.
 3. `:has(+ .x)` now that sibling matching exists.
 4. Tier 0 corpus, still blocked here — no open internet.
