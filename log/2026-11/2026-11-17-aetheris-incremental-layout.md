@@ -992,9 +992,54 @@ sheet re-resolves 405 nodes on an append, not 5.
 - **No `:is`, `:where`, `:has`.** Each needs a selector-list argument and, for `:has`, invalidation in the
   other direction (a child's change restyling an ancestor). Separate items.
 
+---
+
+# Eighteenth item, same session — An+B
+
+Commits: `c9412faf`, `f581bb9a`, `0c01edf7`. Upstream's predicate, `Rust/src/css/style/selector.rs`:
+
+    pub(super) fn matches_an_plus_b(step: i32, offset: i32, index: i64) -> bool {
+        if step == 0 { return index == offset; }
+        let difference = index - offset;
+        difference % step == 0 && difference / step >= 0
+    }
+
+`difference / step >= 0` is the whole trick for a negative step: `-n+3` matches the first three and nothing
+after.
+
+Ported with the microsyntax the arguments need — `odd`, `even`, an integer, `n`, `-n`, `2n`, `2n+1`, `-n+3`,
+`+3n-2` — and anything else returns no match rather than a wrong one, which is what every form did before this
+commit.
+
+| rule | rows it colours, six-row list |
+| --- | --- |
+| `nth-child(2n)` | 2, 4, 6 |
+| `nth-child(odd)` | 1, 3, 5 |
+| `nth-child(-n+2)` | 1, 2 |
+| `nth-child(3n+1)` | 1, 4 |
+
+Read off the pixels in cascade order. The test is the zebra stripe — `2n` and `3n+1` over six rows, six pixels
+— because that is what the notation is for on a real page, and because no row would have matched either rule
+before, so it could not pass by accident.
+
+## Where the session stands
+
+47 commits from `966ab44c` to `0c01edf7`, in four groups:
+
+1. **Incremental layout** — the document-wide skip, per-node reuse keyed on the origin, and the key comparison
+   narrowed to the nodes that restyled. 405 → 4/5 nodes for a local edit.
+2. **Style invalidation** — the cache surviving interaction-state changes, per-element analysis for
+   `:focus-within`, and structural changes invalidating their child sequence instead of the document. 407 → 6
+   resolves for a deep append.
+3. **The DOM layer's invalidation contract** — one attribute choke point replacing six silent writers, plus
+   `classList`, `className`, `el.style = cssText`, `setProperty`, `dataset`, `checked` and `value` made real.
+4. **Verification** — the reftest matrix in upstream's shape, which found a use-after-free in `innerHTML`, and
+   an honest `layout nodes:` counter.
+
 ## Next
 
-1. `An+b` notation in `:nth-child()` and friends.
+1. `:is`, `:where`, `:has` — each needs a selector-list argument; `:has` needs invalidation in the other
+   direction (a child's change restyling an ancestor).
 2. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
 3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
 4. Any new caller of `register_subtree()`/`purge_subtree()` must note the child-list change itself.
