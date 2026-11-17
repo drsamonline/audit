@@ -527,8 +527,65 @@ each time: a number that did not match what the code plainly does.
   than through `layout_node`, so a dirty inline container re-lays out all of its text. That is unchanged from
   before this commit and is the next place the same idea would go.
 
+---
+
+# Ninth item, same session — the instrument, and a reference to test the reuse against
+
+Commits: `0e565ffa`, `1f6d575e`, `d0603705`.
+
+## `layout nodes:` was under-reporting
+
+A text run is laid out by `layout_inline_children()` directly, not through `layout_node`, so it was never
+counted. On a text-heavy page the number was about half the truth — 204 for a pass that had laid out 405
+nodes. Text runs are counted now, and the first pass is counted too, which is what makes a mutated run and a
+fresh run comparable at all.
+
+| case | before | after |
+| --- | --- | --- |
+| text edit in row 100 of 200 | 4 | 5 |
+| first row grows 3 px → 60 px | 204 | 405 |
+
+## A differential test for the reuse path
+
+Every other test in this suite asserts what I expect. This one compares two runs and asks for equality: a page
+mutated into a state, and the same page loaded in that state, byte-identical below the chrome.
+
+| run | layout nodes |
+| --- | --- |
+| mutated at runtime | 5 |
+| loaded in that state | 405 |
+
+Same pixels, 80× less layout work. That is the strongest evidence this session has produced, because the
+reference cannot inherit my assumptions: it is a fresh layout of the same document.
+
+The chrome is excluded because it carries the URL, and the two runs are served on different ports. That is
+also how the first version of the comparison failed — 212 differing pixels at y 11..21, all in the address
+bar. The exclusion is in the helper's name, not in a comment, so nobody re-adds the chrome by accident.
+
+## Fifth fixture error, and what caught it
+
+The differential's first fixture set `class='hit'` instead of `class='r hit'`. The row lost `.r`, so it lost
+`height: 3px`, grew to a text line, and pushed 200 rows down — which made the mutated page genuinely different
+from the baked one, and made the test meaningless rather than failing loudly.
+
+What caught it was the counter, not the frame comparison: `layout nodes: 203` where reuse should have made it
+5. One temporary `fprintf` in `reuse_subtree` printed `cached y=3 now y=19.2`, and 16.2 px is a line height —
+which pointed at the missing rule in one step.
+
+That is the pattern for all five of this session's instrument failures: a number that did not match what the
+code plainly does, chased with a print rather than a theory. The frame comparison would have hidden this one;
+the count could not.
+
+## What I deliberately did not do
+
+- **No text-run reuse.** Every path that changes text replaces the text node with a new one, so a text run is
+  never reusable; the case that would benefit is a *dirty inline container* whose other runs did not move.
+  That is now the next item rather than this one.
+- **No chrome in the comparison.** The URL differs by port; excluding it is honest, and the alternative
+  (serving both pages on one fixed port) is racy.
+
 ## Next
 
 1. `[a=v i]` and `+`/`~` remain unbuilt by evidence; revisit only when a page needs them.
-2. Partial reuse inside inline flow: a dirty inline container re-lays out all its text today.
+2. Partial reuse inside inline flow: a dirty inline container re-lays out all its text runs.
 3. Family P0 builds on a machine with dev packages; record versions in each `SOURCES.md`.
