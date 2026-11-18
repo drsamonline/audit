@@ -1460,3 +1460,42 @@ over by a test that avoids it.
 | --- | --- |
 | tip | `760b882c`, suite 60/60 twice |
 | open | 1g7c, 3a6, 2d, 4c/4b, 4d, 1g4b/c, 3i, 3c/3d, tier 0 |
+
+---
+
+# Shaping: from blocked to in the suite
+
+Six models were asked how to shape without HarfBuzz dev packages. The reconciliation is in
+`AI-replies-reconciliation.md`; this is what the code did with it.
+
+| step | result |
+| --- | --- |
+| fetch | uharfbuzz 0.57.0 sdist over the allowlist, 38929 KB, carries HarfBuzz 15.0.0 and upstream's CMake |
+| build | upstream CMake, 70 TUs at -O0 -j2, three resumable commands - the amalgamation would have been all-or-nothing against the 300 s cap |
+| prove | `fi` 1 glyph with `liga` on, 2 with it off, Arabic 4 code points -> 3 glyphs |
+| integrate | `shape_run()` + `TtfFont::data()`; `AetherisShaping` in the suite |
+
+## Two build findings
+
+| finding | consequence |
+| --- | --- |
+| the project's `-Werror -Wcast-qual` fails inside HarfBuzz's templates | the vendored target needs `-w` |
+| `-fstrict-flex-arrays=2` makes HarfBuzz's `[1]` trailing arrays real one-element arrays, so its table lookup **panics on a valid font** | compile the vendored target with `-fstrict-flex-arrays=0`; the GCC spelling `-fno-strict-flex-arrays` is rejected by clang |
+
+The second one is the kind of thing that would have been blamed on the shaper. It was a *sanitizer* panic on a
+valid font, and the fix belongs to the build flags of third-party code, not to our text path.
+
+## What the replies were worth
+
+| reply | what survived |
+| --- | --- |
+| Qwen | the route: upstream CMake resumable per-file, and the uharfbuzz sdist as a carrier. Its quoted defines did **not** survive - the sdist's build files are 0 bytes |
+| Grok, DeepSeek, Claude | the amalgamation, which compiles but cannot be checkpointed |
+| Gemini, GPT | upstream CMake, right for the wrong reason (they did not mention resumability) |
+| Claude | the `hb_ot_font_set_funcs` route that makes callbacks unnecessary - Gemini's "you must write callbacks" was wrong |
+| Qwen | the smoke test's shape: without a `liga=off` control the test passes on a shaper that returns cmap results |
+
+| | |
+| --- | --- |
+| tip | `15c6496e`, suite 61/61 |
+| next | 2d2 (wire `TextLayout`, re-baseline pixels), 2d3 (face cache), 4c/4b, 3a6, 1g4b |
