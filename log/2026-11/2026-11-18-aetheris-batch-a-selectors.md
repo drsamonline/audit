@@ -468,3 +468,55 @@ a UA border, a queue that drains in one frame, a background behind a 10px elemen
 1. Row 1f7: `visibility` as a property. It unblocks 1f5's third clause and is used by real pages.
 2. Tier 2: the font API — glyph ids and per-glyph advances — before any rasteriser wiring.
 3. Tier 0 corpus, still blocked here.
+
+---
+
+# Row 1f7: visibility
+
+Commits `d5662307`, `859f31b2`, `7ce8034d`. Upstream read first: `visibility` is `visible | hidden | collapse`,
+**inherited**, initial `visible`, `affects-hit-testing: true` (CSS/Properties.json, CSS/Enums.json), and paint
+checks it **per box** — `Painting/BoxViews.cpp:189` paints when `visibility == Visible && opacity != 0`.
+
+That per-box check is the whole semantic, and it is why this could not reuse the `display:none` path:
+
+| property | box in the flow | children |
+| --- | --- | --- |
+| `display: none` | no | not rendered at all |
+| `visibility: hidden` | yes | a child that re-sets `visible` **is** painted |
+
+| change | where |
+| --- | --- |
+| inherited by name | `inherit_from()`'s list |
+| skip this node's own commands, still walk children | `RenderTree::emit()` |
+| the third clause of focusability | `is_focusable_node()` |
+
+| case | result |
+| --- | --- |
+| a hidden div | paints nothing |
+| the div after it | keeps its position — the box kept its space |
+| a child with `visibility:visible` inside a hidden parent | painted |
+| `focus()` on a `visibility:hidden` input | refused |
+
+`collapse` is accepted and treated as `hidden`, which is what it means for the non-table elements this engine
+renders.
+
+## The focus work is now closed
+
+| Row | State |
+| --- | --- |
+| 1f3 focus/blur events | done — the queue fix |
+| 1f4 focus() refuses non-focusable | done — 10 cases |
+| 1f5 display:none not focusable | done — 3 cases |
+| 1f6 click walks to the focusable ancestor | done — 6 cases |
+| 1f7 visibility | done — 4 cases |
+
+Every one of those five rows was found by reading upstream and comparing, not by a bug report. That is the return
+on the upstream-first rule: five behavioural differences in one afternoon, none of which any test in the suite
+would have caught, because the tests encoded what the engine did rather than what the platform requires.
+
+## Next
+
+1. Tier 2: the font API — glyph ids and per-glyph advances — before any rasteriser wiring. This is the largest
+   item on the plan and the one the roadmap review said was mis-sequenced.
+2. Row 1g3: `history`, `location.replace()`, the URL component attributes, dot-segment resolution.
+3. Tier 0 corpus, still blocked here.
