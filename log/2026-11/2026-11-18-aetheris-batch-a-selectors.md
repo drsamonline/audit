@@ -824,3 +824,45 @@ misbehave, removed rather than shipped with a caveat.
    navigation until the frame budget ran out, which is what "no output" looks like.
 2. Row 3h: soft-wrap opportunities.
 3. Row 3a: `::before`/`::after` synthetic boxes.
+
+---
+
+# Row 1g6: the dot-segment function, ported and tested — deliberately not wired
+
+Commits `ddcbb695`, `19f266e1`. Upstream read: `Libraries/LibURL/Rust/src/url/parser.rs`, the Path state. On `..`
+it truncates to the segment start, shortens the path, and pushes `/` unless the current character is a slash — so
+`/usr/..` is `/`, not empty. On `.` it truncates to the segment start plus one.
+
+| path | expected |
+| --- | --- |
+| /usr/.. | / |
+| /usr/local/.. | /usr/ |
+| /deep/dir/../up | /deep/up |
+| /deep/dir/../../up | /up |
+| /a/./b | /a/b |
+| /a/../.. | / |
+| /a/b/ | /a/b/ |
+| / | / |
+| /a//b | /a/b |
+
+Nine cases, a new test target (`Url`), suite now 60.
+
+**It is not wired into `resolve_url()`.** The version that shipped there earlier today hung the browser on
+`../up`, and that hang is unexplained. Testing the primitive first is the order the last two reverts argue for: the
+arithmetic is now known good, so if wiring it hangs again the fault is in the wiring, not in the function.
+
+## A mistake, recorded because it is the same class as the others
+
+The first attempt wrote this function into `src/rendering/url.hpp` — **which already exists** and owns the `Url`
+type. Overwriting it broke the build (`unknown type name 'Url'`) and it was restored with `git checkout` before
+anything else was attempted.
+
+Writing a file without checking the path first is the same error as the fixture mistakes: assuming a state rather
+than reading it. The function lives in `url_path.hpp` now, and the header says why it is not in `url.hpp`.
+
+## Where the session stands
+
+| Suite | 60/60, twice |
+| `main` tip | `19f266e1` |
+| Items today | 11 batches, 2 reverts, 1 tested-but-unwired primitive |
+| Open rows | 1g6 wiring, 1g7 setters, 3h soft-wrap, 3a pseudo-elements, 1e3 sessionStorage, tier 0 corpus |
