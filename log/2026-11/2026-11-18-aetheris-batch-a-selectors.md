@@ -1241,3 +1241,36 @@ where the *measurement* was the deliverable: the split works, and the reason it 
 | suite | 60/60, 130 s |
 | today | 16 batches, 4 reverts, 3 instrumented investigations, 1 hang fixed |
 | open | 3a, 2d, 1e3, 1g4b/c, 1g7b, 3i, 3c/3d, 4b (blocked on 4c), 4c, tier 0 |
+
+---
+
+# `sessionStorage`
+
+Commit `939c6ee0`. Upstream first: a session bottle map per origin and top-level browsing context, separate from
+the local one, with the same `Storage` interface over it (`HTML/Window.cpp`, `session_storage`;
+`HTML/Storage.cpp` takes the type at construction).
+
+The store is a second map on the interpreter. This interpreter is one window, so the store ends with the process,
+which is what a session store does when the tab closes.
+
+| check | result |
+| --- | --- |
+| both stores read back their own value | local / session |
+| each store's length | 1 and 1 |
+| each store looking for the other's key | null, null |
+
+The third row is the assertion worth having: two maps that were accidentally the same map would pass the first two.
+
+## Where the session stands
+
+| | |
+| --- | --- |
+| tip | `939c6ee0` |
+| suite | 60/60, twice, 127-131 s |
+| today | 17 batches, 4 reverts, 3 instrumented investigations, 1 hang fixed |
+| open | 3a (`::before`/`::after`), 2d (shaping), 4c (the split's external dependency), 1g4b/c, 1g7b, 3i, 3c/3d, tier 0 |
+
+Tier 1 of the reviewed plan is now complete: custom properties, sibling combinators, `[a=v i]`, form states,
+`localStorage`, `sessionStorage`, `getBoundingClientRect`, focus/blur, navigation, history, `location`'s components.
+What remains is tier 2's shaping, tier 3's pseudo-elements and layout completeness, and the divergences this session
+recorded rather than hid.
