@@ -1206,3 +1206,38 @@ checklist as row 4b rather than being absorbed silently — the same reason the 
 | suite | 60/60, twice |
 | today | 15 batches, 3 reverts, 3 instrumented investigations, 1 hang fixed |
 | open | 1g4b/c, 1g7b, 3a, 3i, 1e3, 2d, 3c/3d, 4b, tier 0 |
+
+---
+
+# Row 4b: the window-test split, three attempts, reverted
+
+Commit `bd35bce1`. Upstream first: `Tests/LibWeb/` is one directory per area with shared headers at the root
+(`FetchTestDocument.h`), which is the shape to copy for a 2,100-line test that takes 130-260 s.
+
+| attempt | result | kept |
+| --- | --- | --- |
+| 3-way split (Core / Style / Layout) | built and passed, 150 s wall in parallel | no |
+| 4-way split (+ Geometry) | Core fails with "the outer pixel is readable" under `-j4`; passes when run alone | no |
+| per-test `WORKING_DIRECTORY` to stop the frame-directory collision | still fails | no |
+
+## What the attempts established
+
+- The shape works: three parallel tests, 150 s wall instead of 260 s. That is worth 4b.
+- The failure is **not** the frame-directory collision it looked like. Names were made unique per area and each
+  test got its own working directory, and it still failed only under `-j4`.
+- Therefore a block in that chunk depends on state outside itself. That is the precondition for the split, and it
+  is row 4c.
+
+## Why it is reverted rather than shipped
+
+A suite that fails nondeterministically costs more than a slow one: every future session would have to decide
+whether a red run is real. The slow test is at least honest, and it is green at 130 s.
+
+Three reverts in this session were "a plausible fix measured to misbehave". This is the fourth, and the only one
+where the *measurement* was the deliverable: the split works, and the reason it broke is now a named question.
+
+| | |
+| tip | `bd35bce1` |
+| suite | 60/60, 130 s |
+| today | 16 batches, 4 reverts, 3 instrumented investigations, 1 hang fixed |
+| open | 3a, 2d, 1e3, 1g4b/c, 1g7b, 3i, 3c/3d, 4b (blocked on 4c), 4c, tier 0 |
