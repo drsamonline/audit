@@ -1085,3 +1085,60 @@ things that were only observed.
 | 2d | shaping — the last real gap in tier 2 |
 | 3c/3d | complete flex/grid, `@font-face`, transitions |
 | 0.1 | coverage corpus, blocked here |
+
+---
+
+# The hang: an infinite loop in `Url::resolve`, found four levels down
+
+Commits `20987a06` and the one before. The browser hung on the third page of a navigation sequence. Every row
+written from the symptom named the wrong layer:
+
+| row said | measurement said |
+| the dot-segment resolver hangs | the resolver was correct; it shipped |
+| a fetch can block forever | both recvs complete in 2 ms |
+| the hang is in document creation | document creation was never entered |
+| style collection | `discover_dependencies` → `Url::resolve` |
+
+The trace that settled it printed the raw dependency and its resolution, and stopped between them:
+
+    STYLE dep raw=[../up]
+    (hang)
+
+## The bug
+
+    for (;;) {
+        auto pos = path.find("/../");
+        auto previous = path.rfind('/', pos - 1);      // pos == 0 -> SIZE_MAX
+        path.replace(previous, pos + 4 - previous, "/");
+    }
+
+Base `/up`, reference `../up` → path `/../up` → `pos` is 0 → `pos - 1` underflows → `rfind` searches from the end
+and finds a *later* slash → the replace substitutes one slash for one slash → the path never changes and the loop
+never ends.
+
+| base | reference | before | after |
+| --- | --- | --- | --- |
+| /up | ../up | hang | /up |
+| /deep/dir/page | ../up | /deep/up | /deep/up |
+| /deep/dir/page | ../../up | /up | /up |
+| / | ../up | hang | /up |
+
+The fixture that hung for 20+ seconds now exits in under one with all three pages rendered.
+
+## Why the whole sequence was worth it
+
+Four instrumented runs and three wrong rows, for a four-line fix. The alternative - patching the layer each row
+named - would have produced three reverts (as the inline-flow and wrap investigations did) and still missed it,
+because the fault was in a *different implementation of the same idea*: `main.cpp`'s `resolve_url` for links, and
+`Url::resolve` for resources. The rows pointed at the one I had just written.
+
+That is the lesson worth keeping: when there are two implementations of a thing, a symptom does not tell you which
+one is at fault - and the one you just touched is the one you will suspect first, wrongly.
+
+## Where the session ends
+
+| | |
+| tip | `c75f66f7` |
+| suite | 60/60, twice |
+| items today | 13 batches, 3 reverts, 3 instrumented investigations, 1 hang fixed |
+| open rows | 1g7, 1g4, 3a, 3i, 1e3, 2d, 3c/3d, tier 0 |
