@@ -866,3 +866,43 @@ than reading it. The function lives in `url_path.hpp` now, and the header says w
 | `main` tip | `19f266e1` |
 | Items today | 11 batches, 2 reverts, 1 tested-but-unwired primitive |
 | Open rows | 1g6 wiring, 1g7 setters, 3h soft-wrap, 3a pseudo-elements, 1e3 sessionStorage, tier 0 corpus |
+
+---
+
+# Row 3h: three attempts at wrap opportunities, all reverted
+
+Commit `12b67ff5`. Upstream read first: `inline_formatting_context.rs`, `text_item_wrap_opportunity()` — a
+non-whitespace inline item may break only when `line_ends_in_whitespace` or `item.can_break_before`.
+
+| attempt | result | reverted |
+| track whitespace on the non-text path only | adjacent spans stopped breaking (right), spaced spans stopped too (wrong) | yes |
+| also set the flag in the text branch | same outcome | yes |
+| measure the child against the whole line, not the space left | same outcome, **and** the enclosing block's height changed from 19.2 to 38.4 unexplainedly | yes |
+
+## What the attempts established
+
+| fact | evidence |
+| the whitespace text node between two inline elements **exists** in this DOM | `html_tree_builder.cpp` inserts any non-empty text token; the previous session's "invisible to the flow path" conclusion was wrong |
+| my first two attempts never set the flag for text children | that branch `continue`s before the update — my bug, not the DOM's |
+| shrink-to-fit **clamps a child to the space left** | so a fit test against the remaining width can never see an over-wide item; the child must be measured against the whole line |
+
+## What is still unexplained
+
+With both fixes in place, a spaced pair still did not break, and the enclosing block grew to two lines of height
+with its children on one. That is unverified behaviour in the deepest part of the layout engine, so it is
+reverted rather than shipped with a note.
+
+Three reverts on this row is the honest count. Each attempt was built, probed and removed; the tree at `12b67ff5`
+is the tree that has always passed 60/60, and the row now carries the two established facts plus the one open
+question, which is a better starting point than the rule it started from.
+
+## The pattern, for the fourth time today
+
+| item | symptom | actual cause |
+| inline flow | box too wide | a text run's box reporting the line's width |
+| wrapping | possibly broken | working, unreachable until the above |
+| focusability | missing check | three levels of override upstream |
+| wrap opportunities | missing whitespace rule | my own flag never set, then a clamped width |
+
+Every one had a plausible fix at the layer the symptom named. The rule, again: **print what the layer received
+before changing it.** I have written that three times today and broken it three times.
