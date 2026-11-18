@@ -1142,3 +1142,34 @@ one is at fault - and the one you just touched is the one you will suspect first
 | suite | 60/60, twice |
 | items today | 13 batches, 3 reverts, 3 instrumented investigations, 1 hang fixed |
 | open rows | 1g7, 1g4, 3a, 3i, 1e3, 2d, 3c/3d, tier 0 |
+
+---
+
+# `history.go(delta)`
+
+Commit `596304d6`. Upstream first: `History::delta_traverse` (HTML/History.cpp) — delta 0 **reloads**, anything
+else traverses, and `back()`/`forward()` are `go(-1)`/`go(+1)`.
+
+That shape changed the design rather than confirming it. Back and forward each carried their own index arithmetic;
+now there is one entry point, `history_go(delta)`, and they delegate. Two places that move the index become one,
+which is the sort of thing that only looks obvious after someone else's code makes the argument.
+
+| call | behaviour |
+| --- | --- |
+| `go(-1)` | the previous entry, or nothing if there is none |
+| `go(+1)` | the next entry |
+| `go(0)` | reload the current document |
+| `go` past either end | nothing |
+
+Measured, three documents in one process: `go(-2)` from the third lands on the first. In the suite: a second
+document calling `go(0)` is fetched and its script runs again, which is what a reload looks like from inside the
+page.
+
+## Not built, and why
+
+| Row | Item | Reason |
+| --- | --- | --- |
+| 1g4b | `pushState`, `replaceState`, `history.state` | needs per-entry state, which means serialising a JS value across entries — a real subsystem, not a method |
+| 1g4c | `scrollRestoration` | needs scroll restoration, which the engine does not do |
+
+Both are rows with their reasons rather than omissions.
