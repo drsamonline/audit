@@ -958,3 +958,52 @@ overflows, which is the safer error. Row 3i.
 
 Four attempts: three by reading the symptom and patching, one by instrumenting first. The instrumented one worked
 on the first build. That is the whole argument for the rule I kept writing down and not following.
+
+---
+
+# The hang, traced: the resolver was innocent, the fetch blocks
+
+Commit `3206264d`. Third instrumented investigation today, and the second where the instrument moved the
+conclusion rather than confirming it.
+
+## What the trace showed
+
+`AETHERIS_TRACE_NAV=1` prints each navigation request, each document fetch, and each frame's state. With the tested
+`remove_dot_segments` wired back in, the server saw:
+
+    /deep/dir/page -> /deep/up -> /up
+
+That is exactly right for `location.href = '../up'` from `/deep/dir/page`, applied twice. **The resolver is
+correct**, and the previous two entries blamed it.
+
+## Where it actually stops
+
+    NAV frame 2 need_render=1 dirty=1 page=(nil)
+    NAV fetch [http://127.0.0.1:PORT/up]
+
+and nothing after: no page, no script, no frame 3. The server recorded the request and answered it. So the process
+is blocked inside `fetcher.fetch()` for the third document, after the request went out and before any content came
+back.
+
+## Why this matters more than the row did
+
+| row said | truth |
+| --- | --- |
+| "a dot-segment resolver hangs the browser" | a *fetch* can block forever; dot segments merely made the third navigation happen |
+| a resolver bug, bounded by URL shape | a network bug, bounded by nothing: any server that half-closes a keep-alive socket can freeze the browser |
+
+Leading hypothesis: a keep-alive connection the server has already closed, with no read timeout on the client. It
+would explain why the six-navigation history probe (single-threaded server, no `Connection: close`) never hit it.
+
+Row 1g8 now carries it: test the fetcher directly with a server that accepts a connection and never answers.
+
+## The pattern, and its cost
+
+| investigation | instrument first? | outcome |
+| --- | --- | --- |
+| inline flow | no - two patches first | two reverts, then found by printing |
+| wrap opportunities | no - three patches first | three reverts, then found by printing |
+| this hang | **yes** | cause found in one run, and the previous conclusion reversed |
+
+Three for three. The rule is not a preference: every investigation that started with a patch cost at least two
+extra build cycles and shipped nothing, and both that started with a trace landed.
