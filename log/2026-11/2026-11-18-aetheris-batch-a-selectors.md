@@ -425,3 +425,46 @@ coordinate** — including nothing.
 2. Row 1f7: `visibility` as a property, which unblocks 1f5's third clause.
 3. Tier 2: the font API (glyph ids and per-glyph advances), which the plan insists comes before any rasteriser
    wiring.
+
+---
+
+# Row 1f6: a click focuses the nearest focusable ancestor, or nothing
+
+Commits `919b2874`, `17e09604`, `ac4f4ec1`. Upstream read first:
+`EventHandler::focus_candidate_for_position()` (Page/EventHandler.cpp:3543) walks up from the hit node while it is
+not focusable, then runs the focusing steps with a **null fallback** — so a click that finds nothing focusable
+returns without touching focus. It does not clear focus either.
+
+| click target | focus |
+| --- | --- |
+| plain div | nothing |
+| input | the input |
+| span inside a button | the button |
+| span inside a plain div | nothing |
+| div with `tabindex` | the div |
+| disabled button | nothing |
+
+## The probe that was confounded, not wrong
+
+My first version included "click a span inside a link". It read as a failure and the code was right: a click on a
+link now **navigates** — shipped two items ago — so the probe was reading the next page. Replaced with a span
+inside a button, which walks up without leaving the document.
+
+The question to ask first when a case fails is "what else does this case trigger?". This session's answers so far:
+a UA border, a queue that drains in one frame, a background behind a 10px element, and now a navigation.
+
+## Where the focus work stands
+
+| Row | State |
+| --- | --- |
+| 1f4 focus() refuses non-focusable | done, 10 cases |
+| 1f5 display:none is not focusable | done, 3 cases incl. focus() at load |
+| 1f6 click walks to the focusable ancestor | done, 6 cases |
+| 1f7 `visibility: hidden` | open — the property does not exist in the engine |
+| 1f3 focus/blur events | done, the queue fix |
+
+## Next
+
+1. Row 1f7: `visibility` as a property. It unblocks 1f5's third clause and is used by real pages.
+2. Tier 2: the font API — glyph ids and per-glyph advances — before any rasteriser wiring.
+3. Tier 0 corpus, still blocked here.
