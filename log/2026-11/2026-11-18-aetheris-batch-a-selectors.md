@@ -1385,3 +1385,47 @@ not of the engine.
 | --- | --- |
 | tip | `e62c9529`, suite 60/60 |
 | open | 3a4 (`content: ''`), 2d (shaping), 4c (split), 1g4b/c, 1g7b, 3i, 3c/3d, tier 0 |
+
+---
+
+# Row 3a4: `content: ''` generates an empty box — shipped after the pod came back
+
+Commit `f8ddd0f9`. The work was written during a sandbox that could not fork a process, committed to a branch
+created through the GitHub API, and finished on a fresh pod. Upstream first, and it changed the shape of the fix:
+
+| layer | shape | consequence |
+| --- | --- | --- |
+| `CSS/StyleValues/ContentStyleValue.h` | a `StyleValueList` plus an optional alt-text list | `content` is a list of items, never a bare string |
+| `Rust/src/layout/tree_builder.rs` | `ComputedContentType::Normal \| None \| List` | three kinds, decided before the text is looked at |
+
+So `content: ''` is a List holding one empty item and generates a box; `none` is a different kind and generates
+nothing. This engine has no style-value type system, so the parser keeps the quotes as a stand-in for the item type —
+stated as a stand-in, with row 3a6 for the real thing, because `content: "x" / "alt"` cannot be represented this way.
+
+| change | why |
+| --- | --- |
+| the parser keeps quotes on `content` | a bare value makes `content: ''` and no declaration identical |
+| the box's text strips the quotes | the text is the string, not its syntax |
+| the box's display comes from its own style | hardcoded Inline made `display:inline-block; width:60px` boxes zero-width |
+| `LayoutNode::is_generated` | `generated_text.empty()` is false for exactly this case, so an empty box was invisible |
+| `emit` paints backgrounds for generated boxes | those were gated on `dom_node` being an element |
+
+Measured: magenta 60×20 at (20, 55) for `content: ''`; white at (20, 95) for `content: none`.
+
+## Four attempts, and what each was missing
+
+| attempt | what was wrong |
+| --- | --- |
+| keep quotes, no flag | the box was invisible: `generated_text.empty()` was the marker |
+| hardcoded display | `display:inline-block; width:60px` ignored, box zero-width |
+| no background gate change | backgrounds only painted for DOM element nodes |
+| sample at y 45 | the box is at window y 50–70; the sample was above it |
+
+The last one is the sixth fixture-shaped error of the session, and the same lesson: **say what the fixture puts at
+that coordinate, including nothing.**
+
+| | |
+| --- | --- |
+| tip | `3b5aebce`, suite 60/60 twice |
+| branch | `wip/3a4-content-empty-string` deleted — its purpose was to survive a pod, and the pod came back |
+| open | 3a6 (`content` list type + alt text), 2d (shaping), 4c, 1g4b/c, 1g7b, 3i, 3c/3d, tier 0 |
