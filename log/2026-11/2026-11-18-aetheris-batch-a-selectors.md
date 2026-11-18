@@ -1173,3 +1173,36 @@ page.
 | 1g4c | `scrollRestoration` | needs scroll restoration, which the engine does not do |
 
 Both are rows with their reasons rather than omissions.
+
+---
+
+# `location`'s component setters
+
+Commit `3563b06b`. Upstream first: all three setters copy the URL, replace one component and navigate
+(`HTML/Location.cpp`: `set_pathname`, `set_search`, `set_hash`), and the hash setter returns early when the
+fragment is unchanged — the one case that must not reload the page. `origin` stays read-only.
+
+| set | next load reports |
+| --- | --- |
+| `location.search = 'q=1'` | `search [?q=1]` |
+| `location.hash = '#frag'` | `hash [#frag]` |
+
+And the no-op, which is the assertion worth having: on a page already at `#frag`, setting `#frag` again made **no
+request**. The server saw three requests for three navigations, not four.
+
+## Divergence, recorded
+
+A fragment change re-fetches the document. Upstream treats a fragment change on the same document as a
+same-document navigation that scrolls. Ours costs a fetch and loses scroll position. Row 1g7b.
+
+## A new kind of row
+
+The window test took **259 s** on one run today (192 s on the next, 128 s earlier). It grew by about ten browser
+runs in this session and is now the bulk of the suite. That is a real cost to every future session and it is on the
+checklist as row 4b rather than being absorbed silently — the same reason the `layout nodes:` counter exists.
+
+| | |
+| tip | `3563b06b` |
+| suite | 60/60, twice |
+| today | 15 batches, 3 reverts, 3 instrumented investigations, 1 hang fixed |
+| open | 1g4b/c, 1g7b, 3a, 3i, 1e3, 2d, 3c/3d, 4b, tier 0 |
