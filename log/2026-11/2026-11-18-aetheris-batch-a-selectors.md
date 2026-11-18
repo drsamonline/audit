@@ -775,3 +775,52 @@ in the commit.
 
 `history.go(delta)`, `pushState`/`replaceState`, `history.state`, `scrollRestoration`, and
 `location.pathname`/`search`/`hash`/`origin` — rows 1g4 and 1g5.
+
+---
+
+# `location`'s URL components — and a hang, recorded rather than shipped
+
+Commits `480b568f`, `85f5a568`. Upstream read first: `HTML/Location.idl` exposes `origin`, `protocol`, `host`,
+`hostname`, `port`, `pathname`, `search`, `hash`, all serialised from the parsed URL record.
+
+| url | pathname | search | hash |
+| --- | --- | --- | --- |
+| /a | /a | | |
+| /a?x=1 | /a | ?x=1 | |
+| /a#frag | /a | | #frag |
+| /a?x=1#frag | /a | ?x=1 | #frag |
+
+Setters are not built; upstream re-parses and navigates for each.
+
+## The hang
+
+I also wrote `remove_dot_segments()` and a rewritten `resolve_url()`, because "no dot-segment removal" was on the
+same row. Navigating `location.href = '../up'` from `/deep/dir/page` then **hung the process** — no output, no
+return, killed by the harness timeout.
+
+Two probes isolated it:
+
+| probe | result |
+| --- | --- |
+| plain `location.href = '/b'` | works |
+| loading `/a`, `/a?x=1`, `/a#frag`, `/a?x=1#frag` | all work, components correct |
+| `location.href = '../up'` from `/deep/dir/page` | hangs |
+
+So the getters are fine and the resolver is not. **It is reverted**, and the reproduction is checklist row 1g6.
+
+## Why revert instead of debug on
+
+The resolver is on the path of every navigation in the browser. A version of it that can hang the process is worse
+than one that cannot remove dot segments: the first is a browser that freezes, the second is a link that resolves
+one directory too shallow. The next session gets a one-line reproduction instead of a half-understood loop.
+
+This is the second revert of the session, and both had the same shape: a plausible fix for a real gap, measured to
+misbehave, removed rather than shipped with a caveat.
+
+## Next
+
+1. Row 1g6: the dot-segment hang. Start from the fact that `/b` resolves and `../up` does not — that is a
+   difference in the *result*, and a resolver that returns the same URL it was given would loop the browser's
+   navigation until the frame budget ran out, which is what "no output" looks like.
+2. Row 3h: soft-wrap opportunities.
+3. Row 3a: `::before`/`::after` synthetic boxes.
