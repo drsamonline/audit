@@ -378,3 +378,50 @@ page, and the same trap is written into the test as a comment.
 | --- | --- |
 | 1f5 | no rendering-requirements check: `display:none` can be focused here, cannot upstream |
 | 1f6 | the click path still focuses whatever it hits; this gates the script path only |
+
+---
+
+# Row 1f5: the rendering requirement
+
+Commits `c7c00f02`, `db90789b`, `86c1ba12`. Upstream read first:
+`Element::meets_focusable_area_rendering_requirements()` (DOM/Element.cpp:6757) is **connected, not a
+display:none subtree, visibility:visible** — and it asks the *style*, so it answers before any layout exists.
+
+That last clause is the design constraint. We have no resolved-style accessor for an arbitrary node, so the
+obvious port — "the element must have a layout box" — would have refused `focus()` at load, which is exactly when
+pages call it.
+
+| situation | result | why |
+| --- | --- | --- |
+| no layout node yet | allowed | nothing has a box before the first layout, and upstream does not require one |
+| `display: none` | refused | the case the row exists for |
+| `visibility: hidden` | not checked | the property is not implemented at all |
+
+| candidate | focusable |
+| --- | --- |
+| input | yes |
+| input, `style="display:none"` | no |
+| input inside a `display:none` parent | no |
+| button | yes |
+| button, `display:none` | no |
+| input, `focus()` during load | yes |
+
+The last row is the one that would have caught a box-requiring implementation, so it is in the suite rather than
+only in this entry.
+
+## An assertion of mine that was wrong, again the same shape
+
+"Not focusable" was asserted as "green". A `display:none` element renders nothing, so its pixel is the page
+background and the test failed against a correct engine. It asserts "not magenta" now.
+
+That is the fourth time this session that an assertion failed because of what the *fixture* renders rather than
+what the *engine* does: the UA border on inputs, the 10px `.x` rows, the eight-focus queue, and now this. The
+pattern is consistent enough to state as a rule: **before asserting a colour, say what the fixture puts at that
+coordinate** — including nothing.
+
+## Next
+
+1. Row 1f6: the click path still focuses whatever it hits.
+2. Row 1f7: `visibility` as a property, which unblocks 1f5's third clause.
+3. Tier 2: the font API (glyph ids and per-glyph advances), which the plan insists comes before any rasteriser
+   wiring.
