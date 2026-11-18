@@ -520,3 +520,37 @@ would have caught, because the tests encoded what the engine did rather than wha
    item on the plan and the one the roadmap review said was mis-sequenced.
 2. Row 1g3: `history`, `location.replace()`, the URL component attributes, dot-segment resolution.
 3. Tier 0 corpus, still blocked here.
+
+---
+
+# Documentation gap, closed — and made a contract
+
+Commit `219d416a`. Told to always document everything, and checked: the day's work was in this entry and in
+`CHECKLIST.md`, and **nowhere else**. `HANDOVER.md` still stopped at the 2026-11-17 rows and the session handoff at
+item 21, so a session starting tomorrow would have read a tree that had grown eleven items without a record.
+
+| Place | Was | Now |
+| --- | --- | --- |
+| `SESSION-HANDOFF-2026-11-18.md` | did not exist | items 22–32, the five upstream-driven changes, and eight errors with the rule each earns |
+| `HANDOVER.md` | 2026-11-17 rows | a row per mechanism added: var(), sibling selectors and invalidation, :has(), getBoundingClientRect, focus()/blur(), localStorage, navigation |
+| `ROADMAP.md` | custom properties only | the CSS row lists what landed, plus a new 5a for storage and navigation with their limits |
+| `START-PROMPT.md` | "update the checklist" | a **documentation contract**: five places per item, in the same commit, and four rules that make it checkable |
+
+## The contract, because diligence does not survive a sandbox recycle
+
+| Place | What | Written for |
+| --- | --- | --- |
+| `CHECKLIST.md` | the row, with a proof | the next session's first read |
+| `HANDOVER.md` | a row per mechanism: what it does, what it does not, the trap | whoever changes it next |
+| `SESSION-HANDOFF-<date>.md` | the item, commits, numbers, errors | the session narrative |
+| `COVERAGE.md` | state and the file that proves it | ordering the remaining work |
+| `drsamonline/audit` | the session entry | the record outside the repo |
+
+Rules: a limit stated only in a commit message is not documented; every "not built" gets a row; every divergence
+from upstream gets a row even when deliberate; numbers, not adjectives.
+
+## Why this is the right moment to say it
+
+Eleven items shipped today across three sandbox recycles. Each recycle took the working tree with it, and what
+survived every time was the repository and this log. The documentation is not a report on the work — for this
+project it *is* the durable copy of it.
