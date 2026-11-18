@@ -89,16 +89,27 @@ MinerU is rejected here too — same licence terms, no benefit over docling for 
 | **docling** | a plausible backend for its PDF tools — but it is a portable single Windows binary. docling's *core* is eight small pure-Python dependencies (no torch), so a parse-only install is feasible; the layout and OCR extras are what would not fit |
 | ~~MinerU~~ | rejected on licence (see above), and it also needs model weights |
 
-## the materia medica family — inferred from descriptions, not read
+## the materia medica family — CHECKED 2026-11-18, and the guess was wrong
 
-`open-materia-medica` (344 remedy portraits), `MATERIA-MEDICA-BUILDER`,
-`remedy-relationship-explorer` (Boericke 1927, Clarke 1900, Hering 1879), `UniRep` (classical
-repertories), `mnemosyne-companion` — all are built from **scanned, out-of-copyright materia
-medica books**, which is exactly the MinerU/docling use case: layout-aware OCR of two-column
-nineteenth-century typesetting.
+I had inferred that these five repos were built from **scanned** materia medica books, which would
+make them the MinerU/docling use case. They are not. Measured across all five:
 
-I have not opened these repos, so this is a fit by description. It is worth confirming before
-acting: if their sources are already transcribed, the extraction tools add nothing.
+| repo | files | PDFs | DjVu | JSON |
+|---|---|---|---|---|
+| open-materia-medica | 800 | **0** | 0 | 4 |
+| MATERIA-MEDICA-BUILDER | 79 | **0** | 0 | 4 |
+| remedy-relationship-explorer | 78 | **0** | 0 | 6 |
+| UniRep | 107 | **0** | 0 | 6 |
+| mnemosyne-companion | 66 | **0** | 0 | 2 |
+
+**Zero PDFs and zero DjVu anywhere.** The text is already transcribed and structured:
+`open-materia-medica`'s `assets/search-index.js` holds **344 remedy entries** with
+`slug, name, tagline, essence, text` — 1,133 characters in the sample entry — and
+`remedy-relationship-explorer` embeds its book text in a single 1.15 MB page.
+
+**So the extraction tools add nothing here.** MinerU and docling solve a problem these repositories
+already solved. The fit was a guess from a description, and the guess was wrong — which is exactly
+why the plan put "confirm the source format" before "choose a tool".
 
 ## skills
 
