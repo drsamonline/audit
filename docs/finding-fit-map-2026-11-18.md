@@ -27,11 +27,10 @@ the code, it says so.
 
 | finding | what it changes | effort |
 |---|---|---|
-| **magic-extractor's PE fallback order** (MIT) | `Rar, Ace, Arc, Kgb, Uharc, InnoSetup, Bitrock, Cicdec` — a tested answer to "unknown `.exe`, what first", which is the hardest extraction case and pure `application/octet-stream` | small |
-| **extractcode's handler scoring** (Apache-2.0) | `kind + 8 type + 6 mime + 2 extension`, **−100 for extension alone**, `+ len(extractors)` to prefer one-pass nested. That −100 is our content-not-extension rule as arithmetic | small |
-| **`extract_atomically` / staging dirs** (magic-extractor) | a failed extraction currently leaves partial output; theirs stages and moves on success | small |
-| **Carpentieri, "Data Compression with a Time Limit"** | profile choice *under a budget* — the scheduling layer above the per-file profile pick | medium |
-| **docling (MIT)** | heavenzip **spawns processes**, so a Python extractor is just another binary. But measure the install first: `pip install docling` pulls **6.4 GB** (torch + 3.0 GB CUDA) and needs more than 2 GB RAM to initialise. Its *declared core* is light; the published metapackage is not | small to wire, heavy to install |
+| ~~magic-extractor's PE fallback order~~ | **withdrawn 2026-11-18.** heavenzip does not extract third-party archives: its commands are `validate`, `detect`, `compress`, `decompress`, `bench`. A self-extracting installer is not something it opens. The list belongs where unknown files are inspected — see kosh below |
+| ~~extractcode's handler scoring~~ | **withdrawn 2026-11-18.** heavenzip has no multi-detector evidence to score: `matches()` is one boolean class gate and the profile is named by the user or the default. Porting the formula would invent inputs it does not have |
+| ~~`extract_atomically`~~ | **already largely present**: intermediates are written as `<output>.<step>.tmp` and a failed run keeps its logs and manifest |
+| **Carpentieri, "Data Compression with a Time Limit"** | the one that does fit: choosing a profile *under a budget* is the scheduling layer above the per-file pick. A design item, not a port | medium |
 
 ## HCS — the vault
 
@@ -45,7 +44,7 @@ the code, it says so.
 
 | finding | what it changes |
 |---|---|
-| **uniextract2's detection order**, **magic-extractor's fallback list** | `kosh scan` decides whether a file is worth optimising; the ordering is the same problem |
+| **uniextract2's detection order**, **magic-extractor's PE fallback list**, **UniPyX's 777 signature rules** | `sniff()` in `core/optimize.py` recognises **four** signatures — png, gzip, zip, jpeg — and returns `"unknown"` for everything else. That is the whole gap: 777 rules exist, four are used, and an unknown binary is where the PE fallback order starts |
 | **docling / MinerU** | `kosh` already has a document-facing surface; a `convert`-style verb over docling is the smallest useful addition |
 | **ziptastic's PNG findings** | kosh drives the engine; the unfilter decision (screenshots −26.3%, photographs **+49.7%**) is the kind of thing its `optimize` verb must not get wrong |
 
