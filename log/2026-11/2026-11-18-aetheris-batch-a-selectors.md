@@ -906,3 +906,55 @@ question, which is a better starting point than the rule it started from.
 
 Every one had a plausible fix at the layer the symptom named. The rule, again: **print what the layer received
 before changing it.** I have written that three times today and broken it three times.
+
+---
+
+# Row 3h, fourth attempt: the trace found it
+
+Commits `29580b6e` and the two before it. Upstream read again: `text_item_wrap_opportunity()` — a non-whitespace
+inline item may break only when `line_ends_in_whitespace` or `item.can_break_before`.
+
+## What the first three attempts lacked: an instrument
+
+I wrote "print what the layer received" three times today and broke it three times. This attempt started with a
+trace instead of a patch, and the trace answered it in one run:
+
+    TRACE child kind=element  cursor_x=0.0   avail=100
+    TRACE child kind=text [aaaaaa] cursor_x=0.0   avail=100
+    TRACE child kind=text [ ]      cursor_x=58.8  avail=100
+    TRACE child kind=element       cursor_x=58.8  avail=100
+    TRACE child kind=text [bbbbbb] cursor_x=58.8  avail=41.2
+
+Two facts fell out: the whitespace node **is** visited (so the previous session's "invisible" conclusion was
+wrong), and the second span is laid out with `avail=41.2` — the space left — so its clamped width can never exceed
+it and no fit test can fire.
+
+## Two changes that only work together
+
+| change | why |
+| --- | --- |
+| set `line_ends_in_whitespace` in the **text** branch | that branch `continue`s; attempts one and two updated the flag only on the non-text path |
+| measure an inline child against the **whole line**, then place it against what is left | shrink-to-fit clamps the child to the space left |
+
+Attempt three had the second and not the first — because I had reverted attempt two before starting it. The trace
+line `natural=60.9 remaining=41.2 may_break=1` is what both produce together.
+
+| fixture | result |
+| --- | --- |
+| `<span>aaaaaa</span> <span>bbbbbb</span>` | the second wraps |
+| `<span>aaaaaa</span><span>bbbbbb</span>` | they stay together |
+
+## What stays in
+
+The trace, gated on `AETHERIS_TRACE_INLINE`. It is the third layout question today that needed it, and it costs an
+`if (getenv)` per child in a debug build.
+
+## Divergence, stated
+
+At an exactly-full line the flow path still wraps without an opportunity; upstream would overflow. Ours never
+overflows, which is the safer error. Row 3i.
+
+## The lesson, now with evidence behind it
+
+Four attempts: three by reading the symptom and patching, one by instrumenting first. The instrumented one worked
+on the first build. That is the whole argument for the rule I kept writing down and not following.
