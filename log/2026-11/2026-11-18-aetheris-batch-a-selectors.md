@@ -1315,3 +1315,36 @@ mistaken for a broken one.
 | suite | 60/60, 128 s |
 | pushed | every commit this turn, as asked |
 | open | 3a2/3a3 (paint), 3a4 (empty-string content), 2d, 4c, 1g4b/c, 1g7b, 3i, 3c/3d, tier 0 |
+
+---
+
+# `::before`/`::after` generate and paint
+
+Commit `51d7b016`. Upstream read: a generated node carries its text and its **generator element**, not a DOM text
+node (`Layout/Node.h`, `pseudo_element_generator`).
+
+That is what our paint path got wrong: `RenderTree::emit` required `dom_node` to be a Text node before emitting
+fragments, so a `::before` produced fragments that were never painted. The first attempt showed a box in the tree and
+nothing on the page, and the row said "the text does not paint" — the cause was one condition in `emit`.
+
+| change | why |
+| --- | --- |
+| `emit` paints whenever a node has fragments | a text run is defined by its fragments, not by which node produced it |
+| the builder creates `::before` first and `::after` last | upstream's PseudoElementDecision rule |
+| `layout_node` lays out `generated_text` | a generated box has no DOM node to read |
+
+Measured: 24 magenta pixels across the glyph run at y 55 of a white paragraph.
+
+## Still open: `::after` does not paint
+
+Both boxes appear in the tree with their text (`AETHERIS_TRACE_GENERATED=1` prints them); only the first paints. Row
+3a5. The test asserts `::before` only — a test asserting `::after` would assert something this commit does not do.
+
+## Where the session stands
+
+| | |
+| --- | --- |
+| tip | `51d7b016` |
+| suite | 60/60 |
+| pushed | every commit |
+| open | 3a5 (`::after` paint), 3a4 (`content: ''`), 2d (shaping), 4c (split), 1g4b/c, 1g7b, 3i, 3c/3d, tier 0 |
