@@ -1429,3 +1429,34 @@ that coordinate, including nothing.**
 | tip | `3b5aebce`, suite 60/60 twice |
 | branch | `wip/3a4-content-empty-string` deleted — its purpose was to survive a pod, and the pod came back |
 | open | 3a6 (`content` list type + alt text), 2d (shaping), 4c, 1g4b/c, 1g7b, 3i, 3c/3d, tier 0 |
+
+---
+
+# Row 1g7b: a fragment change does not re-fetch
+
+Commit `760b882c`. Upstream resolves the indicated part and scrolls to it (`DOM/Document.cpp`,
+`scroll_to_the_fragment`); a fragment change on the same document never fetches. Ours re-fetched, lost the scroll
+position, and landed an anchor link back at the top.
+
+| check | result |
+| --- | --- |
+| requests for the page | 1 — the fragment change made none |
+| the page's script ran | once, not twice |
+| scroll after the navigation | 266 px, clamped from the target's 700 |
+| pixel at the target's row | magenta |
+
+## Three things this turn cost that were not the feature
+
+| what | cost |
+| --- | --- |
+| every `cmake --build \| grep error:` this turn was a **timeout**, not a success | the binary stayed 73 minutes old while I ran three probes against it. The tell was its mtime; the absence of errors meant nothing. Now row 4d |
+| the hash setter's assertion had to be deleted, not weakened | it read the value on the *next load*, and there is no next load any more. Its replacement asserts the behaviour: one request, target on screen |
+| the scroll looked broken twice | first the sample was at the top of the viewport where the scroll had moved a different div; then the target was found at 700 and clamped to 266. Seventh fixture-shaped error of the session |
+
+`location.hash` still does not read back synchronously after assignment — row 1g7c, recorded rather than papered
+over by a test that avoids it.
+
+| | |
+| --- | --- |
+| tip | `760b882c`, suite 60/60 twice |
+| open | 1g7c, 3a6, 2d, 4c/4b, 4d, 1g4b/c, 3i, 3c/3d, tier 0 |
