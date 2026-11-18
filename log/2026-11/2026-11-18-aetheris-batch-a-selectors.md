@@ -1612,3 +1612,33 @@ Every one was a *measurement* away from the truth, and every wrong first reading
 | --- | --- |
 | tip | `60dfd68b`, suite 64/64 twice |
 | open | 2d4 (release shaping cost), 3a6, 1g4b/c, 3i, 3c/3d, tier 0 |
+
+---
+
+# Session close, 2026-11-18 evening
+
+Tip `e845865c`. Suite **64 tests, 64/64, twice**, 151-157 s at `-j2`. 81 commits today.
+
+## What the session delivered
+
+| area | state |
+| --- | --- |
+| tier 1 of the reviewed plan | complete |
+| pseudo-elements | `::before`/`::after` resolve style, generate a box, flow inline, paint; `content: ''` included |
+| fragment navigation | no re-fetch; scrolls to the indicated part |
+| shaping | HarfBuzz builds here via `tools/fetch-harfbuzz.sh`, `shape_run()` is wired into `measure` and the pen, the face is cached |
+| tests | the 2,500-line window test is four tests, two at a time |
+
+## Documents written
+
+- `docs/SESSION-HANDOFF-2026-11-18.md` — what shipped, the measurements, and the eight wrong first readings
+- `docs/START-PROMPT.md` — the resume prompt, self-contained: state, rules, sandbox setup, the five facts about this
+  box that change decisions, the build traps
+
+## The number that matters most
+
+Eight times today the first reading of the evidence was wrong, and every time a measurement settled it: a binary's
+mtime, a pixel one line down, `nproc`, a benchmark, a font that was never loaded. Not one was settled by re-reading
+the code.
+
+That is the handover's real content. The features are in the commits; the discipline is in the handover.
