@@ -1043,3 +1043,45 @@ elapsed milliseconds**, then the answer is a fact instead of a hypothesis. The t
 | suite | 60/60, twice, at every commit |
 | items today | 12 batches, 3 reverts, 2 instrumented investigations, 1 tested-but-unwired primitive |
 | open rows | 1g6 (blocked on 1g8), 1g8 (instrumented next), 1g7, 1g4, 3a, 3i, 1e3, tier 0 |
+
+---
+
+# Row 1g6 closed, and 1g8 corrected a third time
+
+Commit `2e62a0b6`. `remove_dot_segments()` — unit-tested on nine paths two commits ago — is now wired into
+`resolve_url`. `location.href = '../up'` from `/deep/dir/page` resolves `/deep/dir/page` → `/deep/up` → `/up`, and
+the server log confirms it received exactly those three.
+
+## The fetch is innocent
+
+`AETHERIS_TRACE_FETCH=1` prints each socket read with its duration:
+
+    NAV fetch [/up]
+    FETCH recv bytes=158 err=0 took=2ms
+    FETCH recv bytes=192 err=0 took=0ms
+
+Headers and body, both in milliseconds. Nothing follows: no script output, no next frame. The process stops **after
+the body is in hand and before the page's script runs**.
+
+| row said | truth |
+| --- | --- |
+| 1g6: a dot-segment resolver hangs the browser | the resolver is correct; it shipped |
+| 1g8: a fetch can block forever | the fetch completes in 2 ms; the stop is in document creation |
+
+Three times now a row's stated cause has been displaced by measurement. That is the value of the instrument and also
+a warning about the rows: **a row written from a symptom is a hypothesis**, and the checklist says "measured" for
+things that were only observed.
+
+## What is left, honestly
+
+| Row | Item |
+| --- | --- |
+| 1g8 | the hang after the body arrives — instrument around `create_scripted_document` |
+| 1g7 | `location` setters |
+| 1g4 | `history.go`, `pushState`, `history.state` |
+| 3a | `::before`/`::after` synthetic boxes |
+| 3i | overflow instead of wrapping at a full line (divergence) |
+| 1e3 | `sessionStorage` |
+| 2d | shaping — the last real gap in tier 2 |
+| 3c/3d | complete flex/grid, `@font-face`, transitions |
+| 0.1 | coverage corpus, blocked here |
