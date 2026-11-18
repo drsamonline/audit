@@ -1348,3 +1348,40 @@ Both boxes appear in the tree with their text (`AETHERIS_TRACE_GENERATED=1` prin
 | suite | 60/60 |
 | pushed | every commit |
 | open | 3a5 (`::after` paint), 3a4 (`content: ''`), 2d (shaping), 4c (split), 1g4b/c, 1g7b, 3i, 3c/3d, tier 0 |
+
+---
+
+# 3a5: `::after` painted all along, one line lower
+
+Commit `e62c9529`. The row said `::after` does not paint. The trace said otherwise:
+
+    PAINT gen=[MMMM] frags=1 rect=(0.0,16.0 400.0x28.8)
+    PAINT gen=[YYYY] frags=1 rect=(0.0,44.8 400.0x28.8)
+
+Both had fragments and both painted - on **different lines**, because a generated box was taking the block path: it
+filled the line width and started a new line, so `::after` landed below the paragraph's 30 px box, outside the row
+the test sampled.
+
+| change | why |
+| --- | --- |
+| `layout_inline_children` treats a generated box as a text run | it is inline-level content |
+| its **two** text-layout calls read `generated_text` | the second one was missed and dereferenced a null `dom_node`, which aborted the process |
+
+After: `::before` 82.8 px at x 0, `::after` starting at x 82.8, same line, in order. At y 55 the frame has 24
+magenta pixels and 8 yellow. The test asserts all three facts.
+
+## The pattern, again
+
+| what the row said | what the measurement said |
+| --- | --- |
+| "does not paint" | it paints, on another line |
+| "the text is dropped" | the box took the wrong layout path |
+
+Fifth time today that a row written from a symptom named the wrong mechanism. The rows are still worth writing -
+they are what sends me to the right subsystem - but the sentence "does not paint" was a description of the sample,
+not of the engine.
+
+| | |
+| --- | --- |
+| tip | `e62c9529`, suite 60/60 |
+| open | 3a4 (`content: ''`), 2d (shaping), 4c (split), 1g4b/c, 1g7b, 3i, 3c/3d, tier 0 |
