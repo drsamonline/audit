@@ -282,3 +282,44 @@ simply not sampled those rows.
 3. Realm isolation on navigation (row 1g2) — the interpreter surviving is what makes localStorage work, and it
    is also why the old page's globals and listeners survive.
 4. Tier 0 corpus, still blocked here — no open internet.
+
+---
+
+# Did I check upstream first? Not for two of six
+
+Asked directly, so answered with the audit trail rather than a reassurance. Commit `a833a6c7`.
+
+| Item | Upstream read before writing | Evidence |
+| --- | --- | --- |
+| Custom properties | yes | `Rust/src/css/custom_properties.rs`, `resolve_vars` |
+| Sibling combinators, `[a=v i]`, form states | yes | `component_matching.rs:562`, `selector.rs:442`, `CSS/SelectorMatching.cpp:165` |
+| `getBoundingClientRect` | yes | `DOM/Element.cpp:2690` → `Painting::bounding_client_rect` |
+| `localStorage` | yes | `HTML/Storage.idl`, `DOM/Document.h:1785` |
+| `:has(+ .x)` | partly | `matches_relative` read earlier; the forward semantics inferred |
+| `focus()` / `blur()` | **no** | my grep returned nothing and I wrote the code anyway |
+| `location` | **no** | written from memory |
+
+## The failure mode, named
+
+I wrote a citation — `DOM/Element.cpp` for the focusing steps — that no read supported. There is no `Element::focus`
+in the IDL; the steps are `HTML/Focus.cpp:749`, `run_focusing_steps(new_focus_target, fallback_target,
+focus_trigger, scroll_into_view, focus_visible)`. The comment was written to fit code already in place, which is
+the exact inversion of the project's first rule.
+
+That is worse than not checking. An unchecked item leaves a gap someone can find; a fabricated citation makes the
+gap look closed.
+
+## What reading it found, six items later
+
+`run_focusing_steps` step 1 maps a non-focusable target through `get_focusable_area()` and step 3 returns if it is
+still not focusable. **Ours focuses whatever it is handed**, so `element.focus()` on a `<div>` with no tabindex
+focuses it where upstream would refuse. Row 1f4, open — recorded as a behaviour difference, not quietly patched.
+
+`location` was substantively right by luck: `HTML/Location.idl` is `href` as a stringifier attribute plus `origin`,
+`protocol`, `host`, `hostname`, `port`, `pathname`, `search`, `hash`, `assign`, `replace`, `reload`. We have three
+of thirteen, so row 1g3 grew `replace()` and the component attributes.
+
+## The rule this earns
+
+**A citation is a record of a read, not a decoration on a decision.** If the read has not happened, the comment
+says so — and the item does not ship until it does, or ships with the gap written down.
