@@ -35,8 +35,10 @@ blocker, the standing rules, and eight traps this project has already paid for. 
 - **kosh** → `zipkosh` built and proven, **not published** (needs `PYPI_API_TOKEN`).
 - **corpus-extendum** — PDFium for PDF rendering; docling rejected on measurement.
 - **faztest** — joined 2026-11-19: Brotli front end, measured on Silesia, `docs/FINDINGS.md` is
-  its authority, CI added, MIT. Four PRs (#1–#4) open, each verified locally, none merged.
-- All eight repos: 0 open issues; faztest's four PRs are the only open PRs in the fleet.
+  its authority, CI added, MIT, hosted-builder scaffolding removed. PRs #1–#4 and #6 merged.
+  The production build is unproven in the sandbox (1.5 GB virtual cap, Vite 8's rolldown is
+  WASM) and is gated by the `build` job in CI — check that job before trusting the build.
+- All eight repos: 0 open PRs, 0 open issues.
 
 ## The one blocker
 
