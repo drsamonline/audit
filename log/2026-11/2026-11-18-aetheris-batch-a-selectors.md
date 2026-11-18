@@ -1571,3 +1571,44 @@ benchmark — settled it. The suite's own runtime is the least reliable of these
 | --- | --- |
 | tip | `3da83f00`, suite 61/61 |
 | open | 2d4 (release-build shaping cost), 4c/4b, 3a6, 1g4b/c, 3i, 3c/3d, tier 0 |
+
+---
+
+# Row 4c: there was no hidden dependency
+
+Commit `60dfd68b`. Two earlier attempts at a four-way split failed at `ctest -j4`, and I recorded the cause as "a
+block depends on state outside itself". It does not.
+
+**This box has two cores.** `-j4` ran eight processes on two cores. The failures were contention. The observation
+that made the hypothesis look solid — "giving each test its own WORKING_DIRECTORY did not help" — was true and
+irrelevant: the paths were never the problem.
+
+| | |
+| --- | --- |
+| before | one 2,500-line test, the suite's whole wall time |
+| after | WindowCore 47 s, WindowStyle 60 s, WindowLayout, WindowGeometry, two at a time |
+| suite | 64 tests, 151-157 s, twice |
+
+Two real fixes came out of the attempt even though they were not the cause: per-test working directories, and
+`cleanup_frames()` deleting only the directories a test asked for instead of a blanket
+`rm -rf /tmp/aetheris-*-frames` that deleted other tests' frames mid-run.
+
+The superseded single test failed `attr pixel 1` in the same run the split's Style test passed the same fixture —
+further evidence for contention, and the reason the old target is deleted rather than kept as a cross-check.
+
+## The session's recurring shape, fifth instance
+
+| first reading | what settled it |
+| --- | --- |
+| "the split has a hidden dependency" | `nproc` = 2 |
+| "the suite got slower" | a benchmark, not the suite clock |
+| "the shaper does not shape" | loading a font in the test |
+| "it does not paint" | a pixel one line down |
+| "the build succeeded" | the binary's mtime |
+
+Every one was a *measurement* away from the truth, and every wrong first reading was plausible enough to act on.
+
+| | |
+| --- | --- |
+| tip | `60dfd68b`, suite 64/64 twice |
+| open | 2d4 (release shaping cost), 3a6, 1g4b/c, 3i, 3c/3d, tier 0 |
