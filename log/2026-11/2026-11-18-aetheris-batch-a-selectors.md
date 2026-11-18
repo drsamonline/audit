@@ -323,3 +323,58 @@ of thirteen, so row 1g3 grew `replace()` and the component attributes.
 
 **A citation is a record of a read, not a decoration on a decision.** If the read has not happened, the comment
 says so — and the item does not ship until it does, or ships with the gap written down.
+
+---
+
+# Row 1f4: focus() refuses a non-focusable target — read first this time
+
+Commits `43338a63`, `1c5b95c2`, `76b4d1c3`. Upstream read before a line was written, which changed the design.
+
+`run_focusing_steps` (HTML/Focus.cpp:749) begins by mapping a non-focusable target through
+`get_focusable_area()` and returning if nothing focusable comes back. So `focus()` on a div with no tabindex does
+nothing. Ours focused whatever it was handed.
+
+## The rule is three levels, and the first one alone would have been a regression
+
+| Level | Rule | Where |
+| --- | --- | --- |
+| `Element::is_focusable()` | `tabindex` parses as an integer | DOM/Element.cpp:6992 |
+| `HTMLAnchorElement` | base `\|\|` has `href` | HTMLAnchorElement.h:39 |
+| `HTMLInputElement` | `type != Hidden && enabled()` | HTMLInputElement.cpp:4183 |
+| `button`, `select`, `textarea` | `enabled()` | 296, 926, 553 |
+
+Reading only `Element::is_focusable()` gives "tabindex and nothing else" — which would have made every input,
+button and link unfocusable, breaking the click-focus tests this session already relies on. The overrides are the
+substance; the base rule is the escape hatch. **Read the caller and the overrides, not just the first definition
+that matches the name.**
+
+## Measured, one candidate per page
+
+| candidate | focusable |
+| --- | --- |
+| div, no tabindex | no |
+| div, `tabindex=0` | yes |
+| div, `tabindex=-1` | yes |
+| button | yes |
+| button, disabled | no |
+| input | yes |
+| input, `type=hidden` | no |
+| input, disabled | no |
+| a, with `href` | yes |
+| a, without `href` | no |
+
+Seven of the ten are in the suite; the rest were measured to check the boundaries.
+
+## The probe that was wrong first
+
+The first version put all eight candidates on one page and called `focus()` on each inside one `forEach`. All
+eight timers run inside a single `run_timers()` window, the queue drains in order, and only the **last** focus
+survives — so seven correct refusals and one correct focus read as seven failures. The fix is one candidate per
+page, and the same trap is written into the test as a comment.
+
+## Two limits, opened as rows
+
+| Row | Limit |
+| --- | --- |
+| 1f5 | no rendering-requirements check: `display:none` can be focused here, cannot upstream |
+| 1f6 | the click path still focuses whatever it hits; this gates the script path only |
