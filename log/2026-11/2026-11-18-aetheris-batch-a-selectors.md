@@ -691,3 +691,42 @@ Without that, "three spans now line up" would not be worth much.
 
 Wrapping at the container edge. The flow path has a wrap branch and it is now reachable with realistic widths, but
 no test exercises it — row 3g.
+
+---
+
+# Row 3g: inline wrapping — a test, not a fix
+
+Commits `3b79a19e`, `26c6475b`. Upstream breaks a line on a **soft-wrap opportunity**
+(`Rust/src/layout/line_box.rs`, `has_soft_wrap_opportunity_after`); this engine's rule is simpler — an inline item
+that does not fit starts a new line — and that rule only became *reachable* once inline boxes were content-sized.
+
+Measured before writing any assertion, eight spans of "00".."07" at 16px in a 100px box:
+
+    0,0,0,0,0,19.2,19.2,19.2
+
+Five on the first line, three on the second. The test asserts **two distinct y values and non-decreasing
+positions**, not the numbers: the numbers depend on the font's advances, the shape does not.
+
+**No code change.** The branch was already there and correct; the previous fix is what made it reachable. That is
+worth recording as its own entry because the alternative — writing a fix for a bug that had already been fixed —
+would have added a second wrap rule on top of a working one.
+
+## The pattern in the last three items
+
+| item | what it looked like | what it was |
+| --- | --- | --- |
+| inline flow | a missing shrink-to-fit | a text run's box reporting the line's width |
+| wrapping | possibly broken | working, but unreachable until the above was fixed |
+| focusability | a missing check | three levels of override in upstream, only one of which was the base rule |
+
+Each one had a plausible fix at the layer the symptom named, and each time the real cause was one or two layers
+away. The rule this earns: **before fixing the layer that looks wrong, print what it received.** A single
+`fprintf` of the text child's rect width would have saved two build cycles on the flow bug.
+
+## Next
+
+1. Row 3h: soft-wrap opportunities — upstream breaks before/after whitespace and at `can_break_before` points, not
+   only on overflow. Ours wraps at any inline item boundary.
+2. Row 1g3: `history`, `location.replace()`, the URL component attributes, dot-segment resolution.
+3. Row 3a: `::before`/`::after` synthetic boxes.
+4. Tier 0 corpus, still blocked here.
