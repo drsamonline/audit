@@ -31,7 +31,7 @@ the code, it says so.
 | **extractcode's handler scoring** (Apache-2.0) | `kind + 8 type + 6 mime + 2 extension`, **−100 for extension alone**, `+ len(extractors)` to prefer one-pass nested. That −100 is our content-not-extension rule as arithmetic | small |
 | **`extract_atomically` / staging dirs** (magic-extractor) | a failed extraction currently leaves partial output; theirs stages and moves on success | small |
 | **Carpentieri, "Data Compression with a Time Limit"** | profile choice *under a budget* — the scheduling layer above the per-file profile pick | medium |
-| **docling (MIT)** | heavenzip **spawns processes**, so a Python extractor is just another binary. docling's *core* has no ML — pydantic, docling-core, filetype, requests, certifi, pluggy, tqdm, langcodes — and layout/OCR models are optional extras, so a light install is possible | small to wire |
+| **docling (MIT)** | heavenzip **spawns processes**, so a Python extractor is just another binary. But measure the install first: `pip install docling` pulls **6.4 GB** (torch + 3.0 GB CUDA) and needs more than 2 GB RAM to initialise. Its *declared core* is light; the published metapackage is not | small to wire, heavy to install |
 
 ## HCS — the vault
 
@@ -65,15 +65,17 @@ because the OCR text is what is trusted.
 
 | finding | what it changes |
 |---|---|
-| **docling** (MIT, local, air-gapped) | parses EPUB **and** PDF, DOCX, HTML, images, and exports **lossless JSON** — the structured sibling of the plain text it extracts now. Local execution matters: the vault is offline by design, and the core has no ML dependency |
+| ~~docling~~ | **rejected 2026-11-18**: 6.4 GB install, will not start in 2 GB RAM, and the existing spine extractor already reproduces the shipped text at **100.00% similarity**. See corpus-extendum D13 |
 
 MinerU was the other candidate for the scanned books and is **rejected on licence**: Apache-2.0 plus commercial thresholds, an attribution obligation, and automatic termination if that obligation is missed. It costs nothing at this scale, but it is a licence with a tripwire where a plain-MIT tool does the same job.
 
 ## lexora
 
-PDF ingestion is listed as **Planned** in its roadmap. **docling** is the implementation, and it does
-**not** require a lot: its core dependencies are pydantic, docling-core, filetype, requests, certifi,
-pluggy, tqdm and langcodes — **no torch, no model weights**. Layout and OCR are optional extras.
+PDF ingestion is listed as **Planned** in its roadmap. **docling** was the candidate, and the
+"it does not require a lot" claim was wrong: `pip install docling` pulls **6.4 GB**, including torch
+and 3.0 GB of CUDA runtime. Its declared core is light; the metapackage is not. For PDF *text* the
+right tool is pypdf or pdfminer.six (MIT, pure Python, kilobytes); docling is worth its weight only
+for scanned pages where layout must be inferred.
 
 And it belongs in an **extra**, not the core, which is exactly what lexora already does for the GUI
 (ADR-0008 decision 1: *"core install stays Qt-free"*). The base install is `zstandard` alone and
