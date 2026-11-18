@@ -31,7 +31,7 @@ the code, it says so.
 | **extractcode's handler scoring** (Apache-2.0) | `kind + 8 type + 6 mime + 2 extension`, **−100 for extension alone**, `+ len(extractors)` to prefer one-pass nested. That −100 is our content-not-extension rule as arithmetic | small |
 | **`extract_atomically` / staging dirs** (magic-extractor) | a failed extraction currently leaves partial output; theirs stages and moves on success | small |
 | **Carpentieri, "Data Compression with a Time Limit"** | profile choice *under a budget* — the scheduling layer above the per-file profile pick | medium |
-| **docling (MIT) and MinerU (Apache-2.0 + terms)** | heavenzip **spawns processes**, so both are usable regardless of their licences. MinerU for scanned/complex PDFs with layout analysis; docling for everything else including EPUB | small to wire |
+| **docling (MIT)** | heavenzip **spawns processes**, so a Python extractor is just another binary. docling's *core* has no ML — pydantic, docling-core, filetype, requests, certifi, pluggy, tqdm, langcodes — and layout/OCR models are optional extras, so a light install is possible | small to wire |
 
 ## HCS — the vault
 
@@ -39,7 +39,7 @@ the code, it says so.
 |---|---|
 | **OpenZL** (BSD) | a legitimate vault source: a format-aware compression framework with a universal decoder. Pin + licence + integration `external-process` or `reference` |
 | **docling** (MIT) | a vault source for document extraction; MIT, so also linkable |
-| **MinerU** (Apache-2.0 **plus additional terms**) | record the licence honestly as *not* plain Apache-2.0: commercial use is free below 100M MAU / USD 20M monthly revenue, and online services must attribute. The vault's `license` column has no way to say "Apache-2.0 + terms" today — that is a schema gap worth noting |
+| ~~MinerU~~ | **rejected 2026-11-18.** Its licence is Apache-2.0 *plus* terms: a separate commercial licence is required above 100M MAU or USD 20M monthly revenue, online services must attribute, and **failing the attribution terminates the licence automatically**. No fee applies at this owner's scale — but a licence with thresholds and a termination clause is legal surface the vault cannot even record, and docling (plain MIT) covers the same formats |
 
 ## kosh — the workbench
 
@@ -65,21 +65,28 @@ because the OCR text is what is trusted.
 
 | finding | what it changes |
 |---|---|
-| **docling** (MIT, local, air-gapped) | parses EPUB **and** PDF, DOCX, HTML, images, and exports **lossless JSON** — the structured sibling of the plain text it extracts now. Local execution matters: the vault is offline by design |
-| **MinerU** (Apache-2.0 + terms) | layout-aware parsing with OCR, which is the case `_djvu.txt` exists to work around. Its licence permits this use and requires attribution for online services |
+| **docling** (MIT, local, air-gapped) | parses EPUB **and** PDF, DOCX, HTML, images, and exports **lossless JSON** — the structured sibling of the plain text it extracts now. Local execution matters: the vault is offline by design, and the core has no ML dependency |
+
+MinerU was the other candidate for the scanned books and is **rejected on licence**: Apache-2.0 plus commercial thresholds, an attribution obligation, and automatic termination if that obligation is missed. It costs nothing at this scale, but it is a licence with a tripwire where a plain-MIT tool does the same job.
 
 ## lexora
 
-PDF ingestion is listed as **Planned** in its roadmap. **docling** is the obvious implementation:
-MIT, local, structured JSON export, and it produces the *canonical text* that lexora's whole design
-depends on. The compression-side findings for lexora are already shipped (lexora#45).
+PDF ingestion is listed as **Planned** in its roadmap. **docling** is the implementation, and it does
+**not** require a lot: its core dependencies are pydantic, docling-core, filetype, requests, certifi,
+pluggy, tqdm and langcodes — **no torch, no model weights**. Layout and OCR are optional extras.
+
+And it belongs in an **extra**, not the core, which is exactly what lexora already does for the GUI
+(ADR-0008 decision 1: *"core install stays Qt-free"*). The base install is `zstandard` alone and
+should stay that way; `lexora[pdf]` is the shape.
+
+MinerU is rejected here too — same licence terms, no benefit over docling for text.
 
 ## All4ONE — 403 tools, 24 of them PDF
 
 | finding | what it changes |
 |---|---|
-| **docling** | a strong backend for its PDF tools — but it is a portable single Windows binary, and docling pulls ML dependencies. Realistic alternative: **pdfsink-rs** (Rust, fast parser) for the parse-only tools |
-| **MinerU** | needs model weights; likely too heavy for a "no installer, no registry writes" single binary — say no to this one on size, not on licence |
+| **docling** | a plausible backend for its PDF tools — but it is a portable single Windows binary. docling's *core* is eight small pure-Python dependencies (no torch), so a parse-only install is feasible; the layout and OCR extras are what would not fit |
+| ~~MinerU~~ | rejected on licence (see above), and it also needs model weights |
 
 ## the materia medica family — inferred from descriptions, not read
 
