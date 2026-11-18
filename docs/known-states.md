@@ -58,3 +58,32 @@ would claim a licence the repository does not grant".
 nothing to claim.
 
 **Do not fix this by adding a badge.** Add the licence, or leave it unbadged.
+
+---
+
+## A fleet repository that is absent from `state/repos.json`
+
+**You will see:** `faztest` (and `dumps`, `dumps-3`, `dumps-4`, `registry`, `forge`,
+`knowledge`) is a repository in the fleet and does not appear in `state/repos.json`, which
+reports 140 repositories.
+
+**Why:** `tools/collect.py` lists repositories through
+`users/{owner}/repos?per_page=100&page=N`, and that endpoint **never returns private
+repositories**, even for the owner. Six of the seven absent repositories are private by design
+(`dumps*` hold source code; `registry`, `forge` and `knowledge` are the control plane), and
+`faztest-fast-file-forge` is private because it was created that way in Lovable. `repos.json`
+is a snapshot of the **public** fleet, not of every repository the account owns.
+
+**What proves it is fine:** `gh api repos/drsamonline/faztest-fast-file-forge` returns the
+repository, `gh repo list` shows it, and `gh api "users/drsamonline/repos?per_page=100&page=2"`
+shows the crawl reaching the last page. The crawl is not truncating — it is answering a
+different question.
+
+**What would be a real defect:** a *public* repository missing from the snapshot, or a
+`repos.json` older than the last public fleet change. If the owner wants private repositories
+in the snapshot, `collect.py` has to move to `user/repos` (which is authenticated and includes
+them) — that is a change of scope for the snapshot and a separate subject, not a bug fix.
+
+**Do not fix this by adding the record by hand.** `repos.json` is rewritten by every run of
+`tools/collect.py`; a hand-added row is deleted by the next crawl and looks like a regression
+when it disappears.

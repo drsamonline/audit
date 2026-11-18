@@ -1,7 +1,7 @@
 # Session prompt — paste this to start the next session
 
 You are continuing work on the CHCE fleet (ziptastic, heavenzip, HCS, kosh, lexora, corpus-extendum,
-audit) for Dr Sohil Momin.
+faztest, audit) for Dr Sohil Momin.
 
 **First: read `audit/docs/HANDOVER-2026-11-18.md`.** It has the fleet state, what shipped, the one
 blocker, the standing rules, and eight traps this project has already paid for. Then read
@@ -34,7 +34,9 @@ blocker, the standing rules, and eight traps this project has already paid for. 
 - **lexora v0.2.0-alpha.1** released (wheel verified by downloading it back).
 - **kosh** → `zipkosh` built and proven, **not published** (needs `PYPI_API_TOKEN`).
 - **corpus-extendum** — PDFium for PDF rendering; docling rejected on measurement.
-- All seven repos: 0 open PRs, 0 open issues.
+- **faztest** — joined 2026-11-19: Brotli front end, measured on Silesia, `docs/FINDINGS.md` is
+  its authority, CI added, MIT. Four PRs (#1–#4) open, each verified locally, none merged.
+- All eight repos: 0 open issues; faztest's four PRs are the only open PRs in the fleet.
 
 ## The one blocker
 
