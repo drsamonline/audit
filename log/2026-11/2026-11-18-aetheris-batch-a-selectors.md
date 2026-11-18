@@ -650,3 +650,44 @@ should not start by adding `display:inline`, because that is already there and a
 Row 3e stays open with these numbers. The next step is inside `layout_inline_children` — it is reached (the
 `has_inline` test passes once the display value is Inline), so the fault is in what it does with a non-text
 inline child, and that has not been read closely enough yet to name.
+
+---
+
+# Inline flow: fixed, and the cause was two layers below where I looked
+
+Commits `6341925e`, `74005342`, `c8562732`. Upstream first again: an inline box's inline size is the extent of
+what it placed — `inline_size = glyph_end(placed[end - 1]) - origin` in
+`Rust/src/layout/inline_formatting_context.rs` — not the containing block's width.
+
+| span | before | after |
+| --- | --- | --- |
+| s1 | x 0, w 1024 | x 0, w 19.6 |
+| s2 | x 0, w 1024, y 19.2 | x 19.6, w 20.3, y 0 |
+| s3 | x 0, w 1024, y 38.4 | x 39.9, w 17.6, y 0 |
+
+## Three layers, and I fixed the wrong two first
+
+| layer | what it did | when I found it |
+| `layout_inline_children`, text run | gave the text child's box the **whole remaining line width** | third |
+| `layout_node`, width | `content_width = available_width - noncontent` for every node, inline or not | first |
+| `layout_node`, shrink-to-fit | absent | second |
+
+Attempt one put shrink-to-fit in the caller: no effect. Attempt two put it in `layout_node`: no effect. Both
+failed because the text child's box still reported a full-width extent, so every shrink-to-fit computed 1024 and
+declined to shrink. Only sizing the text run's box to its fragments made either work.
+
+**The lesson is about the layer I kept choosing.** Twice I fixed the place the *symptom* pointed at — the box
+that was too wide — and both times the width came from below. Printing the child's rect would have shown
+`w = 1024` on a text node immediately; I never printed it, because I assumed a text run's box was already its
+fragments.
+
+## Why the suite passing matters here
+
+This is a deep layout change: every block, every inline child, every flex and grid item goes through
+`layout_node`. The suite passed unchanged on both runs, which is the evidence that blocks did not silently move.
+Without that, "three spans now line up" would not be worth much.
+
+## What is not measured
+
+Wrapping at the container edge. The flow path has a wrap branch and it is now reachable with realistic widths, but
+no test exercises it — row 3g.
