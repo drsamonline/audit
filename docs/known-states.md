@@ -71,7 +71,8 @@ reports 140 repositories.
 `users/{owner}/repos?per_page=100&page=N`, and that endpoint **never returns private
 repositories**, even for the owner. Six of the seven absent repositories are private by design
 (`dumps*` hold source code; `registry`, `forge` and `knowledge` are the control plane), and
-`faztest-fast-file-forge` is private because it was created that way in Lovable. `repos.json`
+`faztest-fast-file-forge` is private because the hosted app builder that scaffolded it created
+it private. `repos.json`
 is a snapshot of the **public** fleet, not of every repository the account owns.
 
 **What proves it is fine:** `gh api repos/drsamonline/faztest-fast-file-forge` returns the

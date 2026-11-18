@@ -1,8 +1,8 @@
 # faztest joins CHCE — and the README's claim was false in one direction and true in the other
 
-Date: 2026-11-19 · Repos `drsamonline/faztest-fast-file-forge`, `audit` · faztest PRs #1–#4
+Date: 2026-11-19 · Repos `drsamonline/faztest-fast-file-forge`, `audit` · faztest PRs #1–#5
 
-faztest was built in Lovable as "a compressor that beats xz and 7z in compression and speed",
+faztest was scaffolded by a hosted app builder as "a compressor that beats xz and 7z in compression and speed",
 sat outside the fleet, had no CI, no `LICENSE`, no findings document, and no measurement. It is
 now the eighth CHCE repository, held to the same rules as the other seven.
 
@@ -49,6 +49,7 @@ real product — Brotli trading ratio for time — and it is now what the README
 | 2 | faztest #2 | `docs/FINDINGS.md` + `scripts/bench.py` + `scripts/check-claims.py` + README rewritten to the measurement + fleet rules in `AGENTS.md` | `check-claims`: 18 README numbers all present in FINDINGS |
 | 3 | faztest #3 | CI: suite, claims gate, CLI contract (round trip, overwrite refusal, non-zero exit on an unknown command) | all three run locally: byte-exact, "Output already exists", `frobnicate` exits 2 |
 | 4 | faztest #4 | `LICENSE` (MIT, matching ziptastic) | the repo previously granted nothing |
+| 5 | faztest #5 | every trace of the hosted builder removed: its project-metadata directory, the vendor block at the top of `AGENTS.md`, the vendor vite-config wrapper (replaced by an explicit `vite.config.ts`), the error-reporting hook, the `twitter:site` handle, the lockfile release-age exemptions, the README sections | grep for the vendor name → 0 matches · `bun install` clean · tsc no new errors · 5 tests pass · **build unproven here** (1.5 GB virtual cap, Vite 8 rolldown is WASM), gated in CI by #3's new build job |
 
 ## Traps this added to the list
 
