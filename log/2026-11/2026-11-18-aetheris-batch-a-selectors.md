@@ -1274,3 +1274,44 @@ Tier 1 of the reviewed plan is now complete: custom properties, sibling combinat
 `localStorage`, `sessionStorage`, `getBoundingClientRect`, focus/blur, navigation, history, `location`'s components.
 What remains is tier 2's shaping, tier 3's pseudo-elements and layout completeness, and the divergences this session
 recorded rather than hid.
+
+---
+
+# `::before`/`::after`: the style shipped, the box did not
+
+Commits `57d3a8eb` (style), `0f005082` (the sheet flag), `f58eb70d` (the record).
+
+## Shipped
+
+`resolve_pseudo_element()` — strips `::before`/`::after` from a selector, matches the rest against the element, and
+cascades those declarations with `var()` substitution, inheriting from the element rather than its parent. Five
+assertions in `AetherisCss`.
+
+Two of those assertions were wrong on the first write, both mine: the CSS parser stores a string value **without its
+quotes**, and specificity decides **conflicts**, not which rules apply.
+
+## Attempted and reverted
+
+Generating the box: the page reports one more layout node per pseudo-element, so the tree half works, but the text
+does not paint — a 24 px magenta `::before` on a white paragraph leaves the pixel white. Reverted, with the two
+candidate paths named in row 3a2: `layout_inline_children`'s text branch requires `dom_node`, and `RenderTree::emit`
+may too.
+
+## The part that earned its place
+
+`uses_generated_content()` was scanning every rule's selectors **per node**. Measured: the window test went from
+~130 s to over 280 s, and a frame-timing assertion in the reftest matrix began failing from the slowdown alone — a
+performance bug wearing a correctness bug's clothes. Computed once at parse now, which is where the sheet already
+learns `uses_attribute()` and `uses_pseudo_class()`.
+
+That is worth keeping from an attempt that otherwise failed, and it is the second time today a *slow* build was
+mistaken for a broken one.
+
+## State
+
+| | |
+| --- | --- |
+| tip | `f58eb70d` |
+| suite | 60/60, 128 s |
+| pushed | every commit this turn, as asked |
+| open | 3a2/3a3 (paint), 3a4 (empty-string content), 2d, 4c, 1g4b/c, 1g7b, 3i, 3c/3d, tier 0 |
