@@ -1499,3 +1499,36 @@ valid font, and the fix belongs to the build flags of third-party code, not to o
 | --- | --- |
 | tip | `15c6496e`, suite 61/61 |
 | next | 2d2 (wire `TextLayout`, re-baseline pixels), 2d3 (face cache), 4c/4b, 3a6, 1g4b |
+
+---
+
+# Shaping wired into the text path
+
+Commit `6d8ca43c`. `measure` and `SoftwareSurface::draw_text` both use shaped advances now, so a ligature is
+measured as one glyph and drawn as one glyph.
+
+| check | before | after |
+| --- | --- | --- |
+| `measure("fi")` | 10.0938 (f + i) | 10.0781 (the ligature's advance) |
+| glyphs for "fi" | 2 | 1 |
+| suite | 61/61 | 61/61, no fixture re-baselined |
+
+## Two assertions that were wrong, and what each taught
+
+| assertion | why it failed | what it taught |
+| --- | --- | --- |
+| `fi < f + i - 0.5` | the gap is **0.0157 px** — DejaVu's ligature is barely narrower | a threshold I invented, presented as a property of the font |
+| `measure` shows no ligature at all | `active_font()` is loaded once from `AETHERIS_FONT` or a system path list; a unit test starts with neither, so `measure` used the bitmap fallback | the test was blind, not the engine wrong |
+
+The second is the more dangerous shape: a failing assertion that is really a fixture that never set up its
+precondition. It would have been easy to "fix" by weakening the assertion.
+
+## Where tier 2 stands
+
+Text is shaped, measured and drawn from the same glyph run. What is still missing is bidi (HarfBuzz does none) and
+the line-break pass that uses cluster boundaries rather than whitespace.
+
+| | |
+| --- | --- |
+| tip | `6d8ca43c`, suite 61/61 |
+| open | 2d3 (face cache), 4c/4b, 3a6, 1g4b/c, 3i, 3c/3d, tier 0 |
