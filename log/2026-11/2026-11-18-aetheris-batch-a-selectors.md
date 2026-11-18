@@ -1532,3 +1532,42 @@ the line-break pass that uses cluster boundaries rather than whitespace.
 | --- | --- |
 | tip | `6d8ca43c`, suite 61/61 |
 | open | 2d3 (face cache), 4c/4b, 3a6, 1g4b/c, 3i, 3c/3d, tier 0 |
+
+---
+
+# The face cache, and a number that reframed it
+
+Commit `18eb91c8`. `shape_run` created a HarfBuzz face per call, and `hb_face_create` sanitises the table
+directory. The cache is keyed by a **hash of the font data**, not the buffer address: an address is reused when a font
+is reloaded into the same buffer, and a pointer-keyed cache would then serve the previous font's glyphs.
+
+## Measured, because the suite could not say
+
+Suite time moved 127 s -> 139 s after the change, which looks like a regression and is not evidence: on two cores it
+swings 111-143 s run to run. A direct benchmark instead, 5000 iterations of a 24-character run at 16 px:
+
+| what | per call |
+| --- | --- |
+| `shape_run` with the cached face | **1.043 ms** |
+| blob + face + font create/destroy, i.e. what the cache removes | **0.075 ms** |
+
+So the cache is worth ~7%. The other 93% is shaping itself — and most of that is this being an `-O0` Debug build. Row
+2d4 says: measure in a release build before optimising further, and only then consider caching shaped runs by
+(text, size).
+
+## The pattern this session keeps producing
+
+| symptom | what it was |
+| --- | --- |
+| suite got slower after shaping | noise; a 30 s swing on a two-core box |
+| "does not paint" | painted on the next line |
+| "the shaper does not shape" | the test never loaded a font |
+| "the build succeeded" | the build had been killed |
+
+Four times, the first reading of the evidence was wrong and a *measurement* — a timestamp, a pixel, a threshold, a
+benchmark — settled it. The suite's own runtime is the least reliable of these and has now misled twice.
+
+| | |
+| --- | --- |
+| tip | `3da83f00`, suite 61/61 |
+| open | 2d4 (release-build shaping cost), 4c/4b, 3a6, 1g4b/c, 3i, 3c/3d, tier 0 |
