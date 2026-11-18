@@ -10,9 +10,9 @@ which is what happened to `parmar-main`.
 
 | repo | what it is | licence | verdict |
 |---|---|---|---|
-| **magic-extractor** | Python + bundled Windows detectors; 23 format handlers, a 5-detector cascade, a PE-installer fallback list | **MIT** | **take: the handler interface and the fallback list** |
+| **magic-extractor** | Python + bundled Windows detectors; 21 format handlers, a 5-detector cascade, a PE-installer fallback list | **MIT** | **take: the handler interface and the fallback list** |
 | **extractcode** | ScanCode's extraction library; libarchive + 7z, handler scoring, two-extractor fallback | **Apache-2.0** | **take: the scoring algorithm** |
-| **bannsec/extractor** | 15 MIME-keyed handler modules, small and clean | **MIT** | **take: the MIME-dispatch shape, and the formats we lack** |
+| **bannsec/extractor** | 14 MIME-keyed handler modules, small and clean | **MIT** | **take: the MIME-dispatch shape, and the formats we lack** |
 | **uniextract2** | AutoIt GUI over ~50 external extractors; a 19-file format→plugin map | **GPL-2.0** | **reference only** — spawnable by heavenzip, not linkable |
 | **UniPyX** | 1,109 formats; **777 signature rules** in `lib/ddb.json` | **none found** | **cannot use** — no licence in the tree |
 | **ZipXtract** | Android app; commons-compress + zip4j + 7-Zip-JBinding + libarchive | **GPL-3.0** | reference only — the library combination is evidence |
@@ -23,7 +23,7 @@ which is what happened to `parmar-main`.
 
 ## 1. magic-extractor — MIT, and the most directly reusable
 
-`src/cli/` is a real program, not a wrapper script: 23 handler modules under `formats/`, a detector
+`src/cli/` is a real program, not a wrapper script: 21 `format_*.py` handler modules under `formats/`, a detector
 cascade in `detection.py`, and a PE fallback list that names the formats to try on an unrecognised
 executable.
 
@@ -80,7 +80,7 @@ extraction.
 
 ## 3. bannsec/extractor — MIT, small enough to read in full
 
-15 handler modules, one per MIME type: `x_7z_compressed`, `x_arj`, `x_bzip2`, `x_compress`,
+14 handler modules, one per MIME type: `x_7z_compressed`, `x_arj`, `x_bzip2`, `x_compress`,
 `x_cpio`, `x_lrzip`, `x_lzma`, `x_rar`, `x_tar`, `x_xz`, `x_zoo`, `zip`, `gzip`, `octet_stream`.
 The dispatch is a MIME→module map, which is the simplest thing that works and is a good contrast to
 extractcode's scoring: the same problem at two levels of sophistication.
