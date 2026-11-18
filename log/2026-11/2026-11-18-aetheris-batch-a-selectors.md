@@ -612,3 +612,41 @@ which is a much larger gap than anything in this batch and is not on any row yet
 | 2b wire the rasteriser into paint | **already wired** in `draw_text`'s outline path — the roadmap was wrong here too |
 | 2c kerning | `kerning_adjustment()` is called in the draw path; per-glyph, not shaped |
 | 2d shaping (Arabic, Indic) | not built, and now the only real gap in tier 2 |
+
+---
+
+# The inline-flow gap: measured, not fixed
+
+Commits `cf418548`, `296c7124`. The audit's previous entry claimed "inline layout does not flow siblings onto one
+line" on the strength of two probes. This entry is what verifying it produced.
+
+## What is measured
+
+| fixture | s1 | s2 | s3 |
+| three spans, no rule | x 0, w 1024, y 0 | x 0, w 1024, y 19.2 | x 0, w 1024, y 38.4 |
+| three spans, author `span{display:inline}` | identical | identical | identical |
+| three spans, author `span{display:inline-block}` | identical | identical | identical |
+
+Every span takes the full content width and gets its own line.
+
+## What was fixed, and what was not
+
+**Fixed**: the user-agent stylesheet had no `display` for any phrasing element, so `<span>`, `<a>`, `<em>`,
+`<code>` all fell through to `LayoutDisplay::Block`. The spec's phrasing-content set is now inline in the sheet.
+
+**Not fixed, and this is the honest part**: adding that rule changed nothing, and neither did an author
+`display:inline`. So the display value is not what stops inline siblings flowing. I then wrote a speculative
+"shrink the inline box to its content" change, measured it, found it had no effect either, and **reverted it**.
+
+An unverified layout change that silently alters widths is worse than the gap it was meant to close. The revert is
+in the same commit as the rule, so the tree carries no dead speculation.
+
+## Why this is worth an entry
+
+The previous entry asserted the gap from two probes that were each confounded. The verification found the
+assertion was right about the *symptom* and wrong about the *cause*, and the difference matters: the next session
+should not start by adding `display:inline`, because that is already there and already insufficient.
+
+Row 3e stays open with these numbers. The next step is inside `layout_inline_children` — it is reached (the
+`has_inline` test passes once the display value is Inline), so the fault is in what it does with a non-text
+inline child, and that has not been read closely enough yet to name.
