@@ -730,3 +730,48 @@ away. The rule this earns: **before fixing the layer that looks wrong, print wha
 2. Row 1g3: `history`, `location.replace()`, the URL component attributes, dot-segment resolution.
 3. Row 3a: `::before`/`::after` synthetic boxes.
 4. Tier 0 corpus, still blocked here.
+
+---
+
+# Session history, `back`/`forward`, `location.replace()`
+
+Commits `4fc6fd15`, `889a3b32`, `afb80266`. Upstream read first: `History` is `length`, `go`, `back`, `forward`,
+`pushState`, `replaceState` (HTML/History.idl); `location.replace()` navigates with replacement enabled, so the page
+it left is not in the history (HTML/Location.cpp).
+
+There was no history at all, so `replace()` would have been hollow — identical to `assign()` with nothing able to
+tell them apart. The session history came first.
+
+| step | length |
+| --- | --- |
+| first load | 1 |
+| navigate | 2 |
+| navigate | 3 |
+| `back()` | 3, at the previous document |
+| `forward()` | 3, at the next |
+| `location.replace('/d')` | 3, at /d — a replacement, not a push |
+
+## Three bugs, all found by the probe
+
+| symptom | cause |
+| --- | --- |
+| `back()` changed the URL and nothing re-rendered | the hooks moved the tab but did not request a page load; they now go through the navigation channel the loop already drains |
+| `back()` then `forward()` could not move forward | the reload of the backed-to page pushed a **second** entry, truncating the one ahead of it |
+| `open()` seeded an empty history entry | the URL was `std::move`d into the first struct field and then read again for the entry list |
+
+The second is the interesting one: a reload is not a navigation. It replaces the entry it reloads, which is what
+the platform means and what makes `back()`/`forward()` coherent.
+
+## What the suite asserts, and what it does not
+
+The test asserts the discriminating case: a first load reports 1, and after `location.replace()` the next document
+still reports 1 — a push would report 2. The `back()`/`forward()` sequence was measured by probe and recorded in
+the commit body, not asserted, because the test harness serves two documents and that sequence needs four.
+
+That is a harness limit stated rather than hidden: the numbers above are from a probe, and the probe is described
+in the commit.
+
+## Not built
+
+`history.go(delta)`, `pushState`/`replaceState`, `history.state`, `scrollRestoration`, and
+`location.pathname`/`search`/`hash`/`origin` — rows 1g4 and 1g5.
