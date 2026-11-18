@@ -554,3 +554,61 @@ from upstream gets a row even when deliberate; numbers, not adjectives.
 Eleven items shipped today across three sandbox recycles. Each recycle took the working tree with it, and what
 survived every time was the repository and this log. The documentation is not a report on the work — for this
 project it *is* the durable copy of it.
+
+---
+
+# Tier 2, first step: text by code point — and the roadmap's diagnosis was wrong
+
+Commits `d7c0e969`, `62ec515b`, `e4293ab2`. Read upstream first, and it changed what the work was.
+
+`LibGfx/TextLayout.cpp`, `measure_text_width`: upstream shapes with HarfBuzz and sums `positions[i].x_advance`,
+applying letter-spacing once per **cluster**.
+
+Reading that, then our own code, found the roadmap's claim — "layout measures text a byte at a time,
+`FontMetrics::advance(char)`" — was half wrong:
+
+| Claim | Reality |
+| --- | --- |
+| the per-glyph metric is missing | `advance()` **already** called `advance_width(glyph_index(c))`; `draw_text` already advanced by glyph width |
+| layout measures per byte | true, but the fault is **decoding**, not the metric: `for (unsigned char c : text)` in three places |
+
+So every non-ASCII character was measured and drawn as two to four Latin-1 glyphs: "café" was six glyphs wide,
+Devanagari was mojibake. The fix is a decoder, not a font API.
+
+| change | file |
+| --- | --- |
+| `utf8_next()` — one code point, U+FFFD for malformed, always advancing | `font.hpp` |
+| `advance_for_code_point()`; `advance(char)` delegates | `font.cpp` |
+| `Font::measure` and `TextLayout::measure_text` iterate code points | `font.cpp`, `text_layout.cpp` |
+| `draw_text`'s outline path iterates code points | `software_surface.cpp` |
+
+| input | code point | bytes |
+| --- | --- | --- |
+| a | U+0061 | 1 |
+| é | U+00E9 | 2 |
+| ₹ | U+20B9 | 3 |
+| 日 | U+65E5 | 3 |
+| 😀 | U+1F600 | 4 |
+
+Plus: `measure_text("éé") == 2 × measure_text("é")`, and `measure_text("éé") < measure_text("aaaa")` — false under
+byte iteration, which is what makes it a test rather than a description.
+
+## Why this is a unit test and not a pixel
+
+Two probes tried to measure a text width from the page and both were confounded: `display:inline-block` spans took
+the full viewport width, and two inline spans in one line both reported `x = 0` — inline layout here does not place
+siblings side by side. A pixel probe cannot isolate a text width in this engine, so the functions that changed are
+tested directly.
+
+That is worth recording as a limitation in its own right: **inline layout does not flow siblings onto one line**,
+which is a much larger gap than anything in this batch and is not on any row yet. Added to the checklist as 3e.
+
+## What tier 2 still needs
+
+| Row | State |
+| --- | --- |
+| 2a per-glyph metric | already existed; nothing to do |
+| 2a2 code-point decoding | done |
+| 2b wire the rasteriser into paint | **already wired** in `draw_text`'s outline path — the roadmap was wrong here too |
+| 2c kerning | `kerning_adjustment()` is called in the draw path; per-glyph, not shaped |
+| 2d shaping (Arabic, Indic) | not built, and now the only real gap in tier 2 |
