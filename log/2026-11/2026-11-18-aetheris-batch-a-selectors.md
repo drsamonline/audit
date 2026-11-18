@@ -1007,3 +1007,39 @@ Row 1g8 now carries it: test the fetcher directly with a server that accepts a c
 
 Three for three. The rule is not a preference: every investigation that started with a patch cost at least two
 extra build cycles and shipped nothing, and both that started with a trace landed.
+
+---
+
+# 1g8: read the fetch path, changed nothing
+
+Commit `43901a52`. Upstream first: `LibHTTP` added to the sparse checkout — its own sources carry no socket timeouts,
+because the transport is a separate library (`RequestServer`) outside the checkout, so there is nothing to port at
+this layer. The read then went to our own fetch path.
+
+## What reading `include/aetheris/network/http_client.hpp` established
+
+| finding | evidence |
+| `timeout_ms` reaches `connect()` **only** | lines 524 and 531 are its only uses |
+| the read loops are not a spin | `read_headers`, `read_until` and `read_remaining` all break on `bytes == 0` and on error |
+| a read's blocking behaviour is decided at connect | `Socket::connect` sets `SO_RCVTIMEO`/`SO_SNDTIMEO` **and then** `O_NONBLOCK` on the connecting socket |
+
+Measured: the third fetch blocks for more than 25 s — no further frame, no error, no second fetch.
+
+## Why nothing was changed
+
+The last three investigations that started with a patch cost two, two and three reverts respectively; the two that
+started with a trace landed on the first build. This one started with a read and stopped at the point where a patch
+would be a guess: whether `recv` waits or returns immediately depends on socket state set during `connect`, and the
+fetch has no instrument inside it yet.
+
+The next step is written into the row rather than left in this entry: **print before and after each `recv` with
+elapsed milliseconds**, then the answer is a fact instead of a hypothesis. The trace scaffolding from 1g6
+(`AETHERIS_TRACE_NAV`) already shows the frame and fetch boundaries, so the instrument slots in beside it.
+
+## Where the session ends
+
+| | |
+| tip | `43901a52` |
+| suite | 60/60, twice, at every commit |
+| items today | 12 batches, 3 reverts, 2 instrumented investigations, 1 tested-but-unwired primitive |
+| open rows | 1g6 (blocked on 1g8), 1g8 (instrumented next), 1g7, 1g4, 3a, 3i, 1e3, tier 0 |
