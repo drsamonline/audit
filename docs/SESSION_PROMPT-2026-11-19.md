@@ -40,18 +40,23 @@ blocker, the standing rules, and nine traps this project has already paid for. T
   `.output/` 1.6 MB, and `vite dev` serves HTTP 200. The `build` job in CI keeps it checked.
 - All eight repos: 0 open PRs, 0 open issues.
 
-## The one blocker
+## The blocker is gone
 
-**`make` is not installed in the sandbox.** It blocks OpenZL (the benchmark that opened this work and
-the only external check on the engine's central claim) and lzbench (the fair codec harness). Fix that
-first — `sudo apt install make`, or provide a machine that has it.
+**OpenZL is built and benchmarked** (2026-11-19). The recorded blocker — `make` — was wrong three
+ways: CMake drives Ninja, `ulimit -v` is a soft cap (`ulimit -v unlimited`), and the real cost is
+xgboost's `ExternalProject`, which `zli` does not link. Recipe and numbers:
+`log/2026-11/2026-11-19-openzl-benchmarked.md`.
+
+**lzbench** is still unbuilt; the same toolchain and the same `ulimit` fix apply.
 
 ## What to do, in order
 
-1. **Install `make`**, then build OpenZL's `zli` (`cmake --build build --target zli`), run
-   `zli list-profiles`, and benchmark the fleet corpus against ziptastic. This is the highest-value
-   item in the project and it has been blocked on a compiler twice.
+1. ~~OpenZL~~ **done 2026-11-19**: `zli 0.3.0` built (Ninja + zig cc, ml_selector patched out),
+   `list-profiles` run, Silesia benchmarked. ziptastic is 31% smaller than `serial` and 35× slower;
+   OpenZL's `sao` profile is 46.6% smaller than ziptastic in 1/60th the time. See
+   `docs/OPENZL_MEASURED.md`.
 2. **Build lzbench** in the same environment and record ziptastic against its bundled codecs.
+   `ulimit -v unlimited` first, or nothing large will build.
 3. **Bump vendored liblz4 to 1.11.0**, re-run the corpus, count changed frames. The question is
    already answered and the bump is measured safe — see `ziptastic/docs/LZ4_MEASURED.md`.
 4. **Publish `zipkosh`** when the token exists.
