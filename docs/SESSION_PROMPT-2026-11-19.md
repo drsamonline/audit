@@ -47,7 +47,9 @@ ways: CMake drives Ninja, `ulimit -v` is a soft cap (`ulimit -v unlimited`), and
 xgboost's `ExternalProject`, which `zli` does not link. Recipe and numbers:
 `log/2026-11/2026-11-19-openzl-benchmarked.md`.
 
-**lzbench** is still unbuilt; the same toolchain and the same `ulimit` fix apply.
+**lzbench is done as well** — it ships prebuilt Linux binaries (v2.4), so no build was needed. The
+field is on record: ziptastic first on ratio, last on speed, and beaten by bzip3 on every text
+file. See ziptastic `docs/HARNESS_MEASURED.md`.
 
 ## What to do, in order
 
@@ -55,8 +57,9 @@ xgboost's `ExternalProject`, which `zli` does not link. Recipe and numbers:
    `list-profiles` run, Silesia benchmarked. ziptastic is 31% smaller than `serial` and 35× slower;
    OpenZL's `sao` profile is 46.6% smaller than ziptastic in 1/60th the time. See
    `docs/OPENZL_MEASURED.md`.
-2. **Build lzbench** in the same environment and record ziptastic against its bundled codecs.
-   `ulimit -v unlimited` first, or nothing large will build.
+2. ~~Build lzbench~~ **done 2026-11-19**: prebuilt Linux binary from the v2.4 release, no build.
+   Nine codecs measured; bzip3 beats ziptastic on all seven text files. The bounded next step is
+   to compare ziptastic's own BWT backend against bzip3 on those seven.
 3. **Bump vendored liblz4 to 1.11.0**, re-run the corpus, count changed frames. The question is
    already answered and the bump is measured safe — see `ziptastic/docs/LZ4_MEASURED.md`.
 4. **Publish `zipkosh`** when the token exists.
