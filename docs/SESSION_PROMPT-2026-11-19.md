@@ -4,7 +4,7 @@ You are continuing work on the CHCE fleet (ziptastic, heavenzip, HCS, kosh, lexo
 faztest, audit) for Dr Sohil Momin.
 
 **First: read `audit/docs/HANDOVER-2026-11-18.md`.** It has the fleet state, what shipped, the one
-blocker, the standing rules, and eight traps this project has already paid for. Then read
+blocker, the standing rules, and nine traps this project has already paid for. Then read
 `ziptastic/docs/FINDINGS.md` — it is the authority for any number you quote.
 
 ## Standing rules — these are not optional
@@ -35,9 +35,9 @@ blocker, the standing rules, and eight traps this project has already paid for. 
 - **kosh** → `zipkosh` built and proven, **not published** (needs `PYPI_API_TOKEN`).
 - **corpus-extendum** — PDFium for PDF rendering; docling rejected on measurement.
 - **faztest** — joined 2026-11-19: Brotli front end, measured on Silesia, `docs/FINDINGS.md` is
-  its authority, CI added, MIT, hosted-builder scaffolding removed. PRs #1–#4 and #6 merged.
-  The production build is unproven in the sandbox (1.5 GB virtual cap, Vite 8's rolldown is
-  WASM) and is gated by the `build` job in CI — check that job before trusting the build.
+  its authority, CI added, MIT, hosted-builder scaffolding removed. PRs #1–#4, #6, #7 merged.
+  The production build is **verified**: `ulimit -v unlimited && bun run build` → 3.76 s,
+  `.output/` 1.6 MB, and `vite dev` serves HTTP 200. The `build` job in CI keeps it checked.
 - All eight repos: 0 open PRs, 0 open issues.
 
 ## The one blocker
