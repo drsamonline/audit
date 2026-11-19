@@ -3,9 +3,10 @@
 You are continuing work on the CHCE fleet (ziptastic, heavenzip, HCS, kosh, lexora, corpus-extendum,
 faztest, audit) for Dr Sohil Momin.
 
-**First: read `audit/docs/HANDOVER-2026-11-18.md`.** It has the fleet state, what shipped, the one
-blocker, the standing rules, and nine traps this project has already paid for. Then read
-`ziptastic/docs/FINDINGS.md` — it is the authority for any number you quote.
+**First: read `audit/docs/HANDOVER-2026-11-19.md`.** It has the fleet state, what shipped, the
+standing rules, and eighteen traps this project has already paid for. Then read
+`ziptastic/docs/FINDINGS.md` — it is the authority for any number you quote. If the owner is asking
+what *they* need to do, that is `audit/docs/OWNER-TODO.md`.
 
 ## Standing rules — these are not optional
 
@@ -50,6 +51,12 @@ xgboost's `ExternalProject`, which `zli` does not link. Recipe and numbers:
 **lzbench is done as well** — it ships prebuilt Linux binaries (v2.4), so no build was needed. The
 field is on record: ziptastic first on ratio, last on speed, and beaten by bzip3 on every text
 file. See ziptastic `docs/HARNESS_MEASURED.md`.
+
+**What that chain produced on 2026-11-19**: the BWT candidate is fine but the block size was not —
+16 MiB blocks are 2.70% smaller corpus-wide — so `default_block_size_for()` now raises the block to
+16 MiB above 8 MiB of input. Holdout untouched. Then liblz4 moved to 1.11.1 (0 of 10 frames changed),
+HCS pinned it to a real tag, and `webster` was profiled to a dead end (PPMd owns it; both knobs
+measured worse or identical). Details and numbers: `HANDOVER-2026-11-19.md` §3.
 
 ## What to do, in order
 
