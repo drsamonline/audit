@@ -1,5 +1,5 @@
 {
- "count": 140,
+ "count": 144,
  "repos": {
   "All4ONE": {
    "archived": false,
@@ -12,7 +12,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:38:35Z",
+   "pushed_at": "2026-11-19T06:40:55Z",
    "readable": true,
    "releases": [
     {
@@ -224,6 +224,65 @@
     "deploy-demo.yml"
    ]
   },
+  "Cobble": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "To cobble is to make a thing from whatever is at hand; a cobble is the stone underfoot on a street laid one stone at a time. Both halves are the app \u2014 a city assembled from scraps of noticing, built by accumulation. A city made of small things, with \"your life, taking shape\" ",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/Cobble/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-19T12:11:02Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v1.7.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.6.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "ENHANCEMENTS.md",
+    "LICENSE",
+    "NOTICE.md",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "app",
+    "assets",
+    "docs",
+    "favicon.svg",
+    "fonts",
+    "gu.html",
+    "hi.html",
+    "icons",
+    "index.html",
+    "manifest.json",
+    "package-lock.json",
+    "package.json",
+    "screenshots",
+    "selftest.html",
+    "sw.js",
+    "tests",
+    "tools"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "check.yml"
+   ]
+  },
   "HCS": {
    "archived": false,
    "default_branch": "main",
@@ -235,7 +294,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:51:40Z",
+   "pushed_at": "2026-11-19T07:28:09Z",
    "readable": true,
    "releases": [
     {
@@ -371,6 +430,77 @@
     "release.yml"
    ]
   },
+  "Hellgate": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Description A Doom-style 2.5D arena FPS in the browser \u2014 procedural sector maps, three weapons, zero external assets. Built with Three.js.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/Hellgate/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pages_status": null,
+   "pushed_at": "2026-11-19T12:05:19Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v1.23.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.22.1"
+    },
+    {
+     "assets": [],
+     "tag": "v1.22.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.21.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.20.0"
+    }
+   ],
+   "root_files": [
+    ".editorconfig",
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "404.html",
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "ENHANCEMENTS.md",
+    "LICENSE",
+    "NOTICE.md",
+    "PAGES.json",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "SPONSORS.md",
+    "VERSION",
+    "assets",
+    "documentation",
+    "favicon.svg",
+    "index.html",
+    "play",
+    "robots.txt",
+    "sitemap.xml",
+    "tests",
+    "tools"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "pages.yml",
+    "test.yml"
+   ]
+  },
   "KILN": {
    "archived": false,
    "default_branch": "main",
@@ -382,7 +512,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-17T18:43:03Z",
+   "pushed_at": "2026-11-18T13:12:06Z",
    "readable": true,
    "releases": [
     {
@@ -503,6 +633,230 @@
     "kiln.yml"
    ]
   },
+  "LARGE_GLOBE": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "A sourced reference library of hidden-world claims \u2014 the larger globe, the flat disc, the hollow shell, the ice wall, the inner sun, the sea beneath the sea \u2014 plus the giants, dragons, cryptids, aliens and secret societies that are said to live in them. ",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/LARGE_GLOBE/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-19T08:47:32Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".nojekyll",
+    "404.html",
+    "ENHANCEMENTS.md",
+    "LICENSE",
+    "README.md",
+    "ai-risk.html",
+    "algorithmic-fairness.html",
+    "aliens.html",
+    "alzheimers-disease.html",
+    "amoc.html",
+    "anastasia.html",
+    "ancient-astronauts.html",
+    "ancient-index.html",
+    "aquatic-ape.html",
+    "arrow-of-time.html",
+    "assets",
+    "backrooms.html",
+    "bicameral-mind.html",
+    "bitcoin-digital-gold.html",
+    "black-knight.html",
+    "black-swans.html",
+    "boltzmann-brain.html",
+    "bosnian-pyramids.html",
+    "broken-windows.html",
+    "charts.html",
+    "chinese-room.html",
+    "claims-index.html",
+    "cold-fusion.html",
+    "collections.html",
+    "compare.html",
+    "contact-hypothesis.html",
+    "creationism.html",
+    "credits.html",
+    "cryptids.html",
+    "curses.html",
+    "dark-forest.html",
+    "dark-matter.html",
+    "dead-internet.html",
+    "deep-web.html",
+    "democratic-peace.html",
+    "dinosaur-extinction.html",
+    "disappearances.html",
+    "docs",
+    "doomsday-argument.html",
+    "dragons.html",
+    "dunbars-number.html",
+    "dyatlov-pass.html",
+    "dyson-swarms.html",
+    "echo-chambers.html",
+    "ediacaran.html",
+    "egg-theory.html",
+    "ego-depletion.html",
+    "enshittification.html",
+    "eukaryote-origin.html",
+    "fast-radio-bursts.html",
+    "favicon.svg",
+    "firewall-paradox.html",
+    "flat-earth.html",
+    "flood-myths.html",
+    "free-energy-principle.html",
+    "frontier-index.html",
+    "ftx.html",
+    "fusion-grid.html",
+    "gaia.html",
+    "geographic-determinism.html",
+    "giant-trees.html",
+    "giants.html",
+    "gobekli-tepe.html",
+    "great-filter.html",
+    "great-stagnation.html",
+    "growth-mindset.html",
+    "gut-brain.html",
+    "hitler-escape.html",
+    "hollow-earth.html",
+    "holographic-principle.html",
+    "hubble-tension.html",
+    "hyperloop.html",
+    "ice-wall.html",
+    "iit-gwt.html",
+    "index.html",
+    "inflation-bounce.html",
+    "jevons-paradox.html",
+    "kardashev-bottlenecks.html",
+    "larger-globe.html",
+    "last-thursday.html",
+    "lead-crime.html",
+    "learning-styles.html",
+    "lindy-effect.html",
+    "links.html",
+    "lost-continents.html",
+    "mad-stability.html",
+    "magnetic-monopoles.html",
+    "magnetoreception.html",
+    "mandela-effect.html",
+    "many-worlds.html",
+    "market-efficiency.html",
+    "mass-delusion.html",
+    "master-list.html",
+    "median-voter-theorem.html",
+    "mega-index.html",
+    "minimum-wage.html",
+    "modern-index.html",
+    "modern-monetary-theory.html",
+    "mond.html",
+    "moon-formation.html",
+    "moores-law-end.html",
+    "muon-g2.html",
+    "mutants.html",
+    "mysteries.html",
+    "oak-island.html",
+    "objective-collapse.html",
+    "omega-point.html",
+    "open-problems.html",
+    "open-vs-closed-models.html",
+    "origin-of-life.html",
+    "oumuamua.html",
+    "panama-papers.html",
+    "panpsychism.html",
+    "paul-is-dead.html",
+    "pegasus-spyware.html",
+    "petos-paradox.html",
+    "phantom-time.html",
+    "phosphine-venus.html",
+    "pilot-wave.html",
+    "pixar-theory.html",
+    "placebo-effect.html",
+    "planet-nine.html",
+    "polyvagal-theory.html",
+    "primordial-black-hole.html",
+    "print-edition.html",
+    "prophecies.html",
+    "proven-conspiracies.html",
+    "punctuated-equilibrium.html",
+    "quantum-advantage.html",
+    "quantum-darwinism.html",
+    "quantum-oddities.html",
+    "rational-choice-voting.html",
+    "readiness-potentials.html",
+    "reading-guide.html",
+    "resource-curse.html",
+    "riemann-hypothesis.html",
+    "roanoke.html",
+    "robots.txt",
+    "roko-basilisk.html",
+    "scaling-laws.html",
+    "scarcity-or-ingenuity.html",
+    "screen-time-teens.html",
+    "search.html",
+    "secret-societies.html",
+    "secret-tests.html",
+    "secular-stagnation.html",
+    "shakespeare-authorship.html",
+    "silurian-hypothesis.html",
+    "simpsons-predictions.html",
+    "simulation.html",
+    "site.webmanifest",
+    "sitemap.xml",
+    "snowball-earth.html",
+    "sonoluminescence.html",
+    "soul-energy.html",
+    "sources.html",
+    "space-elevator.html",
+    "stochastic-parrots.html",
+    "stoned-ape.html",
+    "string-theory.html",
+    "substrate-independence.html",
+    "suns-stars.html",
+    "superconductivity.html",
+    "superrationality.html",
+    "supersymmetry.html",
+    "support.html",
+    "tabbys-star.html",
+    "tartarian.html",
+    "tartarus.html",
+    "technological-unemployment.html",
+    "themes.html",
+    "theranos.html",
+    "thucydides-trap.html",
+    "time-crystals.html",
+    "time-paradoxes.html",
+    "topics.html",
+    "turbulence.html",
+    "turing-test.html",
+    "underwater.html",
+    "unexplained.html",
+    "universal-basic-income.html",
+    "urban-legends.html",
+    "virus-origins.html",
+    "voynich-manuscript.html",
+    "water-origin.html",
+    "white-hole.html",
+    "younger-dryas.html",
+    "zoo-hypothesis.html"
+   ],
+   "topics": [
+    "conspiracies",
+    "cryptids",
+    "earth",
+    "esoteric",
+    "flat",
+    "globe",
+    "large",
+    "unknown",
+    "various"
+   ],
+   "upstream": null,
+   "workflow_files": []
+  },
   "MATERIA-MEDICA-BUILDER": {
    "archived": false,
    "default_branch": "main",
@@ -576,7 +930,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T06:44:28Z",
+   "pushed_at": "2026-11-18T15:44:20Z",
    "readable": true,
    "releases": [
     {
@@ -609,7 +963,9 @@
    ],
    "upstream": null,
    "workflow_files": [
+    ".probe",
     "blog.yml",
+    "book-covers.yml",
     "products.yml",
     "store-images.yml",
     "store.yml"
@@ -626,7 +982,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T12:16:44Z",
+   "pushed_at": "2026-11-18T18:42:06Z",
    "readable": true,
    "releases": [
     {
@@ -804,7 +1160,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:38:47Z",
+   "pushed_at": "2026-11-19T05:32:39Z",
    "readable": true,
    "releases": [
     {
@@ -868,7 +1224,10 @@
     "vanilla-js"
    ],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "links.yml",
+    "meta.yml"
+   ]
   },
   "Single-File-Web-Apps": {
    "archived": false,
@@ -1103,7 +1462,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T12:17:20Z",
+   "pushed_at": "2026-11-18T18:23:25Z",
    "readable": true,
    "releases": [
     {
@@ -1464,7 +1823,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-17T00:38:12Z",
+   "pushed_at": "2026-11-19T05:32:24Z",
    "readable": true,
    "releases": [
     {
@@ -1513,7 +1872,9 @@
    ],
    "upstream": null,
    "workflow_files": [
-    "ci.yml"
+    "ci.yml",
+    "links.yml",
+    "meta.yml"
    ]
   },
   "ai-bridge": {
@@ -1687,7 +2048,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T10:03:25Z",
+   "pushed_at": "2026-11-18T15:43:59Z",
    "readable": true,
    "releases": [
     {
@@ -1855,7 +2216,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:37:30Z",
+   "pushed_at": "2026-11-18T13:47:00Z",
    "readable": true,
    "releases": [
     {
@@ -2251,7 +2612,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T09:14:11Z",
+   "pushed_at": "2026-11-19T11:06:34Z",
    "readable": true,
    "releases": [
     {
@@ -2489,7 +2850,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:39:08Z",
+   "pushed_at": "2026-11-19T05:32:56Z",
    "readable": true,
    "releases": [
     {
@@ -2534,6 +2895,8 @@
    "upstream": null,
    "workflow_files": [
     "build-apps.yml",
+    "links.yml",
+    "meta.yml",
     "test.yml"
    ]
   },
@@ -2818,7 +3181,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T11:50:06Z",
+   "pushed_at": "2026-11-19T08:02:24Z",
    "readable": true,
    "releases": [
     {
@@ -3558,7 +3921,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:56:10Z",
+   "pushed_at": "2026-11-19T00:41:54Z",
    "readable": true,
    "releases": [
     {
@@ -3731,7 +4094,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-16T18:18:46Z",
+   "pushed_at": "2026-11-18T16:24:47Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -3916,7 +4279,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T10:06:08Z",
+   "pushed_at": "2026-11-18T12:51:29Z",
    "readable": true,
    "releases": [
     {
@@ -3985,7 +4348,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T11:53:35Z",
+   "pushed_at": "2026-11-19T11:49:58Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -4078,7 +4441,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-15T09:17:18Z",
+   "pushed_at": "2026-11-19T05:35:51Z",
    "readable": true,
    "releases": [
     {
@@ -4157,7 +4520,9 @@
    ],
    "upstream": null,
    "workflow_files": [
-    "build-apps.yml"
+    "build-apps.yml",
+    "links.yml",
+    "meta.yml"
    ]
   },
   "export-kit": {
@@ -4204,6 +4569,47 @@
    "upstream": null,
    "workflow_files": [
     "test.yml"
+   ]
+  },
+  "faztest-fast-file-forge": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "A Brotli front end for files you would rather not upload: compress and decompress in the browse",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pages_status": null,
+   "pushed_at": "2026-11-19T02:44:40Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".prettierignore",
+    ".prettierrc",
+    "AGENTS.md",
+    "LICENSE",
+    "README.md",
+    "bun.lock",
+    "bunfig.toml",
+    "components.json",
+    "docs",
+    "eslint.config.js",
+    "package.json",
+    "public",
+    "scripts",
+    "src",
+    "tsconfig.json",
+    "vite.config.ts",
+    "vitest.config.ts"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "ci.yml"
    ]
   },
   "feather": {
@@ -4407,7 +4813,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T15:35:18Z",
+   "pushed_at": "2026-11-19T05:33:08Z",
    "readable": true,
    "releases": [
     {
@@ -4437,6 +4843,8 @@
    ],
    "upstream": null,
    "workflow_files": [
+    "links.yml",
+    "meta.yml",
     "test.yml"
    ]
   },
@@ -4512,7 +4920,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-17T17:31:39Z",
+   "pushed_at": "2026-11-18T18:21:34Z",
    "readable": true,
    "releases": [
     {
@@ -5203,7 +5611,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T11:47:51Z",
+   "pushed_at": "2026-11-18T19:02:15Z",
    "readable": true,
    "releases": [
     {
@@ -5303,9 +5711,16 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T09:34:42Z",
+   "pushed_at": "2026-11-18T17:55:08Z",
    "readable": true,
    "releases": [
+    {
+     "assets": [
+      "lexora-0.2.0a1-py3-none-any.whl",
+      "lexora-0.2.0a1.tar.gz"
+     ],
+     "tag": "v0.2.0-alpha.1"
+    },
     {
      "assets": [
       "lexora-0.1.0a2-py3-none-any.whl",
@@ -5396,7 +5811,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:47:54Z",
+   "pushed_at": "2026-11-18T13:46:37Z",
    "readable": true,
    "releases": [
     {
@@ -6093,7 +6508,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-16T06:42:30Z",
+   "pushed_at": "2026-11-19T05:45:17Z",
    "readable": true,
    "releases": [
     {
@@ -6151,6 +6566,7 @@
     "tests",
     "three.module.js",
     "throwables.js",
+    "tools",
     "vehicle.js",
     "weapons.js",
     "world.js",
@@ -6165,6 +6581,9 @@
    ],
    "upstream": null,
    "workflow_files": [
+    "docs.yml",
+    "links.yml",
+    "meta.yml",
     "test.yml"
    ]
   },
@@ -7440,7 +7859,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:46:28Z",
+   "pushed_at": "2026-11-19T05:35:13Z",
    "readable": true,
    "releases": [
     {
@@ -7491,6 +7910,8 @@
    "upstream": null,
    "workflow_files": [
     "build-apps.yml",
+    "links.yml",
+    "meta.yml",
     "test.yml"
    ]
   },
@@ -7505,7 +7926,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-14T18:05:09Z",
+   "pushed_at": "2026-11-19T05:32:12Z",
    "readable": true,
    "releases": [
     {
@@ -7548,7 +7969,10 @@
     "zero-dependency"
    ],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "links.yml",
+    "meta.yml"
+   ]
   },
   "seance": {
    "archived": false,
@@ -8003,7 +8427,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T12:11:02Z",
+   "pushed_at": "2026-11-19T11:59:18Z",
    "readable": true,
    "releases": [
     {
@@ -8028,6 +8452,7 @@
     ".github",
     ".gitignore",
     "AUDIT-2026-11-15.md",
+    "AUDIT-2026-11-19.md",
     "AUDIT.md",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
@@ -9015,7 +9440,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T11:27:11Z",
+   "pushed_at": "2026-11-19T07:50:30Z",
    "readable": true,
    "releases": [
     {
@@ -9075,6 +9500,7 @@
     "README.md",
     "SECURITY.md",
     "docs",
+    "holdout",
     "include",
     "plugins",
     "prompt",

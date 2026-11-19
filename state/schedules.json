@@ -1,6 +1,7 @@
 {
  "KILN/kiln.yml": "17 4 * * *",
  "Matneo/blog.yml": "12 4 * * 2\"   # weekly, Tuesday 04:12 UTC",
+ "Matneo/book-covers.yml": "0 4 2 * *\"   # monthly: a cover changed on the retailer is picked up",
  "Matneo/store-images.yml": "0 3 1,16 * *\"   # every 15 days (1st and 16th), 03:00 UTC",
  "Matneo/store.yml": "22 4 * * 2\"   # weekly, Tuesday 04:22 UTC",
  "NEO/bench.yml": "0 3 * * 1\"      # Mondays, 03:00 UTC",
