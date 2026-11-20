@@ -1,5 +1,6 @@
 {
  "KILN/kiln.yml": "17 4 * * *",
+ "LARGE_GLOBE/check.yml": "0 4 * * 1\"   # Mondays, 04:00 UTC",
  "Matneo/blog.yml": "12 4 * * 2\"   # weekly, Tuesday 04:12 UTC",
  "Matneo/book-covers.yml": "0 4 2 * *\"   # monthly: a cover changed on the retailer is picked up",
  "Matneo/store-images.yml": "0 3 1,16 * *\"   # every 15 days (1st and 16th), 03:00 UTC",
@@ -24,6 +25,7 @@
  "iamsingle-sfwa-directory/discover-candidates.yml": "23 5 * * 1\" # once a week, Monday",
  "iamsingle-sfwa-directory/snapshot-stars.yml": "17 4 * * *\" # once a day, as a backstop",
  "kosh/fuzz.yml": "41 3 * * *",
+ "lm-kit/corpus.yml": "0 3 * * 1\"   # Mondays, 03:00 UTC",
  "local-first-tools/link-check.yml": "0 9 * * 1",
  "skills/refresh.yml": "23 3 * * 1\"   # weekly, Monday 03:23 UTC",
  "ziptastic/vendor-check.yml": "17 4 * * 1"

@@ -1,5 +1,5 @@
 {
- "count": 144,
+ "count": 147,
  "repos": {
   "All4ONE": {
    "archived": false,
@@ -235,7 +235,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-19T12:11:02Z",
+   "pushed_at": "2026-11-20T09:45:41Z",
    "readable": true,
    "releases": [
     {
@@ -281,6 +281,54 @@
    "upstream": null,
    "workflow_files": [
     "check.yml"
+   ]
+  },
+  "DayDoc": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pages_status": null,
+   "pushed_at": "2026-11-20T09:37:31Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "daydoc-v0.1.0-x86_64-pc-windows-msvc.zip",
+      "daydoc-v0.1.0-x86_64-unknown-linux-gnu.tar.gz",
+      "daydoc_0.1.0-1_amd64.deb"
+     ],
+     "tag": "v0.1.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "Cargo.toml",
+    "LICENSE",
+    "NOTICE",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "assets",
+    "docs",
+    "rustfmt.toml",
+    "scripts",
+    "src",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "ci.yml",
+    "release.yml"
    ]
   },
   "HCS": {
@@ -441,28 +489,28 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-19T12:05:19Z",
+   "pushed_at": "2026-11-20T09:02:46Z",
    "readable": true,
    "releases": [
     {
      "assets": [],
-     "tag": "v1.23.0"
+     "tag": "v1.28.0"
     },
     {
      "assets": [],
-     "tag": "v1.22.1"
+     "tag": "v1.27.0"
     },
     {
      "assets": [],
-     "tag": "v1.22.0"
+     "tag": "v1.26.0"
     },
     {
      "assets": [],
-     "tag": "v1.21.0"
+     "tag": "v1.25.0"
     },
     {
      "assets": [],
-     "tag": "v1.20.0"
+     "tag": "v1.24.0"
     }
    ],
    "root_files": [
@@ -512,7 +560,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T13:12:06Z",
+   "pushed_at": "2026-11-19T13:27:35Z",
    "readable": true,
    "releases": [
     {
@@ -644,7 +692,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-19T08:47:32Z",
+   "pushed_at": "2026-11-20T09:09:26Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -785,6 +833,7 @@
     "quantum-advantage.html",
     "quantum-darwinism.html",
     "quantum-oddities.html",
+    "random.html",
     "rational-choice-voting.html",
     "readiness-potentials.html",
     "reading-guide.html",
@@ -829,6 +878,7 @@
     "thucydides-trap.html",
     "time-crystals.html",
     "time-paradoxes.html",
+    "tools",
     "topics.html",
     "turbulence.html",
     "turing-test.html",
@@ -855,7 +905,9 @@
     "various"
    ],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "check.yml"
+   ]
   },
   "MATERIA-MEDICA-BUILDER": {
    "archived": false,
@@ -1267,7 +1319,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-17T12:42:44Z",
+   "pushed_at": "2026-11-20T00:45:08Z",
    "readable": true,
    "releases": [
     {
@@ -1313,7 +1365,54 @@
     "task-management"
    ],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "test.yml"
+   ]
+  },
+  "Sorta": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "MIT",
+   "pages_status": null,
+   "pushed_at": "2026-11-20T09:10:29Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "sorta-linux-x86_64.tar.gz",
+      "sorta-windows-x86_64.zip"
+     ],
+     "tag": "v0.1.0-rc.1"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "AGENTS.md",
+    "Cargo.lock",
+    "Cargo.toml",
+    "LICENSE",
+    "NOTICE",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "docs",
+    "rust-toolchain.toml",
+    "src",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "ci.yml",
+    "release.yml"
+   ]
   },
   "TOOLWORKS": {
    "archived": false,
@@ -1823,7 +1922,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-19T05:32:24Z",
+   "pushed_at": "2026-11-19T13:14:46Z",
    "readable": true,
    "releases": [
     {
@@ -2348,7 +2447,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:58:10Z",
+   "pushed_at": "2026-11-20T06:54:42Z",
    "readable": true,
    "releases": [
     {
@@ -2612,7 +2711,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-19T11:06:34Z",
+   "pushed_at": "2026-11-20T11:37:25Z",
    "readable": true,
    "releases": [
     {
@@ -3181,7 +3280,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-19T08:02:24Z",
+   "pushed_at": "2026-11-20T03:42:26Z",
    "readable": true,
    "releases": [
     {
@@ -4279,7 +4378,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T12:51:29Z",
+   "pushed_at": "2026-11-19T18:43:18Z",
    "readable": true,
    "releases": [
     {
@@ -4348,7 +4447,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-19T11:49:58Z",
+   "pushed_at": "2026-11-20T11:51:27Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -4390,7 +4489,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T12:14:48Z",
+   "pushed_at": "2026-11-20T12:07:53Z",
    "readable": true,
    "releases": [
     {
@@ -5769,6 +5868,54 @@
     "ci.yml"
    ]
   },
+  "lm-kit": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": false,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-20T09:19:25Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [],
+     "tag": "v0.2.0"
+    },
+    {
+     "assets": [],
+     "tag": "v0.1.0"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "DISCLAIMER.md",
+    "LICENSE",
+    "NOTICE.md",
+    "PRIVACY.md",
+    "README.md",
+    "SECURITY.md",
+    "VERSION",
+    "docs",
+    "kernel",
+    "models",
+    "templates",
+    "tests",
+    "tools"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "ci.yml",
+    "corpus.yml"
+   ]
+  },
   "local-first-tools": {
    "archived": false,
    "default_branch": "main",
@@ -7095,7 +7242,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:40:04Z",
+   "pushed_at": "2026-11-19T18:37:22Z",
    "readable": true,
    "releases": [
     {
@@ -7859,7 +8006,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-19T05:35:13Z",
+   "pushed_at": "2026-11-20T06:47:42Z",
    "readable": true,
    "releases": [
     {
@@ -8427,7 +8574,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-19T11:59:18Z",
+   "pushed_at": "2026-11-19T12:35:42Z",
    "readable": true,
    "releases": [
     {
