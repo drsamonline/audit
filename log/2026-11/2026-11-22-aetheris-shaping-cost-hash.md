@@ -1,0 +1,73 @@
+# Aetheris — shaping cost: the hash, not HarfBuzz
+
+Date: 2026-11-22 · Repo `drsamonline/The_Browser`
+Commit: `308f1d62`
+
+Row 2d4 was written as "shaping costs 1.043 ms per 24-character run at -O0; measure in a release build
+before optimising". Measuring first was the right instruction: the cost was not shaping, and it was not
+the build type either.
+
+## What I looked at upstream
+
+| Question | Where | What it said |
+| --- | --- | --- |
+| Does upstream cache shaped text, and keyed on what? | `Libraries/LibGfx/Font/Font.h:31-45`, `:109-116` | `ShapingCacheKey { Utf16String text; u8 text_type; u32 letter_spacing_bit_pattern; u32 word_spacing_bit_pattern; }`, a `HashMap<ShapingCacheKey, OwnPtr<ShapedGlyphs>>` plus a 128-slot `single_ascii_character_map`, on the `Font` — which already carries its size |
+| Where is the hit, and what is stored? | `Libraries/LibGfx/TextLayout.cpp:309-360` (`shape_text`) | lookup by hashed key with a candidate comparison, value built origin-relative and translated per caller; `FIXME: The cache currently grows unbounded` |
+| Does the measurement path use the cache? | `Libraries/LibGfx/TextLayout.cpp:363` (`measure_text_width`) | no — it shapes the buffer directly. Their measure is a separate path from their paint path; ours is one `shape_run()` for both, so ours caches under both |
+| What does a font cache beyond the face? | `Libraries/LibGfx/Font/Font.h:105` | `harfbuzz_font()` per `Font`, i.e. the scaled `hb_font_t` belongs to the size |
+
+Ported the shape: cache on the identity that owns the data, key on everything that changes the result,
+keep the scaled font with the size. Widened where our API forces it — our shaper is a free function, so
+the font identity and the size go in the key rather than being implied by `this`.
+
+## What was measured before any code changed
+
+`tools/shaping-bench.cpp`, 2,000 iterations, best of five, DejaVu Sans (756,072 bytes), 24-character run:
+
+| step | -O2 | -O0 |
+| --- | --- | --- |
+| `shape_run()` as shipped | **1.2571 ms** | ~34 ms |
+| HarfBuzz alone, face and font built once | 0.0046 ms | 0.1325 ms |
+| `hb_font_create()` per call | 0.0003 ms | 0.0058 ms |
+| FNV-1a over the whole font file | **1.2532 ms** | **30.65 ms** |
+
+The face cache added in `18eb91c8` keys on a content hash of the font file, and the hash was taken
+**inside** `shape_run` — 756,072 bytes of dependent multiply per shaped run. That is 98% of the -O2 cost
+and 90% of the -O0 cost. HarfBuzz was never the problem.
+
+The 1.043 ms in the 11-18 handover was taken before that cache existed. The note beside it — "worth ~7%:
+0.075 ms of 1.043 ms" — priced the face creation the cache removed and not the hash it added, so the row
+it fed had the wrong shape for two days.
+
+## What shipped
+
+| Change | Why |
+| --- | --- |
+| `TtfFont::identity()`: FNV-1a over the file, computed once in `load()` | the same content hash, at the frequency that made it free. Still content, not address, because an address is reused when a font reloads into the same buffer |
+| `shape_run(data, text, size, font_identity)` | the identity is supplied by whoever owns the bytes; 0 means "no identity", and that path shapes without either cache |
+| `SizeCache { hb_font_t* font; map<string, vector<ShapedGlyph>, less<>> runs; }` per (identity, size) | upstream's `ShapingCache` and `harfbuzz_font()` in one place; `std::less<>` so a hit compares a `string_view` and allocates nothing |
+| a 4,096-run cap that clears the map | upstream's own FIXME. Bounded, no LRU thread through the hit path, one re-shape per run after a clear |
+| identity threaded through `Font::measure` and `draw_text` | one code path; the tests pass an identity too, so the test exercises what the engine runs |
+
+## Evidence
+
+| Case | Result |
+| --- | --- |
+| `font.identity()` on a loaded font | non-zero |
+| two `TtfFont` objects, same bytes | same identity — a reload shares the face |
+| same call twice | identical glyphs, clusters and advances |
+| same text at 16 px and 32 px | different advances (32 px > 1.5x), so the size is in the key |
+| `measure("fi")` vs `measure("f") + measure("i")` | still 10.0781 < 10.0938 — the ligature survives the cache |
+| one 24-char run, -O2 | **1.2571 ms -> 0.0001 ms** cached, 0.0086 ms cold |
+| one 24-char run, -O0 | ~34 ms -> 0.0027 ms cached, 0.1863 ms cold |
+| the suite | 64/64 twice, 126.21 s and 129.14 s at `ctest -j2` (was 210.28 s) |
+
+## What I got wrong on the way
+
+| First reading | What was true | What settled it |
+| --- | --- | --- |
+| "`Font::measure` is faster than `shape_run`, so the shaper is not wired in" | the bench never set `AETHERIS_FONT`, so `measure` used the bitmap fallback | setting the variable: 0.0446 -> 1.4292 ms |
+| "the font hash costs nothing (0.0000 ms)" | the loop was dead code; the compiler deleted it | a `volatile` sink |
+| "the release build is slower than debug" | the -O0 figure predated the hash | the breakdown |
+| "the -O0 bench hangs" | 30 calls at 31 ms each, against a 300 s command cap | a probe that stamps every step |
+| "key the cache on a hash memoised by buffer address" — considered, not written | that is precisely the bug `18eb91c8` removed | reading the comment on the code being changed |
