@@ -60,3 +60,43 @@ fallback. Nothing else moved: one function, one call site.
 
 Third appearance of the `active_font()` trap in this repo. It is now in the probe's comment and in the
 handover's build facts.
+
+---
+
+# Second row, same session — 2e3: `text-align: start`/`end` follow `direction`
+
+Commit: `3f00eaaa`
+
+## What I looked at upstream
+
+| Question | Where | What it said |
+| --- | --- | --- |
+| What do `start` and `end` mean? | `Libraries/LibWeb/HTML/Canvas/Canvas2DContextBase.cpp:445-470` | "In RTL, `start` means right-aligned"; "In RTL, `end` means left-aligned"; "Explicit `left` and `right` alignments ignore direction"; `center` is the same either way |
+| What is the initial value? | `Libraries/LibWeb/CSS/ComputedValues.h:447` | `TextAlign::Start` — so an unset `text-align` is `start`, not `left` |
+
+## What shipped
+
+| Change | Why |
+| --- | --- |
+| `TextLayout::layout` resolves alignment against `direction` | `start`/`end` were being treated as `left`/`right`, so an RTL block stayed left-aligned |
+| eight assertions on exact fragment positions | the bitmap fallback makes them exact: 10 px per character at 16 px |
+
+## Evidence
+
+| text-align | direction | fragment x, "abc" in a 200 px line |
+| --- | --- | --- |
+| unset | ltr | 0 |
+| unset | rtl | 170 |
+| `start` | rtl | 170 |
+| `end` | rtl | 0 |
+| `end` | ltr | 170 |
+| `left` | rtl | 0 |
+| `right` | ltr | 170 |
+| `center` | rtl | 85 |
+
+Rendered: the `direction: rtl` paragraphs of the bidi fixture moved from the left margin to the right one;
+the LTR paragraphs did not move. Suite 65/65 twice, 131.36 s and 126.43 s.
+
+## What is left
+
+`text-align: justify` is treated as `start`. It is the only part of the property not implemented.
