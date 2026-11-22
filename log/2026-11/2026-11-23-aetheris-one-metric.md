@@ -100,3 +100,74 @@ the LTR paragraphs did not move. Suite 65/65 twice, 131.36 s and 126.43 s.
 ## What is left
 
 `text-align: justify` is treated as `start`. It is the only part of the property not implemented.
+
+---
+
+# Third row, same session — 2f: line breaking by cluster
+
+Commit: `5a8a5d7a`
+
+## What I looked at upstream
+
+| Question | Where | What it said |
+| --- | --- | --- |
+| How does upstream find break opportunities? | `Libraries/LibWeb/Rust/src/layout/text_chunker.rs` | an ICU `LineSegmenter` (UAX#14) and a `GraphemeSegmenter` (UAX#29), both held by the chunker; `can_break_after` is per chunk |
+| How is a chunk's text type decided? | `text_chunker.rs:238-245` | `unidirectional_ltr` short-circuits to LTR, otherwise a per-code-point FFI call into `TextNode::text_type_for_code_point` |
+| Is `HB_GLYPH_FLAG_UNSAFE_TO_BREAK` used anywhere in the tree? | grep over `Libraries` and `Rust` | no — it exists only in HarfBuzz itself. It is what this engine uses, because neither segmenter is available without ICU |
+
+## What was measured before writing it
+
+`hb_glyph_info_get_glyph_flags()` after a plain `hb_shape`, embedded font, 16 px. `!` marks a cluster where a
+break would change the shaped result:
+
+| text | clusters | safe offsets |
+| --- | --- | --- |
+| `office` | `0 1 4 5` — the ffi ligature covers bytes 1-3 | 1, 4, 5, 6; never 2 or 3 |
+| `To` | `0 1!` — kerned | 2 |
+| `AV` | `0 1!` | 2 |
+| `fi` | `0` | 2 |
+| `e` + U+0301 + `x` | `0 0 3` | 4; never 1 |
+
+Control, so the assertions cannot pass vacuously: `ox`, `To` and `AV` carry the flag; `ll`, `ab` and `of` do
+not.
+
+## What shipped
+
+| Change | Why |
+| --- | --- |
+| `ShapedGlyph::flags`, filled from `hb_glyph_info_get_glyph_flags()` | the shaped run already had the answer; it was being thrown away |
+| `safe_break_offsets()` | cluster starts not flagged unsafe, ascending (a `std::map` gives that for free, which matters because an RTL run arrives descending), end of text last |
+| `break_word()` in the wrap pass, gated on `overflow-wrap: break-word\|anywhere` or `word-break: break-all` | browsers overflow a long word unless asked; the default path is unchanged and asserted |
+
+## Evidence
+
+| Case | Result |
+| --- | --- |
+| `AetherisShaping` | green; the eight new assertion strings are in the built binary |
+| `office` / `To` / combining mark | no offset inside the ligature, the kerned pair or the cluster |
+| long word, no property | one fragment — it overflows |
+| long word, `overflow-wrap: break-word` | several fragments, each within the line, bytes summing to the word |
+| the suite | 65/65 twice, 122.91 s and 123.00 s here; 65/65 twice, 123.48 s and 128.74 s in the separate sandbox |
+
+## What went wrong, and what it cost
+
+While linking, the session's environment exhausted its process table: **17,879 zombies** parented to PID 1
+against `ulimit -u 4096`, after which every `zig` invocation failed with `failed to spawn: SystemResources`,
+including a one-line `int main(){}`. `git diff` failed on its threaded lstat; `git -c core.preloadIndex=false`
+worked and was used to save the patch and revert the tree to `3f00eaaa`.
+
+| First reading | What was true | What settled it |
+| --- | --- | --- |
+| "the link step is failing" | nothing could spawn; the compiler was fine | `ps` and a one-line test program |
+| "the patch is lost with the tree" | `git diff` had already saved it to `/scratch/work` | applying it again, cleanly, in two different environments |
+
+The row was then verified twice — in a fresh sandbox with the patch applied to `3f00eaaa`, and again on a new
+environment with the same patch and the same result. A row is not verified because one environment said so.
+
+## Correction to the 2e and 2e2 entries above
+
+Those said the reordering lives in `Rust/src/layout`, "which this tree does not vendor". The Rust layout **is**
+vendored, at `Libraries/LibWeb/Rust/src/layout/` — I looked at the repo root instead of inside `Libraries/LibWeb`.
+What it does not contain is a bidi reordering pass: `text_chunker.rs` splits chunks by `text_type` and
+`inline_level_iterator.rs:168` only decides whether a block is unidirectional LTR. The conclusion held; the
+reason given for it did not.
