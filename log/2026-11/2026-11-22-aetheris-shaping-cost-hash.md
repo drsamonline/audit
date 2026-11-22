@@ -1,7 +1,7 @@
-# Aetheris — shaping cost, then bidi level 1
+# Aetheris — shaping cost, then bidi levels 1 and 2
 
 Date: 2026-11-22 · Repo `drsamonline/The_Browser`
-Commit: `308f1d62` (row 2d4), `85c0b46e` (row 2e)
+Commit: `308f1d62` (row 2d4), `85c0b46e` (row 2e), `5072d1e9` (row 2e2)
 
 Row 2d4 was written as "shaping costs 1.043 ms per 24-character run at -O0; measure in a release build
 before optimising". Measuring first was the right instruction: the cost was not shaping, and it was not
@@ -136,3 +136,50 @@ which are the widths of سلام and عليكم rendered alone — the *first* l
 | "a neutral takes the direction before it" | that is N1's same-direction case; N2 gives the paragraph direction | the split assertion failed: `rtl[سلام ]` where `rtl[سلام] ltr[ xyz]` was expected |
 | "the render is broken: سلام is on the left" | the render is right for a shaper and wrong for a line | ink widths of each word alone, then of the phrase |
 | "`--render file:///...` will show me the page" | the CLI registers only the HTTP backend | `no backend supports the URL`; a 40-line harness on `RenderDocument::create()` instead |
+
+---
+
+# Third batch, same session — bidi level 2 (row 2e2)
+
+Commit: `5072d1e9`
+
+## What I looked at upstream
+
+| Question | Where | What it said |
+| --- | --- | --- |
+| Does the vendored tree reorder runs into visual order? | `Rust/src/layout` | not vendored here, so no |
+| Is `direction` inherited? | `Libraries/LibWeb/CSS/Properties.json` | `{"inherited": true, "initial": "ltr"}` — which is why a text node could not see its block's `direction: rtl` until it was added to `StyleProperties::inherit_from()` |
+| What does the C++ side contribute? | `LibWeb/Layout/TextNode.cpp:556`, `LibUnicode/Bidi.cpp` | classification and a gate; the ordering is the layout's |
+
+The level resolution here is written from UAX#9 N1, N2 and L2 rather than ported, because the ported
+half is not in this tree. Levels are 0, 1 and 2 only: without `unicode-bidi: embed|isolate|override` and
+without explicit embedding controls, the rules that produce higher levels cannot fire.
+
+## What was measured
+
+| case | before | after |
+| --- | --- | --- |
+| "سلام عليكم", ink groups per word rendered alone as the reference | 30 px left (سلام), 37 px right (عليكم) | 37 px left, 30 px right |
+| "عليكم سلام" | identical to the line above | the mirror of it |
+| "abc سلام xyz" with `direction: rtl` | identical to the LTR paragraph | "xyz سلام abc" |
+| "سلام 123" with `direction: rtl` | "سلام 123" | "123 سلام" |
+| a Latin line inside an RTL paragraph | — | unchanged, reversed twice by L2 and back |
+| the suite | 65/65 | 65/65 twice, 125.97 s and 130.42 s |
+
+## Evidence in the test
+
+`AetherisBidi` now pins six orders (two Arabic words in either paragraph direction; one Arabic word
+between Latin words; an all-Latin line in an RTL paragraph; Arabic with digits in both directions) and
+the fragment order `TextLayout::layout` returns for a two-word Arabic line.
+
+## What I got wrong
+
+| First reading | What was true | What settled it |
+| --- | --- | --- |
+| "N2 gives the neutral a left-to-right level" | N2 gives the *paragraph* direction | the assertion failed with both spaces flung to the ends of the line |
+| "`direction: rtl` is ignored by the engine" | it never reached the text node: `direction` is inherited and was missing from the inheritance list | a dump of every node's resolved `direction` showed `-` everywhere |
+| "the page's `<style>` reaches `RenderDocument::create()`" | it takes the author CSS as an argument; only the browser path collects `<style>` | the render came out at 16 px when the page asked for 28 px |
+| "the class selector does not match" | it matched; the sheet was never passed | passing the CSS explicitly |
+
+Three of the four were the harness. The lesson recorded: print the resolved value instead of inferring it
+from the picture.
