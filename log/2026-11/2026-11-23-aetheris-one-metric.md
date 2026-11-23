@@ -944,3 +944,44 @@ No drag-reorder, no middle-click close, no overflow menu below the minimum width
 
 Deleting the duplicated coordinates broke the test that had been written against them. That is exactly what a shared
 layout is supposed to do — the duplication had been pinned in place by a test that believed in it.
+
+---
+
+# Twenty-fourth commit — row 4.2: history and bookmarks
+
+Commit: `8dd7dbd4`
+
+| piece | where |
+| --- | --- |
+| `HistoryEntry` keeps the title it had while current | `browser_session.{hpp,cpp}` |
+| bookmarks: add, remove, `is_bookmarked`, `toggle_bookmark` — no duplicates, first title wins | same |
+| panels as ordinary documents of real `<a href>` links | `src/ui/library_page.{hpp,cpp}` |
+| Ctrl+H / Ctrl+B / Ctrl+D | `input_router.cpp` |
+
+**The design decision:** the panel is a *document*, not an overlay. Its rows are real links, so a click goes through
+the navigation path a page's own links already use — no second hit-testing path, no second set of coordinates to
+drift, which is exactly what row 4.1 was about.
+
+## Evidence — `AetherisBrowserSession`
+
+| assertion |
+| --- |
+| each entry kept its own title |
+| a bookmark cannot be added twice; the first title is kept |
+| `toggle_bookmark` adds then removes |
+| the history panel is titled, entries are `<a href>` links, **newest first**, current page marked, bookmarked entries starred |
+| the bookmarks panel lists only bookmarks |
+| an empty panel says "No bookmarks yet" |
+
+Suite 66/66 twice, 138.26 s and 136.71 s.
+
+## Not done
+
+No delete-one-entry or clear-all, no folders or editing, no search box, and **nothing is persisted** — history and
+bookmarks end with the process. Persistence needs a store on disk and a decision about where it lives: a row of its
+own, not a corner of this one.
+
+## Cost
+
+Three compile errors, all includes or namespaces. The codebase's tests include by angle-bracket path, and every new
+module costs one of those.
