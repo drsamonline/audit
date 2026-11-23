@@ -220,3 +220,29 @@ neither. A page with `letter-spacing: 8px` and eight characters was laid out 64 
 | "the build is clean" | `ninja` was not installed in the new environment; the command's empty output, filtered through `grep`, read as success | `ninja: command not found` on the next call |
 
 The second is row 4d's hazard — a missing artefact and a successful one look the same through a filter.
+
+---
+
+# Fifth commit, same session — rows 2b and 2c: status drift
+
+Commit: `580f366e`
+
+Both rows were `[ ]` and both were true in the code. The checklist says a wrong status is fixed in the next
+commit with the message saying so, so this one ticks them and supplies the proof each was missing.
+
+| row | already true | proof added |
+| --- | --- | --- |
+| 2b | `draw_text` → `cached_glyph()` → `rasterize_glyph()` | `AetherisGlyphRasterizer` asserts the cached bitmap equals the rasterised one, value for value (24x26 for 'A' at 32 px, 221 inked, 115 partial) |
+| 2c | GPOS for shaped runs, the embedded pair table for the fallback | `AetherisShaping` asserts A+T = -159 from the table and a shaped "AT" narrower than "A" + "T" |
+
+## The fixture, again
+
+| First attempt | What was true | What settled it |
+| --- | --- | --- |
+| `kerning_adjustment(local_font, T, o)` | returns 0 for every pair unless the font *is* `active_font()` — the table holds the embedded subset's glyph ids | a probe over all ASCII pairs: zero pairs from a local `TtfFont`, twelve from the active font |
+| `T + o` | not in the table; `A + T` is | the same probe |
+
+## Found and not fixed
+
+`cached_glyph()` keys on `(glyph, size)`, not on the font. Correct while `active_font()` is the only font
+paint can reach; wrong the day `@font-face` lands (row 3d). Recorded in the handover, not ticked anywhere.
