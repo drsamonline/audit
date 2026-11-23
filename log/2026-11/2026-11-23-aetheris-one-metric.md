@@ -865,3 +865,41 @@ style cache does not record. An animation needs none — the declaration is in t
 
 Numeric properties only (`opacity`); no `animation-direction`, `fill-mode`, `play-state`, comma lists; colour and
 transform keyframes need a value type this engine lacks.
+
+---
+
+# Twenty-second commit — row 5b: same-origin, measured before it was enforced
+
+Commit: `83d52d57`
+
+The row said "Same-origin enforcement in the bindings". The measurement found there is **nothing to enforce**: no
+`fetch`, no `XMLHttpRequest`, no frames — no binding can reach across an origin. Same shape as row 3i, except the
+measurement turned up a real bug underneath.
+
+| what | before | after |
+| --- | --- | --- |
+| storage keyed per origin | yes, on a hand-computed key | on `SecurityPolicy::origin()` |
+| `https://A.test` vs `https://a.test` | **two buckets** | one; `set_storage_origin()` lowercases |
+| definitions of "origin" | two | one |
+
+| assertion in `AetherisJs` |
+| --- |
+| a second origin sees neither store |
+| its writes do not reach back |
+| the first origin's data survives the visit |
+| `https://A.TEST` is the same origin as `https://a.test` |
+| `http://a.test` is not — the scheme is part of the origin |
+
+Probe before: `b sees: null`, `a sees: from-a`, **`A.test sees: null`**. After: `A.test sees: from-a`.
+
+Suite 66/66 twice, 125.93 s and 128.85 s.
+
+## Not invented
+
+Nothing enforces an origin across documents because there is only ever one document. When a `fetch` or an iframe
+arrives, the check belongs in that binding; these assertions are what would catch it going wrong.
+
+## Trap hit again
+
+The first re-run of the probe printed the **old** numbers — a probe links the static library, and it had not been
+relinked. The trap is documented and still caught me; relinking is not optional.
