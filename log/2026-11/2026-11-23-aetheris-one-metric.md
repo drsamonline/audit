@@ -328,3 +328,51 @@ A row written from a *symptom* can name a fault that is not there. This one surv
 nobody measured it; the same probe that closed 2h, 2g and 2b would have closed it in ten minutes on the day it
 was written. Two rows this session (3i here, and the "not vendored" claim in 2e) turned out to be wrong about
 their own premise rather than about the code.
+
+---
+
+# Eighth commit, same session — row 3b: `position: sticky`
+
+Commit: `49f3af69`
+
+## Why paint time
+
+The scroll path is repaint-only by design — "the document is not re-laid out: scrolling repaints, it does not
+reflow" (`render_document.hpp`). A sticky offset computed during layout would be stale the first time the page
+scrolled, so the render tree carries the geometry (`StickyRegion`) and the paint pass carries the scroll offset
+and applies the shift.
+
+## What shipped
+
+| Change | Why |
+| --- | --- |
+| `StickyRegion` per sticky box: command range, node top/height, containing block top/bottom, `top`/`bottom` | paint needs to know what to move and how far it may move |
+| `emit` records it after the subtree is emitted | the range has to cover the box and everything inside it |
+| `PaintExecutor` shifts that range: `clamp(scroll + top - node_top, 0, container_bottom - node_bottom)` | the CSS rule, in one expression |
+| sticky children sort after in-flow siblings | see below |
+
+## Evidence
+
+200x120 viewport, container spanning rows 60-160, `top: 10px`, magenta box:
+
+| scroll | box at surface y | why |
+| --- | --- | --- |
+| 0 | 60 | natural |
+| 60 | 10 | stuck |
+| 100 | 10 | still stuck |
+| 140 | 0 | clamped at the container's bottom |
+
+Suite 65/65 twice, 148.98 s and 143.33 s.
+
+## The bug the probe found
+
+The first version shifted the box correctly and painted it **underneath** the sibling that follows it, so at one
+scroll offset the magenta was present and invisible — the probe reported "no magenta" at 120 while 0, 30 and 60
+were right. `position: sticky` creates a stacking context; sorting sticky children after the in-flow ones fixes
+it.
+
+## Named, not done
+
+`bottom` is read and applied symmetrically but only `top` is asserted. Absolute and fixed children still paint in
+document order rather than above in-flow content — the same class of bug, a separate row, and changing it would
+move pixels this row is not about.
