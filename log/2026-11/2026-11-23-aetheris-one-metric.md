@@ -780,3 +780,46 @@ source expression is not matched.
 Three compile errors, all mine and all ordering: the fetcher out of scope where the policy is installed, a default
 argument on both declaration and definition, and the superseded helper turning into an unused function under
 `-Werror`. None was a design problem; all three were caught by the compiler before the suite ran.
+
+---
+
+# Twentieth commit — row 1g4b: `pushState`, `replaceState`, `history.state`
+
+Commit: `0f361020`
+
+Upstream's shape (`HTML/History.cpp:169-223`): one shared path for push and replace that serialises the state,
+resolves an optional URL against the document, refuses a URL the document cannot be rewritten to, and updates the
+session history entry **without loading anything**.
+
+| what | before | after |
+| --- | --- | --- |
+| `history.pushState` / `replaceState` | did not exist | on `window.history`, wired to the session |
+| `history.state` | did not exist | the current entry's state, parsed back, `null` when none |
+| `history.scrollRestoration` | C++ API only | on `window.history` — the half row 1g4c owed |
+| a history entry | url, scroll, mode | plus the serialised state |
+
+## Evidence
+
+| test | assertions |
+| --- | --- |
+| `AetherisBrowserSession` | push grows and moves the URL; empty url keeps it; cross-origin refused and changes nothing; replace overwrites; back reads **that entry's own** state; the first entry has none; no load is started |
+| `AetherisJs` | `null` for no state; `{n:2}` round-trips; a string state; **a function becomes null rather than throwing**; a cross-origin push throws where a script can catch it; `scrollRestoration` reads `auto` and writes `manual` |
+
+Suite 66/66 twice, 135.25 s and 131.69 s.
+
+## The limit, stated in the row
+
+The state is **JSON, not a structured clone** — `Map`, `Set`, `Date`, typed arrays and cycles collapse or become
+`null`. Upstream substitutes `null` itself when its serialiser refuses (`History.cpp:177`), so the failure mode
+matches a browser's; only the set of clonable values is smaller.
+
+## Two test bugs, both mine
+
+1. `open()` leaves `loading` true until a page reports back, so `pushState` looked like it started a navigation.
+2. I expected the entry *below* a `replaceState` to carry the replaced state. It carries its own — that is what
+   replace means.
+
+## One flake named
+
+`WindowGeometry` failed once under a loaded `-j2` run, then passed alone (81 s) and in the two reported runs
+(77 s). Long test, busy pod; both suite times above are clean.
