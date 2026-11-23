@@ -246,3 +246,54 @@ commit with the message saying so, so this one ticks them and supplies the proof
 
 `cached_glyph()` keys on `(glyph, size)`, not on the font. Correct while `active_font()` is the only font
 paint can reach; wrong the day `@font-face` lands (row 3d). Recorded in the handover, not ticked anywhere.
+
+---
+
+# Sixth commit, same session — row 3a6: `content` as a list, with alt text
+
+Commit: `13aac19b`
+
+## What I looked at upstream
+
+| Question | Where | What it said |
+| --- | --- | --- |
+| How is `content` modelled? | `Libraries/LibWeb/CSS/StyleValues/ContentStyleValue.h:16-45` | `ContentStyleValue` holds a `StyleValueList content` and an optional `StyleValueList alt_text` |
+| What does the tree builder ask it? | `Libraries/LibWeb/Rust/src/layout/tree_builder.rs:1714-1800` | `FfiComputedContentType` — Normal, None or List; a List generates a box even when its text is empty |
+| Where does the alt text come from? | the declaration's `/` (css-content-3) | the part after the slash is alternative text, not page text |
+
+## What was wrong before
+
+The parser wrapped the **whole** declaration in quotes so `content: ''` could be told apart from no
+declaration. Everything between those quotes then rendered as page text, so `content: 'C' / 'alt text'` put
+`/ alt text` on the page and `content: 'a' 'b'` rendered "a b" — a space that the declaration does not contain.
+
+## What shipped
+
+| Change | Why |
+| --- | --- |
+| `ContentValue` (kind, items, alt-text items, unsupported count) | the property is a list; three kinds are what the tree builder needs |
+| the parser quotes **each** string item | item boundaries survive into the declaration string; `content: ''` is still a one-item list |
+| `make_generated_box` asks `ContentValue` | the hand-stripped quotes are gone |
+| `LayoutNode::generated_alt_text` | the alt text stops at the parser otherwise |
+
+## Evidence
+
+| Declaration | Before | After |
+| --- | --- | --- |
+| `content: 'a' 'b'` | "a b", two fragments | "ab", one fragment |
+| `content: 'a b'` | "a b" | unchanged |
+| `content: 'C' / 'alt text'` | "'C' / 'alt text'" on the page | "C", alt "alt text" on the node |
+| `content: ''` | empty box | empty box |
+| `content: attr(title)` | the literal text "attr(title)" | nothing, counted unsupported |
+
+Probe over the layout tree printed `[ab]`, `[a b]`, `[C] alt=[alt text]`, and an empty box with no
+fragments. Suite 65/65 twice, 125.10 s and 125.36 s.
+
+## What I got wrong
+
+| First reading | What was true | What settled it |
+| --- | --- | --- |
+| "trim the value, then quote it" | the trimmed value was thrown away; the quoted string was built from the untrimmed tokens, so `content: 'C'` came back as ` 'C'` | the existing CSS test failed on a leading space |
+
+Nothing reads `generated_alt_text` yet — no accessibility tree, tier 4. Recorded rather than dressed up as
+complete.
