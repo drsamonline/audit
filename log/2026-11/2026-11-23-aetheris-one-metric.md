@@ -456,3 +456,43 @@ against `origin/main` is **213 insertions, 20 deletions**.
 
 Rule for the next session: compare `git log --oneline -1` with `git fetch && git log --oneline -1 origin/main`
 *before* the first commit, not after the first rejected push.
+
+---
+
+# Eleventh commit, same session — row 3c2: grid placement
+
+Commit: `7d90d8e6`
+
+`grid-template-areas` was not parsed and `grid-area` was ignored, so a grid laid out exactly like a row-major
+list — the one thing a page writes a grid for had no effect.
+
+| what | before | after |
+| --- | --- | --- |
+| `grid-template-areas` | not parsed | a name grid, `.` empty |
+| `grid-area: <name>` | ignored | that name's bounding box, spans included |
+| `grid-column` / `grid-row` | ignored | 1-based line, or `start / end` |
+| auto-placed items | index ÷ columns | the first free cell |
+
+| 300 px container, three 100 px columns | result |
+| --- | --- |
+| `'h h h' / 'l . r'`, `grid-area: h` | x=0 y=0 **w=300** |
+| `grid-area: l` / `r` | x=0 y=20 / x=200 y=20, skipping the `.` |
+| `grid-column: 2 / 4` | x=100 **w=200** |
+| explicit column 2, then two auto items | x=100, x=0, x=200 |
+
+Upstream: `Rust/src/layout/grid_formatting_context.rs:746` (`find_unoccupied_grid_area`) — an occupation grid
+scanned along the auto-flow axis. Suite 65/65 twice, 154.66 s and 159.66 s.
+
+## Two faults, both invisible from outside
+
+| # | fault | fix |
+| --- | --- | --- |
+| 1 | the tokenizer strips quotes, so `grid-template-areas: 'h h h'` arrived as `h h h` and the parser found no rows | re-quote it in the parser exactly as `content` is re-quoted (row 3a6) |
+| 2 | the areas parser looked for **double** quotes, and the re-quoting writes **single** ones | accept either |
+
+The grid looked like it ignored areas; it was ignoring the property's syntax, twice.
+
+## Still not read
+
+Named lines (`[name]`), `span n`, `auto-fit`/`minmax`, `grid-auto-flow: column`; `grid-template-rows` understands
+pixel tracks only.
