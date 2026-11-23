@@ -3,8 +3,10 @@
 Written 2026-11-19. Everything here needs a human: a token, a dashboard click, or a file that does
 not exist in the sandbox. Everything **not** listed here is done and merged.
 
-Six steps, in the order they unblock the most. Each one says what to click, what "done" looks like,
+Eight steps, in the order they unblock the most. Each one says what to click, what "done" looks like,
 and what happens if you skip it.
+
+Added 2026-11-23: **7** and **8**, from the LEXORA session — [log entry](log/2026-11/2026-11-23-lexora-drift-and-the-fleet-binaries.md).
 
 ---
 
@@ -121,6 +123,66 @@ the build recipe is in `docs/HANDOVER-2026-11-19.md` §5 and takes about five mi
 
 ---
 
+## 7. Run LEXORA's protocol-scope benchmark (P0) — one evening, 6–8 hours
+
+**Why:** it is the last unmet release precondition on `drsamonline/lexora`, and it is the only item
+that unblocks **three** things at once: the headline compression claim (REQ-BMK-003), `.lxdb` (gated
+on it by your own decision), and REQ-RES-001's second machine class. Everything else on that
+project's register is met and guarded.
+
+**Steps:**
+1. Clone `drsamonline/heavenzip` once — it ships the binaries lexora needs and the sandbox does not
+   have: `ziptastic` 1.4.5, `xz` 5.8.4, `7z` 26.05, `brotli` 1.2.0, `zstd` 1.5.4.
+   ```bash
+   git clone --depth 1 https://github.com/drsamonline/heavenzip ~/heavenzip
+   export LEXORA_ZIPTASTIC=~/heavenzip/bin/ziptastic-1.4.5-linux-x86_64
+   ```
+2. Get the 1.054 GiB corpus onto the machine (or `harness.py corpus-fetch`, which needs network).
+3. Preflight — ten seconds, and it names anything missing with the fix:
+   ```bash
+   python scripts/p0_preflight.py --corpus corpus/gutenberg-r0 \
+       --manifest benchmarks/MANIFEST.json --out-root benchmarks \
+       --bin-dir ~/heavenzip/bin --out benchmarks/p0-preflight.json
+   ```
+4. Follow [`docs/P0_RUNBOOK.md`](https://github.com/drsamonline/lexora/blob/main/docs/P0_RUNBOOK.md)
+   §1–§3: one `harness.py run` per split, all systems named explicitly.
+5. Sign off (that is the part only you can do — ADR-0001 makes the verdict yours).
+
+**Done when:** three artifacts exist with the same systems in every split, and a revision block is
+published in `docs/BENCHMARK_RESULTS.md`.
+
+**If you skip it:** the project keeps saying "alpha, not for production data", `.lxdb` cannot start,
+and the one number a stranger wants — how well does it compress — stays unpublished.
+
+---
+
+## 8. Decide ADR-0026: cost-based selection, or keep the preset (5 minutes)
+
+**Why:** `REQ-CMP-003` asks the encoder to choose by cost. `ADR-0026` is **Proposed** and measured;
+it cannot be implemented until you accept it, by the project's own rule.
+
+**What the measurement says** (one 721 KB file, tool versions recorded):
+
+| Candidate | Stored | vs shipped default |
+|---|---|---|
+| CHCE (`ziptastic`) | 207,338 B | **23.49 % smaller**, ~24× the time |
+| PPMd (`7z -m0=PPMd`) | 208,461 B | 23.08 % smaller, ~5× the time |
+| brotli `-q 11` | 244,286 B | 9.86 % smaller |
+| xz `-9` CLI | 249,208 B | 8.05 % smaller |
+| zstd L19 | 253,155 B | 6.59 % smaller |
+| zstd L9 (shipped default) | 271,004 B | — |
+
+**Steps:** read `docs/ADR/ADR-0026-cost-based-selection.md` in `drsamonline/lexora` and answer one
+word: **accept** (the selector gets built as a `--select` flag, default untouched) or **reject** (the
+preset stands, with the trade documented instead of hidden).
+
+**Done when:** the ADR's status line says Accepted or Rejected.
+
+**If you skip it:** `REQ-CMP-003` stays the only requirement on that project blocked on a document
+rather than a machine — and it is the cheapest of the four left.
+
+---
+
 ## What you do **not** need to do
 
 - **Nothing needs installing in the sandbox.** There is no `make` and nothing requires one; the
@@ -128,6 +190,6 @@ the build recipe is in `docs/HANDOVER-2026-11-19.md` §5 and takes about five mi
 - **No secrets in the repo.** The `PYPI_API_TOKEN` above goes into the session environment, never
   into a file.
 - **No manual merging.** All PRs from today are merged; the repos are at 0 open PRs and 0 open
-  issues.
+  issues — including `lexora` (16 merged on 2026-11-23, `main` @ `e22af18`) and this repo.
 - **No re-running of measurements.** Every number in today's documents came from a command whose
   output was read, and the holdout gate is green at the new block-size policy.
