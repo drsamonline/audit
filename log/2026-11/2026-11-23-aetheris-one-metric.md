@@ -605,3 +605,49 @@ Suite 66/66 twice, 136.06 s and 146.45 s.
 One expectation was wrong on the first run and the code was right: `ease` is *flat* past input 1.0, because its
 second control point is (0.25, 1) and the tangent is horizontal; `ease-in` is the curve that keeps climbing. The
 assertion now says both.
+
+---
+
+# Fifteenth and sixteenth commits, same session — row 4d (the guard) and row 3d2 (transitions run)
+
+Commits: `e600da2a`, `c4b69410`
+
+## Row 4d — a guard against trusting a stale binary
+
+Twice in one session a build was killed by the sandbox's time limit, ninja printed nothing anyone read, and the next
+`ctest` passed on the *previous* binary. `tools/check-build.py` asks the two questions that went unasked: does ninja
+have pending steps, and did anything get linked after the last source edit. Verified on three cases in an environment
+that could not compile at all (stale tree → 57 pending steps, exit 1; missing build directory → 2; never-linked
+binary → 1). One process, no subprocesses for the source check, because the environment that needed it allowed
+exactly one level of process creation.
+
+Two false positives surfaced the day it was used, both fixed: `tools/*.py` counted as a compiled source, and
+comparing against the *oldest* binary made a test-only edit report `aetheris` as stale. It now compares the newest
+source with the newest binary.
+
+## Row 3d2 — transitions run
+
+| part | where |
+| --- | --- |
+| the curve (`ease(0.5) = 0.802403`, ported from `Rust/src/css/animation.rs:217-300`) | `easing.cpp` |
+| the arithmetic (`Transition::value_at`) and the shorthand | `transition.cpp` |
+| the clock (`set_time`, `start_opacity_transition`) | `render_document.cpp` |
+| paint: opacity overrides, tree rebuilt from the existing layout | `render_tree.cpp`, `render_document.cpp` |
+
+| t | pixel at (20, 20) | rect |
+| --- | --- | --- |
+| 0.00 | rgba(255, 0, 0) | x=10 y=10 50x50 |
+| 0.50 | rgba(255, 128, 128) | unchanged |
+| 1.00 | rgba(255, 255, 255) | unchanged |
+
+`layout_passes()` 1 before, 1 after — a transition repaints, it does not reflow. Suite 66/66 twice, 211.64 s and
+185.69 s.
+
+Still open: the trigger (a style change starting a transition — the cache records dirty nodes, not which property
+moved), properties other than `opacity`, and comma lists in the shorthand.
+
+## The guard's first day
+
+When this session resumed, `tools/check-build.py` reported **57 pending steps** — the exact state that had made a
+green suite meaningless twice. That is the whole justification for the row: thirty lines, written in the environment
+that motivated it, and used before it was trusted.
