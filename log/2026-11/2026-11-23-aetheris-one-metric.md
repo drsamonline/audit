@@ -531,3 +531,40 @@ Suite 65/65 twice, 145.21 s and 137.77 s.
 
 Two files' worth of parsing is done; five files' worth of plumbing is not, and that is written in the row rather
 than left to be rediscovered.
+
+---
+
+# Thirteenth commit, same session — row 3d1: `@font-face` end to end, for local files
+
+Commit: `a0f54651`
+
+| what | before | after |
+| --- | --- | --- |
+| a declared face | nothing loaded it | `RenderDocument` reads a `file://` or plain-path `src` and registers it |
+| `font-family` | inherited, never read | `font_for_family()` resolves the list to the first face that exists, else the engine's own |
+| `Font`, `FontMetrics` | every path called `active_font()` | carry the resolved face |
+| the pen | `draw_text` called `active_font()` | receives the face paint resolved from the command's family |
+
+Six files: `font_library`, `font`, `render_tree`, `paint_executor`, `software_surface`, `render_document`.
+
+## Evidence
+
+| assertion | where |
+| --- | --- |
+| bytes register as a face; the family finds it; an unknown family has none; a comma list falls through | `AetherisShaping` |
+| `Font::from_style` carries the named face; an unknown family falls back to `active_font()` | same |
+| a document with `@font-face { src: url(/tmp/…ttf) }` registers the face and puts the family on the text command | same |
+
+Suite 65/65 twice, 141.13 s and 135.05 s.
+
+## Not done, and in the row
+
+`http(s)` and `data:` sources are not fetched — the family falls back to the engine's font, which is what a browser
+does for a face that fails to load. `font-weight`/`font-style` do not select among one family's faces: the registry
+is keyed on the family name alone.
+
+## Cost of the plumbing
+
+Four compile errors in a row — a member reference (`m_metrics.face` inside a `FontMetrics` member), two missing
+includes, an undeclared function. All mechanical. The useful habit is the boring one: add the include when you add
+the use, and read the error's first line instead of the flag wall above it.
