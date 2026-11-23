@@ -297,3 +297,34 @@ fragments. Suite 65/65 twice, 125.10 s and 125.36 s.
 
 Nothing reads `generated_alt_text` yet — no accessibility tree, tier 4. Recorded rather than dressed up as
 complete.
+
+---
+
+# Seventh commit, same session — row 3i: the divergence was not there
+
+Commit: `b0c070e3`
+
+The row read: "at an exactly-full line this wraps anyway; upstream overflows. Ours never overflows — the safer
+error, recorded not hidden." A probe says both halves are wrong.
+
+| case | measured |
+| --- | --- |
+| `"aaa"` in a 25 px box | one fragment, 30 px wide — overflows |
+| `"aaaaaaaa"` (80 px) in 30 px | one fragment, 80 px wide |
+| `"aaa bbb"` in 30 px | two lines, wrapping at the space |
+| two 60 px `inline-block`s in 100 px, no whitespace | both at `y=0`; the second at `x=60`, overflowing |
+| the same two with a space between | the second at `y=10` |
+
+The engine already behaves as a browser does, so there was nothing to fix. The row is marked `[-]` (out of
+scope: no gap) with the numbers in its cell, and five assertions in `AetherisTextLayout` pin the behaviour —
+that is the part with value, because a future change to the wrap pass could otherwise start wrapping where it
+must overflow.
+
+Suite 65/65 twice, 127.54 s and 125.76 s.
+
+## What this says about the checklist
+
+A row written from a *symptom* can name a fault that is not there. This one survived two sessions because
+nobody measured it; the same probe that closed 2h, 2g and 2b would have closed it in ten minutes on the day it
+was written. Two rows this session (3i here, and the "not vendored" claim in 2e) turned out to be wrong about
+their own premise rather than about the code.
