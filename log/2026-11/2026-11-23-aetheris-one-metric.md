@@ -171,3 +171,52 @@ vendored, at `Libraries/LibWeb/Rust/src/layout/` — I looked at the repo root i
 What it does not contain is a bidi reordering pass: `text_chunker.rs` splits chunks by `text_type` and
 `inline_level_iterator.rs:168` only decides whether a block is unidirectional LTR. The conclusion held; the
 reason given for it did not.
+
+---
+
+# Fourth row, same session — 2g: letter- and word-spacing
+
+Commit: `82bbec03`
+
+## What I looked at upstream
+
+| Question | Where | What it said |
+| --- | --- | --- |
+| Where is spacing applied? | `Libraries/LibGfx/TextLayout.cpp:283-292` | while building the glyphs: `extra_advance = letter_spacing`, plus `word_spacing` when the glyph's cluster starts at `is_word_separator()`; the advance is `x_advance + extra_advance` |
+| What counts as a word separator? | `LibGfx/TextLayout.cpp:207-216` | space, no-break space, and the line feed (AD-HOC, matching other engines) |
+| Does the cache key carry them? | `Libraries/LibGfx/Font/Font.h:31-45` | yes, as `u32` bit patterns in `ShapingCacheKey` |
+| Is the trailing edge spaced? | `LibGfx/TextLayout.cpp:296-298` | yes, deliberately: "the spec says that we 'really should not' apply letter-spacing to the trailing edge of a line but other browsers do so we will as well" |
+
+## What was wrong before
+
+`TextLayout::measure_text` added letter-spacing per code point and word-spacing per space; `draw_text` added
+neither. A page with `letter-spacing: 8px` and eight characters was laid out 64 px wider than it painted.
+
+## What shipped
+
+| Change | Why |
+| --- | --- |
+| `shape_run(font, text, size, identity, letter_spacing, word_spacing)` | spacing is part of the shaped result, so it is applied once, where the advances are made |
+| cache key `(identity, size, letter bits, word bits)` | widened in the same commit as the property, which is what the row asked for |
+| `Font::measure(text, letter, word)`; `measure_text` adds nothing itself | one number for layout and paint |
+| `PaintCommand::letter_spacing`/`word_spacing` → `draw_text` → `shape_run` | the pen advances by what layout measured |
+
+## Evidence
+
+| Case | Result |
+| --- | --- |
+| `"abc"`, `letter-spacing: 2px` | +6.0 px through layout (3 glyphs) |
+| `"a b"`, `word-spacing: 5px` | +5.0 px, once, at the space |
+| spaced then unspaced, both ways round | each returns its own width — the cache does not collide |
+| fragment width vs shaped run | equal within 0.01 px |
+| rendered, 32 px, `letter-spacing: 8px`, centred in 400 px | ink 79-309, centre 194; the 6 px offset is the trailing spacing, as upstream documents |
+| the suite | 65/65 twice, 129.99 s and 135.76 s |
+
+## What I got wrong
+
+| First reading | What was true | What settled it |
+| --- | --- | --- |
+| "`css_length_px(value, 0, size)` — the last argument is the size" | the signature is `(value, reference, fallback)`; I passed them swapped, so a *missing* `letter-spacing` resolved to 16 px | the 2h assertion failed: `measure_text("To")` stopped matching the shaped width |
+| "the build is clean" | `ninja` was not installed in the new environment; the command's empty output, filtered through `grep`, read as success | `ninja: command not found` on the next call |
+
+The second is row 4d's hazard — a missing artefact and a successful one look the same through a filter.
