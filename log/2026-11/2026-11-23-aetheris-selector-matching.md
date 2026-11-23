@@ -211,3 +211,40 @@ range and a first hypothesis (`overflow-wrap` from row 2f).
 measured nothing and printed nothing. Every earlier run passed no files, so the bug was invisible
 until a real page was the point. Fixed to `i < argc`. A probe that prints nothing looks like a probe
 with nothing to print.
+
+---
+
+# Row 3k — layout was doing every node twice, 2^depth times
+
+The bisect from the previous entry found no single bad element: nodes grew smoothly and
+superlinearly (10 KB -> 461, 12 KB -> 401,293, 14 KB -> 1,157,981). Stripping classes, `<style>`,
+`<svg>` and `<img>` changed nothing; stripping the container divs collapsed it to 97.
+
+A 40-element reproducer (`<div><span>level</span>` nested d deep) showed work **doubling per level**:
+depth 4 -> 86 nodes, 8 -> 1,406, 12 -> 22,526. That is 2^d.
+
+## Cause
+
+`LayoutEngine::layout_inline_children` laid every child out twice — once at the whole line width to
+discover its natural width, once to place it — and measured **block-level children too**, which have
+no natural width because they fill the line. Each nesting level doubled the other's work.
+
+## Fix
+
+Measure only inline-level children; skip the second layout when the measured child already fits (a
+shrink-to-fit box given more room than it needs produces the same geometry); place a block child once.
+
+| case | before | after |
+| --- | --- | --- |
+| 40 elements, depth 12 | 22,526 nodes | **40** |
+| wikipedia 14 KB, `-O2` | 1,157,981 nodes / 5,717 ms | **139 / 0.8 ms** |
+| wikipedia 416,975 bytes, `-O2` | did not finish in 280 s | **67.9 ms** layout |
+
+The whole page renders in the Debug app in 57.8 s and the PPM was inspected: it shows the real page
+structure, so this is cheaper *and* correct.
+
+## What the test taught
+
+`AetherisAdvancedLayout` pins the linearity. Its first version also asserted that each nested block
+sits below its parent; it failed because the engine legitimately places a nested block on its parent's
+line. The assertion was rewritten, not the layout. Suite 67/67 twice, 143.39 s and 127.57 s.
