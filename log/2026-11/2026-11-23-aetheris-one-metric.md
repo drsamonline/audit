@@ -823,3 +823,45 @@ matches a browser's; only the set of clonable values is smaller.
 
 `WindowGeometry` failed once under a loaded `-j2` run, then passed alone (81 s) and in the two reported runs
 (77 s). Long test, busy pod; both suite times above are clean.
+
+---
+
+# Twenty-first commit — row 3d3: `@keyframes` animations
+
+Commit: `456a8962`
+
+Upstream's shape: a named rule holding keyframes, each with an offset and a declaration block
+(`CSS/CSSKeyframesRule.h`, `CSSKeyframeRule.h`), sampled between the frames that mention the property.
+
+| piece | where |
+| --- | --- |
+| `@keyframes` parsing (block of blocks, `from`/`to`/`50%`/`0.5`, sorted) | `css_parser.cpp` → `CssStyleSheet::keyframes` |
+| the `animation` shorthand | `animation_spec_from_style()` |
+| sampling a numeric property at a time | `Animation::value_at` |
+| starting them | `RenderDocument::start_stylesheet_animations()`, once at build |
+| applying them | the opacity override map row 3d2 built |
+
+**Why this row was cheaper than transitions:** a transition needs a *trigger* (a computed value changing), which the
+style cache does not record. An animation needs none — the declaration is in the stylesheet at load time.
+
+| t | pixel at (20, 20), red box fading over 1 s |
+| --- | --- |
+| 0.00 | rgba(255, 0, 0) |
+| 0.50 | rgba(255, 128, 128) |
+| 1.00 | rgba(255, 255, 255) |
+| 1.50 | rgba(255, 255, 255) — last keyframe holds |
+
+`layout_passes()` unchanged. Suite 66/66 twice, 138.02 s and 149.24 s.
+
+## Three bugs, all found by running it
+
+| bug | how it showed | fix |
+| --- | --- | --- |
+| parser looked for an opening brace the caller had consumed | rule parsed with **zero frames** | start reading at the first keyframe's offset |
+| `strtod("infinite")` returns infinity | the iteration keyword landed in the **delay** as `inf` | check the keyword before anything numeric; reject non-finite times |
+| duplicate offset helper | `-Wunused-function` under `-Werror` | one owner for offset parsing |
+
+## Not done
+
+Numeric properties only (`opacity`); no `animation-direction`, `fill-mode`, `play-state`, comma lists; colour and
+transform keyframes need a value type this engine lacks.
