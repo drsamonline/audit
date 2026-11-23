@@ -651,3 +651,42 @@ moved), properties other than `opacity`, and comma lists in the shorthand.
 When this session resumed, `tools/check-build.py` reported **57 pending steps** — the exact state that had made a
 green suite meaningless twice. That is the whole justification for the row: thirty lines, written in the environment
 that motivated it, and used before it was trusted.
+
+---
+
+# Seventeenth commit, same session — row 1g4c: `scrollRestoration`
+
+Commit: `5b0974a2`
+
+Upstream first: the mode belongs to the **session history entry**, not the document —
+`History.scrollRestoration` reads and writes `active_session_history_entry()->scroll_restoration_mode()`
+(`HTML/History.cpp:229-242`). That is the shape ported here.
+
+| what | before | after |
+| --- | --- | --- |
+| history entries | `vector<string>` of URLs | `vector<HistoryEntry>`: url, offset, mode |
+| traversal | URL changed, scroll jumped to 0 | destination entry decides: `Auto` restores, `Manual` leaves it to the page |
+| the app | `scroll_to(0, 0)` after every load | `take_scroll_restore()` first |
+
+| assertion | `AetherisBrowserSession` |
+| --- | --- |
+| a new entry defaults to `Auto` | ✓ |
+| a forward navigation restores nothing | ✓ |
+| back to an `Auto` entry restores **its own** offset — 320, not the other page's 40 | ✓ |
+| the restore is answered once | ✓ |
+| a `Manual` destination restores nothing | ✓ |
+| the mode is per entry | ✓ |
+
+Suite 66/66 twice, 135.91 s and 131.35 s.
+
+## Two corrections
+
+1. My expectation was wrong, not the code: the **destination** entry's mode decides, not the page being left. The
+   test now sets `Manual` on the page being navigated *to*.
+2. `viewport` was declared below the history hooks that need it; the declaration moved above them. A lambda cannot
+   capture what does not exist yet.
+
+## Not done
+
+`history.state`/`pushState` remain row 1g4b. `scrollRestoration` has an API but no `window.history` binding — that
+belongs with 1g4b.
