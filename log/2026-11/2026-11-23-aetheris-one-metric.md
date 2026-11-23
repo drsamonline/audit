@@ -410,3 +410,49 @@ it, and the generated box is exactly as wide as a real `inline-block` holding th
 The first probe run after the fix printed the old numbers: the probe is statically linked against
 `libAetherisRendering.a`, and only the library had been rebuilt. That is the stale-artefact trap from the 11-18
 handover, one link further down the chain — the binary in your hand is not always the code in the tree.
+
+---
+
+# Tenth commit, same session — row 3c1: flex completeness
+
+Commit: `30fca7d3`
+
+Row 3c was "complete flex and grid", which is two algorithms in one row. Split: 3c1 flex (this commit), 3c2 grid
+areas and named lines.
+
+| what | before | after |
+| --- | --- | --- |
+| `flex: 1` | ignored — the shorthand was never parsed, so the commonest flex declaration in the wild did nothing | `1 1 0%` |
+| `flex-basis` | ignored | the base size, ahead of `width` |
+| overflow in a row | free space clamped at 0, items overflowed | shrink proportional to `flex-shrink × base` |
+
+| 300 px row | widths |
+| --- | --- |
+| three `flex: 1` | 100 100 100 |
+| `width: 100px` + two `flex: 1` | 100 100 100 |
+| `flex: 2` vs `flex: 1` | 200 100 0 |
+| two `flex-basis: 200px` | 150 150 0 |
+| the same with `flex-shrink: 0` | 200 200 0, overflowing |
+| three `flex: 0 0 150px` | 150 150 150 |
+
+Upstream: `Rust/src/layout/flex_formatting_context.rs:797` (`used_flex_basis_for_item`) and `:1022`
+(`determine_flex_base_size`). Suite 65/65 twice, 135.15 s and 141.02 s.
+
+## The environment trap, recorded because it nearly shipped
+
+This environment's working copy had been restored from a snapshot **older than the pushed history**: `HEAD` at
+`5a8a5d7a` while `origin/main` was at `5d47ff44`, with the working tree matching the older state. The flex work was
+therefore committed on the wrong base, in a commit that would have reverted rows 3a6, 3i, 3b and 3a3.
+
+| what caught it | what it showed |
+| --- | --- |
+| `git push` rejected as non-fast-forward | the remote had four commits this tree did not |
+| `git diff --stat origin/main HEAD~1` | 25 files, **909 deletions** — a "single feature" commit deleting 900 lines |
+
+The commit was preserved on a branch (`flex-work-preserved`), the branch reset to `origin/main`, and only the flex
+hunks re-applied: `style.cpp` (pure addition), `layout.cpp` (the flex function only), `TestLayout.cpp` (additive),
+three doc edits. Rebuilt and re-ran the suite, because the sources had changed under the build tree. The final diff
+against `origin/main` is **213 insertions, 20 deletions**.
+
+Rule for the next session: compare `git log --oneline -1` with `git fetch && git log --oneline -1 origin/main`
+*before* the first commit, not after the first rejected push.
