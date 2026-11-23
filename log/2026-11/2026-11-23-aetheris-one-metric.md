@@ -376,3 +376,37 @@ it.
 `bottom` is read and applied symmetrically but only `top` is asserted. Absolute and fixed children still paint in
 document order rather than above in-flow content — the same class of bug, a separate row, and changing it would
 move pixels this row is not about.
+
+---
+
+# Ninth commit, same session — row 3a3: the generated box paints, both halves of it
+
+Commit: `5d47ff44`
+
+The row said "needs a synthetic text node whose `dom_node` is null". Measured: the **text already painted** — 31
+magenta pixels for `::before { content: 'X'; color: #ff00ff }`, 109 at 28 px. What did not paint was the **box**.
+
+| case | before | after |
+| --- | --- | --- |
+| generated box, background + text | background missing | background, then the glyph over it |
+| generated box, border, no text | painted | unchanged |
+| generated `inline-block` with text, no width | 200 px — the whole line | 11 px, same as a real span holding "X" |
+
+## Two causes
+
+| # | cause | fix |
+| --- | --- | --- |
+| 1 | `RenderTree::emit` had background/border/shadow/outline in the `else` of the text branch. A normal element never carries its own fragments (its text is a child node), so only a generated box — the one node kind with both — lost half its paint | a `paint_box` lambda, called before the text (also the CSS order) |
+| 2 | `layout_node`'s text branch never set `box.content.width`, so a generated box kept the whole available width; a normal inline-block gets its width from the parent's shrink-to-fit pass, which cannot measure a node with no DOM node | shrink to the text's natural width, never past a specified one |
+
+## Evidence
+
+`AetherisTextLayout` asserts: the background is painted, it is narrower than the line, the glyph is painted over
+it, and the generated box is exactly as wide as a real `inline-block` holding the same text. Suite 65/65 twice,
+141.62 s and 136.48 s.
+
+## Process note
+
+The first probe run after the fix printed the old numbers: the probe is statically linked against
+`libAetherisRendering.a`, and only the library had been rebuilt. That is the stale-artefact trap from the 11-18
+handover, one link further down the chain — the binary in your hand is not always the code in the tree.
