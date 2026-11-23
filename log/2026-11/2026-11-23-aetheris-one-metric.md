@@ -1029,3 +1029,54 @@ Suite 66/66 twice, 140.19 s and 161.79 s.
 | open | **0** |
 
 Twenty-five commits, every one with its suite run twice, its four docs updated, an audit entry, and a verified push.
+
+---
+
+# Twenty-sixth commit — row 0.1: the corpus, and the finding that pays for it
+
+Commit: `0ca65f04`
+
+Row 0.1 was blocked as "no open internet". **It was wrong about itself** — the network is reachable through an HTTP
+proxy; the precise blocker is a short egress allowlist. One call found that out.
+
+| what | state |
+| --- | --- |
+| `tools/run-corpus.sh` + `tools/corpus-urls.txt` (20 sites) | built, runs, records a TSV |
+| `--render file:///…` | works now — the CLI registers `FileResourceBackend`; before this a local file could not render at all |
+| fetching | curl's job: the engine's client has no proxy support (new row **0.3**) |
+| the 20-site list | blocked: `example.com` and `en.wikipedia.org` answer, seven others measured at 502 |
+
+## Two reachable sites were enough
+
+| site | bytes | result |
+| --- | --- | --- |
+| `example.com` | 577 | rendered |
+| `en.wikipedia.org/wiki/Web_browser` | 416,975 | **did not finish in 280 s**, with scripts and without |
+
+| document | parse | style + layout |
+| --- | --- | --- |
+| wikipedia, 8,339 bytes | 10 ms | 13 ms |
+| wikipedia, 20,848 bytes | 25 ms | **121,972 ms** |
+
+| elements | empty divs | divs with text | inline spans |
+| --- | --- | --- | --- |
+| 100 | 78 ms | 161 ms | 170 ms |
+| 200 | 144 ms | 299 ms | 291 ms |
+| 400 | 316 ms | 636 ms | 544 ms |
+
+Parse is linear; layout is linear on synthetic pages but at **~0.8 ms per element** — three orders of magnitude slower
+than a browser — and real markup is worse than the synthetic shapes predict. Row **3j** carries it; the report is
+`docs/COVERAGE-CORPUS.md`.
+
+## Why the row existed
+
+First time the engine was pointed at a real page, and it produced the largest performance problem in the project —
+one no unit test could have found, because every test page is small.
+
+## Two process notes
+
+1. The commit was written **before** the suite ran and its message claimed the suite was unchanged. It was run
+   afterwards — 66/66 twice, 142.22 s and 164.02 s — and the message amended with the real times. A claim that happens
+   to be right is not the same as a check.
+2. The new rows were first written as `3e` and `0.2`, both already taken. The checklist has no uniqueness check; the
+   collision was caught by grepping the file before committing.
