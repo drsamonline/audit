@@ -734,3 +734,49 @@ Suite 66/66 twice, 135.20 s and 144.22 s.
 
 Audio and video are optionally-blockable per spec; this engine fetches neither, so there is no context to classify
 them with — recorded in the row rather than invented.
+
+---
+
+# Nineteenth commit, same session — row 5a: CSP fetch directives
+
+Commit: `d77d56bc`
+
+The policy lived in `main.cpp` as one function answering one question — may inline scripts run? — and the seam for the
+other half already existed: `SecureResourceLoader`, which every fetch passes through.
+
+| upstream | here |
+| --- | --- |
+| a class per directive with `pre_request_check`: effective directive → should it execute (`default-src` fallback) → match the source list (`ContentSecurityPolicy/Directives/ImageSourceDirective.cpp:27-43`) | one matcher, same two steps, for an engine that fetches four kinds of thing |
+
+| request context | directive |
+| --- | --- |
+| image / stylesheet / script / document / form / other | `img-src` / `style-src` / `script-src` / `frame-src` / `form-action` / `connect-src` |
+
+Sources matched: `'none'`, `*`, `'self'`, scheme, host, subdomain, optional port. Inline gating moved onto the same
+object; `csp_allows_inline_scripts()` is gone from `main.cpp`.
+
+## Evidence — 22 further assertions in `AetherisSecurityPolicy`
+
+| group | cases |
+| --- | --- |
+| empty policy | allows all, inline included |
+| `'self'` | own origin yes; another host no; another scheme on the same host no |
+| `default-src` | stands in for an absent directive, never overrides a present one |
+| wildcards | `*` allows any host; `'none'` refuses even the origin |
+| subdomains | `*.example.test` matches `cdn.example.test`, not the bare domain |
+| scheme source | `https:` matches any host on https, refuses http |
+| inline | `'unsafe-inline'` both ways |
+| enforcement | loader allows a matching image, refuses a foreign one, allows a script from the named host, refuses one from the document's own host |
+
+Suite 66/66 twice, 148.83 s and 160.37 s. The build guard reported 67/67 binaries current before both runs.
+
+## Not done
+
+Nonces, hashes, `report-uri`/`report-to`, header delivery (no response headers in this engine), and a path inside a
+source expression is not matched.
+
+## Cost
+
+Three compile errors, all mine and all ordering: the fetcher out of scope where the policy is installed, a default
+argument on both declaration and definition, and the superseded helper turning into an unused function under
+`-Werror`. None was a design problem; all three were caught by the compiler before the suite ran.
