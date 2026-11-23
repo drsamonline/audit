@@ -690,3 +690,47 @@ Suite 66/66 twice, 135.91 s and 131.35 s.
 
 `history.state`/`pushState` remain row 1g4b. `scrollRestoration` has an API but no `window.history` binding — that
 belongs with 1g4b.
+
+---
+
+# Eighteenth commit, same session — row 5c: mixed content, measured rather than assumed
+
+Commit: `ec883b38`
+
+The row said only "Mixed-content blocking". The code was already there — `SecurityPolicy::allows_resource()` behind
+`SecureResourceLoader`, which every fetch goes through — so the work was to measure it against upstream's rule and
+fix what the measurement found.
+
+| upstream asks | we asked |
+| --- | --- |
+| is the origin *potentially trustworthy*? https, wss, file, loopback (`SecureContexts/AbstractOperations.cpp:15-57`) | is the scheme https — **only that** |
+| optionally-blockable allowed, blockable refused | images allowed, the rest refused — correct |
+
+## Two faults, both real
+
+| # | fault | consequence |
+| --- | --- | --- |
+| 1 | trustworthiness was https-only | `http://localhost:3000/app.js` was blocked as mixed content on an https page; an `http://localhost` document was never secure at all |
+| 2 | the test used `assert` | under NDEBUG the entire security test compiles to `main() { return 0; }` and passes forever |
+
+Fixed: `is_potentially_trustworthy()` covers https, wss, file, `localhost`, `*.localhost`, 127.0.0.0/8, with four
+numeric labels parsed so `127.0.0.1.evil.test` is not loopback. My first version got that case wrong; the test caught
+it in one run.
+
+## Evidence — `AetherisSecurityPolicy`, 18 assertions
+
+| group | cases |
+| --- | --- |
+| trustworthiness | 6 trusted (https, file, localhost:8080, 127.0.0.1, 127.5.6.7, a.localhost), 2 near-misses refused |
+| blockable | script, stylesheet, document, form submission refused |
+| optionally-blockable | image allowed |
+| schemes | `data:` refused |
+| other direction | http-over-http allowed, loopback script on https allowed |
+| enforcement | the loader itself both ways |
+
+Suite 66/66 twice, 135.20 s and 144.22 s.
+
+## Not done
+
+Audio and video are optionally-blockable per spec; this engine fetches neither, so there is no context to classify
+them with — recorded in the row rather than invented.
