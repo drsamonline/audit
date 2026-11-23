@@ -985,3 +985,47 @@ own, not a corner of this one.
 
 Three compile errors, all includes or namespaces. The codebase's tests include by angle-bracket path, and every new
 module costs one of those.
+
+---
+
+# Twenty-fifth commit — row 1g2: realm isolation, and the checklist closes
+
+Commit: `cf1d6394`
+
+The probe confirmed the row's premise before any code was written.
+
+| after a "navigation" | before | after |
+| --- | --- | --- |
+| `var leaked` from page one | still a `string` | `undefined` |
+| `window.onPageOne` | still a `function` | `undefined` |
+| a listener from page one | still fired | does not fire |
+| `has_timers` | 1 | 0 |
+| `localStorage` | survives | survives — correct |
+
+## The fix, and the approach that failed
+
+`reset_realm()` **replaces the context**. The first attempt emptied the global object and could not work: a top-level
+`var` creates a **non-configurable** property, so it cannot be deleted. Replacing the realm that owns the names is the
+only honest answer — and it is what upstream does by building a new `Window` and `Realm` per document.
+
+## Two leaks the runtime found
+
+| leak | surfaced as |
+| --- | --- |
+| timer callbacks dropped without `JS_FreeValue` | `JS_FreeRuntime: Assertion 'list_empty(&rt->gc_obj_list)' failed` |
+| `m_window` / `m_document` overwritten without being freed | the same assertion, after the first fix |
+
+A leak checker finds these; a reader does not. The assertion is why the reset is believed rather than assumed.
+
+Suite 66/66 twice, 140.19 s and 161.79 s.
+
+## The checklist
+
+| | count |
+| --- | --- |
+| done | **66** |
+| blocked | 1 — `0.1`, needs open internet |
+| out of scope | 2 — `3i` non-divergence, `5d` process isolation |
+| open | **0** |
+
+Twenty-five commits, every one with its suite run twice, its four docs updated, an audit entry, and a verified push.
