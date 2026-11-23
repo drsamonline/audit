@@ -903,3 +903,44 @@ arrives, the check belongs in that binding; these assertions are what would catc
 
 The first re-run of the probe printed the **old** numbers — a probe links the static library, and it had not been
 relinked. The trap is documented and still caught me; relinking is not optional.
+
+---
+
+# Twenty-third commit — row 4.1: the tab strip
+
+Commit: `1f980a7e`
+
+The chrome had one hardcoded tab box, and the input router kept **its own copy** of every chrome coordinate
+(`tab_width() 190`, `back_x() 230`, …) with the comment `activating a tab needs the tab list; not yet`. Two
+computations of one layout is the bug the row was really about.
+
+| piece | where |
+| --- | --- |
+| one layout: tab boxes, close buttons, `+`, back/forward/reload, address bar | `src/ui/chrome_layout.{hpp,cpp}` |
+| drawing | `chrome_document()` — one box per session tab |
+| hit-testing | `InputRouter::set_chrome_layout()` → `ChromeLayout::hit_test()` |
+| actions | `ActivateTab` (with index), `CloseTab` (that tab), `NewTab`, `Back`/`Forward`/`Reload`, `FocusAddress` |
+
+Tabs shrink from 190 px toward a 56 px minimum, so twelve fit and the strip never runs under the `+`.
+
+## Evidence — `AetherisInputRouter`
+
+| assertion |
+| --- |
+| a click in the second tab names **index 1** |
+| a click on its close button closes rather than switches |
+| `+` opens a tab |
+| one tab keeps the 190 px maximum; twelve shrink but stay ≥ 56 px |
+| the strip ends before the `+`; the address bar stays inside the window |
+| zero tabs still shows one box |
+
+Suite 66/66 twice, 136.09 s and 131.10 s.
+
+## Not done
+
+No drag-reorder, no middle-click close, no overflow menu below the minimum width; the close button is a text glyph.
+
+## The useful signal
+
+Deleting the duplicated coordinates broke the test that had been written against them. That is exactly what a shared
+layout is supposed to do — the duplication had been pinned in place by a test that believed in it.
