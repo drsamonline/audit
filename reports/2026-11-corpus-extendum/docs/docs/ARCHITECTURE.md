@@ -61,8 +61,13 @@ next run recreates it. The vaults are the record.
 ## Runtime dependencies
 
 The page has none. The scripts need Python 3.11+, `weasyprint` (typesetting),
-`pillow` (covers, image scaling) and `pymupdf` (rendering vector plates, reading
-page counts). Every GitHub call is `urllib` — no SDK, no `requests`.
+`pillow` (covers, image scaling), `pypdfium2` (rendering PDF pages) and
+`pymupdf` (**only** for SVG plates — see D12). Every GitHub call is `urllib` —
+no SDK, no `requests`.
+
+**Licences.** `weasyprint` BSD-3, `pillow` MIT-CMU, `pypdfium2` Apache-2.0 +
+BSD-3. `pymupdf` is **AGPL-3.0**, which is why it is confined to one function;
+see D12 for what that means and what would remove it.
 
 ## Status of each piece
 

@@ -28,6 +28,26 @@ The stricter test wins. Both are computed at ingest and written into the record:
 A reader can audit the claim instead of trusting it, and a future audit can
 recompute it from the record.
 
+## The one exception: `shared.html`
+
+`shared.html` publishes sixteen Gujarati religious texts that are **not public
+domain and are not part of the library**. They sit on a separate page, outside
+the catalogue, outside the vault, and outside the dedupe register, and the page
+says so at the top.
+
+| Item | Rights |
+|---|---|
+| Attributed to Allama Ghulam Ahmad Parwez (d. 1985) | remain with the rights holders; shared as freely distributed religious material |
+| Gujarati translations by Dr Sohil Momin | his own work; the originals they translate remain the property of their authors, including Dr. Shabbir Ahmed |
+
+They are shared for reading, not offered as public domain, and not claimed as
+free to redistribute by anyone else. A takedown request goes to the repository
+issues and is honoured.
+
+They are also excluded from the pipeline on technical grounds: they were set in a
+legacy non-Unicode Gujarati font, so the text layer extracts as mojibake and
+cannot be searched, hashed for dedupe, or turned into EPUB and text.
+
 ## Anonymous and corporate works
 
 No death year exists to count from, so both tests become publication tests:

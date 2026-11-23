@@ -200,3 +200,60 @@ should not take the shelf down. The bundle came from the owner's own
 rather than re-fetched.
 
 **Cost.** ~1.7 MB in the library repo, lazy-loaded per format.
+
+---
+
+## D12 · PyMuPDF confined to SVG plates; PDF rendering moved to PDFium
+
+**Decision.** Every PDF page render now goes through `pypdfium2` (PDFium, the
+renderer inside Chrome). PyMuPDF remains in exactly one function, `_render_one`,
+which rasterises an **SVG** plate.
+
+**Why.** PyMuPDF is AGPL-3.0. That is fine for outputs and fine for a local build
+tool, but it stops being fine the day this pipeline is served as a web app or
+relicensed. Three of the four PDF-render sites had no reason to carry it.
+
+**Evidence the swap is safe.** The same 1250×1250 page rendered both ways:
+**mean absolute difference 0.86/255**, 1.49% of pixels differing by more than 8 —
+the antialiasing gap between two independent rasterisers, at a 900 px JPEG q82
+output.
+
+**Why SVG keeps PyMuPDF.** PDFium cannot open an SVG. The alternatives are worse
+for these files: cairosvg renders the fill-heavy traced plates as solid black
+squares, and routing through WeasyPrint pulls a layout engine into every worker,
+which is the cost D7 exists to avoid.
+
+**So the AGPL dependency is reduced, not removed.** What would remove it: a
+permissive SVG rasteriser that renders these traced plates correctly — `resvg`
+(MPL-2.0) is the candidate — verified against the black-square failure before it
+replaces anything.
+
+---
+
+---
+
+## D13 · Docling considered for the text step — rejected, measured
+
+**Considered.** Replacing the spine text extraction with `docling` (MIT, IBM), which parses EPUB
+and PDF into a lossless structured document.
+
+**Rejected on three measurements, 2026-11-18.**
+
+1. **The install is 6.4 GB.** `pip install docling` pulls `torch` (1.2 GB), `torchvision`,
+   `transformers` and the NVIDIA CUDA runtime (**3.0 GB**). The library's declared *core*
+   dependencies are light — that is what made it look cheap — but the published metapackage is not.
+2. **It cannot run on a modest machine.** It failed to initialise in a 2 GB-RAM environment
+   (`OpenBLAS: memory allocation still failed`, then `SystemError`). This pipeline is meant to run
+   offline on ordinary hardware.
+3. **It would replace something already exact.** The current extractor reads the *authored* XHTML
+   from the EPUB spine and strips tags. Run against the shipped `alice-in-wonderland.epub` it
+   reproduces the shipped `.txt` at **100.00% similarity** (144,841 against 144,842 characters —
+   one trailing newline). There is no inference to improve: the text was authored, not rendered.
+
+**Where it would earn its weight:** a pipeline that starts from *scanned* PDFs, where layout has to
+be inferred. This one typesets its own PDFs from the EPUB, so that case does not arise. If a
+scanned-only book ever enters the shelf, docling is the tool to reach for — on a workstation, as a
+one-off, not as a runtime dependency.
+
+**The lesson, since this looked obviously good:** "the core dependencies are light" is a statement
+about a `pyproject.toml`, not about what `pip install` does. Measure the install, then decide.

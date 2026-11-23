@@ -5,6 +5,63 @@ site and a set of vaults; there are no releases, so this records the build.
 
 ---
 
+## 2026-11-16 · Both Shabbir Ahmed translations identified, and his death recorded
+
+**Corrected**
+- *Karbala: Satya ke Kalpana* was recorded with no authorship. It is the second of
+  the two Gujarati translations by Dr Sohil Momin, from an English original by
+  **Dr. Shabbir Ahmed, M.D.** — the same author as *Criminals of Islam*.
+- His death is now in both records and on the page: **November 2022**. A source
+  listing his book also gives his contact as Mrs Farida Ahmed in Florida, which
+  is why the note says the permission route is his **estate**, not him.
+
+**Why it matters**
+- Died 2022 means protected in India until **2082**. Neither translation can be
+  public domain in this library's lifetime, and the page says so plainly rather
+  than implying the question is open.
+
+---
+
+## 2026-11-16 · The shared texts read in the page, PDF only
+
+**Changed**
+- `shared.html` gained an in-page reader: **Read here** opens the PDF in an
+  overlay, the same promise the library makes for its own books. **New tab**
+  stays as the escape hatch, and Esc closes the overlay.
+- PDF only, deliberately. A legacy non-Unicode Gujarati font means the text
+  layer is mojibake, so there is nothing to convert to EPUB or text and nothing
+  to search. The page says so rather than offering formats it cannot produce.
+
+**Verified**
+- 16 cards · Read opens the right file with the right title · Esc closes it
+
+---
+
+## 2026-11-16 · A shared collection, kept outside the library
+
+**Added**
+- `shared.html` — sixteen Gujarati religious texts on the Qur'an, salat, zakat and
+  Karbala, on a **separate page, outside the catalogue, outside the vault and
+  outside the dedupe register**. Each record names its authorship: the texts
+  attributed to Allama Ghulam Ahmad Parwez (d. 1985) remain with their rights
+  holders, and the Gujarati translations by Dr Sohil Momin are his own work
+  while the English originals they translate remain their authors'.
+- The page says "not public domain" at the top, and again on every card, and a
+  takedown route is printed on it.
+
+**Why not in the library**
+- They are in copyright: 2011–2013 documents, and Parwez's work enters the
+  public domain in India in 2045. Putting them in the catalogue would make the
+  shelf's one claim false.
+- They are also unprocessable: a legacy non-Unicode Gujarati font means the text
+  layer is mojibake, so no search, no hash, no EPUB.
+
+**Not done, deliberately**
+- No `rights.basis` field, no vault, no index.txt entry. They cannot be mistaken
+  for library stock by any script that reads the catalogue.
+
+---
+
 ## 2026-11-16 · Thirteen more books, and the thin shelves filled
 
 **Added** — Epictetus' *Short Works* (Long), three Conrad (*The Secret Agent*,

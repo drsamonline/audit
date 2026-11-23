@@ -54,4 +54,4 @@ The current gaps, stated plainly:
 - Nothing is described as working unless a command produced the output that
   proves it.
 
-_Updated 2026-11-16._
+_Updated 2026-11-23._
