@@ -496,3 +496,38 @@ The grid looked like it ignored areas; it was ignoring the property's syntax, tw
 
 Named lines (`[name]`), `span n`, `auto-fit`/`minmax`, `grid-auto-flow: column`; `grid-template-rows` understands
 pixel tracks only.
+
+---
+
+# Twelfth commit, same session — row 3d split, and the first half of 3d1
+
+Commit: `617e4204`
+
+Row 3d was "`@font-face`, transitions, animations" — three features that share nothing but a row. Split into
+3d1/3d2/3d3; this commit takes the part of 3d1 that stands on its own.
+
+| what | before | after |
+| --- | --- | --- |
+| `@font-face { ... }` | skipped with every other unknown at-rule | `CssStyleSheet::font_faces` — family plus the url inside `src` |
+| `cached_glyph()` key | `(glyph, size)` | `(font identity, glyph, size)` |
+
+The cache key is groundwork, not a fix for today: with one active font the identity never varied. It becomes a
+correctness requirement the moment a second font exists — the pattern row 2g asked for, applied again.
+
+## Evidence
+
+| assertion | where |
+| --- | --- |
+| quoted family keeps its name, `url(...)` yields the source, a block with no family is dropped, the following rule still parses | `AetherisCss` |
+| the same glyph id from two fonts is two cache entries — the second font is the embedded one with one padding byte flipped, so the shapes are identical and only the key separates them | `AetherisGlyphRasterizer` |
+
+Suite 65/65 twice, 145.21 s and 137.77 s.
+
+## What 3d1 still needs
+
+1. **Fetch the source**: no `data:` URL support in the loader, and nothing calls it for `@font-face`.
+2. **Select the face**: `font-family` is inherited and never read for selection; `Font`, `FontMetrics`, `measure()`
+   and `draw_text()` all go through the singleton `active_font()`.
+
+Two files' worth of parsing is done; five files' worth of plumbing is not, and that is written in the row rather
+than left to be rediscovered.
