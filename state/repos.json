@@ -1,5 +1,5 @@
 {
- "count": 148,
+ "count": 149,
  "repos": {
   "All4ONE": {
    "archived": false,
@@ -519,28 +519,28 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T12:00:54Z",
+   "pushed_at": "2026-11-23T12:30:35Z",
    "readable": true,
    "releases": [
     {
      "assets": [],
-     "tag": "v1.74.0"
+     "tag": "v2.3.1"
     },
     {
      "assets": [],
-     "tag": "v1.73.0"
+     "tag": "v2.3.0"
     },
     {
      "assets": [],
-     "tag": "v1.72.0"
+     "tag": "v2.2.0"
     },
     {
      "assets": [],
-     "tag": "v1.71.0"
+     "tag": "v2.1.0"
     },
     {
      "assets": [],
-     "tag": "v1.70.0"
+     "tag": "v2.0.0"
     }
    ],
    "root_files": [
@@ -554,6 +554,7 @@
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
     "ENHANCEMENTS.md",
+    "HANDOVER.md",
     "LICENSE",
     "NOTICE.md",
     "PAGES.json",
@@ -561,12 +562,14 @@
     "README.md",
     "SECURITY.md",
     "SPONSORS.md",
+    "START-HERE.md",
     "VERSION",
     "assets",
     "documentation",
     "favicon.svg",
     "index.html",
     "play",
+    "probe.mjs",
     "robots.txt",
     "sitemap.xml",
     "tests",
@@ -582,15 +585,15 @@
   "INDIA": {
    "archived": false,
    "default_branch": "main",
-   "description": "",
+   "description": "Twenty-four Indian monuments rebuilt as live 3D miniatures in the browser \u2014 every dome and lattice screen generated in code with three.js. No photographs, no downloaded meshes, no build step.",
    "docs_index": false,
    "fork": false,
    "has_pages": true,
-   "homepage": "",
+   "homepage": "https://drsamonline.github.io/INDIA/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T10:11:34Z",
+   "pushed_at": "2026-11-23T12:18:45Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -599,9 +602,12 @@
     ".nojekyll",
     "404.html",
     "CONTRIBUTING.md",
+    "DIMENSIONS.md",
+    "HANDOFF.md",
     "LICENSE",
     "NOTICE",
     "README.md",
+    "ROADMAP.md",
     "SECURITY.md",
     "assets",
     "credits.html",
@@ -614,7 +620,14 @@
     "sitemap.xml",
     "tools"
    ],
-   "topics": [],
+   "topics": [
+    "3dwebgl",
+    "heritageunesco",
+    "india",
+    "monuments",
+    "procedural-generation",
+    "threeja"
+   ],
    "upstream": null,
    "workflow_files": [
     "site.yml"
@@ -631,7 +644,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-21T12:48:12Z",
+   "pushed_at": "2026-11-22T12:41:25Z",
    "readable": true,
    "releases": [
     {
@@ -763,7 +776,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T11:13:20Z",
+   "pushed_at": "2026-11-23T08:01:27Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -776,8 +789,12 @@
     "23andme-policing.html",
     "404.html",
     "5g-covid.html",
+    "CHANGELOG.md",
+    "DISCLAIMER.md",
     "ENHANCEMENTS.md",
     "LICENSE",
+    "NOTICE.md",
+    "PRIVACY.md",
     "README.md",
     "a858-subreddit.html",
     "abc-conjecture.html",
@@ -1551,6 +1568,7 @@
     "rational-choice-voting.html",
     "readiness-potentials.html",
     "reading-guide.html",
+    "reading-paths.html",
     "reality-shifting.html",
     "referee-bet.html",
     "relational-quantum.html",
@@ -1761,12 +1779,7 @@
     "velocity-of-money.html",
     "vents-or-ponds.html",
     "venus-clouds-life.html",
-    "vibrator-medical-device.html",
-    "video-nasties.html",
-    "vimanas.html",
-    "vinland-map.html",
-    "viral-trigger-schizophrenia.html",
-    "virus-origins.html"
+    "vibrator-medical-device.html"
    ],
    "topics": [
     "conspiracies",
@@ -1909,7 +1922,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T18:42:06Z",
+   "pushed_at": "2026-11-23T12:29:46Z",
    "readable": true,
    "releases": [
     {
@@ -1979,6 +1992,7 @@
     "grammar",
     "integration_tests",
     "lsp",
+    "path.o",
     "pkg",
     "runtime",
     "rust-toolchain.toml",
@@ -2375,7 +2389,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-20T12:42:47Z",
+   "pushed_at": "2026-11-22T18:40:30Z",
    "readable": true,
    "releases": [
     {
@@ -2453,7 +2467,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T18:23:25Z",
+   "pushed_at": "2026-11-23T12:46:36Z",
    "readable": true,
    "releases": [
     {
@@ -3603,7 +3617,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T09:43:01Z",
+   "pushed_at": "2026-11-22T12:45:28Z",
    "readable": true,
    "releases": [
     {
@@ -3841,7 +3855,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-19T05:32:56Z",
+   "pushed_at": "2026-11-23T09:56:53Z",
    "readable": true,
    "releases": [
     {
@@ -4028,7 +4042,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:32:16Z",
+   "pushed_at": "2026-11-22T13:43:32Z",
    "readable": true,
    "releases": [
     {
@@ -4038,6 +4052,7 @@
    ],
    "root_files": [
     ".github",
+    "ASSETS.json",
     "CHANGELOG.md",
     "LICENSE",
     "PRIVACY.md",
@@ -4046,7 +4061,8 @@
     "VERSION",
     "art-kit.js",
     "docs",
-    "test-node.js"
+    "test-node.js",
+    "tools"
    ],
    "topics": [
     "canvas",
@@ -4122,7 +4138,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T18:32:18Z",
+   "pushed_at": "2026-11-22T13:39:05Z",
    "readable": true,
    "releases": [
     {
@@ -4132,6 +4148,7 @@
    ],
    "root_files": [
     ".github",
+    "ASSETS.json",
     "LICENSE",
     "PRIVACY.md",
     "README.md",
@@ -4139,7 +4156,8 @@
     "VERSION",
     "audio-kit.js",
     "docs",
-    "test-node.js"
+    "test-node.js",
+    "tools"
    ],
    "topics": [
     "adsr",
@@ -4172,7 +4190,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T03:39:56Z",
+   "pushed_at": "2026-11-23T12:46:53Z",
    "readable": true,
    "releases": [
     {
@@ -5085,7 +5103,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T16:24:47Z",
+   "pushed_at": "2026-11-23T11:59:57Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -5214,7 +5232,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:38:24Z",
+   "pushed_at": "2026-11-23T11:13:45Z",
    "readable": true,
    "releases": [
     {
@@ -5339,7 +5357,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T11:36:58Z",
+   "pushed_at": "2026-11-23T13:04:27Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -5804,7 +5822,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-21T10:45:07Z",
+   "pushed_at": "2026-11-22T13:45:32Z",
    "readable": true,
    "releases": [
     {
@@ -5814,6 +5832,7 @@
    ],
    "root_files": [
     ".github",
+    "ASSETS.json",
     "CHANGELOG.md",
     "LICENSE",
     "PAGES.json",
@@ -5911,7 +5930,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T18:21:34Z",
+   "pushed_at": "2026-11-23T04:46:57Z",
    "readable": true,
    "releases": [
     {
@@ -6260,7 +6279,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-20T18:47:23Z",
+   "pushed_at": "2026-11-23T00:44:42Z",
    "readable": true,
    "releases": [
     {
@@ -6702,7 +6721,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-21T00:44:06Z",
+   "pushed_at": "2026-11-23T12:18:29Z",
    "readable": true,
    "releases": [
     {
@@ -6771,7 +6790,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-21T02:54:28Z",
+   "pushed_at": "2026-11-22T16:33:52Z",
    "readable": true,
    "releases": [
     {
@@ -7551,7 +7570,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-21T07:01:00Z",
+   "pushed_at": "2026-11-23T12:48:12Z",
    "readable": true,
    "releases": [
     {
@@ -8362,12 +8381,6 @@
    "releases": [
     {
      "assets": [
-      "planner-pro-14.9.0-android.apk"
-     ],
-     "tag": "v14.9.0"
-    },
-    {
-     "assets": [
       "planner-pro-15.2.0-android.apk",
       "planner-pro-15.2.0-macos-arm64.dmg",
       "planner-pro-15.2.0-windows-portable.exe",
@@ -8413,6 +8426,18 @@
       "planner-pro_14.10.0_amd64.deb"
      ],
      "tag": "v14.10.0"
+    },
+    {
+     "assets": [
+      "planner-pro-14.9.0-android.apk",
+      "planner-pro-14.9.0-macos-arm64.dmg",
+      "planner-pro-14.9.0-windows-portable.exe",
+      "planner-pro-14.9.0-windows-setup.exe",
+      "planner-pro-web.zip",
+      "planner-pro.html",
+      "planner-pro_14.9.0_amd64.deb"
+     ],
+     "tag": "v14.9.0"
     }
    ],
    "root_files": [
@@ -8903,7 +8928,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-20T06:47:42Z",
+   "pushed_at": "2026-11-22T12:38:18Z",
    "readable": true,
    "releases": [
     {
@@ -9018,6 +9043,82 @@
     "meta.yml"
    ]
   },
+  "savehorse": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "savehorse is a single Rust workspace that replaces a portfolio of twenty-two small Windows utilities with thirteen modules behind one command line \u2014 and, next, one desktop application. Each module keeps the name it had on its own.",
+   "docs_index": false,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/savehorse/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-23T10:46:32Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "Savehorse-0.2.0-1.x86_64.rpm",
+      "savehorse-desktop.exe",
+      "savehorse-linux-x86_64",
+      "savehorse-macos-arm64",
+      "savehorse-windows-x86_64.exe",
+      "Savehorse_0.2.0_aarch64.dmg",
+      "Savehorse_0.2.0_amd64.AppImage",
+      "Savehorse_0.2.0_amd64.deb",
+      "Savehorse_0.2.0_x64-setup.exe",
+      "Savehorse_0.2.0_x64_en-US.msi",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v0.2.0"
+    },
+    {
+     "assets": [
+      "Savehorse-0.1.0-1.x86_64.rpm",
+      "savehorse-desktop.exe",
+      "savehorse-linux-x86_64",
+      "savehorse-macos-arm64",
+      "savehorse-windows-x86_64.exe",
+      "Savehorse_0.1.0_aarch64.dmg",
+      "Savehorse_0.1.0_amd64.AppImage",
+      "Savehorse_0.1.0_amd64.deb",
+      "Savehorse_0.1.0_x64-setup.exe",
+      "Savehorse_0.1.0_x64_en-US.msi",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v0.1.0"
+    }
+   ],
+   "root_files": [
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "Cargo.toml",
+    "LICENSE",
+    "PLAN.md",
+    "README.md",
+    "SECURITY.md",
+    "USER_GUIDE.md",
+    "apps",
+    "assets",
+    "crates",
+    "demo",
+    "docs",
+    "index.html",
+    "rust-toolchain.toml",
+    "scripts"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "ci.yml",
+    "desktop.yml",
+    "release.yml"
+   ]
+  },
   "seance": {
    "archived": false,
    "default_branch": "main",
@@ -9125,7 +9226,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-16T11:40:51Z",
+   "pushed_at": "2026-11-23T13:08:30Z",
    "readable": true,
    "releases": [
     {
@@ -9471,13 +9572,9 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-21T11:40:37Z",
+   "pushed_at": "2026-11-23T12:20:10Z",
    "readable": true,
    "releases": [
-    {
-     "assets": [],
-     "tag": "v0.10.0"
-    },
     {
      "assets": [],
      "tag": "v0.12.1"
@@ -9549,28 +9646,28 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:49:46Z",
+   "pushed_at": "2026-11-22T14:12:46Z",
    "readable": true,
    "releases": [
     {
      "assets": [],
+     "tag": "v1.50.1"
+    },
+    {
+     "assets": [],
+     "tag": "v1.50.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.49.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.48.0"
+    },
+    {
+     "assets": [],
      "tag": "v1.47.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.46.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.45.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.44.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.43.0"
     }
    ],
    "root_files": [
@@ -9629,9 +9726,17 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-16T17:41:30Z",
+   "pushed_at": "2026-11-22T14:13:24Z",
    "readable": true,
    "releases": [
+    {
+     "assets": [],
+     "tag": "v1.35.0"
+    },
+    {
+     "assets": [],
+     "tag": "v1.34.0"
+    },
     {
      "assets": [],
      "tag": "v1.33.0"
@@ -9643,14 +9748,6 @@
     {
      "assets": [],
      "tag": "v1.31.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.30.0"
-    },
-    {
-     "assets": [],
-     "tag": "v1.29.0"
     }
    ],
    "root_files": [
@@ -9993,7 +10090,7 @@
    "licence_file": "COPYING",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-17T06:55:12Z",
+   "pushed_at": "2026-11-23T04:46:53Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -10032,7 +10129,6 @@
     "config.cache",
     "config.guess",
     "config.hin",
-    "config.log",
     "config.sub",
     "configure",
     "configure.in",
@@ -10085,7 +10181,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-11T15:35:20Z",
+   "pushed_at": "2026-11-22T13:39:07Z",
    "readable": true,
    "releases": [
     {
@@ -10096,6 +10192,7 @@
    "root_files": [
     ".github",
     ".nojekyll",
+    "ASSETS.json",
     "DESIGN.md",
     "LICENSE",
     "PAGES.json",
@@ -10111,6 +10208,7 @@
     "test-naughty.js",
     "test-node.js",
     "test",
+    "tools",
     "web-kit.js"
    ],
    "topics": [
@@ -10437,7 +10535,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-14T15:30:48Z",
+   "pushed_at": "2026-11-22T13:39:09Z",
    "readable": true,
    "releases": [
     {
@@ -10447,6 +10545,7 @@
    ],
    "root_files": [
     ".github",
+    "ASSETS.json",
     "CHANGELOG.md",
     "LICENSE",
     "PRIVACY.md",
