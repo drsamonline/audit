@@ -113,3 +113,57 @@ Identical suite runs: 126.97 s and 164.79 s back to back. One probe line: 0.047 
 five runs. Anything smaller than ~20% is not measurable on this box — which is why the decision came
 from an alternating build rather than a single before/after pair, and why it went against the
 prediction.
+
+---
+
+# Row 0.3 — the engine's HTTP client had no proxy support
+
+Created by the corpus run: the sandbox reaches the internet through an HTTP proxy, `curl` worked, and
+`aetheris --fetch https://example.com` said "could not connect". Closed on 2026-11-23.
+
+## The proof is the fetch that failed
+
+```
+$ ./build/bin/aetheris --fetch https://example.com
+OK https://example.com
+  Bytes: 577
+```
+
+577 bytes is what `curl` returns for that page, so the body is the origin's. `http://example.com`
+also works, in absolute form, and `--fetch http://127.0.0.1:9/` still says "Could not connect to
+127.0.0.1", which is `no_proxy` being honoured rather than the proxy being ignored.
+
+## Shape
+
+Upstream read first: `LibHTTP/Proxy.h` (a proxy is type + host + port + userinfo), `Proxy.cpp:18`
+(parse), `:149` (environment, libcurl precedence), `:186` (`proxy_for`), `:252` (`is_excluded`).
+Ported to `include/aetheris/network/proxy.hpp`.
+
+| request | path |
+| --- | --- |
+| https | TCP to proxy → `CONNECT host:443` + `Proxy-Authorization` → 2xx → TLS **inside** the tunnel, verifying the origin's certificate |
+| http | TCP to proxy → absolute-form request target + `Proxy-Authorization` |
+
+`TlsStream::connect_over(fd, host, ca)` was added for the tunnel: it handshakes over an
+already-connected descriptor, on a **duplicate**, so the `Socket` and the `TlsStream` each close what
+they own.
+
+Two upstream decisions kept deliberately: `HTTP_PROXY` is not read (CGI can set it from a request
+header), and `no_proxy` matches a `.domain` plus its subdomains and ignores a port in the entry.
+
+## How it is tested
+
+`AetherisProxy` runs a loopback fake proxy that records the bytes sent, and asserts on the wire:
+
+- `GET http://example.test/page HTTP/1.1` with `Proxy-Authorization: Basic …` and `Host:` intact;
+- `CONNECT example.test:443 HTTP/1.1` with the credentials on the tunnel, and the resulting failure
+  being a TLS failure rather than "Could not connect" — the exact distinction row 0.3 was about;
+- the parse (socks5 and port 0/99999 refused, not silently treated as "no proxy"), the precedence,
+  and every `no_proxy` form.
+
+Suite 67/67 twice, 126.29 s and 135.57 s.
+
+## Still open
+
+`https://` proxies (TLS to the proxy) parse but are not connected through; SOCKS4/5 are refused;
+`Proxy-Authorization` is Basic only. Row 0.1 remains blocked, now on the allowlist alone.
