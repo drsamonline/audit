@@ -568,3 +568,40 @@ is keyed on the family name alone.
 Four compile errors in a row — a member reference (`m_metrics.face` inside a `FontMetrics` member), two missing
 includes, an undeclared function. All mechanical. The useful habit is the boring one: add the include when you add
 the use, and read the error's first line instead of the flag wall above it.
+
+---
+
+# Fourteenth commit, same session — row 3d2 started: the curve and the arithmetic
+
+Commit: `4e43371d`
+
+A transition is a curve plus a clock. This is the curve and the arithmetic — the half that can be proven without a
+clock, a document or a pixel.
+
+| what | where |
+| --- | --- |
+| `Easing`: `linear`, `ease`, `ease-in`, `ease-out`, `ease-in-out`, `cubic-bezier()`, `steps()` | `src/rendering/easing.{hpp,cpp}` |
+| the cubic-bezier solve | ported from `LibWeb/Rust/src/css/animation.rs:217-300`: Newton-Raphson for eight steps at 1e-7, bisection for sixty-four, tangent extension outside [0, 1] |
+| `Transition` with `value_at(now)` / `finished_at(now)` | `src/rendering/transition.{hpp,cpp}` |
+| the `transition` shorthand in any token order | same |
+| 20 assertions | `Tests/AetherisRendering/TestEasing.cpp` — a new binary, so the suite is 66 |
+
+| curve at 0.5 | value |
+| --- | --- |
+| `linear` | 0.5 |
+| `ease` | **0.802403** (standard 0.8024) |
+| `cubic-bezier(0,0,1,1)` at 0.3 | 0.3 — the solve agreeing with the identity |
+| `steps(2)` at 0.4 / 0.6 | 0.0 / 0.5 |
+
+Suite 66/66 twice, 136.06 s and 146.45 s.
+
+## What is left, and why it is the awkward part
+
+1. **A clock**: `render_to_surface` is static; the window loop has frames, so the clock belongs there and on
+   `RenderDocument`, with paint reading it.
+2. **The trigger**: a transition starts when a property's computed value changes. The style cache records which
+   nodes are dirty, not which property moved — that is the piece with no test yet because it has no code yet.
+
+One expectation was wrong on the first run and the code was right: `ease` is *flat* past input 1.0, because its
+second control point is (0.25, 1) and the tangent is horizontal; `ease-in` is the curve that keeps climbing. The
+assertion now says both.
