@@ -167,3 +167,47 @@ Suite 67/67 twice, 126.29 s and 135.57 s.
 
 `https://` proxies (TLS to the proxy) parse but are not connected through; SOCKS4/5 are refused;
 `Proxy-Authorization` is Basic only. Row 0.1 remains blocked, now on the allowlist alone.
+
+---
+
+# Row 3j closed — and the number that started it was a build type
+
+Every measurement in the two entries above was taken in a Debug `-O0` build with UBSan. This session
+built `build-rel` (`-O2`) and asked the same questions again.
+
+| measurement | Debug `-O0` | Release `-O2` |
+| --- | --- | --- |
+| resolve one element | 0.114 ms | **0.008 ms** |
+| style pass, 400 empty divs | 392 ms | **4.2 ms** |
+| style pass, 800 divs with text | 1089 ms | **38.2 ms** |
+| 800 author rules | 3862 ms | **22.9 ms** |
+
+The row's headline, "~0.8 ms per element", is a `-O0`-with-UBSan number: at `-O2` a 400-div page is
+4.2 ms style + 1.6 ms layout, i.e. **14.5 us per element**. The fixes the row paid for stand — three
+terms, each measured, suite 400 s -> 140 s — but the figure that motivated them was the build.
+
+That also settles the `StyleProperties` refactor without doing it: at `-O2` the map is 0.004 ms per
+style and the property path 0.003 ms of an 0.008 ms resolve. Rewriting every consumer to buy a
+fraction of that is not a trade worth making, and a measurement is what says so.
+
+## "Far worse on real markup" was true — and it is layout
+
+Wikipedia prefixes, `-O2`, fetched through the proxy from row 0.3:
+
+| bytes | elements | nodes laid out | style | layout |
+| --- | --- | --- | --- | --- |
+| 10,000 | 22 | 461 | 0.3 ms | 1.5 ms |
+| 12,000 | 72 | 401,293 | 0.9 ms | 1,920 ms |
+| 14,000 | 134 | **1,157,981** | 1.6 ms | **5,717 ms** |
+| 18,000 | 238 | 1,204,549 | 3.0 ms | 5,763 ms |
+
+A 2,500x jump then a plateau at ~1.2M: the shape of a per-character or per-fragment loop hitting a
+limit, not of a large document. Ordinary markup in that range. Row **3k** carries it with the bisect
+range and a first hypothesis (`overflow-wrap` from row 2f).
+
+## The probe was broken and nobody noticed
+
+`tools/layout-cost.cpp` looped `for (int i = 1; i + 1 < argc; ++i)`, so with one file argument it
+measured nothing and printed nothing. Every earlier run passed no files, so the bug was invisible
+until a real page was the point. Fixed to `i < argc`. A probe that prints nothing looks like a probe
+with nothing to print.
