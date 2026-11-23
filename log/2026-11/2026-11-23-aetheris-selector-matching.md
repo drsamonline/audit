@@ -62,3 +62,54 @@ node. It is now most of what remains of the style pass. Row 3j stays `[~]` in pr
 The refactor was first assembled by slicing the original file with hand-computed line ranges; two were off by
 one, and regenerating from `git show HEAD:` silently reverted two earlier edits. Both were re-applied and
 grepped before building. Print and read the boundary before slicing source by line number.
+
+---
+
+# Addendum — the second term, and a fix that measurement rejected
+
+Row 3j stayed `[~]` after the selector work, naming the per-node `StyleProperties`. This addendum
+measures that term. **No engine code changed**: the fix that looked obvious measured worse.
+
+## What a style is
+
+`tools/style-cost.cpp` counts what a resolved style holds and splits the resolve.
+
+| measurement | value |
+| --- | --- |
+| properties in a resolved style | **17** (the previous entry's "~80" was a guess) |
+| resolve, full sheet | 0.114 ms per element |
+| resolve, sheet with no rules at all | 0.074 ms per element — **65%** |
+| so selector matching | 0.040 ms per element — 35% |
+
+The property work is not a remainder; it is the larger half of what is left.
+
+## The rejected fix
+
+The map rehashes as it grows, so reserve it. Priced alone: 0.039 ms per style, 0.005 ms with
+`reserve(24)` — 8x on the component that is 65% of the cost.
+
+Built alternately, five runs each, on the targeted measure:
+
+| build | runs | median |
+| --- | --- | --- |
+| with `reserve(24)` | 0.068 / 0.063 / 0.069 / 0.064 / 0.059 ms | 0.064 ms |
+| without (HEAD) | 0.048 / 0.048 / 0.075 / 0.047 / 0.048 ms | **0.048 ms** |
+
+The reserve is **33% slower**. `StyleProperties` is not one object per element: text nodes, generated
+boxes, pseudo-element styles and the temporaries inside `apply_declaration` all construct one, and
+most hold a property or two. Reserving 24 buckets makes every one of them pay for a table it never
+fills, which costs more than the rehashes it saves on the styles that reach seventeen.
+
+Reverted; `git status` clean before the commit.
+
+## What is left
+
+Structural, not tuning: a style is seventeen string-keyed inserts into a hash map. The honest fix is
+a typed property set or interned property ids, touching every consumer of `StyleProperties`.
+
+## The measurement discipline this bought
+
+Identical suite runs: 126.97 s and 164.79 s back to back. One probe line: 0.047 to 0.075 ms across
+five runs. Anything smaller than ~20% is not measurable on this box — which is why the decision came
+from an alternating build rather than a single before/after pair, and why it went against the
+prediction.
