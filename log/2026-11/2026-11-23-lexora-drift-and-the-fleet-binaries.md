@@ -114,3 +114,31 @@ first as if it were the second — then built an ADR around the gap it created. 
 had `ziptastic`, `xz`, `7z`, `brotli` and `zstd` the whole time. A container's inventory is not the
 fleet's; when a measurement is blocked on a binary, the next question is *where in the estate is
 it*, not *what can I claim without it*.
+
+## Addendum, later the same day — a tool nobody had pointed at the repo
+
+After the log entry above was merged, `tools/presentation_audit.py` was run against `lexora` for the
+first time. It had never been. The result:
+
+    repo      tier          verdict  landi app badge shots readm suppo portr theme offli platf
+    lexora    app-no-demo   apply     ok   n/a   XX    wr    ok    XX    ok   n/a    ok    ok
+
+Three classes of work, none of them caught by anything in that repository:
+
+- **BADGES** — no local badge set. Now `scripts/badges.py` draws the six into `docs/assets/` in the
+  page's own palette. The collision worth recording: the standard wants a *tests* badge from the
+  repo's own suite, and the repo forbids a static test count because a number nothing recomputes
+  decays silently. Both are right; the badge says `green — see CI`, a condition rather than a
+  number, with the count in the live badge.
+- **SUPPORT** — the landing page printed the UPI VPA with **no `upi://pay` intent link**, so the one
+  handle a phone can act on was a string it could not use, and the block carried no `data-support`
+  marker, so this very tool could not see it. Both fixed.
+- **SHOTS** — **not fixed, deliberately.** `app-desktop.png` needs the `[gui]` extra and a
+  Qt-capable machine, and `app-mobile.png` would be a *mobile* screenshot of a desktop application.
+  Fabricating one to satisfy a checklist is the failure the rest of the day was spent removing.
+
+After: `badges ok`, `support ok`, `shots wr` — three classes down to one.
+
+**The lesson is not "a repo was non-compliant".** The tool existed, the standard existed, and nobody
+had run it — which from the repository's point of view is indistinguishable from not having either.
+`lexora` #66, `tests/test_presentation.py` (11 tests) now holds the parts it can check alone.
