@@ -12,7 +12,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-21T18:39:31Z",
+   "pushed_at": "2026-11-24T00:42:00Z",
    "readable": true,
    "releases": [
     {
@@ -86,7 +86,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:36:01Z",
+   "pushed_at": "2026-11-23T16:07:50Z",
    "readable": true,
    "releases": [
     {
@@ -153,7 +153,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:36:38Z",
+   "pushed_at": "2026-11-24T12:55:19Z",
    "readable": true,
    "releases": [
     {
@@ -512,35 +512,35 @@
    "archived": false,
    "default_branch": "main",
    "description": "Description A Doom-style 2.5D arena FPS in the browser \u2014 procedural sector maps, three weapons, zero external assets. Built with Three.js.",
-   "docs_index": false,
+   "docs_index": true,
    "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/Hellgate/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T12:30:35Z",
+   "pushed_at": "2026-11-24T11:40:20Z",
    "readable": true,
    "releases": [
     {
      "assets": [],
-     "tag": "v2.3.1"
+     "tag": "v2.23.0"
     },
     {
      "assets": [],
-     "tag": "v2.3.0"
+     "tag": "v2.22.0"
     },
     {
      "assets": [],
-     "tag": "v2.2.0"
+     "tag": "v2.21.0"
     },
     {
      "assets": [],
-     "tag": "v2.1.0"
+     "tag": "v2.20.0"
     },
     {
      "assets": [],
-     "tag": "v2.0.0"
+     "tag": "v2.19.0"
     }
    ],
    "root_files": [
@@ -565,6 +565,7 @@
     "START-HERE.md",
     "VERSION",
     "assets",
+    "docs",
     "documentation",
     "favicon.svg",
     "index.html",
@@ -578,6 +579,7 @@
    "topics": [],
    "upstream": null,
    "workflow_files": [
+    "build-apps.yml",
     "pages.yml",
     "test.yml"
    ]
@@ -586,16 +588,25 @@
    "archived": false,
    "default_branch": "main",
    "description": "Twenty-four Indian monuments rebuilt as live 3D miniatures in the browser \u2014 every dome and lattice screen generated in code with three.js. No photographs, no downloaded meshes, no build step.",
-   "docs_index": false,
+   "docs_index": true,
    "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/INDIA/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T12:18:45Z",
+   "pushed_at": "2026-11-24T11:35:42Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "INDIA-linux",
+      "INDIA-portable.exe",
+      "INDIA.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
     ".github",
     ".gitignore",
@@ -630,6 +641,7 @@
    ],
    "upstream": null,
    "workflow_files": [
+    "build-apps.yml",
     "site.yml"
    ]
   },
@@ -644,7 +656,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T12:41:25Z",
+   "pushed_at": "2026-11-23T14:53:11Z",
    "readable": true,
    "releases": [
     {
@@ -769,16 +781,25 @@
    "archived": false,
    "default_branch": "main",
    "description": "A sourced reference library of hidden-world claims \u2014 the larger globe, the flat disc, the hollow shell, the ice wall, the inner sun, the sea beneath the sea \u2014 plus the giants, dragons, cryptids, aliens and secret societies that are said to live in them. ",
-   "docs_index": false,
+   "docs_index": true,
    "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/LARGE_GLOBE/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T08:01:27Z",
+   "pushed_at": "2026-11-24T11:42:01Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "LARGE_GLOBE-linux",
+      "LARGE_GLOBE-portable.exe",
+      "LARGE_GLOBE.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
     ".github",
     ".nojekyll",
@@ -1794,6 +1815,7 @@
    ],
    "upstream": null,
    "workflow_files": [
+    "build-apps.yml",
     "check.yml"
    ]
   },
@@ -1808,7 +1830,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:49:57Z",
+   "pushed_at": "2026-11-23T16:08:17Z",
    "readable": true,
    "releases": [
     {
@@ -1922,7 +1944,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-23T12:29:46Z",
+   "pushed_at": "2026-11-24T11:47:17Z",
    "readable": true,
    "releases": [
     {
@@ -1987,6 +2009,7 @@
     "deny.toml",
     "dist",
     "docs",
+    "dr.o",
     "examples",
     "fuzz",
     "grammar",
@@ -2036,7 +2059,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:36:22Z",
+   "pushed_at": "2026-11-24T13:44:51Z",
    "readable": true,
    "releases": [
     {
@@ -2208,7 +2231,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T06:57:44Z",
+   "pushed_at": "2026-11-24T12:39:45Z",
    "readable": true,
    "releases": [
     {
@@ -2467,7 +2490,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-23T12:46:36Z",
+   "pushed_at": "2026-11-24T12:39:54Z",
    "readable": true,
    "releases": [
     {
@@ -2752,7 +2775,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:47:58Z",
+   "pushed_at": "2026-11-24T07:07:04Z",
    "readable": true,
    "releases": [
     {
@@ -2976,7 +2999,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:37:54Z",
+   "pushed_at": "2026-11-24T05:54:47Z",
    "readable": true,
    "releases": [
     {
@@ -3221,7 +3244,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T13:47:00Z",
+   "pushed_at": "2026-11-24T08:44:53Z",
    "readable": true,
    "releases": [
     {
@@ -3419,7 +3442,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-20T12:54:45Z",
+   "pushed_at": "2026-11-24T00:48:23Z",
    "readable": true,
    "releases": [
     {
@@ -4190,7 +4213,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T13:34:05Z",
+   "pushed_at": "2026-11-24T12:39:24Z",
    "readable": true,
    "releases": [
     {
@@ -4307,7 +4330,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:38:26Z",
+   "pushed_at": "2026-11-24T02:14:47Z",
    "readable": true,
    "releases": [
     {
@@ -4365,7 +4388,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:38:15Z",
+   "pushed_at": "2026-11-24T03:44:56Z",
    "readable": true,
    "releases": [
     {
@@ -4431,7 +4454,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:36:22Z",
+   "pushed_at": "2026-11-24T14:06:25Z",
    "readable": true,
    "releases": [
     {
@@ -4506,7 +4529,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:38:10Z",
+   "pushed_at": "2026-11-24T02:34:48Z",
    "readable": true,
    "releases": [
     {
@@ -4738,7 +4761,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:36:26Z",
+   "pushed_at": "2026-11-24T13:14:53Z",
    "readable": true,
    "releases": [
     {
@@ -4930,7 +4953,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-21T12:38:46Z",
+   "pushed_at": "2026-11-24T11:07:11Z",
    "readable": true,
    "releases": [
     {
@@ -5232,7 +5255,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T11:13:45Z",
+   "pushed_at": "2026-11-24T08:44:10Z",
    "readable": true,
    "releases": [
     {
@@ -5288,7 +5311,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T00:38:01Z",
+   "pushed_at": "2026-11-24T00:49:18Z",
    "readable": true,
    "releases": [
     {
@@ -5357,7 +5380,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T13:04:27Z",
+   "pushed_at": "2026-11-24T13:53:34Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -5399,7 +5422,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T13:36:27Z",
+   "pushed_at": "2026-11-24T14:15:25Z",
    "readable": true,
    "releases": [
     {
@@ -5869,7 +5892,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:37:20Z",
+   "pushed_at": "2026-11-24T09:15:27Z",
    "readable": true,
    "releases": [
     {
@@ -5997,7 +6020,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:36:57Z",
+   "pushed_at": "2026-11-24T11:14:52Z",
    "readable": true,
    "releases": [
     {
@@ -6721,7 +6744,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T12:18:29Z",
+   "pushed_at": "2026-11-23T15:37:31Z",
    "readable": true,
    "releases": [
     {
@@ -6873,7 +6896,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T13:46:37Z",
+   "pushed_at": "2026-11-24T01:25:07Z",
    "readable": true,
    "releases": [
     {
@@ -7259,7 +7282,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T09:00:34Z",
+   "pushed_at": "2026-11-24T12:55:05Z",
    "readable": true,
    "releases": [
     {
@@ -7660,7 +7683,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:36:45Z",
+   "pushed_at": "2026-11-24T11:34:51Z",
    "readable": true,
    "releases": [
     {
@@ -8083,7 +8106,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:38:09Z",
+   "pushed_at": "2026-11-24T04:24:57Z",
    "readable": true,
    "releases": [
     {
@@ -8157,7 +8180,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T07:00:48Z",
+   "pushed_at": "2026-11-24T14:15:00Z",
    "readable": true,
    "releases": [
     {
@@ -8581,7 +8604,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:52:33Z",
+   "pushed_at": "2026-11-24T05:13:29Z",
    "readable": true,
    "releases": [
     {
@@ -8747,7 +8770,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:51:49Z",
+   "pushed_at": "2026-11-24T09:25:02Z",
    "readable": true,
    "releases": [
     {
@@ -9041,16 +9064,24 @@
    "archived": false,
    "default_branch": "main",
    "description": "savehorse is a single Rust workspace that replaces a portfolio of twenty-two small Windows utilities with thirteen modules behind one command line \u2014 and, next, one desktop application. Each module keeps the name it had on its own.",
-   "docs_index": false,
+   "docs_index": true,
    "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/savehorse/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T10:46:32Z",
+   "pushed_at": "2026-11-24T11:58:47Z",
    "readable": true,
    "releases": [
+    {
+     "assets": [
+      "savehorse-linux",
+      "savehorse-portable.exe",
+      "savehorse.apk"
+     ],
+     "tag": "app-latest"
+    },
     {
      "assets": [
       "Savehorse-0.2.0-1.x86_64.rpm",
@@ -9108,6 +9139,7 @@
    "topics": [],
    "upstream": null,
    "workflow_files": [
+    "build-apps.yml",
     "ci.yml",
     "desktop.yml",
     "release.yml"
@@ -9124,7 +9156,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:37:02Z",
+   "pushed_at": "2026-11-24T11:08:09Z",
    "readable": true,
    "releases": [
     {
@@ -9220,7 +9252,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T13:08:30Z",
+   "pushed_at": "2026-11-23T15:12:14Z",
    "readable": true,
    "releases": [
     {
@@ -9266,7 +9298,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:37:24Z",
+   "pushed_at": "2026-11-24T08:55:07Z",
    "readable": true,
    "releases": [
     {
@@ -9566,7 +9598,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-23T12:20:10Z",
+   "pushed_at": "2026-11-24T10:54:32Z",
    "readable": true,
    "releases": [
     {
@@ -9871,7 +9903,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:53:42Z",
+   "pushed_at": "2026-11-24T09:44:55Z",
    "readable": true,
    "releases": [
     {
@@ -10466,7 +10498,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:37:34Z",
+   "pushed_at": "2026-11-24T08:24:46Z",
    "readable": true,
    "releases": [
     {
