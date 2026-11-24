@@ -206,3 +206,25 @@ refuses.
 2. **The subresource count was missing**, and it is what separates a real render from a body of text.
 
 A summary line that says "ok" is a claim. Suite 67/67 twice, 125.29 s and 129.43 s.
+
+---
+
+# Row 0.5's tail — unfetchable schemes and `<base href>`
+
+Two named remainders, both small because the diagnosis was already precise.
+
+**47 of the 102 remaining dependencies were `mw-data:TemplateStyles:r...`** — a Wikipedia-internal
+pseudo-scheme that no backend can serve, one per transcluded template style. Discovery now queues only
+`http`, `https`, `file` and `data`.
+
+**`<base href>` was ignored**, so a document that rebases was resolved against the request URL. The
+first `<base href>` is the resolution base now.
+
+| | discovered |
+| --- | --- |
+| before row 0.5 | 1,324 |
+| after skipping hyperlinks | 102 |
+| after the scheme filter and `<base href>` | **44** |
+
+The render still loads its **42** subresources — the count is unchanged, which is the check that
+matters: fewer requests, same resources. Suite 67/67 twice, 131.82 s and 132.65 s.
