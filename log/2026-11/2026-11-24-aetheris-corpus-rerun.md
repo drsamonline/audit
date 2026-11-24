@@ -179,3 +179,30 @@ the work is a hypothesis.
 
 Row **0.5**: 1,324 discovered vs 188 loadable — 1,136 requests for resources that are not there.
 Suite 67/67 twice, 147.41 s and 125.84 s.
+
+---
+
+# Row 0.6 — the corpus rendered files, not pages
+
+`tools/run-corpus.sh` rendered `file://<local path>`, so every relative URL resolved against
+`file://` and the corpus never fetched a page's own stylesheets, images or scripts. Every measurement
+in the corpus report before today tested markup, CSS and layout with none of the page's assets.
+
+It now renders **from the URL**, with curl-and-a-local-copy kept as the fallback for a host the proxy
+refuses.
+
+| site | mode | subresources |
+| --- | --- | --- |
+| `example.com` | url | 0 (it has none) |
+| `en.wikipedia.org/wiki/Web_browser` | url | **42** |
+| `www.debian.org` | url | **26** |
+| the other 17 | — | refused by the proxy |
+
+## Two reporting faults
+
+1. **A refused host was reported as "rendered".** The proxy's 225-byte 502 body was fetched, written
+   to disk and rendered as though it were a site — 17 of 20 lines said "rendered" for hosts that
+   never loaded. A non-2xx is `refused` now.
+2. **The subresource count was missing**, and it is what separates a real render from a body of text.
+
+A summary line that says "ok" is a claim. Suite 67/67 twice, 125.29 s and 129.43 s.
