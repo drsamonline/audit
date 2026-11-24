@@ -34,3 +34,34 @@ Each defect so far was found by noticing something odd. From here the question i
 
 Extend `tools/article-position.cpp` to report the rules that set margin/padding/line-height for a node
 named on the command line, and ask it about a contents item.
+
+---
+
+# Row 0.11 narrowed — an anonymous 16.8px line box
+
+The reference said the contents list sits 79-80px apart where chromium puts it 27-28. The probe now takes
+`id=<id>` or `tag=<tag>` and prints the node's box, its children (`display`, `line-height`, height) and
+the rules that change it.
+
+## Ruled out
+
+| question | answer |
+| --- | --- |
+| a margin on the list item? | No - the rules add only `margin: 0.2em 0`, ~3px |
+| the anchor inside? | No - `<a>` is 45.6px in a 79.2px item |
+| list layout in general? | No - a minimal `<ul><li>` agrees with chromium at 99.8% |
+| whitespace text nodes? | No - skipping them changed nothing; reverted |
+
+## Found
+
+A 156-byte fixture reproduces it: `<li>` holding one block `<a>` is **33.6px where chromium gives
+16.8** - exactly double. The children print shows the `<li>` has a **second inline child of 16.8px with
+no DOM tag at all**: a line box with no node behind it. The suspect is the tail of
+`layout_inline_children`, `cursor_y = std::max(max_bottom, cursor_y + line_height)`, which adds a line
+whether or not anything was placed on it.
+
+## Reverted
+
+Skipping whitespace-only text nodes did not move the number (33.6 either way), so it was reverted rather
+than shipped. A plausible change that leaves the measurement identical is a guess - and this engine has
+already been bitten by one (the `reserve(24)` that measured 33% slower).
