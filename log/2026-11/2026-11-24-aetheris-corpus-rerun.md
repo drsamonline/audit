@@ -228,3 +228,35 @@ first `<base href>` is the resolution base now.
 
 The render still loads its **42** subresources — the count is unchanged, which is the check that
 matters: fewer requests, same resources. Suite 67/67 twice, 131.82 s and 132.65 s.
+
+---
+
+# Row 3d1's tail — fonts from `data:` and from the network
+
+`@font-face` only worked for a file on disk, so a page whose fonts arrived inline or over the network
+drew every glyph in the engine's own face.
+
+## The parser had to change first
+
+`src: url(data:font/ttf;base64,AAAA)` produced **no face at all**. The declaration-value scan ran to the
+first `;`, and the one inside `data:font/ttf;base64` ended the declaration, leaving `url(data:font/ttf`
+with no closing paren. The scan is paren-aware now — the same nested-syntax rule the selector scanners
+needed, applied to values. Third place in this engine where a `;` or `,` inside parentheses was read as
+a terminator.
+
+## Then three sources
+
+| source | how |
+| --- | --- |
+| `data:` | base64 decoded inline; percent-encoded is skipped, not guessed |
+| file | as before |
+| `http(s)` | looked up in the resource cache, which the CLI now populates |
+
+The remote case needed the CLI: a `@font-face` source lives inside the stylesheet and never appears in
+the dependency list, so nothing fetched fonts. `run_render` now scans the assembled CSS and fetches them.
+
+`ResourceRequestContext::Font` maps to `font-src`; borrowing `Image` would have enforced `img-src`, and
+the fallthrough would have enforced `connect-src`.
+
+`AetherisShaping` pins all four behaviours; the two remote ones run without a network by seeding the
+cache. Suite 67/67 twice, 130.36 s and 129.64 s.
