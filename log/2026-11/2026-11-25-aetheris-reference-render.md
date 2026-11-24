@@ -65,3 +65,40 @@ whether or not anything was placed on it.
 Skipping whitespace-only text nodes did not move the number (33.6 either way), so it was reverted rather
 than shipped. A plausible change that leaves the measurement identical is a guess - and this engine has
 already been bitten by one (the `reserve(24)` that measured 33% slower).
+
+---
+
+# Row 0.11 closed — the double line, and a metric that went the wrong way
+
+The suspect was the tail of `layout_inline_children`:
+
+```cpp
+cursor_y = std::max(max_bottom, cursor_y + line_height);
+```
+
+It closed an open line unconditionally. After a block-level child `cursor_y` is already that block's
+bottom, so the tail added a second line: every block inside an inline formatting context was counted
+twice. A `<li>` holding one block `<a>` measured **33.6px where chromium gives 16.8**. The function now
+tracks whether a line is open.
+
+| | before | after | chromium |
+| --- | --- | --- | --- |
+| `<li>` with one block line | 33.6px | **16.8px** | 16.8px |
+| contents-list spacing, real page | 79-80px | **28-29px** | 27-28px |
+
+## The metric went down while the layout got better
+
+Pixel agreement fell **90.3% -> 76.9%**. Not a regression — the earlier score was mostly blank page
+matching blank page, and compacting the list moved real text where the reference has the article. A fix
+that brings content into view will often lower this number.
+
+The tool prints both, and they must be read together: agreement says "same content in the same place",
+row positions say "is the spacing right". A single percentage would have made this commit look like a
+regression.
+
+## Left at the top
+
+The header (logo, account links) renders as an empty strip where chromium puts it at y=16-46 — now the
+largest remaining difference.
+
+Suite 67/67 twice, 122.29 s and 122.09 s.
