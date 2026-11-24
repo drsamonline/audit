@@ -89,3 +89,51 @@ CMake cache put that at ~40 minutes. Unverified engine code is not committed to 
 `SecureResourceLoader::load()` writes through to the shared `ResourceCache`, so only the network part
 can run concurrently; and `HttpClient`'s three statics must become per-thread first. Row 0.4 stays
 open with both named.
+
+---
+
+# Row 0.4 — concurrent subresources, and a premise wrong twice
+
+`src/main.cpp` now fetches a page's subresources from a bounded pool (one worker per 16 dependencies,
+capped at 8). Each worker builds its **own** `SecureFetcher` — a fetch writes into the cache, the
+backend list and the policy, so sharing one would be a data race — and results are applied on one
+thread in discovery order. `HttpClient`'s three statics are `thread_local`.
+
+## What it bought: ~10%, not 7.6x
+
+| | |
+| --- | --- |
+| probe (loopback, no gateway) | 7.6x at 8 workers |
+| the page (through this sandbox's egress proxy) | ~10% |
+| the proxy at 8-way, measured with curl | 5.0 s serial vs 2.0 s parallel = **2.5x** |
+
+The ceiling here is the gateway, not the client. On a network without it the change is worth the
+probe's figure.
+
+## The premise was wrong twice
+
+The row was written from "188 linked resources". Tracing the phases:
+
+| phase | cost |
+| --- | --- |
+| discover + fetch | **~47 s** (1,324 dependencies) |
+| `create_scripted_document` | ~14.4 s |
+| paint | 68 ms |
+
+188 is how many resources **load**; the page **discovers 1,324**. The "188 x 300 ms = 57 s" arithmetic
+that motivated the row was a coincidence.
+
+## How the wrong reading survived
+
+Removing `<link>` changed nothing; removing `<script>` changed nothing. That looked like proof the
+fetches were not the cost. It was not — the dependencies come from the stylesheet's `url()` references
+as much as from the markup, so the tags were irrelevant. Both runs still printed "188 linked
+resources", which was the clue that was read past.
+
+A phase timing printed by the program is evidence. A variant of the input that "should" have removed
+the work is a hypothesis.
+
+## Left open
+
+Row **0.5**: 1,324 discovered vs 188 loadable — 1,136 requests for resources that are not there.
+Suite 67/67 twice, 147.41 s and 125.84 s.
