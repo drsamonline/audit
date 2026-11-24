@@ -34,3 +34,31 @@ position alone would have passed while the bug was live - which is exactly how i
 
 The `h1`'s right edge lands at 1022 in a container ending at 1000: a 22px overshoot, so the flex-end
 arithmetic is not exact. Suite 67/67 twice, 128.19 s and 133.82 s, plus 128.98 s with the assertion.
+
+---
+
+# Row 0.10's tail — the flex line divides outer sizes
+
+The row closed with a 22px overshoot on the real page's `h1` still open. The fixture that attributed it:
+one item at `flex-end`, once with a width and then with padding, margin and border.
+
+| item | before | after |
+| --- | --- | --- |
+| `width: 40px` | 260-299 | 260-299 |
+| `padding: 0 10px` | 260-**319** | **240-299** |
+| `margin: 0 10px` | 270-**309** | 260-299 |
+| `border-left: 5px` | 265-**304** | **260-299** |
+
+The flex line was divided between **content** widths, so `flex-end` put a padded item's content box at
+the row's edge and its padding over the top. Margin, padding and border now count when the free space is
+computed, and the border box is placed inside its margin.
+
+## It is not the page's 22px
+
+The `h1` is unchanged at x=487 w=535: free space comes from a base of 513 while the placed box ends 535
+wide. That is a different defect and the row says so rather than implying this closed it.
+
+The fixture earned its keep twice - it found an overflow no screenshot would isolate, and it proved the
+page's 22px had another cause.
+
+Suite 67/67 twice, 134.02 s and 135.18 s.
