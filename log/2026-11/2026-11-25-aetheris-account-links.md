@@ -248,3 +248,39 @@ Make `--overflow` ignore children whose box lies wholly outside the document's v
 re-baseline. The real number is lower, and what remains is worth chasing.
 
 Tree green: 67/67, check-build clean, tree at HEAD.
+
+---
+
+# Fix the instrument, then a real defect falls out of it
+
+## The instrument
+
+`--overflow` now ignores children whose box lies **wholly outside the viewport** — hidden menus and
+off-canvas UI are placed there on purpose, which is correct CSS, not overflow. Corrected baseline:
+**164 → 150**.
+
+## Upstream had answered the layout question
+
+`Rust/src/layout/flex_formatting_context.rs:4318` resolves every item's used main size before placement;
+`:4299` clamps the hypothetical main size at the automatic minimum. The engine already did both, so
+there was nothing to port — which is why six variants moved nothing.
+
+## The first real offender
+
+`div.vector-header-start` is 188px wide with children **321px** past. Cause: **an `<img>` contributed no
+width at all** to the intrinsic sizing — no children, no `width` style — so a link wrapping a 140px logo
+was measured as if it held nothing.
+
+Upstream takes a replaced element's contribution from its natural size (`replaced_sizing.rs:85-100`); the
+engine now uses the `width` attribute or the loaded image's width, for max- and min-content both.
+
+| | before | after |
+| --- | --- | --- |
+| overflow count | 150 | **147** |
+| pixel agreement | 81.1% | 81.1% |
+
+`AetherisAdvancedLayout` pins it. Suite 67/67 twice, 128.20 s and 127.81 s.
+
+## Left
+
+`div.vector-header-start` still the worst at 321px — the logo's container is the next walk.
