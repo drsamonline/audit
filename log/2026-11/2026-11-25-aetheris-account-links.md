@@ -167,3 +167,41 @@ A restructure: a container can place its children only once its own width is fin
 (measure top-down, place bottom-up) or a parent re-placing after its children settle. Not a patch.
 
 Tree green at HEAD: 67/67 (128.05 s), check-build clean.
+
+---
+
+# An instrument for the restructure, and a variant rejected by it
+
+The previous entry ended with "the work is a restructure, not a patch". A restructure needs a number, so
+this one built the number first.
+
+## `--overflow`
+
+`tools/article-position.cpp --overflow` counts containers whose children reach past their own content
+box, worst first. **Baseline: 165 containers** on `en.wikipedia.org/wiki/Web_browser`.
+
+| container | children past its content box |
+| --- | --- |
+| `header.mw-body-header` | **347.7px** |
+| `div.vector-header-start` | **321.2px** (in a 188px box) |
+| `div#p-lang-btn` | 232.0px |
+| `div#right-navigation` | 218.8px |
+
+The header is where the page breaks; the account menu is a symptom of it, not the cause. First time this
+has been a number rather than an inference from a screenshot.
+
+## The fifth variant, rejected by the number
+
+Re-placement (`translate_subtree` + repositioning a flex line from the widths its items actually got) was
+tried again and judged by the count: **165 → 164**. Noise. Reverted.
+
+The rejection cost one measurement instead of a session of squinting at pixels — the earlier two were
+rejected by eye and by x-coordinate.
+
+## What this leaves
+
+A bounded, measurable job: a container can place its children only once its own width is final, so
+layout needs a measure pass and a place pass. **165 is the number to bring down.** Whoever picks it up
+has a baseline, the worst offenders, and four documented dead ends.
+
+Tree green: 67/67 (130.55 s), check-build clean.
