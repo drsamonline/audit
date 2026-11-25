@@ -96,3 +96,38 @@ and this).
 In `layout_flex_children`, place each item from the width it ends up with rather than its base size.
 
 No engine source changed: the tree is at HEAD and check-build is clean.
+
+---
+
+# Three variants, three regressions, and a stop
+
+I proposed going after the pattern - a box sized or placed from a value computed before the thing it
+depends on was known - rather than the symptom. The attempt was worth making; it failed; the record
+matters more than the result.
+
+## Tried
+
+1. **The row-sum** - a flex row's intrinsic width is the sum of its items, not the widest. Correct per
+   css-flexbox-1, and it worked: 54.1px → **423.23 intrinsic / 389.55 actual**. The page looked
+   **worse**.
+2. **`translate_subtree` + re-placement** - a new helper so a flex container can move an item after its
+   layout reveals its width. The container went from x=766 to **x=919.1, w=389.6** - right edge **1308
+   on a 1024px page**. Worse again.
+3. **Both together** - worse still: only a fragment of "D" visible.
+
+All reverted. Pixel agreement never left 81.0-81.1% for any of them - its own signal that none of these
+touched what is actually wrong.
+
+## What the measurement says
+
+The box is sized correctly and positioned wrongly, and the position is decided **above** it: the parent
+places it using the width it had before layout, and my re-placement did not reach that level. The defect
+is in the header chain, not the menu.
+
+## Why stop here
+
+Four sessions have produced one reliable rule: the defect is one layer below where the symptom appears.
+This time I guessed the layer and was wrong twice. The instrument that settles it - the ancestor walk -
+already exists; pointing it at the right node is deliberate work, not a patch.
+
+Suite 67/67 on the reverted tree, 128.05 s. Tree green, `check-build` clean.
