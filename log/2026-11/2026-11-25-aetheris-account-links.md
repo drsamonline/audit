@@ -68,3 +68,31 @@ Items no longer collapse but now **overflow** right: the outer container still a
 question: what sizes that box.
 
 Suite 67/67 twice, 122.64 s and 121.94 s, plus 122.37 s with the assertion.
+
+---
+
+# An experiment that was reverted
+
+The menu items overflowed because the container allocated 54.1px. The container is `.vector-user-links`,
+`display: flex` - and the engine measured a flex row as its **widest child** instead of the **sum**.
+
+Summing is what css-flexbox-1 says, and it worked:
+
+| | before | with the row-sum |
+| --- | --- | --- |
+| container intrinsic | 54.1 | **423.23** |
+| container actual | 54.1 | **389.55** |
+
+The box was right and the page looked **worse**: links pushed further off the right edge ("Don" where
+"Donate" had been), agreement unmoved at 81.1%.
+
+Reverted. The parent still places the child at x=766 using the size it had *before* layout; giving the
+child its correct width without fixing that placement just moves the overflow. A spec-correct change that
+makes the page worse is not a fix - this engine has now had two (the `reserve(24)` that measured slower,
+and this).
+
+## Next
+
+In `layout_flex_children`, place each item from the width it ends up with rather than its base size.
+
+No engine source changed: the tree is at HEAD and check-build is clean.
