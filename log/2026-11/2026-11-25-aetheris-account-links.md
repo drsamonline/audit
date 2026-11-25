@@ -284,3 +284,40 @@ engine now uses the `width` attribute or the loaded image's width, for max- and 
 ## Left
 
 `div.vector-header-start` still the worst at 321px — the logo's container is the next walk.
+
+---
+
+# Two elements with the same class, and a probe bug of my own
+
+Chasing `div.vector-header-start`, the worst offender at 321px. Three things came out; none was the fix
+I expected.
+
+## A probe bug: an empty tag matched the document root
+
+`find_layout` returned the first node whose `dom_node->name == tag`; with `tag` empty that matched the
+synthetic root, whose name is also empty — so `class=...` searches silently reported the root. One line:
+`!tag.empty()`.
+
+## The probe finds elements by class and prints widths now
+
+Without widths, "which child is 321px past" was unanswerable.
+
+## The namesake
+
+The walk says this instance overflows by **54.7px**, not 321.2:
+
+| child | x | width | right edge |
+| --- | --- | --- | --- |
+| anonymous inline | 88.0 | 38.4 | 126.4 |
+| `nav` | 146.5 | 116.2 | 262.7 |
+| anonymous inline | **282.7** | 48.0 | **330.7** |
+
+Content box ends at 276. Wikipedia ships **two** elements with that class (normal and sticky header); the
+scan reports the worst across both. A class name is not an identity.
+
+## Next
+
+`--overflow` should print an element's position and its parent's, so the worst offender can be told from
+its namesake. Third time in this row that the instrument, not the layout, was what was wrong.
+
+Tree green: 67/67, check-build clean.
