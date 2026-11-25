@@ -321,3 +321,48 @@ scan reports the worst across both. A class name is not an identity.
 its namesake. Third time in this row that the instrument, not the layout, was what was wrong.
 
 Tree green: 67/67, check-build clean.
+
+---
+
+# The fix I had rejected twice, now judged properly
+
+## The instrument learned identity
+
+`--overflow` prints each offender's own x/y/width **and its parent's**. `div.vector-header-start` appears
+twice on the page (normal and sticky header); a class name had already sent one walk to the wrong element.
+
+## What identity revealed
+
+The container's children are flex items with a **20px gap**, laid out sequentially:
+
+| child | x | width |
+| --- | --- | --- |
+| anonymous inline | 88.0 | 38.4 |
+| `nav` | 146.5 | 116.2 |
+| anonymous inline | 282.7 | 48.0 |
+| `a` (logo) | 350.8 | 188.0 |
+| anonymous inline | 558.8 | 38.4 |
+
+**509px inside a 188px box** — and it got 188 because `max_content_width()` measures a flex row as its
+widest child instead of the sum.
+
+## The row-sum, tried twice and rejected twice
+
+Applied two turns ago, judged by the menu's x-coordinate, reverted. Judged by the corrected metric:
+
+| | before | after |
+| --- | --- | --- |
+| overflow count | 147 | **141** |
+| `div.vector-header-start` | worst, 321.2 past | **gone from the list** |
+| worst offender | `div.vector-header-start` | `header.vector-header`, one level up |
+| pixel agreement | 81.1% | 81.1% |
+
+The offender moving **up** the chain is what a working fix looks like.
+
+## What it says
+
+The change was correct all along. What was missing was a measurement that could tell correct from
+incorrect — and I rejected a good fix twice on one pixel coordinate and a crop. That cost more than any
+individual bug in this row.
+
+Suite 67/67 twice, 128.98 s and 129.64 s, plus 131.06 s with the assertion.
