@@ -205,3 +205,46 @@ layout needs a measure pass and a place pass. **165 is the number to bring down.
 has a baseline, the worst offenders, and four documented dead ends.
 
 Tree green: 67/67 (130.55 s), check-build clean.
+
+---
+
+# Upstream says the engine is already right, so the metric must be wrong
+
+The instruction was to check upstream first. The reference tree was re-cloned (it does not survive a pod
+recycle) and read.
+
+## What upstream does
+
+`Libraries/LibWeb/Rust/src/layout/flex_formatting_context.rs`:
+
+- **:4299** — hypothetical main size = `clamp(flex_base_size, clamp_min, clamp_max)`, `clamp_min`
+  defaulting to `automatic_minimum_size_for_clamping` (the automatic minimum size).
+- **:4318** — `resolve_flexible_lengths()` runs in `run()` **before** any placement, so every item's used
+  main size is fixed before the line is positioned.
+- **:4304** — `run()`: prepare items, collect lines, resolve flexible lengths, cross sizes, place.
+
+The engine already has both halves — `min_content_width()` is the automatic minimum (row 0.13), and the
+flex pass computes widths before placing. The port found nothing to port, which was the answer.
+
+## Enforcing the second half changed nothing
+
+Adding the resolved-size discipline (the item keeps the size the algorithm resolved; content overflows
+inside the box) moved the count by **zero: 164 → 164**. Reverted.
+
+## The finding: the metric counts design as defect
+
+| container | x | note |
+| --- | --- | --- |
+| `div#p-lang-btn` | **1069.9** | beyond a 1024px viewport |
+| `span#mwBEg` | **1009.4** | beyond a 1024px viewport |
+
+Hidden menus and off-canvas UI, positioned outside the viewport on purpose — correct CSS, not overflow.
+The counter treated "child reaches past its parent" as a defect without asking whether the child was
+meant to be there. Six variants failed against it because it could not tell a bug from a design.
+
+## Next
+
+Make `--overflow` ignore children whose box lies wholly outside the document's viewport, then
+re-baseline. The real number is lower, and what remains is worth chasing.
+
+Tree green: 67/67, check-build clean, tree at HEAD.
