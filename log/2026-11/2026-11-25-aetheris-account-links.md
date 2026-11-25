@@ -366,3 +366,42 @@ incorrect — and I rejected a good fix twice on one pixel coordinate and a crop
 individual bug in this row.
 
 Suite 67/67 twice, 128.98 s and 129.64 s, plus 131.06 s with the assertion.
+
+---
+
+# Session close
+
+State saved and pushed: `main` at `374daf2a`, audit at `6255c18`, suite 67/67 twice, tree clean,
+`check-build` clean. `docs/NEXT-SESSION-PROMPT.md` rewritten for the next session.
+
+## The two numbers that now exist
+
+| instrument | baseline |
+| --- | --- |
+| `tools/reference-render.sh` | **81.1%** agreement, text rows 28-29px vs chromium's 27-28 |
+| `tools/article-position.cpp --overflow` | **141** overflows, with identity |
+
+## The session in one table
+
+| commit | what it did | judged by |
+| --- | --- | --- |
+| `9436047f` | closed an inline line only when one is open | `<li>` 33.6 -> 16.8px |
+| `bf1b0779` | a failed image paints its `alt` text | the logo area renders |
+| `eb1284a4` | floored a flex item's shrink at min-content | agreement 76.6% -> 81.1% |
+| `b808e0cd` | an `<img>` contributes its intrinsic width | overflows 150 -> 147 |
+| `374daf2a` | a flex row's intrinsic width is the sum of its items | overflows 147 -> 141 |
+| six reverts | dead ends, each documented | — |
+
+## What was learned
+
+1. A metric that cannot tell a bug from a design is worse than no metric — the overflow counter counted
+   off-canvas menus as defects, and six attempts failed against it before anyone read what it counted.
+2. A correct fix can look wrong through the wrong instrument — the row-sum was reverted twice on one pixel
+   coordinate and a crop.
+3. Read upstream before designing — it said the engine already did what was about to be rewritten.
+4. When a fix keeps failing, build the instrument first — the corrected counter named a real defect within a
+   minute of being fixed.
+
+## Next
+
+`header.vector-header`, worst overflow at 422.1px past, account menu still clipped.
