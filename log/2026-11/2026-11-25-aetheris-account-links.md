@@ -131,3 +131,39 @@ This time I guessed the layer and was wrong twice. The instrument that settles i
 already exists; pointing it at the right node is deliberate work, not a patch.
 
 Suite 67/67 on the reverted tree, 128.05 s. Tree green, `check-build` clean.
+
+---
+
+# The mechanism, measured at last
+
+The previous entry stopped with "walk the ancestor chain before touching code". This one did it.
+
+## The chain, from the menu container upward
+
+| node | x | width | ends at | parent's right edge |
+| --- | --- | --- | --- | --- |
+| `nav` (`justify-content: flex-end`) | 678.7 | 192.2 | 870.9 | — |
+| its child | **697.9** | 192.2 | 890.1 | 870.9 — **19px past** |
+| `p-vector-user-menu-overflow` | **861.2** | 117.7 | 978.9 | 890.1 — **89px past** |
+
+Every level overflows by the gap between the size the parent handed its child and the size the child
+ended up with, and the overflow accumulates.
+
+## The fourth variant, measured not eyeballed
+
+Re-placement alone (`translate_subtree` + repositioning from real widths) moved the menu
+**861.2 → 884.2** - 23px further right. Earlier variants were judged from a crop; this one from a number,
+and the number said no. All four reverted; agreement never left 81.0-81.1%.
+
+## What it rules out
+
+The fix is not in how one flex container places its own items. Each container places correctly given the
+size its parent handed it; the parent hands it a stale size. A re-placement pass inside one container
+cannot fix that - which is why all four attempts failed the same way.
+
+## What it means
+
+A restructure: a container can place its children only once its own width is final - two-pass layout
+(measure top-down, place bottom-up) or a parent re-placing after its children settle. Not a patch.
+
+Tree green at HEAD: 67/67 (128.05 s), check-build clean.
