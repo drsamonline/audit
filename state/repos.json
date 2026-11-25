@@ -1,5 +1,5 @@
 {
- "count": 149,
+ "count": 186,
  "repos": {
   "All4ONE": {
    "archived": false,
@@ -86,7 +86,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T16:07:50Z",
+   "pushed_at": "2026-11-24T17:05:39Z",
    "readable": true,
    "releases": [
     {
@@ -519,28 +519,28 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T11:40:20Z",
+   "pushed_at": "2026-11-25T06:56:58Z",
    "readable": true,
    "releases": [
     {
      "assets": [],
-     "tag": "v2.23.0"
+     "tag": "v2.38.0"
     },
     {
      "assets": [],
-     "tag": "v2.22.0"
+     "tag": "v2.37.0"
     },
     {
      "assets": [],
-     "tag": "v2.21.0"
+     "tag": "v2.36.0"
     },
     {
      "assets": [],
-     "tag": "v2.20.0"
+     "tag": "v2.35.0"
     },
     {
      "assets": [],
-     "tag": "v2.19.0"
+     "tag": "v2.34.0"
     }
    ],
    "root_files": [
@@ -588,25 +588,16 @@
    "archived": false,
    "default_branch": "main",
    "description": "Twenty-four Indian monuments rebuilt as live 3D miniatures in the browser \u2014 every dome and lattice screen generated in code with three.js. No photographs, no downloaded meshes, no build step.",
-   "docs_index": true,
+   "docs_index": false,
    "fork": false,
    "has_pages": true,
    "homepage": "https://drsamonline.github.io/INDIA/",
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T11:35:42Z",
+   "pushed_at": "2026-11-25T08:00:49Z",
    "readable": true,
-   "releases": [
-    {
-     "assets": [
-      "INDIA-linux",
-      "INDIA-portable.exe",
-      "INDIA.apk"
-     ],
-     "tag": "app-latest"
-    }
-   ],
+   "releases": [],
    "root_files": [
     ".github",
     ".gitignore",
@@ -641,7 +632,6 @@
    ],
    "upstream": null,
    "workflow_files": [
-    "build-apps.yml",
     "site.yml"
    ]
   },
@@ -656,7 +646,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T14:53:11Z",
+   "pushed_at": "2026-11-24T14:59:33Z",
    "readable": true,
    "releases": [
     {
@@ -788,7 +778,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T11:42:01Z",
+   "pushed_at": "2026-11-25T12:47:27Z",
    "readable": true,
    "releases": [
     {
@@ -1830,7 +1820,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T16:08:17Z",
+   "pushed_at": "2026-11-24T20:07:54Z",
    "readable": true,
    "releases": [
     {
@@ -1892,7 +1882,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-21T18:58:10Z",
+   "pushed_at": "2026-11-24T15:00:03Z",
    "readable": true,
    "releases": [
     {
@@ -1944,7 +1934,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-24T11:47:17Z",
+   "pushed_at": "2026-11-25T13:09:05Z",
    "readable": true,
    "releases": [
     {
@@ -2412,7 +2402,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T18:40:30Z",
+   "pushed_at": "2026-11-25T00:51:55Z",
    "readable": true,
    "releases": [
     {
@@ -2490,7 +2480,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-24T12:39:54Z",
+   "pushed_at": "2026-11-25T08:00:35Z",
    "readable": true,
    "releases": [
     {
@@ -3065,6 +3055,152 @@
     "build-apps.yml"
    ]
   },
+  "app-argue": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T08:44:04Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-argue-linux",
+      "app-argue-portable.exe",
+      "app-argue.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "app-attention": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:29Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-babel": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:31:23Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-belief": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T08:07:37Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-belief-linux",
+      "app-belief-portable.exe",
+      "app-belief.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
   "app-builder": {
    "archived": false,
    "default_branch": "main",
@@ -3116,6 +3252,93 @@
     "pages.yml",
     "tests.yml"
    ]
+  },
+  "app-calm-room": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:09Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-carrier": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:51Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-claim": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:19Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
   },
   "app-clip-loom": {
    "archived": false,
@@ -3188,7 +3411,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:35:20Z",
+   "pushed_at": "2026-11-24T22:34:42Z",
    "readable": true,
    "releases": [
     {
@@ -3231,6 +3454,122 @@
    "upstream": null,
    "workflow_files": [
     "build-apps.yml"
+   ]
+  },
+  "app-daily-doodle": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:59Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-decay": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T08:32:54Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-decay-linux",
+      "app-decay-portable.exe",
+      "app-decay.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "app-doc-diff": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T08:07:33Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-doc-diff-linux",
+      "app-doc-diff-portable.exe",
+      "app-doc-diff.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
    ]
   },
   "app-encrypted-case-log": {
@@ -3364,6 +3703,93 @@
     "build-apps.yml",
     "test.yml"
    ]
+  },
+  "app-esoteric": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:34Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-field-kit": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:42Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-hearth": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:31:08Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
   },
   "app-image-toolkit": {
    "archived": false,
@@ -3571,6 +3997,297 @@
     "test.yml"
    ]
   },
+  "app-ledger": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:24Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-mail-merge": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T08:07:35Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-mail-merge-linux",
+      "app-mail-merge-portable.exe",
+      "app-mail-merge.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "app-memory": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:26Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-memory-palace": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:31:02Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-mind-kit": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:22Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-minutes": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T12:40:59Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-minutes-linux",
+      "app-minutes-portable.exe",
+      "app-minutes.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "app-monitor": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:32Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-nearby": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:37Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-nest": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:39Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
   "app-opd-register": {
    "archived": false,
    "default_branch": "main",
@@ -3627,6 +4344,94 @@
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
+   ]
+  },
+  "app-open-when-bad": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T12:31:56Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-open-when-bad-linux",
+      "app-open-when-bad-portable.exe",
+      "app-open-when-bad.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "app-oracle": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T08:07:40Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-oracle-linux",
+      "app-oracle-portable.exe",
+      "app-oracle.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
    ]
   },
   "app-organon-reader": {
@@ -3701,6 +4506,35 @@
     "test.yml"
    ]
   },
+  "app-palimpsest": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:53Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
   "app-panchang": {
    "archived": false,
    "default_branch": "main",
@@ -3712,7 +4546,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T09:02:10Z",
+   "pushed_at": "2026-11-24T23:14:50Z",
    "readable": true,
    "releases": [
     {
@@ -3793,6 +4627,94 @@
     "test.yml"
    ]
   },
+  "app-pantry": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T08:07:42Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-pantry-linux",
+      "app-pantry-portable.exe",
+      "app-pantry.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "app-paperwork": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T12:21:03Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-paperwork-linux",
+      "app-paperwork-portable.exe",
+      "app-paperwork.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
   "app-poets-studio": {
    "archived": false,
    "default_branch": "main",
@@ -3804,7 +4726,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:52:06Z",
+   "pushed_at": "2026-11-24T18:35:10Z",
    "readable": true,
    "releases": [
     {
@@ -3867,6 +4789,180 @@
     "test.yml"
    ]
   },
+  "app-quorum": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:31:16Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-rally": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:44Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-repair": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:31:05Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-rota": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:16Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-semaphore": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:31:13Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-stethoscope": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:31:10Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
   "app-story-engine": {
    "archived": false,
    "default_branch": "main",
@@ -3927,6 +5023,108 @@
     "meta.yml",
     "test.yml"
    ]
+  },
+  "app-study": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T08:22:12Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-study-linux",
+      "app-study-portable.exe",
+      "app-study.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
+  },
+  "app-sundial": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:30:56Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
+  },
+  "app-symbiote": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T06:31:20Z",
+   "readable": true,
+   "releases": [],
+   "root_files": [
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": []
   },
   "app-thermals": {
    "archived": false,
@@ -3993,6 +5191,50 @@
    "workflow_files": [
     "build-apps.yml",
     "test.yml"
+   ]
+  },
+  "app-voice": {
+   "archived": false,
+   "default_branch": "main",
+   "description": "Forge app \u2014 offline, single-file, no account, no telemetry.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "",
+   "licence_file": "LICENSE",
+   "licence_spdx": "NOASSERTION",
+   "pages_status": null,
+   "pushed_at": "2026-11-25T12:10:10Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "app-voice-linux",
+      "app-voice-portable.exe",
+      "app-voice.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
+   "root_files": [
+    ".github",
+    ".gitignore",
+    ".nojekyll",
+    "BUILD-PROMPT.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "PAGES.json",
+    "README.md",
+    "docs",
+    "package.json",
+    "tests"
+   ],
+   "topics": [],
+   "upstream": null,
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
    ]
   },
   "app-weft-puzzles": {
@@ -4213,7 +5455,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T12:39:24Z",
+   "pushed_at": "2026-11-25T08:00:48Z",
    "readable": true,
    "releases": [
     {
@@ -4659,7 +5901,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:54:50Z",
+   "pushed_at": "2026-11-24T20:24:37Z",
    "readable": true,
    "releases": [
     {
@@ -5041,7 +6283,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T10:21:28Z",
+   "pushed_at": "2026-11-24T19:45:54Z",
    "readable": true,
    "releases": [
     {
@@ -5255,7 +6497,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T08:44:10Z",
+   "pushed_at": "2026-11-25T09:10:53Z",
    "readable": true,
    "releases": [
     {
@@ -5311,7 +6553,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T00:49:18Z",
+   "pushed_at": "2026-11-24T14:20:03Z",
    "readable": true,
    "releases": [
     {
@@ -5380,7 +6622,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T13:53:34Z",
+   "pushed_at": "2026-11-25T13:08:07Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -5422,7 +6664,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T14:15:25Z",
+   "pushed_at": "2026-11-25T13:29:25Z",
    "readable": true,
    "releases": [
     {
@@ -6302,7 +7544,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T00:44:42Z",
+   "pushed_at": "2026-11-24T16:14:57Z",
    "readable": true,
    "releases": [
     {
@@ -7757,7 +8999,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:36:17Z",
+   "pushed_at": "2026-11-24T15:35:17Z",
    "readable": true,
    "releases": [
     {
@@ -8945,7 +10187,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-22T12:38:18Z",
+   "pushed_at": "2026-11-24T18:41:05Z",
    "readable": true,
    "releases": [
     {
@@ -9071,9 +10313,41 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T11:58:47Z",
+   "pushed_at": "2026-11-25T06:13:31Z",
    "readable": true,
    "releases": [
+    {
+     "assets": [
+      "Savehorse-0.3.1-1.x86_64.rpm",
+      "savehorse-desktop.exe",
+      "savehorse-linux-x86_64",
+      "savehorse-macos-arm64",
+      "savehorse-windows-x86_64.exe",
+      "Savehorse_0.3.1_aarch64.dmg",
+      "Savehorse_0.3.1_amd64.AppImage",
+      "Savehorse_0.3.1_amd64.deb",
+      "Savehorse_0.3.1_x64-setup.exe",
+      "Savehorse_0.3.1_x64_en-US.msi",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v0.3.1"
+    },
+    {
+     "assets": [
+      "Savehorse-0.3.0-1.x86_64.rpm",
+      "savehorse-desktop.exe",
+      "savehorse-linux-x86_64",
+      "savehorse-macos-arm64",
+      "savehorse-windows-x86_64.exe",
+      "Savehorse_0.3.0_aarch64.dmg",
+      "Savehorse_0.3.0_amd64.AppImage",
+      "Savehorse_0.3.0_amd64.deb",
+      "Savehorse_0.3.0_x64-setup.exe",
+      "Savehorse_0.3.0_x64_en-US.msi",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v0.3.0"
+    },
     {
      "assets": [
       "savehorse-linux",
@@ -9252,7 +10526,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T15:12:14Z",
+   "pushed_at": "2026-11-25T06:09:08Z",
    "readable": true,
    "releases": [
     {
@@ -9361,7 +10635,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:44:39Z",
+   "pushed_at": "2026-11-24T21:14:44Z",
    "readable": true,
    "releases": [
     {
@@ -9838,7 +11112,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:46:00Z",
+   "pushed_at": "2026-11-24T21:24:57Z",
    "readable": true,
    "releases": [
     {
@@ -10060,7 +11334,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-18T08:36:09Z",
+   "pushed_at": "2026-11-24T16:14:57Z",
    "readable": true,
    "releases": [
     {
