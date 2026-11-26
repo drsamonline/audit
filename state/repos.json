@@ -519,28 +519,28 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:56:58Z",
+   "pushed_at": "2026-11-26T10:53:19Z",
    "readable": true,
    "releases": [
     {
      "assets": [],
-     "tag": "v2.38.0"
+     "tag": "v2.46.0"
     },
     {
      "assets": [],
-     "tag": "v2.37.0"
+     "tag": "v2.45.0"
     },
     {
      "assets": [],
-     "tag": "v2.36.0"
+     "tag": "v2.44.0"
     },
     {
      "assets": [],
-     "tag": "v2.35.0"
+     "tag": "v2.43.0"
     },
     {
      "assets": [],
-     "tag": "v2.34.0"
+     "tag": "v2.42.0"
     }
    ],
    "root_files": [
@@ -595,7 +595,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:00:49Z",
+   "pushed_at": "2026-11-26T12:27:51Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -632,7 +632,8 @@
    ],
    "upstream": null,
    "workflow_files": [
-    "site.yml"
+    "site.yml",
+    "sweep.yml"
    ]
   },
   "KILN": {
@@ -778,7 +779,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T12:47:27Z",
+   "pushed_at": "2026-11-26T11:54:13Z",
    "readable": true,
    "releases": [
     {
@@ -1934,7 +1935,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-25T13:09:05Z",
+   "pushed_at": "2026-11-26T10:50:21Z",
    "readable": true,
    "releases": [
     {
@@ -2480,7 +2481,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:00:35Z",
+   "pushed_at": "2026-11-26T10:50:27Z",
    "readable": true,
    "releases": [
     {
@@ -3110,10 +3111,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:29Z",
+   "pushed_at": "2026-11-26T03:33:12Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-attention-linux",
+      "app-attention-portable.exe",
+      "app-attention.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -3122,11 +3133,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-babel": {
    "archived": false,
@@ -3264,10 +3280,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:09Z",
+   "pushed_at": "2026-11-25T18:17:20Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-calm-room-linux",
+      "app-calm-room-portable.exe",
+      "app-calm-room.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -3276,11 +3302,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-carrier": {
    "archived": false,
@@ -3293,10 +3324,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:51Z",
+   "pushed_at": "2026-11-26T11:47:18Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-carrier-linux",
+      "app-carrier-portable.exe",
+      "app-carrier.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -3305,11 +3346,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-claim": {
    "archived": false,
@@ -3322,10 +3368,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:19Z",
+   "pushed_at": "2026-11-25T18:35:37Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-claim-linux",
+      "app-claim-portable.exe",
+      "app-claim.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -3334,11 +3390,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-clip-loom": {
    "archived": false,
@@ -3715,10 +3776,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:34Z",
+   "pushed_at": "2026-11-26T10:16:22Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-esoteric-linux",
+      "app-esoteric-portable.exe",
+      "app-esoteric.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -3727,11 +3798,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-field-kit": {
    "archived": false,
@@ -3744,10 +3820,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:42Z",
+   "pushed_at": "2026-11-26T11:32:01Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-field-kit-linux",
+      "app-field-kit-portable.exe",
+      "app-field-kit.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -3756,11 +3842,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-hearth": {
    "archived": false,
@@ -4008,10 +4099,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:24Z",
+   "pushed_at": "2026-11-26T03:14:24Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-ledger-linux",
+      "app-ledger-portable.exe",
+      "app-ledger.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4020,11 +4121,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-mail-merge": {
    "archived": false,
@@ -4081,10 +4187,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:26Z",
+   "pushed_at": "2026-11-26T03:24:56Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-memory-linux",
+      "app-memory-portable.exe",
+      "app-memory.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4093,11 +4209,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-memory-palace": {
    "archived": false,
@@ -4139,10 +4260,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:22Z",
+   "pushed_at": "2026-11-26T03:06:45Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-mind-kit-linux",
+      "app-mind-kit-portable.exe",
+      "app-mind-kit.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4151,11 +4282,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-minutes": {
    "archived": false,
@@ -4212,10 +4348,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:32Z",
+   "pushed_at": "2026-11-26T10:09:12Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-monitor-linux",
+      "app-monitor-portable.exe",
+      "app-monitor.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4224,11 +4370,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-nearby": {
    "archived": false,
@@ -4241,10 +4392,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:37Z",
+   "pushed_at": "2026-11-26T10:23:28Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-nearby-linux",
+      "app-nearby-portable.exe",
+      "app-nearby.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4253,11 +4414,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-nest": {
    "archived": false,
@@ -4270,10 +4436,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:39Z",
+   "pushed_at": "2026-11-26T10:31:11Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-nest-linux",
+      "app-nest-portable.exe",
+      "app-nest.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4282,11 +4458,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-opd-register": {
    "archived": false,
@@ -4517,10 +4698,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:53Z",
+   "pushed_at": "2026-11-26T11:53:58Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-palimpsest-linux",
+      "app-palimpsest-portable.exe",
+      "app-palimpsest.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4529,11 +4720,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-panchang": {
    "archived": false,
@@ -4829,10 +5025,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:44Z",
+   "pushed_at": "2026-11-26T11:40:00Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-rally-linux",
+      "app-rally-portable.exe",
+      "app-rally.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4841,11 +5047,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-repair": {
    "archived": false,
@@ -4887,10 +5098,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:16Z",
+   "pushed_at": "2026-11-25T18:26:09Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-rota-linux",
+      "app-rota-portable.exe",
+      "app-rota.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4899,11 +5120,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-semaphore": {
    "archived": false,
@@ -5455,7 +5681,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:00:48Z",
+   "pushed_at": "2026-11-26T10:49:55Z",
    "readable": true,
    "releases": [
     {
@@ -5474,6 +5700,7 @@
     "docs",
     "log",
     "reports",
+    "scripts",
     "state",
     "tools"
    ],
@@ -6195,7 +6422,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T11:07:11Z",
+   "pushed_at": "2026-11-26T13:00:28Z",
    "readable": true,
    "releases": [
     {
@@ -6497,7 +6724,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T09:10:53Z",
+   "pushed_at": "2026-11-26T12:19:57Z",
    "readable": true,
    "releases": [
     {
@@ -6622,7 +6849,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T13:08:07Z",
+   "pushed_at": "2026-11-26T12:47:01Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -6664,7 +6891,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T13:29:25Z",
+   "pushed_at": "2026-11-26T13:05:29Z",
    "readable": true,
    "releases": [
     {
@@ -7544,7 +7771,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T16:14:57Z",
+   "pushed_at": "2026-11-25T18:52:05Z",
    "readable": true,
    "releases": [
     {
@@ -7986,7 +8213,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T15:37:31Z",
+   "pushed_at": "2026-11-26T00:50:02Z",
    "readable": true,
    "releases": [
     {
@@ -8835,7 +9062,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-23T12:48:12Z",
+   "pushed_at": "2026-11-26T06:56:59Z",
    "readable": true,
    "releases": [
     {

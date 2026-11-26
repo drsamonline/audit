@@ -1,4 +1,5 @@
 {
+ "INDIA/sweep.yml": "0 3 * * 1'        # Mondays, 03:00 UTC \u2014 08:30 IST",
  "KILN/kiln.yml": "17 4 * * *",
  "LARGE_GLOBE/check.yml": "0 4 * * 1\"   # Mondays, 04:00 UTC",
  "Matneo/blog.yml": "12 4 * * 2\"   # weekly, Tuesday 04:12 UTC",
