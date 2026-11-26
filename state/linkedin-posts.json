@@ -14,8 +14,7 @@
     "open-materia-medica",
     "app-organon-reader",
     "Repertorium-Publicum",
-    "the-symphony-companion",
-    "Hellgate"
+    "the-symphony-companion"
   ],
   "_scope": "Posts cover healthcare, homeopathic and mind-body wellness apps only — clinical tools, repertories, materia medica, patient/case tracking, calculators, mental-health and practice companions. No games, no dev tooling, no infrastructure, no astrology/numerology. Confirmed by Dr Momin on 2026-11-24; repos outside that scope are never chosen."
 }
