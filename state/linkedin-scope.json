@@ -1,0 +1,47 @@
+{
+  "_note": "HARD RULE for the daily LinkedIn post. Read this file on every run and obey it over any other instruction in the job prompt. It is not advisory: an app outside these categories is never posted, no matter how fresh, how popular or how easy to write about.",
+  "version": 2,
+  "status": "locked",
+  "locked_by": "Dr Sohil Momin",
+  "locked_on": "2026-11-26",
+  "first_confirmed": "2026-11-24",
+  "mode": "allowlist-only",
+  "on_uncertain": "skip",
+  "allow": {
+    "medical-health": "Clinical reference, homeopathic repertories and materia medica, patient and case tracking, OPD and practice tools, medical calculators, drug and anatomy references, study tools for clinical subjects.",
+    "mind-mental-health": "Mood, calm, sleep, breathing, meditation, journaling, attention, memory, psychology, mind-body.",
+    "lifestyle-wellness": "Diet and nutrition, fitness, habits, hydration, fasting, yoga and posture, women's health, elder care, personal health tracking."
+  },
+  "deny": [
+    "games",
+    "dev tooling and CLI tools",
+    "kits, libraries, engines",
+    "infrastructure and fleet tooling",
+    "data dumps and reference dumps",
+    "astrology and numerology",
+    "finance",
+    "general office and productivity utilities",
+    "browsers",
+    "social tools",
+    "anything not clearly in one of the three allowed categories"
+  ],
+  "deny_repos": [
+    "Hellgate",
+    "LARGE_GLOBE",
+    "dance-fight",
+    "idle-city-ages-of-growth",
+    "conqueror-os",
+    "The_Browser",
+    "TTB",
+    "savehorse",
+    "neonboom"
+  ],
+  "rules": [
+    "Decide the category from the repo's own README, not from its name.",
+    "If the category is ambiguous, skip the repo. Never guess in favour of posting.",
+    "If no in-scope app is left for the month, post nothing and say so in one line.",
+    "If the in-scope pool comes out far below the usual 20-35, treat it as a discovery failure, fix it, and never post from the broken list.",
+    "A game is never in scope. The word 'wellness' in a game's description does not make it a wellness app.",
+    "Never claim medical, diagnostic or treatment capability, and never present an app as a substitute for a doctor."
+  ]
+}
