@@ -37,11 +37,14 @@
     "neonboom"
   ],
   "rules": [
+    "A run produces a DRAFT only. Publishing requires an explicit approval from Dr Momin in a live turn - silence, a scheduled run, or an automated retry is never approval.",
     "Decide the category from the repo's own README, not from its name.",
     "If the category is ambiguous, skip the repo. Never guess in favour of posting.",
     "If no in-scope app is left for the month, post nothing and say so in one line.",
     "If the in-scope pool comes out far below the usual 20-35, treat it as a discovery failure, fix it, and never post from the broken list.",
     "A game is never in scope. The word 'wellness' in a game's description does not make it a wellness app.",
     "Never claim medical, diagnostic or treatment capability, and never present an app as a substitute for a doctor."
-  ]
+  ],
+  "require_human_approval": true,
+  "approval_note": "NEVER publish straight from the daily run. Each run writes a draft and stops. The post goes out only after Dr Momin replies approving it, in a turn he starts himself. If no approval has arrived, nothing is published."
 }
