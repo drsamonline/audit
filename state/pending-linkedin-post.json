@@ -5,6 +5,8 @@
   "date": "2026-11-27",
   "commentary": "Memory Palace was updated yesterday. It is a first version, built around one rule: the order is the test.\n\nYou place things at spots in a room, then walk the room back and recall them in the order you placed them. A right item in the wrong place still counts as a miss, because that is what the method is actually about.\n\nThree decisions shaped it:\n\n- Eleven spots, but a ten-item cap. A full room refuses the eleventh and names what it would have displaced. A palace that silently drops something is worse than one that says the room is full: you would walk the room, find the wrong object, and blame your memory.\n- A miss is shown back where it belonged: \"At the table you should have had 'apple'.\" Not a red cross, and not a grade.\n- No spaced-repetition schedule, no intervals, no due list. Adding one would have turned this into a flashcard app, so it stays out.\n\nRemove and renumber work, export and reload work, and a corrupt saved palace is reported and offered for export rather than quietly replaced with an empty one.\n\nFree, offline, no account, no telemetry. Windows, Android and Linux builds, or run it in the browser.\n\nhttps://drsamonline.github.io/app-memory-palace/",
   "link": "https://drsamonline.github.io/app-memory-palace/",
-  "screenshot": null,
-  "status": "pending"
+  "screenshot": "state/pending/app-memory-palace-shot.png",
+  "status": "published",
+  "post_urn": "urn:li:share:7531929950757478400",
+  "posted_at": "2026-11-27T04:05:00+05:30"
 }
