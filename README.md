@@ -4,7 +4,7 @@
 
 
 ![Screenshot](docs/shot.png)
-The change log for the drsamonline fleet — **186 repositories, 339 workflow files, 31 scheduled jobs**.
+The change log for the drsamonline fleet — **187 repositories, 360 workflow files, 31 scheduled jobs**.
 
 Every audit, fix and correction lands here, with the evidence. Nothing in this repo is a plan for
 later; if it says a thing was done, the `log/` entry that claims it carries the before-and-after.

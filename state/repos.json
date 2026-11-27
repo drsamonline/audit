@@ -1,5 +1,5 @@
 {
- "count": 186,
+ "count": 187,
  "repos": {
   "All4ONE": {
    "archived": false,
@@ -12,7 +12,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T00:42:00Z",
+   "pushed_at": "2026-11-26T18:43:43Z",
    "readable": true,
    "releases": [
     {
@@ -519,28 +519,28 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T10:53:19Z",
+   "pushed_at": "2026-11-27T09:51:57Z",
    "readable": true,
    "releases": [
     {
      "assets": [],
-     "tag": "v2.46.0"
+     "tag": "v2.61.0"
     },
     {
      "assets": [],
-     "tag": "v2.45.0"
+     "tag": "v2.60.0"
     },
     {
      "assets": [],
-     "tag": "v2.44.0"
+     "tag": "v2.59.0"
     },
     {
      "assets": [],
-     "tag": "v2.43.0"
+     "tag": "v2.58.0"
     },
     {
      "assets": [],
-     "tag": "v2.42.0"
+     "tag": "v2.57.0"
     }
    ],
    "root_files": [
@@ -595,7 +595,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T12:27:51Z",
+   "pushed_at": "2026-11-26T16:31:49Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -647,7 +647,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T14:59:33Z",
+   "pushed_at": "2026-11-26T14:00:42Z",
    "readable": true,
    "releases": [
     {
@@ -779,7 +779,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T11:54:13Z",
+   "pushed_at": "2026-11-27T13:06:18Z",
    "readable": true,
    "releases": [
     {
@@ -1924,6 +1924,113 @@
     "store.yml"
    ]
   },
+  "MyChrome": {
+   "archived": false,
+   "default_branch": "master",
+   "description": "Portable browser launcher for Windows. Downloads a browser, unpacks it beside the executable and runs it with its own profile. No installer, no registry, no admin rights \u2014 delete the folder to uninstall.",
+   "docs_index": true,
+   "fork": false,
+   "has_pages": true,
+   "homepage": "https://drsamonline.github.io/MyChrome/",
+   "licence_file": "LICENSE",
+   "licence_spdx": "GPL-3.0",
+   "pages_status": null,
+   "pushed_at": "2026-11-27T13:08:56Z",
+   "readable": true,
+   "releases": [
+    {
+     "assets": [
+      "MyBrowser_v3.9.25.7z",
+      "MyBrowser_v3.9.25.zip",
+      "MyBrowser_v3.9.25_source.7z",
+      "MyBrowser_v3.9.25_x64.7z",
+      "MyBrowser_v3.9.25_x64.zip",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v3.9.25"
+    },
+    {
+     "assets": [
+      "MyBrowser_v3.9.24.7z",
+      "MyBrowser_v3.9.24.zip",
+      "MyBrowser_v3.9.24_source.7z",
+      "MyBrowser_v3.9.24_x64.7z",
+      "MyBrowser_v3.9.24_x64.zip",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v3.9.24"
+    },
+    {
+     "assets": [
+      "MyBrowser_v3.9.23.7z",
+      "MyBrowser_v3.9.23.zip",
+      "MyBrowser_v3.9.23_source.7z",
+      "MyBrowser_v3.9.23_x64.7z",
+      "MyBrowser_v3.9.23_x64.zip",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v3.9.23"
+    },
+    {
+     "assets": [
+      "MyBrowser_v3.9.22.7z",
+      "MyBrowser_v3.9.22.zip",
+      "MyBrowser_v3.9.22_source.7z",
+      "MyBrowser_v3.9.22_x64.7z",
+      "MyBrowser_v3.9.22_x64.zip",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v3.9.22"
+    },
+    {
+     "assets": [
+      "MyBrowser_v3.9.21.7z",
+      "MyBrowser_v3.9.21.zip",
+      "MyBrowser_v3.9.21_source.7z",
+      "MyBrowser_v3.9.21_x64.7z",
+      "MyBrowser_v3.9.21_x64.zip",
+      "SHA256SUMS.txt"
+     ],
+     "tag": "v3.9.21"
+    }
+   ],
+   "root_files": [
+    ".editorconfig",
+    ".github",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "NOTICE",
+    "PRIVACY.md",
+    "README.md",
+    "ROADMAP.md",
+    "SECURITY.md",
+    "SUPPORT.md",
+    "TERMS.md",
+    "bucket",
+    "build",
+    "docs",
+    "licenses",
+    "manifests",
+    "resources",
+    "src",
+    "update.txt"
+   ],
+   "topics": [
+    "browser",
+    "browser-tool",
+    "chrome",
+    "firefox",
+    "portable",
+    "portable-applications",
+    "portable-executables"
+   ],
+   "upstream": null,
+   "workflow_files": [
+    "build.yml"
+   ]
+  },
   "NEO": {
    "archived": false,
    "default_branch": "master",
@@ -1935,9 +2042,31 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-26T10:50:21Z",
+   "pushed_at": "2026-11-27T10:50:00Z",
    "readable": true,
    "releases": [
+    {
+     "assets": [
+      "nova-v0.8.1-arm64-macos.tar.gz",
+      "nova-v0.8.1-arm64-macos.tar.gz.sha256",
+      "nova-v0.8.1-x86_64-linux.tar.gz",
+      "nova-v0.8.1-x86_64-linux.tar.gz.sha256",
+      "nova-v0.8.1-x86_64-windows.zip",
+      "nova-v0.8.1-x86_64-windows.zip.sha256"
+     ],
+     "tag": "v0.8.1"
+    },
+    {
+     "assets": [
+      "nova-v0.8.0-arm64-macos.tar.gz",
+      "nova-v0.8.0-arm64-macos.tar.gz.sha256",
+      "nova-v0.8.0-x86_64-linux.tar.gz",
+      "nova-v0.8.0-x86_64-linux.tar.gz.sha256",
+      "nova-v0.8.0-x86_64-windows.zip",
+      "nova-v0.8.0-x86_64-windows.zip.sha256"
+     ],
+     "tag": "v0.8.0"
+    },
     {
      "assets": [
       "nova-v0.7.0-arm64-macos.tar.gz",
@@ -2008,7 +2137,6 @@
     "lsp",
     "path.o",
     "pkg",
-    "runtime",
     "rust-toolchain.toml",
     "scripts",
     "stdlib",
@@ -2222,7 +2350,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T12:39:45Z",
+   "pushed_at": "2026-11-27T06:59:10Z",
    "readable": true,
    "releases": [
     {
@@ -2275,7 +2403,7 @@
   "Sorta": {
    "archived": false,
    "default_branch": "main",
-   "description": "",
+   "description": "Ultra-light, offline-first semantic document sorter. One binary, no service, no telemetry, no cloud. Drop a file on it (or point it at a folder) and it lands in a folder you can predict, with a log entry that explains why.",
    "docs_index": false,
    "fork": false,
    "has_pages": false,
@@ -2481,7 +2609,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-26T10:50:27Z",
+   "pushed_at": "2026-11-27T11:33:08Z",
    "readable": true,
    "releases": [
     {
@@ -3067,7 +3195,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:44:04Z",
+   "pushed_at": "2026-11-27T11:33:12Z",
    "readable": true,
    "releases": [
     {
@@ -3111,7 +3239,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T03:33:12Z",
+   "pushed_at": "2026-11-27T10:20:52Z",
    "readable": true,
    "releases": [
     {
@@ -3155,10 +3283,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:31:23Z",
+   "pushed_at": "2026-11-27T12:45:53Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-babel-linux",
+      "app-babel-portable.exe",
+      "app-babel.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -3167,11 +3305,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-belief": {
    "archived": false,
@@ -3184,7 +3327,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:07:37Z",
+   "pushed_at": "2026-11-27T11:24:15Z",
    "readable": true,
    "releases": [
     {
@@ -3280,7 +3423,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T18:17:20Z",
+   "pushed_at": "2026-11-27T12:28:14Z",
    "readable": true,
    "releases": [
     {
@@ -3324,7 +3467,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T11:47:18Z",
+   "pushed_at": "2026-11-27T10:38:10Z",
    "readable": true,
    "releases": [
     {
@@ -3368,7 +3511,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T18:35:37Z",
+   "pushed_at": "2026-11-27T12:45:46Z",
    "readable": true,
    "releases": [
     {
@@ -3528,10 +3671,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:59Z",
+   "pushed_at": "2026-11-27T12:45:48Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-daily-doodle-linux",
+      "app-daily-doodle-portable.exe",
+      "app-daily-doodle.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -3540,11 +3693,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-decay": {
    "archived": false,
@@ -3557,7 +3715,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:32:54Z",
+   "pushed_at": "2026-11-27T11:29:06Z",
    "readable": true,
    "releases": [
     {
@@ -3601,7 +3759,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:07:33Z",
+   "pushed_at": "2026-11-27T11:18:46Z",
    "readable": true,
    "releases": [
     {
@@ -3776,7 +3934,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T10:16:22Z",
+   "pushed_at": "2026-11-27T10:18:28Z",
    "readable": true,
    "releases": [
     {
@@ -3820,7 +3978,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T11:32:01Z",
+   "pushed_at": "2026-11-27T10:38:46Z",
    "readable": true,
    "releases": [
     {
@@ -3864,10 +4022,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:31:08Z",
+   "pushed_at": "2026-11-27T12:45:51Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-hearth-linux",
+      "app-hearth-portable.exe",
+      "app-hearth.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -3876,11 +4044,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-image-toolkit": {
    "archived": false,
@@ -4099,7 +4272,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T03:14:24Z",
+   "pushed_at": "2026-11-27T12:45:55Z",
    "readable": true,
    "releases": [
     {
@@ -4143,7 +4316,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:07:35Z",
+   "pushed_at": "2026-11-27T11:23:35Z",
    "readable": true,
    "releases": [
     {
@@ -4187,7 +4360,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T03:24:56Z",
+   "pushed_at": "2026-11-27T12:38:25Z",
    "readable": true,
    "releases": [
     {
@@ -4231,10 +4404,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:31:02Z",
+   "pushed_at": "2026-11-27T12:32:51Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-memory-palace-linux",
+      "app-memory-palace-portable.exe",
+      "app-memory-palace.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -4243,11 +4426,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-mind-kit": {
    "archived": false,
@@ -4260,7 +4448,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T03:06:45Z",
+   "pushed_at": "2026-11-27T10:20:06Z",
    "readable": true,
    "releases": [
     {
@@ -4304,7 +4492,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T12:40:59Z",
+   "pushed_at": "2026-11-27T10:45:37Z",
    "readable": true,
    "releases": [
     {
@@ -4348,7 +4536,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T10:09:12Z",
+   "pushed_at": "2026-11-27T10:21:50Z",
    "readable": true,
    "releases": [
     {
@@ -4392,7 +4580,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T10:23:28Z",
+   "pushed_at": "2026-11-27T10:22:36Z",
    "readable": true,
    "releases": [
     {
@@ -4436,7 +4624,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T10:31:11Z",
+   "pushed_at": "2026-11-27T10:36:39Z",
    "readable": true,
    "releases": [
     {
@@ -4538,7 +4726,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T12:31:56Z",
+   "pushed_at": "2026-11-27T10:45:00Z",
    "readable": true,
    "releases": [
     {
@@ -4582,7 +4770,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:07:40Z",
+   "pushed_at": "2026-11-27T11:28:22Z",
    "readable": true,
    "releases": [
     {
@@ -4698,7 +4886,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T11:53:58Z",
+   "pushed_at": "2026-11-27T10:19:04Z",
    "readable": true,
    "releases": [
     {
@@ -4834,7 +5022,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:07:42Z",
+   "pushed_at": "2026-11-27T10:39:40Z",
    "readable": true,
    "releases": [
     {
@@ -4878,7 +5066,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T12:21:03Z",
+   "pushed_at": "2026-11-27T10:40:54Z",
    "readable": true,
    "releases": [
     {
@@ -4996,10 +5184,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:31:16Z",
+   "pushed_at": "2026-11-27T12:45:58Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-quorum-linux",
+      "app-quorum-portable.exe",
+      "app-quorum.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -5008,11 +5206,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-rally": {
    "archived": false,
@@ -5025,7 +5228,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T11:40:00Z",
+   "pushed_at": "2026-11-27T10:37:17Z",
    "readable": true,
    "releases": [
     {
@@ -5069,10 +5272,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:31:05Z",
+   "pushed_at": "2026-11-27T10:17:30Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-repair-linux",
+      "app-repair-portable.exe",
+      "app-repair.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -5081,11 +5294,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-rota": {
    "archived": false,
@@ -5098,7 +5316,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T18:26:09Z",
+   "pushed_at": "2026-11-27T12:28:57Z",
    "readable": true,
    "releases": [
     {
@@ -5142,10 +5360,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:31:13Z",
+   "pushed_at": "2026-11-27T12:33:31Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-semaphore-linux",
+      "app-semaphore-portable.exe",
+      "app-semaphore.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -5154,11 +5382,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-stethoscope": {
    "archived": false,
@@ -5171,10 +5404,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:31:10Z",
+   "pushed_at": "2026-11-27T10:16:57Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-stethoscope-linux",
+      "app-stethoscope-portable.exe",
+      "app-stethoscope.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -5183,11 +5426,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-story-engine": {
    "archived": false,
@@ -5261,7 +5509,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T08:22:12Z",
+   "pushed_at": "2026-11-27T11:19:21Z",
    "readable": true,
    "releases": [
     {
@@ -5305,10 +5553,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:30:56Z",
+   "pushed_at": "2026-11-27T12:38:28Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-sundial-linux",
+      "app-sundial-portable.exe",
+      "app-sundial.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -5317,11 +5575,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-symbiote": {
    "archived": false,
@@ -5334,10 +5597,20 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T06:31:20Z",
+   "pushed_at": "2026-11-27T12:38:39Z",
    "readable": true,
-   "releases": [],
+   "releases": [
+    {
+     "assets": [
+      "app-symbiote-linux",
+      "app-symbiote-portable.exe",
+      "app-symbiote.apk"
+     ],
+     "tag": "app-latest"
+    }
+   ],
    "root_files": [
+    ".github",
     ".gitignore",
     ".nojekyll",
     "BUILD-PROMPT.md",
@@ -5346,11 +5619,16 @@
     "NOTICE",
     "PAGES.json",
     "README.md",
-    "docs"
+    "docs",
+    "package.json",
+    "tests"
    ],
    "topics": [],
    "upstream": null,
-   "workflow_files": []
+   "workflow_files": [
+    "build-apps.yml",
+    "ci.yml"
+   ]
   },
   "app-thermals": {
    "archived": false,
@@ -5430,7 +5708,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-25T12:10:10Z",
+   "pushed_at": "2026-11-27T11:33:44Z",
    "readable": true,
    "releases": [
     {
@@ -5681,7 +5959,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T10:49:55Z",
+   "pushed_at": "2026-11-27T11:45:19Z",
    "readable": true,
    "releases": [
     {
@@ -6724,7 +7002,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T12:19:57Z",
+   "pushed_at": "2026-11-27T12:30:31Z",
    "readable": true,
    "releases": [
     {
@@ -6849,7 +7127,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T12:47:01Z",
+   "pushed_at": "2026-11-27T12:40:36Z",
    "readable": true,
    "releases": [],
    "root_files": [
@@ -6891,7 +7169,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-26T13:05:29Z",
+   "pushed_at": "2026-11-27T13:04:58Z",
    "readable": true,
    "releases": [
     {
@@ -8113,7 +8391,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "MIT",
    "pages_status": null,
-   "pushed_at": "2026-11-18T19:02:15Z",
+   "pushed_at": "2026-11-27T00:42:02Z",
    "readable": true,
    "releases": [
     {
@@ -9649,7 +9927,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T14:15:00Z",
+   "pushed_at": "2026-11-27T00:33:25Z",
    "readable": true,
    "releases": [
     {
@@ -10414,7 +10692,7 @@
    "licence_file": "LICENSE",
    "licence_spdx": "NOASSERTION",
    "pages_status": null,
-   "pushed_at": "2026-11-24T18:41:05Z",
+   "pushed_at": "2026-11-27T12:40:48Z",
    "readable": true,
    "releases": [
     {
