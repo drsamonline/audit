@@ -1,12 +1,10 @@
 {
-  "repo": "app-memory-palace",
+  "repo": "app-memory",
   "category": "mind-mental-health",
   "kind": "update",
-  "date": "2026-11-27",
-  "commentary": "Memory Palace was updated yesterday. It is a first version, built around one rule: the order is the test.\n\nYou place things at spots in a room, then walk the room back and recall them in the order you placed them. A right item in the wrong place still counts as a miss, because that is what the method is actually about.\n\nThree decisions shaped it:\n\n- Eleven spots, but a ten-item cap. A full room refuses the eleventh and names what it would have displaced. A palace that silently drops something is worse than one that says the room is full: you would walk the room, find the wrong object, and blame your memory.\n- A miss is shown back where it belonged: \"At the table you should have had 'apple'.\" Not a red cross, and not a grade.\n- No spaced-repetition schedule, no intervals, no due list. Adding one would have turned this into a flashcard app, so it stays out.\n\nRemove and renumber work, export and reload work, and a corrupt saved palace is reported and offered for export rather than quietly replaced with an empty one.\n\nFree, offline, no account, no telemetry. Windows, Android and Linux builds, or run it in the browser.\n\nhttps://drsamonline.github.io/app-memory-palace/",
-  "link": "https://drsamonline.github.io/app-memory-palace/",
-  "screenshot": "state/pending/app-memory-palace-shot.png",
-  "status": "published",
-  "post_urn": "urn:li:share:7531929950757478400",
-  "posted_at": "2026-11-27T04:05:00+05:30"
+  "date": "2026-11-28",
+  "commentary": "Memory was updated yesterday, and most of the change is about the screen it lands on.\n\nIt keeps the day: what you saw, where, a clip if you did not want to type. Everything is encrypted at rest with a key derived from your passphrase, which is never stored.\n\nWhat changed:\n- The app now sizes itself to the window it is open in: type scales, and the container no longer pins everything into a narrow column.\n- The landing page is a vault door now, not a card, which is closer to what the app is.\n- A new test opens the page and checks it draws something, so a blank build cannot pass quietly.\n\nWhat did not change, and matters more:\n- Search decrypts in memory at the moment you ask. No index on disk, and no network code at all.\n- The export is ciphertext. A plaintext export would be the one hole in the design.\n- If storage fails, capture stops and says so, and names the oldest hour lost, rather than going quiet.\n- There is no always-listening capture or transcription, because there is no speech model here; the words are typed or the clip is kept and marked.\n\nFree, offline, no account, no telemetry. Windows, Android, Linux, or the browser.\n\nhttps://drsamonline.github.io/app-memory/",
+  "link": "https://drsamonline.github.io/app-memory/",
+  "screenshot": null,
+  "status": "pending"
 }
