@@ -6,5 +6,7 @@
   "commentary": "Memory was updated yesterday, and most of the change is about the screen it lands on.\n\nIt keeps the day: what you saw, where, a clip if you did not want to type. Everything is encrypted at rest with a key derived from your passphrase, which is never stored.\n\nWhat changed:\n- The app now sizes itself to the window it is open in: type scales, and the container no longer pins everything into a narrow column.\n- The landing page is a vault door now, not a card, which is closer to what the app is.\n- A new test opens the page and checks it draws something, so a blank build cannot pass quietly.\n\nWhat did not change, and matters more:\n- Search decrypts in memory at the moment you ask. No index on disk, and no network code at all.\n- The export is ciphertext. A plaintext export would be the one hole in the design.\n- If storage fails, capture stops and says so, and names the oldest hour lost, rather than going quiet.\n- There is no always-listening capture or transcription, because there is no speech model here; the words are typed or the clip is kept and marked.\n\nFree, offline, no account, no telemetry. Windows, Android, Linux, or the browser.\n\nhttps://drsamonline.github.io/app-memory/",
   "link": "https://drsamonline.github.io/app-memory/",
   "screenshot": null,
-  "status": "pending"
+  "status": "published",
+  "post_urn": "urn:li:share:7532317347101949952",
+  "posted_at": "2026-11-28T11:10:04+05:30"
 }
